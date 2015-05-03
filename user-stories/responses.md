@@ -115,7 +115,24 @@ source=https://ben.me/entry/200
 
 > ...and others...
 
-Alexa's server verifies and accepts the Webmention of the "like" and includes it on
+(It's not clear from the story whether "others" refers to Alexa's followers, Ben's 
+followers, or both.)
+
+Ben's server publishes this "like" post to anyone following his feed, by sending a
+PubSubHubbub ping to his hub.
+
+```
+POST / HTTP/1.1
+Host: pubsubhubbub.superfeedr.com
+Content-type: application/x-www-form-urlencoded
+
+hub.mode=publish
+&hub.url=https://ben.me/
+```
+
+Ben's followers will see his "like" post.
+
+Separately, Alexa's server verifies and accepts the Webmention of the "like" and includes it on
 the entry URL and on the entry when rendered in a list. Alexa's server pings the hub
 again to notify subscribers that the post has changed (the post has a new like).
 
@@ -128,7 +145,7 @@ hub.mode=publish
 &hub.url=https://alexa.me/
 ```
 
-TODO: If the post is no longer on the front page, subscribers won't see Ben's "like" 
+TODO: If the post is no longer on the front page, Alexa's followers won't see Ben's "like" 
 post from this ping. We may need to add some sort of mechanism for notifying
 subscribers of updates to older posts. This may need to be an extension of PubSubHubbub,
 or could be accomplished by describing the desired behavior of PubSubHubbub consumers.
