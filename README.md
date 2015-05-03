@@ -9,6 +9,7 @@ http://indiewebcamp.com/Micropub
 
 This repo also contains descriptions of how to use Micropub to fulfill the W3C SocialWG list of [user stories](https://www.w3.org/wiki/Socialwg/Social_API/User_stories).
 
+* [SWAT0](user-stories/SWAT0.md)
 * [User Posts a Note](user-stories/user-posts-a-note.md)
 * [User Posts a File](user-stories/user-posts-a-file.md)
 * [Responses](user-stories/responses.md)
