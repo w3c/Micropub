@@ -11,6 +11,7 @@ This repo also contains descriptions of how to use Micropub to fulfill the W3C S
 
 * [User Posts a Note](user-stories/user-posts-a-note.md)
 * [User Posts a File](user-stories/user-posts-a-file.md)
+* [Responses](user-stories/responses.md)
 
 ## License
 
