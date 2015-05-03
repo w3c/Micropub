@@ -196,7 +196,7 @@ request to her server, with the "like-of" URL set to the URL of Charles' comment
 
 ```
 POST /micropub HTTP/1.1
-Host: ben.me
+Host: denise.me
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer xx-micropub-access-token-xx
 
