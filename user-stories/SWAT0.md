@@ -177,7 +177,8 @@ similar to the below.
 ```
 
 Because this is an update to the contents of the URL, Ben's server re-sends the 
-original Webmentions to indicate there was an update to the receiver.
+original Webmentions to indicate there was an update to the receiver. This practice
+is now known as [salmention](http://indiewebcamp.com/salmention).
 
 ```
 POST /webmention HTTP/1.1
