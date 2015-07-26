@@ -65,11 +65,11 @@ Content-Type: multipart/form-data; boundary=AaB03x
 Authorization: Bearer xx-micropub-access-token-xx
 
 --AaB03x
-Content-Disposition: form-data; name="mp-url"
+Content-Disposition: form-data; name="edit-of"
 
 https://maria.me/entry/1
 --AaB03x
-Content-Disposition: form-data; name="photo"; filename="car-cropped.jpg"
+Content-Disposition: form-data; name="update[properties][photo]"; filename="car-cropped.jpg"
 Content-Type: image/jpeg
 
 ... encoded contents of car-cropped.jpg ...
@@ -93,8 +93,7 @@ Host: maria.me
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer xx-micropub-access-token-xx
 
-mp-url=https://maria.me/entry/1
-&mp-action=delete
+delete-of=https://maria.me/entry/1
 ```
 
 The server acknowledges the successful deletion:
