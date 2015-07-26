@@ -37,8 +37,8 @@ Host: eric.me
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer xx-micropub-access-token-xx
 
-mp-url=https://eric.me/entry/1
-&content=Hello+World
+edit-of=https://eric.me/entry/1
+&update[properties][content]=Hello+World
 ```
 
 The server acknowledges the successful update of the note:
@@ -57,8 +57,7 @@ Host: eric.me
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer xx-micropub-access-token-xx
 
-mp-url=https://eric.me/entry/1
-&mp-action=delete
+delete-of=https://eric.me/entry/1
 ```
 
 The server acknowledges the successful deletion of the note:
