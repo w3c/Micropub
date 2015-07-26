@@ -319,8 +319,7 @@ Host: edgar.me
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer xx-micropub-access-token-xx
 
-mp-url=https://edgar.me/entry/500
-&mp-action=delete
+delete-of=https://edgar.me/entry/500
 ```
 
 Edgar's server deletes the post, and will return `HTTP 410 Gone` when this URL is 
