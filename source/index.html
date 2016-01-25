@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Micropub</title>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          publishDate: "2016-01-28",
+          specStatus: "FPWD",
+          shortName:  "micropub",
+          edDraftURI: "http://micropub.net/draft/",
+          editors: [
+                {   name:       "Aaron Parecki",
+                    url:        "http://aaronparecki.com/",
+                    w3cid:      "59996" }
+          ],
+          wg:           "Social Web Working Group",
+          wgURI:        "http://www.w3.org/Social/WG",
+          wgPublicList: "public-socialweb",
+          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
+          license: "w3c-software-doc",
+          otherLinks: [{
+            key: 'Repository',
+            data: [
+              {
+                value: 'Github',
+                href: 'https://github.com/aaronpk/micropub'
+              },
+              {
+                value: 'Issues',
+                href: 'https://github.com/aaronpk/micropub/issues'
+              },
+              {
+                value: 'Commits',
+                href: 'https://github.com/aaronpk/micropub/commits/master'
+              }
+            ]
+          }],
+          localBiblio:  {
+            "microformats2-parsing": {
+              title: "Microformats2 Parsing",
+              href: "http://microformats.org/wiki/microformats2-parsing",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
+            "h-entry": {
+              title: "h-entry",
+              href: "http://microformats.org/wiki/h-entry",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
+            "h-card": {
+              title: "h-card",
+              href: "http://microformats.org/wiki/h-card",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
+            "h-adr": {
+              title: "h-adr",
+              href: "http://microformats.org/wiki/h-adr",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
+            "IndieAuth": {
+              title: "IndieAuth",
+              href: "http://indiewebcamp.com/IndieAuth-spec",
+              authors: [
+                "Aaron Parecki"
+              ],
+              status:   "Living Specification",
+              publisher:  "indiewebcamp.com"
+            },
+            "URL": {
+              title: "URL",
+              href: "https://url.spec.whatwg.org/",
+              authors: [
+                "Anne van Kesteren"
+              ],
+              status: "Living Specification",
+              publisher: "WHATWG"
+            }
+          }
+      };
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        Micropub is an open API standard that is used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g. iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
+      </p>
+
+      <section id="authorsnote" class="informative">
+        <h2>Author's Note</h2>
+        <p>This specification was contributed to the W3C from the
+          <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More
+          history and evolution of Micropub can be found on the
+          <a href="http://indiewebcamp.com/micropub">IndieWebCamp wiki</a>.</p>
+      </section>
+    </section>
+
+    <section id='sotd'>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+
+      <p>Micropub is a spec to create content on a server using web or native app clients.</p>
+
+      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].</p>
+
+      <section class="informative">
+        <h3>Background</h3>
+
+        <p>The Micropub vocabulary is derived directly from the [[Microformats]]
+          vocabulary. Micropub is meant to be a serialization of Microformats
+          that can be submitted as an HTTP POST. The method for developing new
+          Micropub vocabularies is to look at the Microformats representation
+          and work backwards.</p>
+      </section>
+    </section>
+
+    <section>
+      <h2>Syntax</h2>
+
+      <p>Similar to how [[Microformats]] has a relatively small ruleset for parsing
+        HTML documents into a data structure, Micropub defines a small set of
+        rules to interpret HTTP POST and GET requests as Micropub commands.
+        Where Microformats does not require changing the parsing rules to
+        introduce new properties of an object such as an [[h-entry]], Micropub
+        similarly does not require changing parsing rules to interpret requests
+        that may correspond to different post types, such as posting videos vs
+        "likes".</p>
+      <p>The Micropub syntax describes how to interpret HTTP POST and GET
+        requests into a useful action the server can take.</p>
+
+      <section>
+        <h3>Overview</h3>
+
+        <p>All Micropub requests to create posts are sent as
+          <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
+          <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [[HTML5]],
+          or [[JSON]]-encoded HTTP requests. Responses typically do not include
+          a response body, indicating the needed information (such as the URL
+          of the created post) in HTTP headers. When a response body is required,
+          it is returned as either form-encoded or JSON, depending on the
+          HTTP Accept [[RFC7231]] header.</p>
+      </section>
+
+      <section>
+        <h3>Reserved Properties</h3>
+
+        <p>A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
+
+        <p>
+          <ul>
+            <li><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
+            <li><code>h</code> - used to specify the object type being created</li>
+            <li><code>q</code> - used to query a Micropub endpoint</li>
+            <li><code>url</code> - indicates the URL of the object being changed</li>
+            <li><code>mp-action</code> - indicates whether this is an <code>edit</code>, <code>delete</code>, or <code>undelete</code></li>
+            <li><code>replace</code> - for edits, the top-level property containing properties to replace</li>
+            <li><code>add</code> - for edits, the top-level property containing properties to add</li>
+            <li><code>delete</code> - for edits, the top-level property containing properties to remove</li>
+            <li><code>mp-*</code> - reserved for future use</li>
+          </ul>
+        </p>
+
+        <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+      </section>
+
+      <section>
+        <h3>Create</h3>
+
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post.</p>
+        <p><pre><code>h={microformats object type}</code></pre></p>
+        <p>e.g. <code>h=entry</code></p>
+        <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
+        <p>e.g. <code>content=hello+world</code></p>
+        <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name.</p>
+        <p>e.g. <code>category[]=foo&amp;category[]=bar</code></p>
+        <p>Properties that accept multiple values MUST also accept a single value as a string. A complete example of a form-encoded request follows.</p>
+        <p><pre class="example">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></p>
+
+        <section>
+          <h4>Uploading Files</h4>
+
+          <p>To upload files, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+          <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
+          <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
+
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="h"
+
+entry
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="content"
+
+Hello World!
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="photo"; filename="aaronpk.png"
+Content-Type: image/png
+Content-Transfer-Encoding: binary
+
+... (binary data) ...
+--553d9cee2030456a81931fb708ece92c--</pre></p>
+        </section>
+
+        <section>
+          <h4>JSON Syntax</h4>
+
+          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats2 JSON format. However, in this case, you cannot also send a file.</p>
+          <p><pre class="example">{
+  "type": ["h-entry"],
+  "properties": {
+    "content": ["hello world"],
+    "category": ["foo","bar"]
+  }
+}</pre></p>
+        </section>
+
+        <section>
+          <h4>Nested Microformats Objects</h4>
+
+          <p>Whenever possible, nested Microformats objects should be avoided. A
+            better alternative is to reference objects by their URLs. The most common
+            example is including an h-card for a venue, such as checking in to a location
+            or tagging a photo with a person or location. In these cases, it is
+            better to reference the object by URL, creating it first if necessary.</p>
+
+          <p>This technique has the advantage of ensuring that each object that is
+            created has its own URL (each piece of data has its own link). This also
+            gives the server an opportunity to handle each entity separately.
+            E.g., rather than creating a duplicate of an existing venue, it may
+            give back a link to one that was already created, possibly even
+            merging in newly received data first.</p>
+
+          <p>In some cases, it does not make sense for the nested object to have
+            a URL. For example, when posting an h-measure value, there is no
+            reason for the h-measure itself to have a URL, so this is an acceptable
+            case to use the nested microformats object syntax.</p>
+
+          <p>The example below creates a new "weight" measurement post as an
+            h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
+
+          <p><pre class="example">h=entry
+&amp;weight[type]=h-measure
+&amp;weight[properties][num]=155.73
+&amp;weight[properties][unit]=lb
+&amp;bodyfat[type]=h-measure
+&amp;bodyfat[properties][num]=19.83
+&amp;bodyfat[properties][unit]=%</pre></p>
+
+<p><pre class="example">{
+  "type": ["h-entry"],
+  "properties": {
+    "weight": [
+      {
+        "type": "h-measure",
+        "properties": {
+          "num": ["155.73"],
+          "unit": ["lb"]
+        }
+      }
+    ],
+    "bodyfat": [
+      {
+        "type": "h-measure",
+        "properties": {
+          "num": ["19.83"],
+          "unit": ["%"]
+        }
+      }
+    ]
+  }
+}</pre></p>
+
+        </section>
+
+        <section>
+          <h4>Response</h4>
+
+          <p>When the post is created, the Micropub endpoint MUST return either
+            an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code>
+            code, and MUST return a <code>Location</code> header indicating the
+            URL of the created post. [[RFC2616]]</p>
+
+          <p>If the target also provides a shortlink, or if it syndicated the
+            post to another location, the Micropub endpoint MAY return additional
+            URLs using the HTTP Link header, along with an appropriate "rel" value.
+            For example, it can return the short URL of a post by responding with:
+            <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre>, or
+            can include the location of the syndicated post with:
+            <pre>Link: &lt;https://https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre>.</p>
+
+          <p>If the endpoint chooses to process the request asynchronously rather
+            than creating and storing the post immediately, it MUST return an
+            <code>HTTP 202 Accepted</code> status code, and MUST also return
+            the <code>Location</code> header in this case. If the server is
+            going to return 202, it MUST ensure the object will be created
+            successfully prior to returning 202, as clients will expect the
+            object at the indicated URL to exist at some point in the (near)
+            future. In other words, the server must do any error checking
+            and validation before returning 202.</p>
+
+
+        </section> <!-- Response -->
+
+      </section> <!-- Create -->
+
+      <section>
+        <h3>Edit</h3>
+
+        <p class="warning">This section does not currently have interoperable
+          implementations on both the server and client side, and therefore may
+          change significantly once more implementation experience is gathered.</p>
+
+        <p>Editing entries can be done with either a JSON post or form-encoded
+          post. The syntax of the edit request is the same in both cases,
+          using the array bracket notation when encoding in form-encoded format.</p>
+        <p>To update an entry, send <code>mp-action=edit</code> and specify the
+          URL of the entry that is being updated using the "url" property.
+          The request MUST also include either a <code>replace</code>,
+          <code>add</code> or <code>delete</code> property containing the edits to make.</p>
+
+        <section>
+          <h4>Replace</h4>
+
+          <p>Replace all values of the property. If the property does not exist already, it is created.</p>
+          <p><pre class="example">mp-action=edit
+&amp;url=http://example.com/post/1
+&amp;replace[properties][content]=hello+moon</pre></p>
+          <p><pre class="example">{
+  "mp-action": "edit",
+  "url": "http://example.com/post/1",
+  "replace": {
+    "properties": {
+      "content": ["hello moon"]
+    }
+  }
+}</pre></p>
+          <p>This will replace the entire entry content with the new text.</p>
+        </section>
+
+        <section>
+          <h4>Add</h4>
+
+          <p>If there are any existing values for this property, they are not
+            changed, the new values are added. If the property does not
+            exist already, it is created.</p>
+
+          <h5>Adding a syndication URL</h5>
+          <p>Use case: adding a syndication link to a post after it has been
+            published. For example, when a client supports posting first then
+            syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact,
+            the site needs a way to update the original post with the new syndication URL.</p>
+          <p>To add syndication URLs, include one or more URLs in the update request.</p>
+          <p><pre class="example">mp-action=edit
+&amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
+&amp;add[properties][syndication][]=https://archive.org/example...</pre></p>
+          <p><pre class="example">{
+  "mp-action": "edit",
+  "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
+  "add": {
+    "properties": {
+      "syndication": ["https://archive.org/"]
+    }
+  }
+}</pre></p>
+
+          <h5>Adding Tags</h5>
+          <p>Use case: adding tags to a post after it's been created.</p>
+          <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
+          <p><pre class="example">mp-action=edit
+&amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
+&amp;add[properties][category][]=webmention
+&amp;add[properties][category][]=indieweb</pre></p>
+          <p><pre class="example">{
+  "mp-action": "edit",
+  "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
+  "add": {
+    "properties": {
+      "category": ["webmention","indieweb"]
+    }
+  }
+}</pre></p>
+        </section>
+
+        <section>
+          <h4>Remove</h4>
+
+          <p>If the property exists, remove it. This completely removes the specified property.</p>
+          <p><pre class="example">mp-action=edit
+&amp;url=http://example.com/post/1
+&amp;delete[properties]=category</pre></p>
+          <p><pre class="example">{
+  "mp-action": "edit",
+  "url": "http://example.com/post/1",
+  "delete": {
+    "properties": ["category"]
+  }
+}</pre></p>
+
+          <p>For properties with multiple values, such as categories, you can
+            remove individual entries by value. If no values remain, the
+            property is removed.</p>
+
+          <p><pre class="example">mp-action=edit
+&amp;url=http://example.com/post/1
+&amp;delete[properties][category]=indieweb</pre></p>
+          <p><pre class="example">{
+  "mp-action": "edit",
+  "url": "http://example.com/post/1",
+  "delete": {
+    "properties": {
+      "category": ["indieweb"]
+    }
+  }
+}</pre></p>
+        </section>
+
+        <section>
+          <h4>Response</h4>
+          <p>The server MUST respond to successful update requests with HTTP 200 or 204, depending on whether the response body has content. No body is required in the response.</p>
+        </section>
+      </section> <!-- Editing -->
+
+      <section>
+        <h3>Delete</h3>
+
+        <p>To delete an entire entry at a URL, send a POST request containing
+          <code>mp-action=delete</code> and the URL of the item in the
+          <code>url</code> property.</p>
+
+        <p><pre class="example">mp-action=delete
+&amp;url=http://example.com/post/1</pre></p>
+        <p><pre class="example">{
+  "mp-action": "delete",
+  "url": "http://example.com/post/1"
+}</pre></p>
+
+        <p>Some Micropub endpoints may support undeleting posts. To undelete a post, use "undelete" as the action.</p>
+        <p><pre class="example">mp-action=undelete
+&amp;url=http://example.com/post/1</pre></p>
+        <p><pre class="example">{
+  "mp-action": "undelete",
+  "url": "http://example.com/post/1"
+}</pre></p>
+
+
+      </section> <!-- Delete -->
+
+      <section>
+        <h3>Querying</h3>
+
+        <p class="warning">This section does not currently have interoperable
+          implementations on both the server and client side, and therefore may
+          change significantly once more implementation experience is gathered.</p>
+
+        <p>Micropub clients may need to query the Micropub endpoint to discover
+          its capabilities, such as finding a list of syndication targets that
+          it displays to the user, or retrieving the source of a post to display
+          in the editing interface.</p>
+
+        <p>To query, make a <code>GET</code> request to the micropub endpoint and use the
+          <code>q</code> parameter to specify what you are querying.</p>
+
+        <p>Note: The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
+          so in this case, Micropub clients MUST append the <code>q</code> parameter
+          instead of replacing the query string.</p>
+
+        <section>
+          <h4>Syndication Targets</h4>
+
+          <p>To return a list of supported syndication targets, use <code>q=syndicate-to</code>.</p>
+
+          <p><pre>GET /micropub?q=syndicate-to</pre></p>
+
+          <p>The syndication targets MUST be returned as form-encoded array syntax by default.</p>
+
+          <p><pre class="example">GET /micropub?q=syndicate-to
+Authorization: Bearer xxxxxxxxx
+
+syndicate-to[]=https://archive.org/
+&amp;syndicate-to[]=https://wikimedia.org/
+&amp;syndicate-to[]=https://myfavoritesocialnetwork.example/aaronpk</pre></p>
+
+          <p>If the request includes an <code>Accept</code> header that includes
+            <code>application/json</code> then the endpoint MUST return the response in JSON format.</p>
+
+          <p><pre class="example">GET /micropub?q=syndicate-to
+Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+{
+  "syndicate-to": [
+    "https://archive.org/",
+    "https://wikimedia.org/",
+    "https://myfavoritesocialnetwork.example/aaronpk"
+  ]
+}</pre></p>
+        </section>
+
+      </section> <!-- Querying -->
+
+    </section> <!-- Syntax -->
+
+    <section>
+      <h2>How to Implement</h2>
+
+      <p>This section covers how to implement the Micropub API, both in a client
+        that can discover an endpoint and publish to it, and on a server to
+        support an endpoint to create/update/delete posts in response.</p>
+
+      <section>
+        <h3>Endpoint Discovery</h3>
+
+        <p>It should be possible to configure an API client by authenticating
+          as your domain name using [[IndieAuth]]. After signing in, your domain
+          needs a way to specify the API endpoint the client will use to create new posts.</p>
+        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <cpde>HTTP Link</code> header.</p>
+
+        <p><h5>HTTP Link Header</h5>
+          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
+
+        <p><h5>HTML Link Tag</h5>
+          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
+      </section> <!-- Discovery -->
+
+      <section>
+        <h3>Authentication and Authorization</h3>
+
+        <p>An app that wants to post to a user's Micropub endpoint will need
+          to obtain authorization from the user in order to get an access token.
+          Authorization SHOULD be handled via the OAuth 2.0 [[RFC6749]] protocol,
+          including the [[IndieAuth]] extension which supports endpoint discovery.
+          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
+          for more details.</p>
+
+        <p>Micropub requests are authenticated by including a Bearer Token in
+          either the HTTP header or a form-encoded body parameter as described
+          in the OAuth Bearer Token RFC. [[RFC6750]]</p>
+
+        <p><h5>HTTP Header</h5>
+          <pre>Authorization: Bearer XXXXXXXXX</pre></p>
+
+        <p><h5>Form-Encoded Body Parameter</h5>
+          <pre>access_token=XXXXXXXXX</pre></p>
+      </section> <!-- Authentication -->
+
+      <section>
+        <h3>Scope</h3>
+
+        <p>The client may request one or more scopes during the authorization
+          request. It does this according to standard OAuth 2.0 techniques,
+          by passing a space-separated list of scope names in the authorization request. [[RFC6749]]</p>
+        <p>The authorization server must indicate to the user any scopes that
+          are part of the request, whether or not the authorization server
+          recognizes the scopes. The authorization server may also allow the
+          user to add or remove scopes that the client requests.</p>
+        <p>For example, most Micropub servers require clients to obtain the
+          "post" scope in order to create posts. However, some servers may
+          require more granular scope requests, such as "delete" or "post:video".
+          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
+      </section> <!-- Scope -->
+
+      <section class="informative">
+        <h3>Examples of Creating Objects</h3>
+
+        <p>To indicate the object being created, use a property called <code>h</code>,
+          (which would never be the name of a property of a microformats object),
+          followed by the name of the microformats object. Examples:
+          <ul>
+            <li><code>h=entry</code></li>
+            <li><code>h=card</code></li>
+            <li><code>h=event</code></li>
+            <li><code>h=cite</code></li>
+          </ul>
+        </p>
+
+        <p>The following properties may be included in a request to create a new [[h-entry]]:
+          <ul>
+            <li>name</li>
+            <li>summary</li>
+            <li>content</li>
+            <li>published</li>
+            <li>updated</li>
+            <li>category</li>
+            <li>location
+              <ul>
+                <li>As a Geo URI [[RFC5870]], for example: <code>geo:45.51533714,-122.646538633</code></li>
+                <li>As a URL that contains an [[h-card]]</li>
+                <li>As a nested [[h-adr]] object</li>
+              </ul>
+            </li>
+            <li>in-reply-to</li>
+            <li>like-of</li>
+            <li>repost-of</li>
+            <li>syndication - Pass one or more URLs pointing to places where this entry already exists. Can be used for importing existing content to a site.</li>
+            <li>like-of</li>
+            <li>mp-syndicate-to = https://myfavoritesocialnetwork.example/aaronpk, https://archive.org/, etc.
+              <ul>
+                <li>This property is giving a command to the micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
+              </ul>
+            </li>
+          </ul>
+        </p>
+
+        <section>
+          <h4>New Note</h4>
+
+          <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
+          <p><ul>
+            <li>content</li>
+            <li>category</li>
+            <li>published (optional, defaults to "now" if not present. Useful for writing offline and syncing later.)</li>
+            <li>mp-syndicate-to</li>
+          </ul></p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Authorization: Bearer XXXXXXXXXXX
+Content-type: application/x-www-form-urlencoded
+
+h=entry
+&amp;content=My+favorite+of+the+%23quantifiedself+trackers%2C+finally+released+their+official+API
+&amp;category[]=quantifiedself&amp;category[]=api
+&amp;mp-syndicate-to=https://myfavoritesocialnetwork.example/aaronpk</pre></p>
+
+          <h5>Minimal Example</h5>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: example.com
+Content-type: application/x-www-form-urlencoded
+Authorization: Bearer XXXXXXX
+
+h=entry
+&amp;content=Hello+World</pre></p>
+
+          <p><pre class="example">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></p>
+
+        </section>
+        <section>
+          <h4>New Reply</h4>
+
+          <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
+          <p><ul>
+            <li>content</li>
+            <li>in-reply-to</li>
+            <li>published</li>
+            <li>mp-syndicate-to</li>
+          </ul></p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Authorization: Bearer XXXXXXXXXXX
+Content-type: application/x-www-form-urlencoded
+
+h=entry
+&amp;content=%40BarnabyWalters+My+favorite+for+that+use+case+is+Redis.
+&amp;in-reply-to=http://waterpigs.example/notes/4S0LMw/
+&amp;mp-syndicate-to=https://myfavoritesocialnetwork.example/aaronpk</pre></p>
+
+        </section>
+        <section>
+          <h4>New Repost</h4>
+
+          <p>Posting a new repost, and adding additional tags.</p>
+          <p><ul>
+            <li>repost-of</li>
+            <li>category</li>
+          </ul></p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Authorization: Bearer XXXXXXXXXXX
+Content-type: application/x-www-form-urlencoded
+
+h=entry
+&amp;repost-of=http://waterpigs.example/notes/4S0LMw/
+&amp;category=realtime</pre></p>
+
+        </section>
+        <section>
+          <h4>New Article</h4>
+
+          <p>Posting a new article with HTML content.</p>
+          <p><ul>
+            <li>name</li>
+            <li>content[html]</li>
+            <li>category</li>
+            <li>published</li>
+          </ul></p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronparecki.com
+Content-type: application/x-www-form-urlencoded
+
+h=entry
+&amp;name=Itching%3A+h-event+to+iCal+converter
+&amp;content[html]=Now+that+I%27ve+been+%3Ca+href%3D%22http%3A%2F%2Faaronparecki.com%22%3Ecreating+a+list+of+events%3C%2Fa%3E
++on+my+site+it+would+be+great+if+I+could+get+a+more+calendar-like+view+of+that+list...
+&amp;category[]=indieweb&amp;category[]=hevent&amp;category[]=events
+&amp;category[]=calendar&amp;category[]=p3k</pre></p>
+
+        </section>
+        <section>
+          <h4>Adding Files</h4>
+
+          <p>When a Micropub request includes a file, the entire request is
+            sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a>
+            encoding, and the file is named by content type, either <code>audio</code>,
+            <code>video</code> or <code>photo</code>. A request MAY include one or more of these files.</p>
+
+          <p>When <a href="http://ownyourgram.com">OwnYourGram</a> makes a Micropub
+            request to post a video, it also sends a photo which is a thumbnail preview of the video.</p>
+
+          <p>In PHP, these files are accessible using the $_FILES array:
+            <pre>$_FILES['video']
+$_FILES['photo']
+$_FILES['audio']</pre></p>
+
+          <p>Note that there is no practical way to upload a file when the request body is JSON encoded.</p>
+
+        </section> <!-- Examples -->
+
+      </section> <!-- Creating Objects -->
+
+    </section> <!-- How to Implement -->
+
+    <!--
+    <section>
+      <h2>Security Considerations</h2>
+
+      <section>
+        <h3>...</h3>
+
+      </section>
+    </section>
+    -->
+
+    <!--
+    <section class="appendix informative">
+      <h2>Extensions</h2>
+
+      <p>The following Micropub Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
+
+      <section>
+        <h3><a href="http://indiewebcamp.com/...">...</a></h3>
+        <p>The [[...]] protocol is an ... extension to Micropub.</p>
+      </section>
+    </section>
+    -->
+
+    <section class="appendix informative">
+      <h2>Resources</h2>
+
+      <p>
+        <ul>
+          <li><a href="http://indiewebcamp.com/Micropub">FAQ</a></li>
+          <li><a href="http://indiewebcamp.com/micropub-endpoint">Creating a Micropub Endpoint</a></li>
+          <li><a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a></li>
+          <li><a href="http://indiewebcamp.com/Micropub-brainstorming">Brainstorming</a></li>
+        </ul>
+      </p>
+    </section>
+
+    <!--
+    <section class="appendix informative">
+      <h2>Articles</h2>
+
+      <p>You can find a list of <a href="http://indiewebcamp.com/micropub#Articles">articles about Micropub</a> on the IndieWebCamp wiki.</p>
+    </section>
+    -->
+
+    <section class="appendix informative">
+      <h2>Implementations</h2>
+
+      <section>
+        <h3>Libraries</h3>
+
+        <ul>
+          <li><a href="https://github.com/snarfed/wordpress-micropub">wordpress-micropub</a> - WordPress plugin for a Micropub server endpoint</li>
+          <li><a href="https://github.com/kylewm/flask-micropub">flask-micropub</a> - Flask (Python) plugin that makes it easy to add IndieAuth authentication and Micropub authorization to a client application.</li>
+          <li><a href="https://github.com/voxpelli/node-micropub-express">micropub-express</a> - Node.js library for a Micropub server endpoint</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Servers</h3>
+
+        <ul>
+          <li><a href="https://github.com/ShaneHudson/Micropub_Craft">Craft CMS</a> - a Craft plugin that supports Micropub.</li>
+          <li><a href="https://github.com/sanduhrs/micropub">Drupal</a> - a Drupal module to add a Micropub endpoint.</li>
+          <li><a href="https://withknown.com">Known</a> - Known supports creating posts via Micropub.</li>
+          <li><a href="https://wordpress.org/plugins/micropub/">Wordpress</a> - a Wordpress plugin which adds a Micropub endpoint.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Clients</h3>
+
+        <ul>
+          <li><a href="https://github.com/kylewm/micropub-xmpp-bot/">micropub-xmpp-bot</a> an experimental XMPP chat bot for posting notes, replies, likes, and reposts via micropub.</li>
+          <li><a href="https://github.com/snarfed/ownyourresponses">ownyourresponses</a> polls your Twitter and Instagram accounts periodically for new activity via the APIs and creates corresponding like, repost, and reply posts on your site via Micropub.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Services</h3>
+
+        <p>Note: Many of the services below are also open source Micropub clients.</p>
+
+        <ul>
+          <li><a href="https://micropublish.herokuapp.com/">Micropublish</a> is a simple Micropub client which supports notes, articles, bookmarks, replies, and reposts.</li>
+          <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
+          <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
+          <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
+          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> by Barnaby Walters supports posting notes.</li>
+          <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
+          <li><a href="https://reader.kylewm.com">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section class="appendix">
+      <h2>Acknowledgements</h2>
+
+      <p>The editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
+        community and other implementers for their support, encouragement and enthusiasm.</p>
+    </section>
+
+
+  </body>
+</html>

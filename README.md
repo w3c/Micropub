@@ -1,9 +1,7 @@
 # Micropub
-This repo is for issues and discussion related to the Micropub spec
+This repo contains the Micropub spec as well as issues and discussion related to the spec.
 
-The spec itself is hosted on the IndieWebCamp wiki:
-
-http://indiewebcamp.com/Micropub
+Please make edits to the file `source/index.html`, and the root `index.html` file will be updated when a new draft is ready to publish.
 
 ## User Stories
 
@@ -20,4 +18,3 @@ This repo also contains descriptions of how to use Micropub to fulfill the W3C S
 Per CC0, to the extent possible under law, the editor(s) and contributors have waived all copyright and related or neighboring rights to this work. In addition, as of 2015-05-03, the editor(s) and contributors (2015-04-07 onward) have made this specification available under the Open Web Foundation Agreement Version 1.0.
 
 All contributions to this repository fall under the same license as the Micropub specification.
-
