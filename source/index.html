@@ -303,9 +303,9 @@ Content-Transfer-Encoding: binary
             post to another location, the Micropub endpoint MAY return additional
             URLs using the HTTP Link header, along with an appropriate "rel" value.
             For example, it can return the short URL of a post by responding with:
-            <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre>, or
+            <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre> or
             can include the location of the syndicated post with:
-            <pre>Link: &lt;https://https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre>.</p>
+            <pre>Link: &lt;https://https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre></p>
 
           <p>If the endpoint chooses to process the request asynchronously rather
             than creating and storing the post immediately, it MUST return an
@@ -371,7 +371,7 @@ Content-Transfer-Encoding: binary
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
           <p><pre class="example">mp-action=edit
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
-&amp;add[properties][syndication][]=https://archive.org/example...</pre></p>
+&amp;add[properties][syndication][]=https://archive.org/example</pre></p>
           <p><pre class="example">{
   "mp-action": "edit",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
