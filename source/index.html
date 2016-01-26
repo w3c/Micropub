@@ -172,10 +172,10 @@
             <li><code>h</code> - used to specify the object type being created</li>
             <li><code>q</code> - used to query a Micropub endpoint</li>
             <li><code>url</code> - indicates the URL of the object being changed</li>
-            <li><code>mp-action</code> - indicates whether this is an <code>edit</code>, <code>delete</code>, or <code>undelete</code></li>
-            <li><code>replace</code> - for edits, the top-level property containing properties to replace</li>
-            <li><code>add</code> - for edits, the top-level property containing properties to add</li>
-            <li><code>delete</code> - for edits, the top-level property containing properties to remove</li>
+            <li><code>mp-action</code> - indicates whether this is an <code>update</code>, <code>delete</code>, or <code>undelete</code></li>
+            <li><code>replace</code> - for updates, the top-level property containing properties to replace</li>
+            <li><code>add</code> - for updates, the top-level property containing properties to add</li>
+            <li><code>delete</code> - for updates, the top-level property containing properties to remove</li>
             <li><code>mp-*</code> - reserved for future use</li>
           </ul>
         </p>
@@ -323,29 +323,29 @@ Content-Transfer-Encoding: binary
       </section> <!-- Create -->
 
       <section>
-        <h3>Edit</h3>
+        <h3>Update</h3>
 
         <p class="warning">This section does not currently have interoperable
           implementations on both the server and client side, and therefore may
           change significantly once more implementation experience is gathered.</p>
 
-        <p>Editing entries can be done with either a JSON post or form-encoded
-          post. The syntax of the edit request is the same in both cases,
+        <p>Updating entries can be done with either a JSON post or form-encoded
+          post. The syntax of the update request is the same in both cases,
           using the array bracket notation when encoding in form-encoded format.</p>
-        <p>To update an entry, send <code>mp-action=edit</code> and specify the
+        <p>To update an entry, send <code>mp-action=update</code> and specify the
           URL of the entry that is being updated using the "url" property.
           The request MUST also include either a <code>replace</code>,
-          <code>add</code> or <code>delete</code> property containing the edits to make.</p>
+          <code>add</code> or <code>delete</code> property containing the updates to make.</p>
 
         <section>
           <h4>Replace</h4>
 
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
-          <p><pre class="example">mp-action=edit
+          <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;replace[properties][content]=hello+moon</pre></p>
           <p><pre class="example">{
-  "mp-action": "edit",
+  "mp-action": "update",
   "url": "http://example.com/post/1",
   "replace": {
     "properties": {
@@ -369,11 +369,11 @@ Content-Transfer-Encoding: binary
             syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact,
             the site needs a way to update the original post with the new syndication URL.</p>
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
-          <p><pre class="example">mp-action=edit
+          <p><pre class="example">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[properties][syndication][]=https://archive.org/example</pre></p>
           <p><pre class="example">{
-  "mp-action": "edit",
+  "mp-action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
   "add": {
     "properties": {
@@ -385,12 +385,12 @@ Content-Transfer-Encoding: binary
           <h5>Adding Tags</h5>
           <p>Use case: adding tags to a post after it's been created.</p>
           <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
-          <p><pre class="example">mp-action=edit
+          <p><pre class="example">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[properties][category][]=webmention
 &amp;add[properties][category][]=indieweb</pre></p>
           <p><pre class="example">{
-  "mp-action": "edit",
+  "mp-action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
   "add": {
     "properties": {
@@ -404,11 +404,11 @@ Content-Transfer-Encoding: binary
           <h4>Remove</h4>
 
           <p>If the property exists, remove it. This completely removes the specified property.</p>
-          <p><pre class="example">mp-action=edit
+          <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete[properties]=category</pre></p>
           <p><pre class="example">{
-  "mp-action": "edit",
+  "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
     "properties": ["category"]
@@ -419,11 +419,11 @@ Content-Transfer-Encoding: binary
             remove individual entries by value. If no values remain, the
             property is removed.</p>
 
-          <p><pre class="example">mp-action=edit
+          <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete[properties][category]=indieweb</pre></p>
           <p><pre class="example">{
-  "mp-action": "edit",
+  "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
     "properties": {
@@ -437,7 +437,7 @@ Content-Transfer-Encoding: binary
           <h4>Response</h4>
           <p>The server MUST respond to successful update requests with HTTP 200 or 204, depending on whether the response body has content. No body is required in the response.</p>
         </section>
-      </section> <!-- Editing -->
+      </section> <!-- Updating -->
 
       <section>
         <h3>Delete</h3>
@@ -474,7 +474,7 @@ Content-Transfer-Encoding: binary
         <p>Micropub clients may need to query the Micropub endpoint to discover
           its capabilities, such as finding a list of syndication targets that
           it displays to the user, or retrieving the source of a post to display
-          in the editing interface.</p>
+          in the updating interface.</p>
 
         <p>To query, make a <code>GET</code> request to the micropub endpoint and use the
           <code>q</code> parameter to specify what you are querying.</p>
