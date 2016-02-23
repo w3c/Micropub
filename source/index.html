@@ -196,7 +196,7 @@
         <h3>Create</h3>
 
         <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post.</p>
-        <p><pre><code>h={microformats object type}</code></pre></p>
+        <p><pre><code>h={Microformats object type}</code></pre></p>
         <p>e.g. <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
         <p>e.g. <code>content=hello+world</code></p>
@@ -232,7 +232,7 @@ Content-Transfer-Encoding: binary
         <section>
           <h4>JSON Syntax</h4>
 
-          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats2 JSON format. However, in this case, you cannot also send a file.</p>
+          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also send a file.</p>
           <p><pre class="example">{
   "type": ["h-entry"],
   "properties": {
@@ -261,7 +261,7 @@ Content-Transfer-Encoding: binary
           <p>In some cases, it does not make sense for the nested object to have
             a URL. For example, when posting an h-measure value, there is no
             reason for the h-measure itself to have a URL, so this is an acceptable
-            case to use the nested microformats object syntax.</p>
+            case to use the nested Microformats object syntax.</p>
 
           <p>The example below creates a new "weight" measurement post as an
             h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
@@ -551,8 +551,8 @@ Accept: application/json
         <h3>Examples of Creating Objects</h3>
 
         <p>To indicate the object being created, use a property called <code>h</code>,
-          (which would never be the name of a property of a microformats object),
-          followed by the name of the microformats object. Examples:
+          (which would never be the name of a property of a Microformats object),
+          followed by the name of the Microformats object. Examples:
           <ul>
             <li><code>h=entry</code></li>
             <li><code>h=card</code></li>
@@ -583,7 +583,7 @@ Accept: application/json
             <li>like-of</li>
             <li>mp-syndicate-to = https://myfavoritesocialnetwork.example/aaronpk, https://archive.org/, etc.
               <ul>
-                <li>This property is giving a command to the micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
+                <li>This property is giving a command to the Micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
               </ul>
             </li>
           </ul>
@@ -846,7 +846,7 @@ $_FILES['audio']</pre></p>
         <h3>Clients</h3>
 
         <ul>
-          <li><a href="https://github.com/kylewm/micropub-xmpp-bot/">micropub-xmpp-bot</a> an experimental XMPP chat bot for posting notes, replies, likes, and reposts via micropub.</li>
+          <li><a href="https://github.com/kylewm/micropub-xmpp-bot/">micropub-xmpp-bot</a> an experimental XMPP chat bot for posting notes, replies, likes, and reposts via Micropub.</li>
           <li><a href="https://github.com/snarfed/ownyourresponses">ownyourresponses</a> polls your Twitter and Instagram accounts periodically for new activity via the APIs and creates corresponding like, repost, and reply posts on your site via Micropub.</li>
         </ul>
       </section>
