@@ -485,7 +485,7 @@ Content-Transfer-Encoding: binary
           it displays to the user, or retrieving the source of a post to display
           in the updating interface.</p>
 
-        <p>To query, make a <code>GET</code> request to the micropub endpoint and use the
+        <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
           <code>q</code> parameter to specify what you are querying.</p>
 
         <p>Note: The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
@@ -493,23 +493,37 @@ Content-Transfer-Encoding: binary
           instead of replacing the query string.</p>
 
         <section>
+          <h4>Source Content</h4>
+
+          <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
+
+          <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. Specify the list of properties you are requesting by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [[!HTML5]] URL encoding.</p>
+
+          <p>The endpoint MUST return the response in [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested.</p>
+
+          <p><pre class="example">GET /micropub?q=syndicate-to&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
+Authorization: Bearer xxxxxxxxx
+
+{
+  "properties": {
+    "published": "2016-02-21T12:50:53-08:00",
+    "category": [
+      "foo", 
+      "bar"
+    ]
+  }
+}</pre></p>
+
+        </section>
+
+        <section>
           <h4>Syndication Targets</h4>
 
-          <p>To return a list of supported syndication targets, use <code>q=syndicate-to</code>.</p>
+          <p>To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
 
           <p><pre>GET /micropub?q=syndicate-to</pre></p>
 
-          <p>The syndication targets MUST be returned as form-encoded array syntax by default.</p>
-
-          <p><pre class="example">GET /micropub?q=syndicate-to
-Authorization: Bearer xxxxxxxxx
-
-syndicate-to[]=https://archive.org/
-&amp;syndicate-to[]=https://wikimedia.org/
-&amp;syndicate-to[]=https://myfavoritesocialnetwork.example/aaronpk</pre></p>
-
-          <p>If the request includes an <code>Accept</code> header that includes
-            <code>application/json</code> then the endpoint MUST return the response in JSON format.</p>
+          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndiation targets.</p>
 
           <p><pre class="example">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
