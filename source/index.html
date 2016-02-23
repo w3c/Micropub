@@ -267,6 +267,7 @@ Content-Transfer-Encoding: binary
             h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
 
           <p><pre class="example">h=entry
+&amp;summary=Weighed+155.73+pounds
 &amp;weight[type]=h-measure
 &amp;weight[properties][num]=155.73
 &amp;weight[properties][unit]=lb
@@ -277,6 +278,9 @@ Content-Transfer-Encoding: binary
 <p><pre class="example">{
   "type": ["h-entry"],
   "properties": {
+    "summary": [
+      "Weight 155.73 pounds"
+    ],
     "weight": [
       {
         "type": "h-measure",
@@ -297,6 +301,18 @@ Content-Transfer-Encoding: binary
     ]
   }
 }</pre></p>
+
+        </section>
+
+        <section>
+          <h4>Unrecognized Properties</h4>
+
+          <p>If the request includes properties that the server does not recognize, it SHOULD 
+          create the post anyway with any values that are recognized, and SHOULD
+          store the unrecognized values internally, and return them when queried.</p>
+
+          <p>This allows clients to post rich types of content to servers that recognize it, 
+          while also posting fallback content to servers that don't.</p>
 
         </section>
 
@@ -326,6 +342,9 @@ Content-Transfer-Encoding: binary
             future. In other words, the server must do any error checking
             and validation before returning 202.</p>
 
+          <h5>Error Response</h5>
+
+          <p>See the "Error Responses" section below for details on how to indicate an error occurred.</p>
 
         </section> <!-- Response -->
 
@@ -444,8 +463,11 @@ Content-Transfer-Encoding: binary
 
         <section>
           <h4>Response</h4>
-          <p>The server MUST respond to successful update requests with HTTP 200 or 204, depending on whether the response body has content. No body is required in the response.</p>
+
+          <p>The server MUST respond to successful update requests with HTTP 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
+
         </section>
+
       </section> <!-- Updating -->
 
       <section>
@@ -469,7 +491,6 @@ Content-Transfer-Encoding: binary
   "mp-action": "undelete",
   "url": "http://example.com/post/1"
 }</pre></p>
-
 
       </section> <!-- Delete -->
 
@@ -548,9 +569,7 @@ Authorization: Bearer xxxxxxxxx
   }
 }</pre></p>
 
-
-
-        </section>
+        </section> <!-- Source Content -->
 
         <section>
           <h4>Syndication Targets</h4>
@@ -565,6 +584,9 @@ Authorization: Bearer xxxxxxxxx
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
+HTTP/1.1 200 OK
+Content-type: application/json
+
 {
   "syndicate-to": [
     "https://archive.org/",
@@ -575,6 +597,35 @@ Accept: application/json
         </section>
 
       </section> <!-- Querying -->
+
+      <section>
+        <h3>Error Response</h3>
+
+        <p>If there was an error with the request, the endpoint MUST return an appropriate HTTP status code, typically 400, 401, or 403, and MAY include a description of the error. If an error body is returned, the response body MUST be encoded as a [[!JSON]] object and include at least a single property named <code>error</code> with the value set to one of the below:</p>
+
+        <p><ul>
+          <li>HTTP 403: <code>forbidden</code> - The authenticated user does not have permission to perform this request</li>
+          <li>HTTP 401: <code>insufficient_scope</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response MAY include the "scope" attribute with the scope necessary to successfully perform this request.</li>
+          <li>HTTP 400: <code>invalid_request</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
+          <li>HTTP 400: <code>not_found</code> - The post with the requested URL was not found</li>
+        </ul></p>
+
+        <p>The response body MAY also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
+
+        <p>See the OAuth 2 Bearer Token [[!RFC6750]] spec for more details on the how to return error responses.</p>
+
+        <p><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
+Authorization: Bearer xxxxxxxx
+
+HTTP/1.1 400 Bad Request
+Content-type: application/json
+
+{
+  "error": "not_found",
+  "error_description": "The post with the requested URL was not found"
+}</pre></p>
+
+      </section> <!-- Error Response -->
 
     </section> <!-- Syntax -->
 
