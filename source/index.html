@@ -6,8 +6,8 @@
     <script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
     <script class='remove'>
       var respecConfig = {
-          publishDate: "2016-01-28",
-          specStatus: "FPWD",
+          publishDate: "2016-02-23",
+          specStatus: "ED",
           shortName:  "micropub",
           edDraftURI: "http://micropub.net/draft/",
           editors: [
@@ -59,6 +59,15 @@
             "h-card": {
               title: "h-card",
               href: "http://microformats.org/wiki/h-card",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
+            "h-event": {
+              title: "h-event",
+              href: "http://microformats.org/wiki/h-event",
               authors: [
                 "Tantek Çelik"
               ],
@@ -153,12 +162,12 @@
 
         <p>All Micropub requests to create posts are sent as
           <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
-          <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [[HTML5]],
-          or [[JSON]]-encoded HTTP requests. Responses typically do not include
+          <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [[!HTML5]],
+          or [[!JSON]]-encoded HTTP requests. Responses typically do not include
           a response body, indicating the needed information (such as the URL
           of the created post) in HTTP headers. When a response body is required,
           it is returned as either form-encoded or JSON, depending on the
-          HTTP Accept [[RFC7231]] header.</p>
+          HTTP Accept [[!RFC7231]] header.</p>
       </section>
 
       <section>
@@ -297,7 +306,7 @@ Content-Transfer-Encoding: binary
           <p>When the post is created, the Micropub endpoint MUST return either
             an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code>
             code, and MUST return a <code>Location</code> header indicating the
-            URL of the created post. [[RFC2616]]</p>
+            URL of the created post. [[!RFC2616]]</p>
 
           <p>If the target also provides a shortlink, or if it syndicated the
             post to another location, the Micropub endpoint MAY return additional
@@ -520,63 +529,9 @@ Accept: application/json
     </section> <!-- Syntax -->
 
     <section>
-      <h2>How to Implement</h2>
+      <h2>Vocabulary</h2>
 
-      <p>This section covers how to implement the Micropub API, both in a client
-        that can discover an endpoint and publish to it, and on a server to
-        support an endpoint to create/update/delete posts in response.</p>
-
-      <section>
-        <h3>Endpoint Discovery</h3>
-
-        <p>It should be possible to configure an API client by authenticating
-          as your domain name using [[IndieAuth]]. After signing in, your domain
-          needs a way to specify the API endpoint the client will use to create new posts.</p>
-        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
-
-        <p><h5>HTTP Link Header</h5>
-          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
-
-        <p><h5>HTML Link Tag</h5>
-          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
-      </section> <!-- Discovery -->
-
-      <section>
-        <h3>Authentication and Authorization</h3>
-
-        <p>An app that wants to post to a user's Micropub endpoint will need
-          to obtain authorization from the user in order to get an access token.
-          Authorization SHOULD be handled via the OAuth 2.0 [[RFC6749]] protocol,
-          including the [[IndieAuth]] extension which supports endpoint discovery.
-          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
-          for more details.</p>
-
-        <p>Micropub requests are authenticated by including a Bearer Token in
-          either the HTTP header or a form-encoded body parameter as described
-          in the OAuth Bearer Token RFC. [[RFC6750]]</p>
-
-        <p><h5>HTTP Header</h5>
-          <pre>Authorization: Bearer XXXXXXXXX</pre></p>
-
-        <p><h5>Form-Encoded Body Parameter</h5>
-          <pre>access_token=XXXXXXXXX</pre></p>
-      </section> <!-- Authentication -->
-
-      <section>
-        <h3>Scope</h3>
-
-        <p>The client may request one or more scopes during the authorization
-          request. It does this according to standard OAuth 2.0 techniques,
-          by passing a space-separated list of scope names in the authorization request. [[RFC6749]]</p>
-        <p>The authorization server must indicate to the user any scopes that
-          are part of the request, whether or not the authorization server
-          recognizes the scopes. The authorization server may also allow the
-          user to add or remove scopes that the client requests.</p>
-        <p>For example, most Micropub servers require clients to obtain the
-          "post" scope in order to create posts. However, some servers may
-          require more granular scope requests, such as "delete" or "post:video".
-          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
-      </section> <!-- Scope -->
+      <p>The vocabulary used in Micropub requests SHOULD be the vocabularies defined by [[!Microformats]] version 2. In particular, the vocabularies [[!h-entry]], [[h-event]] and [[h-card]] have enough widespread usage that they are considered stable.</p>
 
       <section class="informative">
         <h3>Examples of Creating Objects</h3>
@@ -739,9 +694,70 @@ $_FILES['audio']</pre></p>
           <p>The Micropub endpoint may store the file directly, or make an external
             request to upload it to a different backend storage, such as Amazon S3.</p>
 
-        </section> <!-- Examples -->
+        </section> <!-- Adding Files -->
 
       </section> <!-- Creating Objects -->
+
+    </section> <!-- Vocabulary -->
+
+    <section>
+      <h2>How to Implement</h2>
+
+      <p>This section covers how to implement the Micropub API, both in a client
+        that can discover an endpoint and publish to it, and on a server to
+        support an endpoint to create/update/delete posts in response.</p>
+
+      <section>
+        <h3>Endpoint Discovery</h3>
+
+        <p>It should be possible to configure an API client by authenticating
+          as your domain name using [[IndieAuth]]. After signing in, your domain
+          needs a way to specify the API endpoint the client will use to create new posts.</p>
+        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
+
+        <p><h5>HTTP Link Header</h5>
+          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
+
+        <p><h5>HTML Link Tag</h5>
+          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
+      </section> <!-- Discovery -->
+
+      <section>
+        <h3>Authentication and Authorization</h3>
+
+        <p>An app that wants to post to a user's Micropub endpoint will need
+          to obtain authorization from the user in order to get an access token.
+          Authorization SHOULD be handled via the OAuth 2.0 [[!RFC6749]] protocol,
+          including the [[IndieAuth]] extension which supports endpoint discovery.
+          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
+          for more details.</p>
+
+        <p>Micropub requests are authenticated by including a Bearer Token in
+          either the HTTP header or a form-encoded body parameter as described
+          in the OAuth Bearer Token RFC. [[!RFC6750]]</p>
+
+        <p><h5>HTTP Header</h5>
+          <pre>Authorization: Bearer XXXXXXXXX</pre></p>
+
+        <p><h5>Form-Encoded Body Parameter</h5>
+          <pre>access_token=XXXXXXXXX</pre></p>
+      </section> <!-- Authentication -->
+
+      <section>
+        <h3>Scope</h3>
+
+        <p>The client may request one or more scopes during the authorization
+          request. It does this according to standard OAuth 2.0 techniques,
+          by passing a space-separated list of scope names in the authorization request. [[RFC6749]]</p>
+        <p>The authorization server must indicate to the user any scopes that
+          are part of the request, whether or not the authorization server
+          recognizes the scopes. The authorization server may also allow the
+          user to add or remove scopes that the client requests.</p>
+        <p>For example, most Micropub servers require clients to obtain the
+          "post" scope in order to create posts. However, some servers may
+          require more granular scope requests, such as "delete" or "post:video".
+          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
+      </section> <!-- Scope -->
 
     </section> <!-- How to Implement -->
 
