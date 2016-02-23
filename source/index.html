@@ -749,36 +749,10 @@ $_FILES['audio']</pre></p>
     </section> <!-- Vocabulary -->
 
     <section>
-      <h2>How to Implement</h2>
-
-      <p>This section covers how to implement the Micropub API, both in a client
-        that can discover an endpoint and publish to it, and on a server to
-        support an endpoint to create/update/delete posts in response.</p>
+      <h2>Authentication and Authorization</h2>
 
       <section>
-        <h3>Endpoint Discovery</h3>
-
-        <p>It should be possible to configure an API client by authenticating
-          as your domain name using [[IndieAuth]]. After signing in, your domain
-          needs a way to specify the API endpoint the client will use to create new posts.</p>
-        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
-
-        <p><h5>HTTP Link Header</h5>
-          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
-
-        <p><h5>HTML Link Tag</h5>
-          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
-      </section> <!-- Discovery -->
-
-      <section>
-        <h3>Authentication and Authorization</h3>
-
-        <p>An app that wants to post to a user's Micropub endpoint will need
-          to obtain authorization from the user in order to get an access token.
-          Authorization SHOULD be handled via the OAuth 2.0 [[!RFC6749]] protocol,
-          including the [[IndieAuth]] extension which supports endpoint discovery.
-          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
-          for more details.</p>
+        <h3>Authentication</h3>
 
         <p>Micropub requests are authenticated by including a Bearer Token in
           either the HTTP header or a form-encoded body parameter as described
@@ -790,6 +764,33 @@ $_FILES['audio']</pre></p>
         <p><h5>Form-Encoded Body Parameter</h5>
           <pre>access_token=XXXXXXXXX</pre></p>
       </section> <!-- Authentication -->
+
+      <section>
+        <h3>Authorization</h3>
+
+        <p>An app that wants to post to a user's Micropub endpoint will need
+          to obtain authorization from the user in order to get an access token.
+          Authorization SHOULD be handled via the OAuth 2.0 [[!RFC6749]] protocol,
+          including the [[IndieAuth]] extension which supports endpoint discovery from a URL.
+          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
+          for more details.</p>
+      </section> <!-- Authorization -->
+
+      <section>
+        <h3>Endpoint Discovery</h3>
+
+        <p>It should be possible to configure a Micropub client by authenticating
+          as your domain name using [[IndieAuth]]. After signing in, your domain
+          needs a way to specify the API endpoint the client will use to create new posts.</p>
+
+        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
+
+        <p><h5>HTTP Link Header</h5>
+          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
+
+        <p><h5>HTML Link Tag</h5>
+          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
+      </section> <!-- Discovery -->
 
       <section>
         <h3>Scope</h3>
@@ -804,10 +805,11 @@ $_FILES['audio']</pre></p>
         <p>For example, most Micropub servers require clients to obtain the
           "post" scope in order to create posts. However, some servers may
           require more granular scope requests, such as "delete" or "post:video".
-          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
+          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and 
+          a list of all currently used values for scope.</p>
       </section> <!-- Scope -->
 
-    </section> <!-- How to Implement -->
+    </section> <!-- Authentication and Authorization -->
 
     <!--
     <section>
