@@ -195,7 +195,7 @@
       <section>
         <h3>Create</h3>
 
-        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post.</p>
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used.</p>
         <p><pre><code>h={Microformats object type}</code></pre></p>
         <p>e.g. <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
@@ -545,7 +545,7 @@ Accept: application/json
     <section>
       <h2>Vocabulary</h2>
 
-      <p>The vocabulary used in Micropub requests SHOULD be the vocabularies defined by [[!Microformats]] version 2. In particular, the vocabularies [[!h-entry]], [[h-event]] and [[h-card]] have enough widespread usage that they are considered stable.</p>
+      <p>The vocabularies used in Micropub requests SHOULD be the vocabularies defined by [[!Microformats]] version 2. In particular, the vocabularies [[!h-entry]], [[h-event]] and [[h-card]] have enough widespread usage that they are considered stable. When creating objects, the vocabulary of the object is indicated in the parameter <code>type</code>. If no type is provided, the server SHOULD assume a default value of <code>entry</code>.</p>
 
       <section class="informative">
         <h3>Examples of Creating Objects</h3>

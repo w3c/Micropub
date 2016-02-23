@@ -589,7 +589,7 @@ input.task-list-item-checkbox {
       <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
         <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Create</span></h3>
 
-        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post.</p>
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used.</p>
         <p></p><pre><code>h={Microformats object type}</code></pre><p></p>
         <p>e.g. <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
@@ -939,7 +939,7 @@ Accept: application/json
     <section id="vocabulary" typeof="bibo:Chapter" resource="#vocabulary" property="bibo:hasPart">
       <!--OddPage--><h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Vocabulary</span></h2>
 
-      <p>The vocabulary used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats">Microformats</a></cite>] version 2. In particular, the vocabularies [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>] have enough widespread usage that they are considered stable.</p>
+      <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats">Microformats</a></cite>] version 2. In particular, the vocabularies [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>] have enough widespread usage that they are considered stable. When creating objects, the vocabulary of the object is indicated in the parameter <code>type</code>. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
 
       <section class="informative" id="examples-of-creating-objects" typeof="bibo:Chapter" resource="#examples-of-creating-objects" property="bibo:hasPart">
         <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Examples of Creating Objects</span></h3><p><em>This section is non-normative.</em></p>
