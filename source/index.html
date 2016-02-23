@@ -497,22 +497,58 @@ Content-Transfer-Encoding: binary
 
           <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
-          <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. Specify the list of properties you are requesting by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [[!HTML5]] URL encoding.</p>
+          <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [[!HTML5]] URL encoding.</p>
 
-          <p>The endpoint MUST return the response in [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested.</p>
+          <p>The endpoint MUST return the response in [[!Microformats]] [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response MUST include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
           <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
   "properties": {
-    "published": "2016-02-21T12:50:53-08:00",
+    "published": ["2016-02-21T12:50:53-08:00"],
     "category": [
       "foo", 
       "bar"
     ]
   }
 }</pre></p>
+
+          <p><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
+Authorization: Bearer xxxxxxxxx
+
+{
+  "type": "h-entry",
+  "properties": {
+    "published": ["2016-02-21T12:50:53-08:00"],
+    "content": ["Hello World"],
+    "category": [
+      "foo", 
+      "bar"
+    ]
+  }
+}</pre></p>
+
+          <h5>HTML Content</h5>
+
+          <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[Microformats]] 2.</p>
+
+          <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
+
+          <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
+Authorization: Bearer xxxxxxxxx
+
+{
+  "properties": {
+    "content": [
+      {
+        "html": "&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;World&lt;/i&gt;"
+      }
+    ]
+  }
+}</pre></p>
+
+
 
         </section>
 

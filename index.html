@@ -891,22 +891,58 @@ Content-Transfer-Encoding: binary
 
           <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
-          <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. Specify the list of properties you are requesting by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] URL encoding.</p>
+          <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] URL encoding.</p>
 
-          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested.</p>
+          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-Microformats">Microformats</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
           <p></p><div class="example"><div class="example-title"><span>Example 20</span></div><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
   "properties": {
-    "published": "2016-02-21T12:50:53-08:00",
+    "published": ["2016-02-21T12:50:53-08:00"],
     "category": [
       "foo", 
       "bar"
     ]
   }
 }</pre></div><p></p>
+
+          <p></p><div class="example"><div class="example-title"><span>Example 21</span></div><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
+Authorization: Bearer xxxxxxxxx
+
+{
+  "type": "h-entry",
+  "properties": {
+    "published": ["2016-02-21T12:50:53-08:00"],
+    "content": ["Hello World"],
+    "category": [
+      "foo", 
+      "bar"
+    ]
+  }
+}</pre></div><p></p>
+
+          <h4 id="html-content">HTML Content</h4>
+
+          <p>If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-Microformats">Microformats</a></cite>] 2.</p>
+
+          <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
+
+          <p></p><div class="example"><div class="example-title"><span>Example 22</span></div><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
+Authorization: Bearer xxxxxxxxx
+
+{
+  "properties": {
+    "content": [
+      {
+        "html": "&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;World&lt;/i&gt;"
+      }
+    ]
+  }
+}</pre></div><p></p>
+
+
 
         </section>
 
@@ -919,7 +955,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndiation targets.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 21</span></div><pre class="example">GET /micropub?q=syndicate-to
+          <p></p><div class="example"><div class="example-title"><span>Example 23</span></div><pre class="example">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -994,7 +1030,7 @@ Accept: application/json
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 22</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title"><span>Example 24</span></div><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1006,7 +1042,7 @@ h=entry
 
           <h4 id="minimal-example">Minimal Example</h4>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 23</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title"><span>Example 25</span></div><pre class="example">POST /micropub HTTP/1.1
 Host: example.com
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer XXXXXXX
@@ -1014,7 +1050,7 @@ Authorization: Bearer XXXXXXX
 h=entry
 &amp;content=Hello+World</pre></div><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 24</span></div><pre class="example">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
+          <p></p><div class="example"><div class="example-title"><span>Example 26</span></div><pre class="example">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
 
         </section>
         <section id="new-reply" typeof="bibo:Chapter" resource="#new-reply" property="bibo:hasPart">
@@ -1028,7 +1064,7 @@ h=entry
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 25</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title"><span>Example 27</span></div><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1048,7 +1084,7 @@ h=entry
             <li>category</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 26</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title"><span>Example 28</span></div><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1069,7 +1105,7 @@ h=entry
             <li>published</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 27</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title"><span>Example 29</span></div><pre class="example">POST /micropub HTTP/1.1
 Host: aaronparecki.com
 Content-type: application/x-www-form-urlencoded
 
