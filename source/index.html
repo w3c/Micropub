@@ -38,6 +38,15 @@
             ]
           }],
           localBiblio:  {
+            "Microformats2": {
+              title: "Microformats 2",
+              href: "http://microformats.org/wiki/microformats2",
+              authors: [
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "microformats.org"
+            },
             "microformats2-parsing": {
               title: "Microformats2 Parsing",
               href: "http://microformats.org/wiki/microformats2-parsing",
@@ -135,18 +144,19 @@
       <section class="informative">
         <h3>Background</h3>
 
-        <p>The Micropub vocabulary is derived directly from the [[Microformats]]
+        <p>The Micropub vocabulary is derived directly from the [[Microformats2]]
           vocabulary. Micropub is meant to be a serialization of Microformats
           that can be submitted as an HTTP POST. The method for developing new
           Micropub vocabularies is to look at the Microformats representation
           and work backwards.</p>
       </section>
+
     </section>
 
     <section>
       <h2>Syntax</h2>
 
-      <p>Similar to how [[Microformats]] has a relatively small ruleset for parsing
+      <p>Similar to how [[Microformats2]] has a relatively small ruleset for parsing
         HTML documents into a data structure, Micropub defines a small set of
         rules to interpret HTTP POST and GET requests as Micropub commands.
         Where Microformats does not require changing the parsing rules to
@@ -519,7 +529,7 @@ Content-Transfer-Encoding: binary
 
           <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [[!HTML5]] URL encoding.</p>
 
-          <p>The endpoint MUST return the response in [[!Microformats]] [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response MUST include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
+          <p>The endpoint MUST return the response in [[!Microformats2]] [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response MUST include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
           <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
@@ -551,7 +561,7 @@ Authorization: Bearer xxxxxxxxx
 
           <h5>HTML Content</h5>
 
-          <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[Microformats]] 2.</p>
+          <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[Microformats2]].</p>
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
@@ -631,7 +641,7 @@ Content-type: application/json
     <section>
       <h2>Vocabulary</h2>
 
-      <p>The vocabularies used in Micropub requests SHOULD be the vocabularies defined by [[!Microformats]] version 2. In particular, the vocabularies [[!h-entry]], [[h-event]] and [[h-card]] have enough widespread usage that they are considered stable. When creating objects, the vocabulary of the object is indicated in the parameter <code>type</code>. If no type is provided, the server SHOULD assume a default value of <code>entry</code>.</p>
+      <p>The vocabularies used in Micropub requests SHOULD be the vocabularies defined by [[!Microformats2]] version 2. In particular, the vocabularies [[!h-entry]], [[h-event]] and [[h-card]] have enough widespread usage that they are considered stable. When creating objects, the vocabulary of the object is indicated in the parameter <code>type</code>. If no type is provided, the server SHOULD assume a default value of <code>entry</code>.</p>
 
       <section class="informative">
         <h3>Examples of Creating Objects</h3>
