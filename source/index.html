@@ -653,7 +653,7 @@ h=entry
         <section>
           <h4>New Article</h4>
 
-          <p>Posting a new article with HTML content.</p>
+          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is actually sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
           <p><ul>
             <li>name</li>
             <li>content[html]</li>
@@ -678,11 +678,9 @@ h=entry
 
           <p>When a Micropub request includes a file, the entire request is
             sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a>
-            encoding, and the file is named by content type, either <code>audio</code>,
-            <code>video</code> or <code>photo</code>. A request MAY include one or more of these files.</p>
+            encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request MAY include one or more of these files.</p>
 
-          <p>When <a href="http://ownyourgram.com">OwnYourGram</a> makes a Micropub
-            request to post a video, it also sends a photo which is a thumbnail preview of the video.</p>
+          <p>For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
 
           <p>In PHP, these files are accessible using the $_FILES array:
             <pre>$_FILES['video']
