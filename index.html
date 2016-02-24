@@ -557,21 +557,21 @@ input.task-list-item-checkbox {
 
         <h3 id="clients-1">Clients</h3>
 
-        <p>A conforming client:</p>
+        <p>A conforming Micropub client:</p>
         <ul>
           <li><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support creating [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] posts</li>
+          <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
           <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error message gracefully, presenting helpful messages to the user</li>
+          <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a> given an [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] identity URL</li>
         </ul>
-
 
         <h3 id="servers-1">Servers</h3>
 
-        <p>A conforming server:</p>
+        <p>A conforming Micropub server:</p>
         <ul>
           <li><em class="rfc2119" title="MUST">MUST</em> support both header and form parameter methods of <a href="#authentication">authentication</a></li>
           <li><em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support creating posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+          <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
           <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
         </ul>
 
@@ -630,7 +630,8 @@ input.task-list-item-checkbox {
       <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
         <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Create</span></h3>
 
-        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used.</p>
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded encoding, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
+
         <p></p><pre><code>h={Microformats object type}</code></pre><p></p>
         <p>e.g. <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
@@ -792,9 +793,13 @@ Content-Transfer-Encoding: binary
           implementations on both the server and client side, and therefore may
           change significantly once more implementation experience is gathered.</p></div>
 
+        <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support updating posts, including adding and 
+          removing individual properties as described in this section.</p>
+
         <p>Updating entries can be done with either a JSON post or form-encoded
           post. The syntax of the update request is the same in both cases,
           using the array bracket notation when encoding in form-encoded format.</p>
+
         <p>To update an entry, send <code>mp-action=update</code> and specify the
           URL of the entry that is being updated using the "url" property.
           The request <em class="rfc2119" title="MUST">MUST</em> also include either a <code>replace</code>,
@@ -908,6 +913,8 @@ Content-Transfer-Encoding: binary
       <section id="delete" typeof="bibo:Chapter" resource="#delete" property="bibo:hasPart">
         <h3 id="h-delete" resource="#h-delete"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Delete</span></h3>
 
+        <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support deleting posts, and <em class="rfc2119" title="MAY">MAY</em> support undeleting posts.</p>
+
         <p>To delete an entire entry at a URL, send a POST request containing
           <code>mp-action=delete</code> and the URL of the item in the
           <code>url</code> property.</p>
@@ -919,7 +926,7 @@ Content-Transfer-Encoding: binary
   "url": "http://example.com/post/1"
 }</pre></div><p></p>
 
-        <p>Some Micropub endpoints may support undeleting posts. To undelete a post, use "undelete" as the action.</p>
+        <p>To undelete a post, use "undelete" as the action.</p>
         <p></p><div class="example"><div class="example-title"><span>Example 18</span></div><pre class="example">mp-action=undelete
 &amp;url=http://example.com/post/1</pre></div><p></p>
         <p></p><div class="example"><div class="example-title"><span>Example 19</span></div><pre class="example">{
@@ -1067,7 +1074,7 @@ Content-type: application/json
     <section id="vocabulary" typeof="bibo:Chapter" resource="#vocabulary" property="bibo:hasPart">
       <!--OddPage--><h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary</span></h2>
 
-      <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] version 2. In particular, the vocabularies [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>] have enough widespread usage that they are considered stable. When creating objects, the vocabulary of the object is indicated in the parameter <code>type</code>. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
+      <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] version 2. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
 
       <section class="informative" id="examples-of-creating-objects" typeof="bibo:Chapter" resource="#examples-of-creating-objects" property="bibo:hasPart">
         <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Examples of Creating Objects</span></h3><p><em>This section is non-normative.</em></p>
@@ -1242,7 +1249,8 @@ $_FILES['audio']</pre><p></p>
 
         <p>Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in
           either the HTTP header or a form-encoded body parameter as described
-          in the OAuth Bearer Token RFC. [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>]</p>
+          in the OAuth Bearer Token RFC. [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept
+          the token using both methods.</p>
 
         <p></p><h3 id="http-header">HTTP Header</h3>
           <pre>Authorization: Bearer XXXXXXXXX</pre><p></p>
@@ -1265,9 +1273,9 @@ $_FILES['audio']</pre><p></p>
       <section id="endpoint-discovery" typeof="bibo:Chapter" resource="#endpoint-discovery" property="bibo:hasPart">
         <h3 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>Endpoint Discovery</span></h3>
 
-        <p>It should be possible to configure a Micropub client by authenticating
-          as your domain name using [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>]. After signing in, your domain
-          needs a way to specify the API endpoint the client will use to create new posts.</p>
+        <p>A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by authenticating
+          with a domain name using [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>]. During this authentication (and authorization),
+          the client discovers the Micropub endpoint which will be used to create posts.</p>
 
         <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
 
@@ -1276,6 +1284,7 @@ $_FILES['audio']</pre><p></p>
 
         <p></p><h3 id="html-link-tag">HTML Link Tag</h3>
           <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre><p></p>
+
       </section> <!-- Discovery -->
 
       <section id="scope" typeof="bibo:Chapter" resource="#scope" property="bibo:hasPart">
