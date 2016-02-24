@@ -137,10 +137,6 @@
 
       <p>Micropub is a spec to create content on a server using web or native app clients.</p>
 
-      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-      document are to be interpreted as described in [[!RFC2119]].</p>
-
       <section class="informative">
         <h3>Background</h3>
 
@@ -152,6 +148,42 @@
       </section>
 
     </section>
+
+    <section>
+      <h2>Conformance</h2>
+
+      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].</p>
+
+      <section>
+        <h3>Conformance Classes</h3>
+
+        <p>This section describes the conformance criteria for Micropub clients and servers.</p>
+
+        <h4>Clients</h4>
+
+        <p>A conforming client:</p>
+        <ul>
+          <li>MUST support sending x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          <li>MUST support creating [[!h-entry]] posts</li>
+          <li>SHOULD handle server error message gracefully, presenting helpful messages to the user</li>
+        </ul>
+
+
+        <h4>Servers</h4>
+
+        <p>A conforming server:</p>
+        <ul>
+          <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
+          <li>MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          <li>MUST support creating posts with the [[!h-entry]] vocabulary</li>
+          <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
+        </ul>
+
+      </section>
+
+    </section> <!-- Conformance -->      
 
     <section>
       <h2>Syntax</h2>
@@ -814,7 +846,7 @@ $_FILES['audio']</pre></p>
       <section>
         <h3>Authentication</h3>
 
-        <p>Micropub requests are authenticated by including a Bearer Token in
+        <p>Micropub requests MUST be authenticated by including a Bearer Token in
           either the HTTP header or a form-encoded body parameter as described
           in the OAuth Bearer Token RFC. [[!RFC6750]]</p>
 
@@ -855,16 +887,19 @@ $_FILES['audio']</pre></p>
       <section>
         <h3>Scope</h3>
 
+        <p>The Micropub server MUST require the bearer token to include at least one scope
+          value, in order to ensure posts cannot be created by arbitrary tokens.</p>
         <p>The client may request one or more scopes during the authorization
           request. It does this according to standard OAuth 2.0 techniques,
           by passing a space-separated list of scope names in the authorization request. [[RFC6749]]</p>
-        <p>The authorization server must indicate to the user any scopes that
+        <p>The authorization server MUST indicate to the user any scopes that
           are part of the request, whether or not the authorization server
-          recognizes the scopes. The authorization server may also allow the
+          recognizes the scopes. The authorization server MAY also allow the
           user to add or remove scopes that the client requests.</p>
-        <p>For example, most Micropub servers require clients to obtain the
-          "post" scope in order to create posts. However, some servers may
-          require more granular scope requests, such as "delete" or "post:video".
+        <p>Most Micropub servers require clients to obtain the
+          "post" scope in order to create posts. However, some servers MAY
+          require more granular scope, such as "delete", "update", or "post:video",
+          in order to limit the abilities of various clients.
           See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and 
           a list of all currently used values for scope.</p>
       </section> <!-- Scope -->
