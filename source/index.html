@@ -8,6 +8,8 @@
       var respecConfig = {
           publishDate: "2016-02-24",
           specStatus: "WD",
+          previousMaturity: "FPWD",
+          previousPublishDate: "2016-01-28",
           shortName:  "micropub",
           edDraftURI: "http://micropub.net/draft/",
           editors: [
@@ -1016,6 +1018,32 @@ $_FILES['audio']</pre></p>
 
       <p>The editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
         community and other implementers for their support, encouragement and enthusiasm.</p>
+    </section>
+
+    <section class="appendix informative">
+      <h2>Change Log</h2>
+
+      <section>
+        <h3>Changes from 28 January 2016 FPWD to this version</h3>
+
+        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
+
+        <ul>
+          <li>Corrected references to be normative where appropriate</li>
+          <li>Added new Conformance section summarizing conformance requirements for Micropub Clients and Servers</li>
+          <li>Clarified that a server should create the post with any properties recognized when it receives a request with unrecognized properties</li>
+          <li>Added a section on querying the Micropub endpoint for the source of specific properties, to better support editing</li>
+          <li>Added new "Vocabulary" section which normatively references Microformats 2 vocabularies</li>
+          <li>Micropub servers MAY include a JSON object describing the changes that were applied for Updates</li>
+          <li>Added a section listing specific error responses, also referencing the OAuth 2 Bearer Token spec for other error responses</li>
+          <li>If there is a response body, it SHOULD be JSON</li>
+          <li>Default to create an h-entry if no type is specified</li>
+          <li>Clarified posting files and sending HTML content</li>
+          <li>Reorganized "How To" section into an "Authentication and Authorization" section</li>
+          <li>Fixed some examples of HTTP requests that were missing the response headers</li>
+          <li>Updated references from Microformats to Microformats 2</li>
+        </ul>
+      </section>
     </section>
 
     <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
