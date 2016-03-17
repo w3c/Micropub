@@ -4,7 +4,105 @@
     <title>Micropub</title>
     <meta charset="utf-8">
     
-        
+    
+    <style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title , div.ednote-title, div.warning-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title, div.ednote-title { color: #2b2; }
+div.warning-title { color: #f22; }
+div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue, div.ednote, div.warning {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+.issue, .note, .ednote, .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note , div.ednote,  div.warning {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note, .ednote {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+</style><link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
+    <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <style>/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -120,106 +218,9 @@ table.simple {
         display: none;
     }
 }
-</style><style>/* --- EXAMPLES --- */
-div.example-title {
-    min-width: 7.5em;
-    color: #b9ab2d;
-}
-div.example-title span {
-    text-transform: uppercase;
-}
-aside.example, div.example, div.illegal-example {
-    padding: 0.5em;
-    margin: 1em 0;
-    position: relative;
-    clear: both;
-}
-div.illegal-example { color: red }
-div.illegal-example p { color: black }
-aside.example, div.example {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-    border-color: #e0cb52;
-    background: #fcfaee;
-}
-
-aside.example div.example {
-    border-left-width: .1em;
-    border-color: #999;
-    background: #fff;
-}
-aside.example div.example div.example-title {
-    color: #999;
-}
-</style><style>/* --- ISSUES/NOTES --- */
-div.issue-title, div.note-title , div.ednote-title, div.warning-title {
-    padding-right:  1em;
-    min-width: 7.5em;
-    color: #b9ab2d;
-}
-div.issue-title { color: #e05252; }
-div.note-title, div.ednote-title { color: #2b2; }
-div.warning-title { color: #f22; }
-div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
-    text-transform: uppercase;
-}
-div.note, div.issue, div.ednote, div.warning {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
-.issue, .note, .ednote, .warning {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-}
-div.issue, div.note , div.ednote,  div.warning {
-    padding: 1em 1.2em 0.5em;
-    margin: 1em 0;
-    position: relative;
-    clear: both;
-}
-span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
-
-.issue {
-    border-color: #e05252;
-    background: #fbe9e9;
-}
-.note, .ednote {
-    border-color: #52e052;
-    background: #e9fbe9;
-}
-
-.warning {
-    border-color: #f11;
-    border-right-width: .2em;
-    border-top-width: .2em;
-    border-bottom-width: .2em;
-    border-style: solid;
-    background: #fbe9e9;
-}
-
-.warning-title:before{
-    content: "⚠"; /*U+26A0 WARNING SIGN*/
-    font-size: 3em;
-    float: left;
-    height: 100%;
-    padding-right: .3em;
-    vertical-align: top;
-    margin-top: -0.5em;
-}
-
-li.task-list-item {
-    list-style: none;
-}
-
-input.task-list-item-checkbox {
-    margin: 0 0.35em 0.25em -1.6em;
-    vertical-align: middle;
-}
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
-  "publishDate": "2016-02-24",
+</style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+  "useExperimentalStyles": true,
+  "publishDate": "2016-03-01",
   "specStatus": "ED",
   "previousMaturity": "FPWD",
   "previousPublishDate": "2016-01-28",
@@ -331,84 +332,41 @@ input.task-list-item-checkbox {
     }
   }
 }</script></head>
-  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry toc-sidebar" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
-      
-        
-            <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
-            
-            
-        
-      
+            <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-  
-  <h2 id="w3c-editor-s-draft-24-february-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-02-24">24 February 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-01-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-01">01 March 2016</time></h2>
   <dl>
-    
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/micropub/">http://www.w3.org/TR/micropub/</a></dd>
-    
-    
       <dt>Latest editor's draft:</dt>
       <dd><a href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
-    
-    
-    
-    
-    
-      
-    
-    
-    
     <dt>Editor:</dt>
     <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
 <span property="rdf:rest" resource="rdf:nil"></span>
 </dd>
 
-    
-    
-      
-        
           <dt>Repository:</dt>
-          
-             
-                
                   <dd>
                     <a href="https://github.com/aaronpk/micropub">
                       Github
                     </a>
                   </dd>
-                
-             
-                
                   <dd>
                     <a href="https://github.com/aaronpk/micropub/issues">
                       Issues
                     </a>
                   </dd>
-                
-             
-                
                   <dd>
                     <a href="https://github.com/aaronpk/micropub/commits/master">
                       Commits
                     </a>
                   </dd>
-                
-             
-          
-        
-      
-    
   </dl>
-  
-  
-  
-  
-    
       <p class="copyright">
         <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
         2016
@@ -417,18 +375,11 @@ input.task-list-item-checkbox {
         (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
         <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
         <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
-        
         <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
         <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-        
-          
             <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a>
-          
-        
         rules apply.
       </p>
-    
-  
   <hr title="Separator for header">
 </div>
     <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
@@ -444,87 +395,47 @@ input.task-list-item-checkbox {
           <a href="http://indiewebcamp.com/micropub">IndieWebCamp wiki</a>.</p>
       </section>
     </section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
-  
-    
-      
         <p>
           <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
         </p>
-        
-          
           
     
-          
-          
           <p>
             This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft.
-            
-            
               If you wish to make comments regarding this document, please send them to
               <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a>
               (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
               <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
             
-            
-            
-            
-            
-              
               All comments are welcome.
-              
-            
           </p>
-          
-          
-          
-          
             <p>
               Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
               Membership. This is a draft document and may be updated, replaced or obsoleted by other
               documents at any time. It is inappropriate to cite this document as other than work in
               progress.
             </p>
-          
-          
-          
           <p>
-            
               This document was produced by
-              
               a group
                operating under the
               <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
               Policy</a>.
-            
-            
-            
-              
                 <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
                 disclosures</a>
-              
               made in connection with the deliverables of
-              
               the group; that page also includes
-              
               instructions for disclosing a patent. An individual who has actual knowledge of a patent
               which the individual believes contains
               <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
               Claim(s)</a> must disclose the information in accordance with
               <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-            
-            
           </p>
-          
             <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
             </p>
           
-          
-        
-      
-    
-  
-</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#background" class="tocxref"><span class="secno">1.1 </span>Background</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li><li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li><li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a><ul class="toc"><li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li><li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li><li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li><li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li><li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li></ul></li><li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a><ul class="toc"><li class="tocline"><a href="#replace" class="tocxref"><span class="secno">3.4.1 </span>Replace</a></li><li class="tocline"><a href="#add" class="tocxref"><span class="secno">3.4.2 </span>Add</a></li><li class="tocline"><a href="#remove" class="tocxref"><span class="secno">3.4.3 </span>Remove</a></li><li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li></ul></li><li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li><li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.6 </span>Querying</a><ul class="toc"><li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.6.1 </span>Source Content</a></li><li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.6.2 </span>Syndication Targets</a></li></ul></li><li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.7 </span>Error Response</a></li></ul></li><li class="tocline"><a href="#vocabulary" class="tocxref"><span class="secno">4. </span>Vocabulary</a><ul class="toc"><li class="tocline"><a href="#examples-of-creating-objects" class="tocxref"><span class="secno">4.1 </span>Examples of Creating Objects</a><ul class="toc"><li class="tocline"><a href="#new-note" class="tocxref"><span class="secno">4.1.1 </span>New Note</a></li><li class="tocline"><a href="#new-reply" class="tocxref"><span class="secno">4.1.2 </span>New Reply</a></li><li class="tocline"><a href="#new-repost" class="tocxref"><span class="secno">4.1.3 </span>New Repost</a></li><li class="tocline"><a href="#new-article" class="tocxref"><span class="secno">4.1.4 </span>New Article</a></li><li class="tocline"><a href="#adding-files" class="tocxref"><span class="secno">4.1.5 </span>Adding Files</a></li></ul></li></ul></li><li class="tocline"><a href="#authentication-and-authorization" class="tocxref"><span class="secno">5. </span>Authentication and Authorization</a><ul class="toc"><li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">5.1 </span>Authentication</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">5.2 </span>Authorization</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">5.3 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">B. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">B.1 </span>Libraries</a></li><li class="tocline"><a href="#servers" class="tocxref"><span class="secno">B.2 </span>Servers</a></li><li class="tocline"><a href="#clients" class="tocxref"><span class="secno">B.3 </span>Clients</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">B.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">C. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">D. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-this-version" class="tocxref"><span class="secno">D.1 </span>Changes from 28 January 2016 FPWD to this version</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">E. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">E.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">E.2 </span>Informative references</a></li></ul></li></ul></section>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#background" class="tocxref"><span class="secno">1.1 </span>Background</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li><li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li><li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a><ul class="toc"><li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li><li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li><li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li><li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li><li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li></ul></li><li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a><ul class="toc"><li class="tocline"><a href="#replace" class="tocxref"><span class="secno">3.4.1 </span>Replace</a></li><li class="tocline"><a href="#add" class="tocxref"><span class="secno">3.4.2 </span>Add</a></li><li class="tocline"><a href="#remove" class="tocxref"><span class="secno">3.4.3 </span>Remove</a></li><li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li></ul></li><li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li><li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.6 </span>Querying</a><ul class="toc"><li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.6.1 </span>Source Content</a></li><li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.6.2 </span>Syndication Targets</a></li></ul></li><li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.7 </span>Error Response</a></li></ul></li><li class="tocline"><a href="#vocabulary" class="tocxref"><span class="secno">4. </span>Vocabulary</a><ul class="toc"><li class="tocline"><a href="#examples-of-creating-objects" class="tocxref"><span class="secno">4.1 </span>Examples of Creating Objects</a><ul class="toc"><li class="tocline"><a href="#new-note" class="tocxref"><span class="secno">4.1.1 </span>New Note</a></li><li class="tocline"><a href="#new-reply" class="tocxref"><span class="secno">4.1.2 </span>New Reply</a></li><li class="tocline"><a href="#new-repost" class="tocxref"><span class="secno">4.1.3 </span>New Repost</a></li><li class="tocline"><a href="#new-article" class="tocxref"><span class="secno">4.1.4 </span>New Article</a></li><li class="tocline"><a href="#adding-files" class="tocxref"><span class="secno">4.1.5 </span>Adding Files</a></li></ul></li></ul></li><li class="tocline"><a href="#authentication-and-authorization" class="tocxref"><span class="secno">5. </span>Authentication and Authorization</a><ul class="toc"><li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">5.1 </span>Authentication</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">5.2 </span>Authorization</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">5.3 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">B. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">B.1 </span>Libraries</a></li><li class="tocline"><a href="#servers" class="tocxref"><span class="secno">B.2 </span>Servers</a></li><li class="tocline"><a href="#clients" class="tocxref"><span class="secno">B.3 </span>Clients</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">B.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">C. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">D. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-this-version" class="tocxref"><span class="secno">D.1 </span>Changes from 28 January 2016 FPWD to this version</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">E. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">E.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">E.2 </span>Informative references</a></li></ul></li></ul></nav>
 
     
 
@@ -641,14 +552,14 @@ input.task-list-item-checkbox {
         <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name.</p>
         <p>e.g. <code>category[]=foo&amp;category[]=bar</code></p>
         <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value as a string. A complete example of a form-encoded request follows.</p>
-        <p></p><div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div><p></p>
+        <p></p><div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div><p></p>
 
         <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
           <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span></h4>
 
           <p>To upload files, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
           <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
+          <p></p><div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
 
 --553d9cee2030456a81931fb708ece92c
 Content-Disposition: form-data; name="h"
@@ -671,7 +582,7 @@ Content-Transfer-Encoding: binary
           <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span></h4>
 
           <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also send a file.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 3</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="">{
   "type": ["h-entry"],
   "properties": {
     "content": ["hello world"],
@@ -704,7 +615,7 @@ Content-Transfer-Encoding: binary
           <p>The example below creates a new "weight" measurement post as an
             h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 4</span></div><pre class="example">h=entry
+          <p></p><div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="">h=entry
 &amp;summary=Weighed+155.73+pounds
 &amp;weight[type]=h-measure
 &amp;weight[properties][num]=155.73
@@ -713,7 +624,7 @@ Content-Transfer-Encoding: binary
 &amp;bodyfat[properties][num]=19.83
 &amp;bodyfat[properties][unit]=%</pre></div><p></p>
 
-<p></p><div class="example"><div class="example-title"><span>Example 5</span></div><pre class="example">{
+<p></p><div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="">{
   "type": ["h-entry"],
   "properties": {
     "summary": [
@@ -791,7 +702,7 @@ Content-Transfer-Encoding: binary
       <section id="update" typeof="bibo:Chapter" resource="#update" property="bibo:hasPart">
         <h3 id="h-update" resource="#h-update"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Update</span></h3>
 
-        <div class="warning"><div class="warning-title"><span>Warning</span></div><p class="">This section does not currently have interoperable
+        <div class="warning"><div class="warning-title marker"><span>Warning</span></div><p class="">This section does not currently have interoperable
           implementations on both the server and client side, and therefore may
           change significantly once more implementation experience is gathered.</p></div>
 
@@ -811,10 +722,10 @@ Content-Transfer-Encoding: binary
           <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span></h4>
 
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 6</span></div><pre class="example">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;replace[properties][content]=hello+moon</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title"><span>Example 7</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "replace": {
@@ -839,10 +750,10 @@ Content-Transfer-Encoding: binary
             syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact,
             the site needs a way to update the original post with the new syndication URL.</p>
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 8</span></div><pre class="example">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[properties][syndication][]=https://archive.org/example</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title"><span>Example 9</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
   "add": {
@@ -855,11 +766,11 @@ Content-Transfer-Encoding: binary
           <h4 id="adding-tags">Adding Tags</h4>
           <p>Use case: adding tags to a post after it's been created.</p>
           <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 10</span></div><pre class="example">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[properties][category][]=webmention
 &amp;add[properties][category][]=indieweb</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title"><span>Example 11</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
   "add": {
@@ -874,10 +785,10 @@ Content-Transfer-Encoding: binary
           <h4 id="h-remove" resource="#h-remove"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.3 </span>Remove</span></h4>
 
           <p>If the property exists, remove it. This completely removes the specified property.</p>
-          <p></p><div class="example"><div class="example-title"><span>Example 12</span></div><pre class="example">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete[properties]=category</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title"><span>Example 13</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
@@ -889,10 +800,10 @@ Content-Transfer-Encoding: binary
             remove individual entries by value. If no values remain, the
             property is removed.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 14</span></div><pre class="example">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete[properties][category]=indieweb</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title"><span>Example 15</span></div><pre class="example">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
@@ -921,17 +832,17 @@ Content-Transfer-Encoding: binary
           <code>mp-action=delete</code> and the URL of the item in the
           <code>url</code> property.</p>
 
-        <p></p><div class="example"><div class="example-title"><span>Example 16</span></div><pre class="example">mp-action=delete
+        <p></p><div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="">mp-action=delete
 &amp;url=http://example.com/post/1</pre></div><p></p>
-        <p></p><div class="example"><div class="example-title"><span>Example 17</span></div><pre class="example">{
+        <p></p><div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="">{
   "mp-action": "delete",
   "url": "http://example.com/post/1"
 }</pre></div><p></p>
 
         <p>To undelete a post, use "undelete" as the action.</p>
-        <p></p><div class="example"><div class="example-title"><span>Example 18</span></div><pre class="example">mp-action=undelete
+        <p></p><div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="">mp-action=undelete
 &amp;url=http://example.com/post/1</pre></div><p></p>
-        <p></p><div class="example"><div class="example-title"><span>Example 19</span></div><pre class="example">{
+        <p></p><div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="">{
   "mp-action": "undelete",
   "url": "http://example.com/post/1"
 }</pre></div><p></p>
@@ -941,7 +852,7 @@ Content-Transfer-Encoding: binary
       <section id="querying" typeof="bibo:Chapter" resource="#querying" property="bibo:hasPart">
         <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Querying</span></h3>
 
-        <div class="warning"><div class="warning-title"><span>Warning</span></div><p class="">This section does not currently have interoperable
+        <div class="warning"><div class="warning-title marker"><span>Warning</span></div><p class="">This section does not currently have interoperable
           implementations on both the server and client side, and therefore may
           change significantly once more implementation experience is gathered.</p></div>
 
@@ -966,7 +877,7 @@ Content-Transfer-Encoding: binary
 
           <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 20</span></div><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -979,7 +890,7 @@ Authorization: Bearer xxxxxxxxx
   }
 }</pre></div><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 21</span></div><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -1000,7 +911,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 22</span></div><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -1024,7 +935,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndiation targets.</p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 23</span></div><pre class="example">GET /micropub?q=syndicate-to
+          <p></p><div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1058,7 +969,7 @@ Content-type: application/json
 
         <p>See the OAuth 2 Bearer Token [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] spec for more details on the how to return error responses.</p>
 
-        <p></p><div class="example"><div class="example-title"><span>Example 24</span></div><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
+        <p></p><div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
 Authorization: Bearer xxxxxxxx
 
 HTTP/1.1 400 Bad Request
@@ -1131,7 +1042,7 @@ Content-type: application/json
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 25</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1143,7 +1054,7 @@ h=entry
 
           <h4 id="minimal-example">Minimal Example</h4>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 26</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="">POST /micropub HTTP/1.1
 Host: example.com
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer XXXXXXX
@@ -1151,7 +1062,7 @@ Authorization: Bearer XXXXXXX
 h=entry
 &amp;content=Hello+World</pre></div><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 27</span></div><pre class="example">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
+          <p></p><div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
 
         </section>
         <section id="new-reply" typeof="bibo:Chapter" resource="#new-reply" property="bibo:hasPart">
@@ -1165,7 +1076,7 @@ h=entry
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 28</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1185,7 +1096,7 @@ h=entry
             <li>category</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 29</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1206,7 +1117,7 @@ h=entry
             <li>published</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title"><span>Example 30</span></div><pre class="example">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronparecki.com
 Content-type: application/x-www-form-urlencoded
 
@@ -1440,22 +1351,19 @@ $_FILES['audio']</pre><p></p>
       </section>
     </section>
 
-    <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
-    <link rel="webmention" href="https://webmention.io/w3c/webmention">
-
   
 
-<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
-</dd><dt id="bib-JSON">[JSON]</dt><dd>D. Crockford. <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires">https://tools.ietf.org/html/rfc4627</a>
-</dd><dt id="bib-Microformats2">[Microformats2]</dt><dd>Tantek Çelik. <a href="http://microformats.org/wiki/microformats2" property="dc:requires"><cite>Microformats 2</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/microformats2" property="dc:requires">http://microformats.org/wiki/microformats2</a>
-</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
-</dd><dt id="bib-RFC2616">[RFC2616]</dt><dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
-</dd><dt id="bib-RFC6749">[RFC6749]</dt><dd>D. Hardt, Ed.. <a href="https://tools.ietf.org/html/rfc6749" property="dc:requires"><cite>The OAuth 2.0 Authorization Framework</cite></a>. October 2012. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6749" property="dc:requires">https://tools.ietf.org/html/rfc6749</a>
-</dd><dt id="bib-RFC6750">[RFC6750]</dt><dd>M. Jones; D. Hardt. <a href="https://tools.ietf.org/html/rfc6750" property="dc:requires"><cite>The OAuth 2.0 Authorization Framework: Bearer Token Usage</cite></a>. October 2012. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6750" property="dc:requires">https://tools.ietf.org/html/rfc6750</a>
-</dd><dt id="bib-h-entry">[h-entry]</dt><dd>Tantek Çelik. <a href="http://microformats.org/wiki/h-entry" property="dc:requires"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:requires">http://microformats.org/wiki/h-entry</a>
-</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-IndieAuth">[IndieAuth]</dt><dd>Aaron Parecki. <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references"><cite>IndieAuth</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references">http://indiewebcamp.com/IndieAuth-spec</a>
-</dd><dt id="bib-RFC5870">[RFC5870]</dt><dd>A. Mayrhofer; C. Spanring. <a href="https://tools.ietf.org/html/rfc5870" property="dc:references"><cite>A Uniform Resource Identifier for Geographic Locations ('geo' URI)</cite></a>. June 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5870" property="dc:references">https://tools.ietf.org/html/rfc5870</a>
-</dd><dt id="bib-h-adr">[h-adr]</dt><dd>Tantek Çelik. <a href="http://microformats.org/wiki/h-adr" property="dc:references"><cite>h-adr</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-adr" property="dc:references">http://microformats.org/wiki/h-adr</a>
-</dd><dt id="bib-h-card">[h-card]</dt><dd>Tantek Çelik. <a href="http://microformats.org/wiki/h-card" property="dc:references"><cite>h-card</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-card" property="dc:references">http://microformats.org/wiki/h-card</a>
-</dd><dt id="bib-h-event">[h-event]</dt><dd>Tantek Çelik. <a href="http://microformats.org/wiki/h-event" property="dc:references"><cite>h-event</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-event" property="dc:references">http://microformats.org/wiki/h-event</a>
-</dd></dl></section></section></body></html>
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+</dd><dt id="bib-JSON">[JSON]</dt><dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires">https://tools.ietf.org/html/rfc4627</a>
+</dd><dt id="bib-Microformats2">[Microformats2]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/microformats2" property="dc:requires"><cite>Microformats 2</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/microformats2" property="dc:requires">http://microformats.org/wiki/microformats2</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+</dd><dt id="bib-RFC2616">[RFC2616]</dt><dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. IETF. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
+</dd><dt id="bib-RFC6749">[RFC6749]</dt><dd>D. Hardt, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc6749" property="dc:requires"><cite>The OAuth 2.0 Authorization Framework</cite></a>. October 2012. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6749" property="dc:requires">https://tools.ietf.org/html/rfc6749</a>
+</dd><dt id="bib-RFC6750">[RFC6750]</dt><dd>M. Jones; D. Hardt. IETF. <a href="https://tools.ietf.org/html/rfc6750" property="dc:requires"><cite>The OAuth 2.0 Authorization Framework: Bearer Token Usage</cite></a>. October 2012. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6750" property="dc:requires">https://tools.ietf.org/html/rfc6750</a>
+</dd><dt id="bib-h-entry">[h-entry]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:requires"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:requires">http://microformats.org/wiki/h-entry</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-IndieAuth">[IndieAuth]</dt><dd>Aaron Parecki. indiewebcamp.com. <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references"><cite>IndieAuth</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references">http://indiewebcamp.com/IndieAuth-spec</a>
+</dd><dt id="bib-RFC5870">[RFC5870]</dt><dd>A. Mayrhofer; C. Spanring. IETF. <a href="https://tools.ietf.org/html/rfc5870" property="dc:references"><cite>A Uniform Resource Identifier for Geographic Locations ('geo' URI)</cite></a>. June 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5870" property="dc:references">https://tools.ietf.org/html/rfc5870</a>
+</dd><dt id="bib-h-adr">[h-adr]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-adr" property="dc:references"><cite>h-adr</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-adr" property="dc:references">http://microformats.org/wiki/h-adr</a>
+</dd><dt id="bib-h-card">[h-card]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-card" property="dc:references"><cite>h-card</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-card" property="dc:references">http://microformats.org/wiki/h-card</a>
+</dd><dt id="bib-h-event">[h-event]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-event" property="dc:references"><cite>h-event</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-event" property="dc:references">http://microformats.org/wiki/h-event</a>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
