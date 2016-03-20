@@ -220,10 +220,10 @@ table.simple {
 }
 </style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-03-01",
+  "publishDate": "2016-03-20",
   "specStatus": "ED",
-  "previousMaturity": "FPWD",
-  "previousPublishDate": "2016-01-28",
+  "previousMaturity": "WD",
+  "previousPublishDate": "2016-03-01",
   "shortName": "micropub",
   "edDraftURI": "http://micropub.net/draft/",
   "editors": [
@@ -337,7 +337,7 @@ table.simple {
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-  <h2 id="w3c-editor-s-draft-01-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-01">01 March 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-20-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-20">20 March 2016</time></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -384,7 +384,7 @@ table.simple {
 </div>
     <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
       <p class="p-summary">
-        Micropub is an open API standard that is used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g. iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
+        Micropub is an open API standard used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g., iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
       </p>
 
       <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
@@ -474,7 +474,7 @@ table.simple {
         <ul>
           <li><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
           <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
-          <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error message gracefully, presenting helpful messages to the user</li>
+          <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
           <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a> given an [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] identity URL</li>
         </ul>
 
@@ -495,8 +495,8 @@ table.simple {
     <section id="syntax" typeof="bibo:Chapter" resource="#syntax" property="bibo:hasPart">
       <!--OddPage--><h2 id="h-syntax" resource="#h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Syntax</span></h2>
 
-      <p>Similar to how [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] has a relatively small ruleset for parsing
-        HTML documents into a data structure, Micropub defines a small set of
+      <p>As [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] has a relatively small ruleset for parsing
+        HTML documents into a data structure, Micropub similarly defines a small set of
         rules to interpret HTTP POST and GET requests as Micropub commands.
         Where Microformats does not require changing the parsing rules to
         introduce new properties of an object such as an [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], Micropub
@@ -504,7 +504,7 @@ table.simple {
         that may correspond to different post types, such as posting videos vs
         "likes".</p>
       <p>The Micropub syntax describes how to interpret HTTP POST and GET
-        requests into a useful action the server can take.</p>
+        requests into useful server actions.</p>
 
       <section id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
         <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Overview</span></h3>
@@ -546,11 +546,11 @@ table.simple {
         <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded encoding, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
         <p></p><pre><code>h={Microformats object type}</code></pre><p></p>
-        <p>e.g. <code>h=entry</code></p>
+        <p>e.g., <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
-        <p>e.g. <code>content=hello+world</code></p>
+        <p>e.g., <code>content=hello+world</code></p>
         <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name.</p>
-        <p>e.g. <code>category[]=foo&amp;category[]=bar</code></p>
+        <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
         <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value as a string. A complete example of a form-encoded request follows.</p>
         <p></p><div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div><p></p>
 
@@ -605,7 +605,7 @@ Content-Transfer-Encoding: binary
             gives the server an opportunity to handle each entity separately.
             E.g., rather than creating a duplicate of an existing venue, it may
             give back a link to one that was already created, possibly even
-            merging in newly received data first.</p>
+            merging newly received data first.</p>
 
           <p>In some cases, it does not make sense for the nested object to have
             a URL. For example, when posting an h-measure value, there is no
@@ -907,7 +907,7 @@ Authorization: Bearer xxxxxxxxx
 
           <h4 id="html-content">HTML Content</h4>
 
-          <p>If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>].</p>
+          <p>If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>].</p>
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
@@ -933,7 +933,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p></p><pre>GET /micropub?q=syndicate-to</pre><p></p>
 
-          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndiation targets.</p>
+          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndication targets.</p>
 
           <p></p><div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
@@ -1310,7 +1310,7 @@ $_FILES['audio']</pre><p></p>
           <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
           <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
           <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
-          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> by Barnaby Walters supports posting notes.</li>
+          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> supports posting notes.</li>
           <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
           <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
         </ul>

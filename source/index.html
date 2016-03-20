@@ -7,10 +7,10 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-01",
+          publishDate: "2016-03-20",
           specStatus: "ED",
-          previousMaturity: "FPWD",
-          previousPublishDate: "2016-01-28",
+          previousMaturity: "WD",
+          previousPublishDate: "2016-03-01",
           shortName:  "micropub",
           edDraftURI: "http://micropub.net/draft/",
           editors: [
@@ -122,7 +122,7 @@
   <body>
     <section id='abstract'>
       <p class="p-summary">
-        Micropub is an open API standard that is used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g. iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
+        Micropub is an open API standard used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g., iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
       </p>
 
       <section id="authorsnote" class="informative">
@@ -172,7 +172,7 @@
         <ul>
           <li>MUST support sending x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
           <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
-          <li>SHOULD handle server error message gracefully, presenting helpful messages to the user</li>
+          <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
           <li>SHOULD support <a href="#endpoint-discovery">endpoint discovery</a> given an [[IndieAuth]] identity URL</li>
         </ul>
 
@@ -193,8 +193,8 @@
     <section>
       <h2>Syntax</h2>
 
-      <p>Similar to how [[Microformats2]] has a relatively small ruleset for parsing
-        HTML documents into a data structure, Micropub defines a small set of
+      <p>As [[Microformats2]] has a relatively small ruleset for parsing
+        HTML documents into a data structure, Micropub similarly defines a small set of
         rules to interpret HTTP POST and GET requests as Micropub commands.
         Where Microformats does not require changing the parsing rules to
         introduce new properties of an object such as an [[h-entry]], Micropub
@@ -202,7 +202,7 @@
         that may correspond to different post types, such as posting videos vs
         "likes".</p>
       <p>The Micropub syntax describes how to interpret HTTP POST and GET
-        requests into a useful action the server can take.</p>
+        requests into useful server actions.</p>
 
       <section>
         <h3>Overview</h3>
@@ -244,11 +244,11 @@
         <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used. Clients and servers MUST support creating posts using the x-www-form-urlencoded encoding, and MAY also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
         <p><pre><code>h={Microformats object type}</code></pre></p>
-        <p>e.g. <code>h=entry</code></p>
+        <p>e.g., <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
-        <p>e.g. <code>content=hello+world</code></p>
+        <p>e.g., <code>content=hello+world</code></p>
         <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name.</p>
-        <p>e.g. <code>category[]=foo&amp;category[]=bar</code></p>
+        <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
         <p>Properties that accept multiple values MUST also accept a single value as a string. A complete example of a form-encoded request follows.</p>
         <p><pre class="example">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></p>
 
@@ -303,7 +303,7 @@ Content-Transfer-Encoding: binary
             gives the server an opportunity to handle each entity separately.
             E.g., rather than creating a duplicate of an existing venue, it may
             give back a link to one that was already created, possibly even
-            merging in newly received data first.</p>
+            merging newly received data first.</p>
 
           <p>In some cases, it does not make sense for the nested object to have
             a URL. For example, when posting an h-measure value, there is no
@@ -605,7 +605,7 @@ Authorization: Bearer xxxxxxxxx
 
           <h5>HTML Content</h5>
 
-          <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST reutrn a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[Microformats2]].</p>
+          <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[Microformats2]].</p>
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
@@ -631,7 +631,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre>GET /micropub?q=syndicate-to</pre></p>
 
-          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndiation targets.</p>
+          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndication targets.</p>
 
           <p><pre class="example">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
@@ -1008,7 +1008,7 @@ $_FILES['audio']</pre></p>
           <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
           <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
           <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
-          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> by Barnaby Walters supports posting notes.</li>
+          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> supports posting notes.</li>
           <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
           <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
         </ul>
