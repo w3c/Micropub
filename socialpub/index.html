@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-20",
+          publishDate: "2016-03-29",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -387,7 +387,7 @@ Content-Transfer-Encoding: binary
             For example, it can return the short URL of a post by responding with:
             <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre> or
             can include the location of the syndicated post with:
-            <pre>Link: &lt;https://https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre></p>
+            <pre>Link: &lt;https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre></p>
 
           <p>If the endpoint chooses to process the request asynchronously rather
             than creating and storing the post immediately, it MUST return an
@@ -429,8 +429,8 @@ Content-Transfer-Encoding: binary
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
           <p><pre class="example">{
   "type": "Replace",
-  "object": "http://example.com/post/1",
-  "properties": {
+  "object": {
+    "url": "http://example.com/post/1",
     "content": "hello moon"
   }
 }</pre></p>
@@ -452,8 +452,8 @@ Content-Transfer-Encoding: binary
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
           <p><pre class="example">{
   "type": "Add",
-  "object": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
-  "properties": {
+  "object": {
+    "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
     "syndication": "https://web.archive.org/12345"
   }
 }</pre></p>
@@ -463,8 +463,8 @@ Content-Transfer-Encoding: binary
           <p>To add multiple values to a property (such as category), specify the multiple values as a JSON array.</p>
           <p><pre class="example">{
   "type": "Add",
-  "object": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
-  "properties": {
+  "object": {
+    "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
     "category": ["webmention","indieweb"]
   }
 }</pre></p>
@@ -476,8 +476,10 @@ Content-Transfer-Encoding: binary
           <p>If the property exists, remove it. This completely removes the specified property.</p>
           <p><pre class="example">{
   "type": "Remove",
-  "object": "http://example.com/post/1",
-  "properties": ["category"]
+  "object": {
+    "url": "http://example.com/post/1",
+    "category": true
+  }
 }</pre></p>
 
           <p>For properties with multiple values, such as categories, you can
