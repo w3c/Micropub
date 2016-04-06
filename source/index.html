@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-20",
+          publishDate: "2016-04-06",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -166,14 +166,22 @@
 
         <p>This section describes the conformance criteria for Micropub clients and servers.</p>
 
-        <h4>Clients</h4>
+        <h4>Publishing Clients</h4>
 
-        <p>A conforming Micropub client:</p>
+        <p>A conforming Micropub client that creates posts:</p>
         <ul>
-          <li>MUST support sending x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
-          <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
+          <li>MUST support sending x-www-form-urlencoded requests</li>
+          <li>must support the [[!h-entry]] vocabulary</li>
           <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
           <li>SHOULD support <a href="#endpoint-discovery">endpoint discovery</a> given an [[IndieAuth]] identity URL</li>
+        </ul>
+
+        <h4>Editing Clients</h4>
+
+        <p>A conforming Micropub client that edits posts:</p>
+        <ul>
+          <li>MUST support sending x-www-form-urlencoded requests</li>
+          <li>must support the [[!h-entry]] vocabulary</li>
         </ul>
 
         <h4>Servers</h4>
@@ -422,14 +430,12 @@ Content-Transfer-Encoding: binary
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
           <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
-&amp;replace[properties][content]=hello+moon</pre></p>
+&amp;replace[content]=hello+moon</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "replace": {
-    "properties": {
-      "content": ["hello moon"]
-    }
+    "content": ["hello moon"]
   }
 }</pre></p>
           <p>This will replace the entire entry content with the new text.</p>
@@ -450,14 +456,12 @@ Content-Transfer-Encoding: binary
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
           <p><pre class="example">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
-&amp;add[properties][syndication][]=https://archive.org/example</pre></p>
+&amp;add[syndication][]=https://archive.org/example</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
   "add": {
-    "properties": {
-      "syndication": ["https://archive.org/"]
-    }
+    "syndication": ["https://archive.org/"]
   }
 }</pre></p>
 
@@ -466,15 +470,13 @@ Content-Transfer-Encoding: binary
           <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
           <p><pre class="example">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
-&amp;add[properties][category][]=webmention
-&amp;add[properties][category][]=indieweb</pre></p>
+&amp;add[category][]=webmention
+&amp;add[category][]=indieweb</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
   "add": {
-    "properties": {
-      "category": ["webmention","indieweb"]
-    }
+    "category": ["webmention","indieweb"]
   }
 }</pre></p>
         </section>
@@ -485,13 +487,11 @@ Content-Transfer-Encoding: binary
           <p>If the property exists, remove it. This completely removes the specified property.</p>
           <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
-&amp;delete[properties]=category</pre></p>
+&amp;delete=category</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
-  "delete": {
-    "properties": ["category"]
-  }
+  "delete": ["category"]
 }</pre></p>
 
           <p>For properties with multiple values, such as categories, you can
@@ -500,14 +500,12 @@ Content-Transfer-Encoding: binary
 
           <p><pre class="example">mp-action=update
 &amp;url=http://example.com/post/1
-&amp;delete[properties][category]=indieweb</pre></p>
+&amp;delete[category]=indieweb</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
-    "properties": {
-      "category": ["indieweb"]
-    }
+    "category": ["indieweb"]
   }
 }</pre></p>
         </section>
@@ -1025,6 +1023,17 @@ $_FILES['audio']</pre></p>
 
     <section class="appendix informative">
       <h2>Change Log</h2>
+
+      <section>
+        <h3>Changes from 01 March 2016 FPWD to this version</h3>
+
+        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
+
+        <ul>
+          <li>Remove extra nesting of <code>properties</code> key in updates</li>
+          <li>Non-normative typo fixes</li>
+        </ul>
+      </section>
 
       <section>
         <h3>Changes from 28 January 2016 FPWD to this version</h3>
