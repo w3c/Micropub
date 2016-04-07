@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-06",
+          publishDate: "2016-04-07",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -513,7 +513,7 @@ Content-Transfer-Encoding: binary
         <section>
           <h4>Response</h4>
 
-          <p>The server MUST respond to successful update requests with HTTP 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
+          <p>The server MUST respond to successful update requests with HTTP 200, 201 or 204. If the update operation caused the URL of the post to change, the server MUST respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server MUST respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
 
         </section>
 
@@ -1032,11 +1032,12 @@ $_FILES['audio']</pre></p>
         <ul>
           <li>Remove extra nesting of <code>properties</code> key in updates</li>
           <li>Non-normative typo fixes</li>
+          <li>Add HTTP 201 with Location header as a response for updates</li>
         </ul>
       </section>
 
       <section>
-        <h3>Changes from 28 January 2016 FPWD to this version</h3>
+        <h3>Changes from 28 January 2016 FPWD to 01 March 2016 version</h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
