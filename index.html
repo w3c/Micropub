@@ -213,6 +213,10 @@ table.simple {
     margin-bottom:  0;
 }
 
+.respec-hidden {
+    display: none;
+}
+
 @media print {
     .removeOnSave {
         display: none;
@@ -220,7 +224,7 @@ table.simple {
 }
 </style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-04-07",
+  "publishDate": "2016-04-21",
   "specStatus": "ED",
   "previousMaturity": "WD",
   "previousPublishDate": "2016-03-01",
@@ -332,12 +336,12 @@ table.simple {
     }
   }
 }</script></head>
-  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-  <h2 id="w3c-editor-s-draft-07-april-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-04-07">07 April 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-21-april-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-04-21">21 April 2016</time></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -931,7 +935,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p></p><pre>GET /micropub?q=syndicate-to</pre><p></p>
 
-          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the value being an array of the names of the supported syndication targets.</p>
+          <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
 
           <p></p><div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
@@ -942,12 +946,37 @@ Content-type: application/json
 
 {
   "syndicate-to": [
-    "https://archive.org/",
-    "https://wikimedia.org/",
-    "https://myfavoritesocialnetwork.example/aaronpk"
+    {
+      "uid": "https://archive.org/",
+      "name": "archive.org"
+    },
+    {
+      "uid": "https://wikimedia.org/",
+      "name": "WikiMedia"
+    },
+    {
+      "uid": "https://myfavoritesocialnetwork.example/aaronpk",
+      "name": "aaronpk on myfavoritesocialnetwork"
+      "service": {
+        "name": "My Favorite Social Network",
+        "url": "https://myfavoritesocialnetwork.example/",
+        "photo": "https://myfavoritesocialnetwork.example/img/icon.png"
+      },
+      "user": {
+        "name": "aaronpk",
+        "url": "https://myfavoritesocialnetwork.example/aaronpk",
+        "photo": "https://myfavoritesocialnetwork.example/aaronpk/photo.jpg"
+      }
+    }
   ]
 }</pre></div><p></p>
         </section>
+
+        <p>At a minimum, a syndication destination <em class="rfc2119" title="MUST">MUST</em> have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
+
+        <p>The Micropub server <em class="rfc2119" title="MAY">MAY</em> also include additional information about the destination service and user account. This is accomplished with the additional properties <code>service</code> and <code>user</code>, both of which can have three properties, <code>name</code> (a human-readable name), <code>url</code> and <code>photo</code> (both URLs).</p>
+
+        <p>The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
 
       </section> <!-- Querying -->
 
@@ -1335,6 +1364,7 @@ $_FILES['audio']</pre><p></p>
           <li>Remove extra nesting of <code>properties</code> key in updates</li>
           <li>Non-normative typo fixes</li>
           <li>Add HTTP 201 with Location header as a response for updates</li>
+          <li>Update <code>syndicate-to</code> response to include more details of the destination</li>
         </ul>
       </section>
 
