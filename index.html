@@ -108,8 +108,13 @@ input.task-list-item-checkbox {
  * Robin Berjon - http://berjon.com/
  *****************************************************************/
 
+/* Override code highlighter background */
+.hljs {
+    background: transparent !important;
+}
+
 /* --- INLINES --- */
-em.rfc2119 { 
+em.rfc2119 {
     text-transform:     lowercase;
     font-variant:       small-caps;
     font-style:         normal;
@@ -224,7 +229,7 @@ table.simple {
 }
 </style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-05-04",
+  "publishDate": "2016-05-19",
   "specStatus": "ED",
   "previousMaturity": "WD",
   "previousPublishDate": "2016-03-01",
@@ -336,12 +341,12 @@ table.simple {
     }
   }
 }</script></head>
-  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-  <h2 id="w3c-editor-s-draft-04-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-04">04 May 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-19-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-19">19 May 2016</time></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -439,7 +444,7 @@ table.simple {
             <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
             </p>
           
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#background" class="tocxref"><span class="secno">1.1 </span>Background</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li><li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li><li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a><ul class="toc"><li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li><li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li><li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li><li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li><li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li></ul></li><li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a><ul class="toc"><li class="tocline"><a href="#replace" class="tocxref"><span class="secno">3.4.1 </span>Replace</a></li><li class="tocline"><a href="#add" class="tocxref"><span class="secno">3.4.2 </span>Add</a></li><li class="tocline"><a href="#remove" class="tocxref"><span class="secno">3.4.3 </span>Remove</a></li><li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li></ul></li><li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li><li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.6 </span>Querying</a><ul class="toc"><li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.6.1 </span>Source Content</a></li><li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.6.2 </span>Syndication Targets</a></li></ul></li><li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.7 </span>Error Response</a></li></ul></li><li class="tocline"><a href="#vocabulary" class="tocxref"><span class="secno">4. </span>Vocabulary</a><ul class="toc"><li class="tocline"><a href="#examples-of-creating-objects" class="tocxref"><span class="secno">4.1 </span>Examples of Creating Objects</a><ul class="toc"><li class="tocline"><a href="#new-note" class="tocxref"><span class="secno">4.1.1 </span>New Note</a></li><li class="tocline"><a href="#new-reply" class="tocxref"><span class="secno">4.1.2 </span>New Reply</a></li><li class="tocline"><a href="#new-repost" class="tocxref"><span class="secno">4.1.3 </span>New Repost</a></li><li class="tocline"><a href="#new-article" class="tocxref"><span class="secno">4.1.4 </span>New Article</a></li><li class="tocline"><a href="#adding-files" class="tocxref"><span class="secno">4.1.5 </span>Adding Files</a></li></ul></li></ul></li><li class="tocline"><a href="#authentication-and-authorization" class="tocxref"><span class="secno">5. </span>Authentication and Authorization</a><ul class="toc"><li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">5.1 </span>Authentication</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">5.2 </span>Authorization</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">5.3 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">B. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">B.1 </span>Libraries</a></li><li class="tocline"><a href="#servers" class="tocxref"><span class="secno">B.2 </span>Servers</a></li><li class="tocline"><a href="#clients" class="tocxref"><span class="secno">B.3 </span>Clients</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">B.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">C. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">D. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">D.1 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li><li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">D.2 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">E. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">E.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">E.2 </span>Informative references</a></li></ul></li></ul></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#background" class="tocxref"><span class="secno">1.1 </span>Background</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li><li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li><li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a><ul class="toc"><li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li><li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li><li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li><li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li><li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li></ul></li><li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a><ul class="toc"><li class="tocline"><a href="#replace" class="tocxref"><span class="secno">3.4.1 </span>Replace</a></li><li class="tocline"><a href="#add" class="tocxref"><span class="secno">3.4.2 </span>Add</a></li><li class="tocline"><a href="#remove" class="tocxref"><span class="secno">3.4.3 </span>Remove</a></li><li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li></ul></li><li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li><li class="tocline"><a href="#media-endpoint" class="tocxref"><span class="secno">3.6 </span>Media Endpoint</a><ul class="toc"><li class="tocline"><a href="#request" class="tocxref"><span class="secno">3.6.1 </span>Request</a></li><li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.6.2 </span>Response</a></li></ul></li><li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.7 </span>Querying</a><ul class="toc"><li class="tocline"><a href="#configuration" class="tocxref"><span class="secno">3.7.1 </span>Configuration</a></li><li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.7.2 </span>Source Content</a></li><li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.7.3 </span>Syndication Targets</a></li></ul></li><li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.8 </span>Error Response</a></li></ul></li><li class="tocline"><a href="#vocabulary" class="tocxref"><span class="secno">4. </span>Vocabulary</a><ul class="toc"><li class="tocline"><a href="#examples-of-creating-objects" class="tocxref"><span class="secno">4.1 </span>Examples of Creating Objects</a><ul class="toc"><li class="tocline"><a href="#new-note" class="tocxref"><span class="secno">4.1.1 </span>New Note</a></li><li class="tocline"><a href="#new-reply" class="tocxref"><span class="secno">4.1.2 </span>New Reply</a></li><li class="tocline"><a href="#new-repost" class="tocxref"><span class="secno">4.1.3 </span>New Repost</a></li><li class="tocline"><a href="#new-article" class="tocxref"><span class="secno">4.1.4 </span>New Article</a></li><li class="tocline"><a href="#adding-files" class="tocxref"><span class="secno">4.1.5 </span>Adding Files</a></li></ul></li></ul></li><li class="tocline"><a href="#authentication-and-authorization" class="tocxref"><span class="secno">5. </span>Authentication and Authorization</a><ul class="toc"><li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">5.1 </span>Authentication</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">5.2 </span>Authorization</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">5.3 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">B. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">B.1 </span>Libraries</a></li><li class="tocline"><a href="#servers" class="tocxref"><span class="secno">B.2 </span>Servers</a></li><li class="tocline"><a href="#clients" class="tocxref"><span class="secno">B.3 </span>Clients</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">B.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">C. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">D. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-04-may-2016-wd-to-this-version" class="tocxref"><span class="secno">D.1 </span>Changes from 04 May 2016 WD to this version</a></li><li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">D.2 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li><li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">D.3 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">E. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">E.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">E.2 </span>Informative references</a></li></ul></li></ul></nav>
 
     
 
@@ -487,7 +492,7 @@ table.simple {
         <p>A conforming Micropub client that edits posts:</p>
         <ul>
           <li><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests</li>
-          <li>must support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+          <li><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
         </ul>
 
         <h4 id="servers-1">Servers</h4>
@@ -550,6 +555,7 @@ table.simple {
         <p></p>
 
         <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+        <p>Note: The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
       </section>
 
       <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
@@ -588,17 +594,24 @@ Content-Transfer-Encoding: binary
 
 ... (binary data) ...
 --553d9cee2030456a81931fb708ece92c--</pre></div><p></p>
+
+          <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
+
+          <p></p><div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="">h=entry&amp;content=hello+world&amp;photo=https://photos.example.com/592829482876343254.jpg</pre></div><p></p>
+
+          <p>See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
         </section>
 
         <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
           <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span></h4>
 
-          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also send a file.</p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="">{
+          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
+          <p></p><div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="">{
   "type": ["h-entry"],
   "properties": {
     "content": ["hello world"],
-    "category": ["foo","bar"]
+    "category": ["foo","bar"],
+    "photo": "https://photos.example.com/592829482876343254.jpg"
   }
 }</pre></div><p></p>
         </section>
@@ -627,7 +640,7 @@ Content-Transfer-Encoding: binary
           <p>The example below creates a new "weight" measurement post as an
             h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="">h=entry
+          <p></p><div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="">h=entry
 &amp;summary=Weighed+155.73+pounds
 &amp;weight[type]=h-measure
 &amp;weight[properties][num]=155.73
@@ -636,7 +649,7 @@ Content-Transfer-Encoding: binary
 &amp;bodyfat[properties][num]=19.83
 &amp;bodyfat[properties][unit]=%</pre></div><p></p>
 
-<p></p><div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="">{
+<p></p><div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="">{
   "type": ["h-entry"],
   "properties": {
     "summary": [
@@ -714,10 +727,6 @@ Content-Transfer-Encoding: binary
       <section id="update" typeof="bibo:Chapter" resource="#update" property="bibo:hasPart">
         <h3 id="h-update" resource="#h-update"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Update</span></h3>
 
-        <div class="warning"><div class="warning-title marker"><span>Warning</span></div><p class="">This section does not currently have interoperable
-          implementations on both the server and client side, and therefore may
-          change significantly once more implementation experience is gathered.</p></div>
-
         <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support updating posts, including adding and 
           removing individual properties as described in this section.</p>
 
@@ -734,10 +743,10 @@ Content-Transfer-Encoding: binary
           <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span></h4>
 
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;replace[content]=hello+moon</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "replace": {
@@ -760,10 +769,10 @@ Content-Transfer-Encoding: binary
             syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact,
             the site needs a way to update the original post with the new syndication URL.</p>
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[syndication][]=https://archive.org/example</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
   "add": {
@@ -774,11 +783,11 @@ Content-Transfer-Encoding: binary
           <h4 id="adding-tags">Adding Tags</h4>
           <p>Use case: adding tags to a post after it's been created.</p>
           <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="">mp-action=update
 &amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
 &amp;add[category][]=webmention
 &amp;add[category][]=indieweb</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
   "add": {
@@ -791,10 +800,10 @@ Content-Transfer-Encoding: binary
           <h4 id="h-remove" resource="#h-remove"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.3 </span>Remove</span></h4>
 
           <p>If the property exists, remove it. This completely removes the specified property.</p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete=category</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": ["category"]
@@ -804,10 +813,10 @@ Content-Transfer-Encoding: binary
             remove individual entries by value. If no values remain, the
             property is removed.</p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="">mp-action=update
+          <p></p><div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="">mp-action=update
 &amp;url=http://example.com/post/1
 &amp;delete[category]=indieweb</pre></div><p></p>
-          <p></p><div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="">{
+          <p></p><div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
   "delete": {
@@ -834,25 +843,74 @@ Content-Transfer-Encoding: binary
           <code>mp-action=delete</code> and the URL of the item in the
           <code>url</code> property.</p>
 
-        <p></p><div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="">mp-action=delete
+        <p></p><div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="">mp-action=delete
 &amp;url=http://example.com/post/1</pre></div><p></p>
-        <p></p><div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="">{
+        <p></p><div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="">{
   "mp-action": "delete",
   "url": "http://example.com/post/1"
 }</pre></div><p></p>
 
         <p>To undelete a post, use "undelete" as the action.</p>
-        <p></p><div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="">mp-action=undelete
+        <p></p><div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="">mp-action=undelete
 &amp;url=http://example.com/post/1</pre></div><p></p>
-        <p></p><div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="">{
+        <p></p><div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="">{
   "mp-action": "undelete",
   "url": "http://example.com/post/1"
 }</pre></div><p></p>
 
       </section> <!-- Delete -->
 
+      <section id="media-endpoint" typeof="bibo:Chapter" resource="#media-endpoint" property="bibo:hasPart">
+        <h3 id="h-media-endpoint" resource="#h-media-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Media Endpoint</span></h3>
+
+        <p>In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server <em class="rfc2119" title="MAY">MAY</em> support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
+
+        <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server <em class="rfc2119" title="MUST">MUST</em> include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients <em class="rfc2119" title="MUST NOT">MUST NOT</em> assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
+
+        <p></p><div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="">GET /micropub?q=config
+Authorization: Bearer xxxxxxxxx
+
+{
+  "media-endpoint": "https://media.example.com/micropub"
+}</pre></div><p></p>
+  
+        <p>The Media Endpoint <em class="rfc2119" title="MUST">MUST</em> accept the same access tokens that the Micropub endpoint accepts.</p>
+
+        <section id="request" typeof="bibo:Chapter" resource="#request" property="bibo:hasPart">
+          <h4 id="h-request" resource="#h-request"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.1 </span>Request</span></h4>
+
+          <p>To upload a file to the Media Endpoint, the client sends a <code>multipart/form-data</code> request with one part named <code>file</code>. The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> ignore the suggested filename that the client sends.</p>
+
+          <p></p><div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
+
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="file"; filename="sunset.jpg"
+Content-Type: image/jpeg
+Content-Transfer-Encoding: binary
+
+... (binary data) ...
+--553d9cee2030456a81931fb708ece92c--</pre></div><p></p>
+
+        </section>
+
+        <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
+          <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.2 </span>Response</span></h4>
+
+          <p>The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL <em class="rfc2119" title="SHOULD">SHOULD</em> be unguessable, such as using a UUID in the path. If the request is successful, the endpoint <em class="rfc2119" title="MUST">MUST</em> return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
+
+          <p></p><div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="">HTTP/1.1 201 Created
+Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div><p></p>
+
+          <p>The Micropub client can then use this URL as the value of e.g. the "photo" property of a Micropub request.</p>
+
+          <p>The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
+
+        </section>
+
+      </section>
+
       <section id="querying" typeof="bibo:Chapter" resource="#querying" property="bibo:hasPart">
-        <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Querying</span></h3>
+        <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7 </span>Querying</span></h3>
 
         <div class="warning"><div class="warning-title marker"><span>Warning</span></div><p class="">This section does not currently have interoperable
           implementations on both the server and client side, and therefore may
@@ -870,8 +928,44 @@ Content-Transfer-Encoding: binary
           so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter
           instead of replacing the query string.</p>
 
+        <section id="configuration" typeof="bibo:Chapter" resource="#configuration" property="bibo:hasPart">
+          <h4 id="h-configuration" resource="#h-configuration"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.1 </span>Configuration</span></h4>
+
+          <p>When a user initially logs in to a Micropub client, the client will want to query some initial information about the user's endpoint. The client <em class="rfc2119" title="SHOULD">SHOULD</em> make a query request <code>q=config</code> to obtain initial configuration information.</p>
+
+          <p>The server <em class="rfc2119" title="SHOULD">SHOULD</em> include the following information in the configuration response.</p>
+
+          <p></p><ul>
+            <li>The list of syndication endpoints supported (see <a href="#syndication-targets">Syndication Targets</a> for details)</li>
+            <li>The Media Endpoint if supported</li>
+          </ul><p></p>
+
+          <p></p><div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="">GET /micropub?q=config
+Authorization: Bearer xxxxxxxxx
+
+{
+  "media-endpoint": "https://media.example.com/micropub",
+  "syndicate-to": [
+    {
+      "uid": "https://myfavoritesocialnetwork.example/aaronpk",
+      "name": "aaronpk on myfavoritesocialnetwork"
+      "service": {
+        "name": "My Favorite Social Network",
+        "url": "https://myfavoritesocialnetwork.example/",
+        "photo": "https://myfavoritesocialnetwork.example/img/icon.png"
+      },
+      "user": {
+        "name": "aaronpk",
+        "url": "https://myfavoritesocialnetwork.example/aaronpk",
+        "photo": "https://myfavoritesocialnetwork.example/aaronpk/photo.jpg"
+      }
+    }
+  ]
+}</pre></div><p></p>
+        </section>
+
         <section id="source-content" typeof="bibo:Chapter" resource="#source-content" property="bibo:hasPart">
-          <h4 id="h-source-content" resource="#h-source-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.1 </span>Source Content</span></h4>
+          <h4 id="h-source-content" resource="#h-source-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.2 </span>Source Content</span></h4>
 
           <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
@@ -879,7 +973,7 @@ Content-Transfer-Encoding: binary
 
           <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -892,7 +986,7 @@ Authorization: Bearer xxxxxxxxx
   }
 }</pre></div><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -913,7 +1007,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
+          <p></p><div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -929,7 +1023,7 @@ Authorization: Bearer xxxxxxxxx
         </section> <!-- Source Content -->
 
         <section id="syndication-targets" typeof="bibo:Chapter" resource="#syndication-targets" property="bibo:hasPart">
-          <h4 id="h-syndication-targets" resource="#h-syndication-targets"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.2 </span>Syndication Targets</span></h4>
+          <h4 id="h-syndication-targets" resource="#h-syndication-targets"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.3 </span>Syndication Targets</span></h4>
 
           <p>To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
 
@@ -937,7 +1031,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="">GET /micropub?q=syndicate-to
+          <p></p><div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -981,7 +1075,7 @@ Content-type: application/json
       </section> <!-- Querying -->
 
       <section id="error-response" typeof="bibo:Chapter" resource="#error-response" property="bibo:hasPart">
-        <h3 id="h-error-response" resource="#h-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7 </span>Error Response</span></h3>
+        <h3 id="h-error-response" resource="#h-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.8 </span>Error Response</span></h3>
 
         <p>If there was an error with the request, the endpoint <em class="rfc2119" title="MUST">MUST</em> return an appropriate HTTP status code, typically 400, 401, or 403, and <em class="rfc2119" title="MAY">MAY</em> include a description of the error. If an error body is returned, the response body <em class="rfc2119" title="MUST">MUST</em> be encoded as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] object and include at least a single property named <code>error</code> with the value set to one of the below:</p>
 
@@ -996,7 +1090,7 @@ Content-type: application/json
 
         <p>See the OAuth 2 Bearer Token [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] spec for more details on the how to return error responses.</p>
 
-        <p></p><div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
+        <p></p><div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
 Authorization: Bearer xxxxxxxx
 
 HTTP/1.1 400 Bad Request
@@ -1069,7 +1163,7 @@ Content-type: application/json
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1081,7 +1175,7 @@ h=entry
 
           <h4 id="minimal-example">Minimal Example</h4>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="">POST /micropub HTTP/1.1
 Host: example.com
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer XXXXXXX
@@ -1089,7 +1183,7 @@ Authorization: Bearer XXXXXXX
 h=entry
 &amp;content=Hello+World</pre></div><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
+          <p></p><div class="example"><div class="example-title marker"><span>Example 32</span></div><pre class="">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></div><p></p>
 
         </section>
         <section id="new-reply" typeof="bibo:Chapter" resource="#new-reply" property="bibo:hasPart">
@@ -1103,7 +1197,7 @@ h=entry
             <li>mp-syndicate-to</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1123,7 +1217,7 @@ h=entry
             <li>category</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 34</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
 Content-type: application/x-www-form-urlencoded
@@ -1144,7 +1238,7 @@ h=entry
             <li>published</li>
           </ul><p></p>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="">POST /micropub HTTP/1.1
+          <p></p><div class="example"><div class="example-title marker"><span>Example 35</span></div><pre class="">POST /micropub HTTP/1.1
 Host: aaronparecki.com
 Content-type: application/x-www-form-urlencoded
 
@@ -1240,8 +1334,8 @@ $_FILES['audio']</pre><p></p>
           recognizes the scopes. The authorization server <em class="rfc2119" title="MAY">MAY</em> also allow the
           user to add or remove scopes that the client requests.</p>
         <p>Most Micropub servers require clients to obtain the
-          "post" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em>
-          require more granular scope, such as "delete", "update", or "post:video",
+          "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em>
+          require more granular scope, such as "delete", "update", or "create:video",
           in order to limit the abilities of various clients.
           See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and 
           a list of all currently used values for scope.</p>
@@ -1334,12 +1428,13 @@ $_FILES['audio']</pre><p></p>
 
         <ul>
           <li><a href="https://micropublish.herokuapp.com/">Micropublish</a> is a simple Micropub client which supports notes, articles, bookmarks, replies, and reposts.</li>
+          <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
           <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
           <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
           <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
           <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> supports posting notes.</li>
           <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
-          <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
+          <li><a href="https://ownyourgram.com">OwnYourGram</a> polls your Instagram account and posts your photos to your website via Micropub.</li>
         </ul>
       </section>
 
@@ -1355,21 +1450,32 @@ $_FILES['audio']</pre><p></p>
     <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
       <!--OddPage--><h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>Change Log</span></h2><p><em>This section is non-normative.</em></p>
 
+      <section id="changes-from-04-may-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-this-version" property="bibo:hasPart">
+        <h3 id="h-changes-from-04-may-2016-wd-to-this-version" resource="#h-changes-from-04-may-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Changes from 04 May 2016 WD to this version</span></h3>
+
+        <ul>
+          <li>Removed warning about lack of interoperable implementations of updates based on new implementations</li>
+          <li>Updated list of implementations</li>
+          <li>Added explicit note about not storing the <code>access_token</code> value</li>
+          <li>Added details on using a Media Endpoint for handling file uploads separately</li>
+        </ul>
+      </section>
+
       <section id="changes-from-01-march-2016-wd-to-04-may-2016-version" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-version" property="bibo:hasPart">
-        <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
+        <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
         <ul>
-          <li>Remove extra nesting of <code>properties</code> key in updates</li>
+          <li>Removed extra nesting of <code>properties</code> key in updates</li>
           <li>Non-normative typo fixes</li>
-          <li>Add HTTP 201 with Location header as a response for updates</li>
-          <li>Update <code>syndicate-to</code> response to include more details of the destination</li>
+          <li>Added HTTP 201 with Location header as a response for updates</li>
+          <li>Updated <code>syndicate-to</code> response to include more details of the destination</li>
         </ul>
       </section>
 
       <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-version" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" property="bibo:hasPart">
-        <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
+        <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.3 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 

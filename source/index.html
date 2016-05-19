@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-05-04",
+          publishDate: "2016-05-19",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -181,7 +181,7 @@
         <p>A conforming Micropub client that edits posts:</p>
         <ul>
           <li>MUST support sending x-www-form-urlencoded requests</li>
-          <li>must support the [[!h-entry]] vocabulary</li>
+          <li>MUST support the [[!h-entry]] vocabulary</li>
         </ul>
 
         <h4>Servers</h4>
@@ -244,6 +244,7 @@
         </p>
 
         <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+        <p>Note: The server MUST NOT store the <code>access_token</code> property in the post.</p>
       </section>
 
       <section>
@@ -282,17 +283,24 @@ Content-Transfer-Encoding: binary
 
 ... (binary data) ...
 --553d9cee2030456a81931fb708ece92c--</pre></p>
+
+          <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint MUST also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint MAY download a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
+
+          <p><pre class="example">h=entry&amp;content=hello+world&amp;photo=https://photos.example.com/592829482876343254.jpg</pre></p>
+
+          <p>See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
         </section>
 
         <section>
           <h4>JSON Syntax</h4>
 
-          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also send a file.</p>
+          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
           <p><pre class="example">{
   "type": ["h-entry"],
   "properties": {
     "content": ["hello world"],
-    "category": ["foo","bar"]
+    "category": ["foo","bar"],
+    "photo": "https://photos.example.com/592829482876343254.jpg"
   }
 }</pre></p>
         </section>
@@ -407,10 +415,6 @@ Content-Transfer-Encoding: binary
 
       <section>
         <h3>Update</h3>
-
-        <p class="warning">This section does not currently have interoperable
-          implementations on both the server and client side, and therefore may
-          change significantly once more implementation experience is gathered.</p>
 
         <p>Micropub servers SHOULD support updating posts, including adding and 
           removing individual properties as described in this section.</p>
@@ -546,6 +550,55 @@ Content-Transfer-Encoding: binary
       </section> <!-- Delete -->
 
       <section>
+        <h3>Media Endpoint</h3>
+
+        <p>In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server MAY support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
+
+        <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server MUST include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients MUST NOT assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
+
+        <p><pre class="example">GET /micropub?q=config
+Authorization: Bearer xxxxxxxxx
+
+{
+  "media-endpoint": "https://media.example.com/micropub"
+}</pre></p>
+  
+        <p>The Media Endpoint MUST accept the same access tokens that the Micropub endpoint accepts.</p>
+
+        <section>
+          <h4>Request</h4>
+
+          <p>To upload a file to the Media Endpoint, the client sends a <code>multipart/form-data</code> request with one part named <code>file</code>. The Media Endpoint MAY ignore the suggested filename that the client sends.</p>
+
+          <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
+
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="file"; filename="sunset.jpg"
+Content-Type: image/jpeg
+Content-Transfer-Encoding: binary
+
+... (binary data) ...
+--553d9cee2030456a81931fb708ece92c--</pre></p>
+
+        </section>
+
+        <section>
+          <h4>Response</h4>
+
+          <p>The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL SHOULD be unguessable, such as using a UUID in the path. If the request is successful, the endpoint MUST return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
+
+          <p><pre class="example">HTTP/1.1 201 Created
+Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></p>
+
+          <p>The Micropub client can then use this URL as the value of e.g. the "photo" property of a Micropub request.</p>
+
+          <p>The Media Endpoint MAY periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
+
+        </section>
+
+      </section>
+
+      <section>
         <h3>Querying</h3>
 
         <p class="warning">This section does not currently have interoperable
@@ -563,6 +616,42 @@ Content-Transfer-Encoding: binary
         <p>Note: The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
           so in this case, Micropub clients MUST append the <code>q</code> parameter
           instead of replacing the query string.</p>
+
+        <section>
+          <h4>Configuration</h4>
+
+          <p>When a user initially logs in to a Micropub client, the client will want to query some initial information about the user's endpoint. The client SHOULD make a query request <code>q=config</code> to obtain initial configuration information.</p>
+
+          <p>The server SHOULD include the following information in the configuration response.</p>
+
+          <p><ul>
+            <li>The list of syndication endpoints supported (see <a href="#syndication-targets">Syndication Targets</a> for details)</li>
+            <li>The Media Endpoint if supported</li>
+          </ul></p>
+
+          <p><pre class="example">GET /micropub?q=config
+Authorization: Bearer xxxxxxxxx
+
+{
+  "media-endpoint": "https://media.example.com/micropub",
+  "syndicate-to": [
+    {
+      "uid": "https://myfavoritesocialnetwork.example/aaronpk",
+      "name": "aaronpk on myfavoritesocialnetwork"
+      "service": {
+        "name": "My Favorite Social Network",
+        "url": "https://myfavoritesocialnetwork.example/",
+        "photo": "https://myfavoritesocialnetwork.example/img/icon.png"
+      },
+      "user": {
+        "name": "aaronpk",
+        "url": "https://myfavoritesocialnetwork.example/aaronpk",
+        "photo": "https://myfavoritesocialnetwork.example/aaronpk/photo.jpg"
+      }
+    }
+  ]
+}</pre></p>
+        </section>
 
         <section>
           <h4>Source Content</h4>
@@ -934,8 +1023,8 @@ $_FILES['audio']</pre></p>
           recognizes the scopes. The authorization server MAY also allow the
           user to add or remove scopes that the client requests.</p>
         <p>Most Micropub servers require clients to obtain the
-          "post" scope in order to create posts. However, some servers MAY
-          require more granular scope, such as "delete", "update", or "post:video",
+          "create" scope in order to create posts. However, some servers MAY
+          require more granular scope, such as "delete", "update", or "create:video",
           in order to limit the abilities of various clients.
           See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and 
           a list of all currently used values for scope.</p>
@@ -1028,12 +1117,13 @@ $_FILES['audio']</pre></p>
 
         <ul>
           <li><a href="https://micropublish.herokuapp.com/">Micropublish</a> is a simple Micropub client which supports notes, articles, bookmarks, replies, and reposts.</li>
+          <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
           <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
           <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
           <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
           <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> supports posting notes.</li>
           <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
-          <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
+          <li><a href="https://ownyourgram.com">OwnYourGram</a> polls your Instagram account and posts your photos to your website via Micropub.</li>
         </ul>
       </section>
 
@@ -1050,15 +1140,26 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
+        <h3>Changes from 04 May 2016 WD to this version</h3>
+
+        <ul>
+          <li>Removed warning about lack of interoperable implementations of updates based on new implementations</li>
+          <li>Updated list of implementations</li>
+          <li>Added explicit note about not storing the <code>access_token</code> value</li>
+          <li>Added details on using a Media Endpoint for handling file uploads separately</li>
+        </ul>
+      </section>
+
+      <section>
         <h3>Changes from 01 March 2016 WD to 04 May 2016 version</h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
         <ul>
-          <li>Remove extra nesting of <code>properties</code> key in updates</li>
+          <li>Removed extra nesting of <code>properties</code> key in updates</li>
           <li>Non-normative typo fixes</li>
-          <li>Add HTTP 201 with Location header as a response for updates</li>
-          <li>Update <code>syndicate-to</code> response to include more details of the destination</li>
+          <li>Added HTTP 201 with Location header as a response for updates</li>
+          <li>Updated <code>syndicate-to</code> response to include more details of the destination</li>
         </ul>
       </section>
 
