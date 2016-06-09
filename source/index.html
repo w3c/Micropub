@@ -294,13 +294,15 @@ Content-Transfer-Encoding: binary
         <section>
           <h4>JSON Syntax</h4>
 
-          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format. However, in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
+          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
+          <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
+          <p>When creating posts in JSON format, all values MUST be specified as arrays, identical to the Microformats 2 JSON format.</p>
           <p><pre class="example">{
   "type": ["h-entry"],
   "properties": {
     "content": ["hello world"],
     "category": ["foo","bar"],
-    "photo": "https://photos.example.com/592829482876343254.jpg"
+    "photo": ["https://photos.example.com/592829482876343254.jpg"]
   }
 }</pre></p>
         </section>
@@ -346,7 +348,7 @@ Content-Transfer-Encoding: binary
     ],
     "weight": [
       {
-        "type": "h-measure",
+        "type": ["h-measure"],
         "properties": {
           "num": ["155.73"],
           "unit": ["lb"]
@@ -355,7 +357,7 @@ Content-Transfer-Encoding: binary
     ],
     "bodyfat": [
       {
-        "type": "h-measure",
+        "type": ["h-measure"],
         "properties": {
           "num": ["19.83"],
           "unit": ["%"]
@@ -1128,6 +1130,7 @@ $_FILES['audio']</pre></p>
         <h3>Changes from 04 May 2016 WD to this version</h3>
 
         <ul>
+          <li>Clarified use of arrays vs single values in requests</li>
           <li>Drop form-encoded syntax for update requests</li>
           <li>Removed warning about lack of interoperable implementations of updates based on new implementations</li>
           <li>Updated list of implementations</li>
