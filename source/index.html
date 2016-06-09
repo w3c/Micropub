@@ -419,22 +419,20 @@ Content-Transfer-Encoding: binary
         <p>Micropub servers SHOULD support updating posts, including adding and 
           removing individual properties as described in this section.</p>
 
-        <p>Updating entries can be done with either a JSON post or form-encoded
-          post. The syntax of the update request is the same in both cases,
-          using the array bracket notation when encoding in form-encoded format.</p>
+        <p>Updating entries is done with a JSON post describing the changes to make.</p>
 
-        <p>To update an entry, send <code>mp-action=update</code> and specify the
+        <p>To update an entry, send <code>"mp-action": "update"</code> and specify the
           URL of the entry that is being updated using the "url" property.
           The request MUST also include either a <code>replace</code>,
           <code>add</code> or <code>delete</code> property containing the updates to make.</p>
+        
+        <p>The values of each property inside the <code>replace</code>, <code>add</code>
+          or <code>delete</code> keys MUST be an array, even if there is only a single value.</p>
 
         <section>
           <h4>Replace</h4>
 
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
-          <p><pre class="example">mp-action=update
-&amp;url=http://example.com/post/1
-&amp;replace[content]=hello+moon</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
@@ -458,9 +456,6 @@ Content-Transfer-Encoding: binary
             syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact,
             the site needs a way to update the original post with the new syndication URL.</p>
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
-          <p><pre class="example">mp-action=update
-&amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
-&amp;add[syndication][]=https://archive.org/example</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
@@ -471,11 +466,7 @@ Content-Transfer-Encoding: binary
 
           <h5>Adding Tags</h5>
           <p>Use case: adding tags to a post after it's been created.</p>
-          <p>To add multiple values to a property (such as category), use array notation to specify the multiple values.</p>
-          <p><pre class="example">mp-action=update
-&amp;url=http://aaronpk.example/notes/2014/06/01/2/indieweb
-&amp;add[category][]=webmention
-&amp;add[category][]=indieweb</pre></p>
+          <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
@@ -489,9 +480,6 @@ Content-Transfer-Encoding: binary
           <h4>Remove</h4>
 
           <p>If the property exists, remove it. This completely removes the specified property.</p>
-          <p><pre class="example">mp-action=update
-&amp;url=http://example.com/post/1
-&amp;delete=category</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
@@ -502,9 +490,6 @@ Content-Transfer-Encoding: binary
             remove individual entries by value. If no values remain, the
             property is removed.</p>
 
-          <p><pre class="example">mp-action=update
-&amp;url=http://example.com/post/1
-&amp;delete[category]=indieweb</pre></p>
           <p><pre class="example">{
   "mp-action": "update",
   "url": "http://example.com/post/1",
@@ -1143,6 +1128,7 @@ $_FILES['audio']</pre></p>
         <h3>Changes from 04 May 2016 WD to this version</h3>
 
         <ul>
+          <li>Drop form-encoded syntax for update requests</li>
           <li>Removed warning about lack of interoperable implementations of updates based on new implementations</li>
           <li>Updated list of implementations</li>
           <li>Added explicit note about not storing the <code>access_token</code> value</li>
