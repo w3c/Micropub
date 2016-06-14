@@ -1003,11 +1003,16 @@ $_FILES['audio']</pre></p>
       <section>
         <h3>Endpoint Discovery</h3>
 
+        <p>Micropub defines a link relation value of <code>micropub</code> to link to a website's
+        Micropub endpoint from the profile page identifying the user.</p>
+
         <p>A Micropub client SHOULD be able to be configured by authenticating
           with a domain name using [[IndieAuth]]. During this authentication (and authorization),
-          the client discovers the Micropub endpoint which will be used to create posts.</p>
+          the client discovers the Micropub endpoint which will be used to create posts, as well
+          as obtains an access token it will use in the Micropub requests.</p>
 
-        <p>Add a &lt;link&gt; tag in the HTML head of your home page, or send an <code>HTTP Link</code> header.</p>
+        <p>The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, 
+        or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
         <p><h5>HTTP Link Header</h5>
           <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
@@ -1049,6 +1054,23 @@ $_FILES['audio']</pre></p>
       </section>
     </section>
     -->
+
+    <section>
+      <h2>IANA Considerations</h2>
+      <p>The link relation type below has been registered by IANA per Section 6.2.1 of [[!RFC5988]]:</p>
+      <dl>
+        <dt>Relation Name:</dt>
+        <dd>micropub</dd>
+        <dt>Description:</dt>
+        <dd>Used for discovery of a Micropub endpoint which can be used to create
+        posts according to the Micropub protocol.</dd>
+        <dt>Reference:</dt>
+        <dd>
+          <a href="http://www.w3.org/TR/micropub/">W3C Micropub Specification
+          (http://www.w3.org/TR/micropub/)</a>
+        </dd>
+      </dl>
+    </section>
 
     <!--
     <section class="appendix informative">
