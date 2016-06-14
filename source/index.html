@@ -547,16 +547,30 @@ Content-Transfer-Encoding: binary
 
         <p>In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server MAY support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
 
-        <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server MUST include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients MUST NOT assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
+        <p>When a Micropub server supports a Media Endpoint, clients can start uploading a photo or other media right away while the user is still creating other parts of the post. The diagram below illustrates a user interface that demonstrates creating a photo post while the photo is uploading asynchronously.</p>
 
-        <p><pre class="example">GET /micropub?q=config
+        <p><img src="micropub-photo-app-flow.png" style="width:100%;"></p>
+
+        <p>The above user flow applies just as well to mobile apps as it does to desktop apps. In general, the user experience of an application can be improved by having more of the work done asynchronously, giving the user a chance to continue working instead of waiting for the system to finish.</p>
+
+        <section>
+          <h4>Discovery</h4>
+
+          <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server MUST include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients MUST NOT assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
+
+          <p><pre class="example">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
 
 {
   "media-endpoint": "https://media.example.com/micropub"
 }</pre></p>
-  
-        <p>The Media Endpoint MUST accept the same access tokens that the Micropub endpoint accepts.</p>
+        </section>
+
+        <section>
+          <h4>Authentication</h4>
+
+          <p>The Media Endpoint MUST accept the same access tokens that the Micropub endpoint accepts.</p>
+        </section>
 
         <section>
           <h4>Request</h4>
