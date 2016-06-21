@@ -210,7 +210,7 @@
       <p>As [[Microformats2]] has a relatively small ruleset for parsing
         HTML documents into a data structure, Micropub similarly defines a small set of
         rules to interpret HTTP POST and GET requests as Micropub commands.
-        Where Microformats does not require changing the parsing rules to
+        Where Microformats2 does not require changing the parsing rules to
         introduce new properties of an object such as an [[h-entry]], Micropub
         similarly does not require changing parsing rules to interpret requests
         that may correspond to different post types, such as posting videos vs
@@ -607,10 +607,6 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
       <section>
         <h3>Querying</h3>
-
-        <p class="warning">This section does not currently have interoperable
-          implementations on both the server and client side, and therefore may
-          change significantly once more implementation experience is gathered.</p>
 
         <p>Micropub clients may need to query the Micropub endpoint to discover
           its capabilities, such as finding a list of syndication targets that
