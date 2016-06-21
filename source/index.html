@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-06-14",
+          publishDate: "2016-06-21",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-05-04",
@@ -1092,6 +1092,12 @@ $_FILES['audio']</pre></p>
           <li><a href="http://indiewebcamp.com/Micropub-brainstorming">Brainstorming</a></li>
         </ul>
       </p>
+
+      <section class="appendix informative">
+        <h3>Implementations</h3>
+
+        <p>You can find a list of <a href="http://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
+      </section>
     </section>
 
     <!--
@@ -1101,58 +1107,6 @@ $_FILES['audio']</pre></p>
       <p>You can find a list of <a href="http://indiewebcamp.com/micropub#Articles">articles about Micropub</a> on the IndieWebCamp wiki.</p>
     </section>
     -->
-
-    <section class="appendix informative">
-      <h2>Implementations</h2>
-
-      <section>
-        <h3>Libraries</h3>
-
-        <ul>
-          <li><a href="https://github.com/snarfed/wordpress-micropub">wordpress-micropub</a> - WordPress plugin for a Micropub server endpoint</li>
-          <li><a href="https://github.com/kylewm/flask-micropub">flask-micropub</a> - Flask (Python) plugin that makes it easy to add IndieAuth authentication and Micropub authorization to a client application.</li>
-          <li><a href="https://github.com/voxpelli/node-micropub-express">micropub-express</a> - Node.js library for a Micropub server endpoint</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Servers</h3>
-
-        <ul>
-          <li><a href="https://github.com/ShaneHudson/Micropub_Craft">Craft CMS</a> - a Craft plugin that supports Micropub.</li>
-          <li><a href="https://github.com/sanduhrs/micropub">Drupal</a> - a Drupal module to add a Micropub endpoint.</li>
-          <li><a href="https://withknown.com">Known</a> - Known supports creating posts via Micropub.</li>
-          <li><a href="https://wordpress.org/plugins/micropub/">Wordpress</a> - a Wordpress plugin which adds a Micropub endpoint.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Clients</h3>
-
-        <ul>
-          <li><a href="https://github.com/kylewm/micropub-xmpp-bot/">micropub-xmpp-bot</a> an experimental XMPP chat bot for posting notes, replies, likes, and reposts via Micropub.</li>
-          <li><a href="https://github.com/snarfed/ownyourresponses">ownyourresponses</a> polls your Twitter and Instagram accounts periodically for new activity via the APIs and creates corresponding like, repost, and reply posts on your site via Micropub.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Services</h3>
-
-        <p>Note: Many of the services below are also open source Micropub clients.</p>
-
-        <ul>
-          <li><a href="https://micropublish.herokuapp.com/">Micropublish</a> is a simple Micropub client which supports notes, articles, bookmarks, replies, and reposts.</li>
-          <li><a href="https://woodwind.xyz">Woodwind</a> is a reader which supports posting replies and likes via Micropub.</li>
-          <li><a href="https://monocle.p3k.io">Monocle</a> is a reader which supports posting likes via Micropub.</li>
-          <li><a href="https://quill.p3k.io">Quill</a> is a simple Micropub client which supports notes, articles, bookmarks, likes and photos.</li>
-          <li><a href="https://silo.pub/">silo.pub</a> is a service that lets you use Micropub clients to post to hosted blogs on Wordpress.com, Tumblr, and others.</li>
-          <li><a href="https://waterpigs.co.uk/notes/new/">Taproot</a> supports posting notes.</li>
-          <li><a href="https://teacup.p3k.io">Teacup</a> is a client for posting various types of food posts.</li>
-          <li><a href="https://ownyourgram.com">OwnYourGram</a> polls your Instagram account and posts your photos to your website via Micropub.</li>
-        </ul>
-      </section>
-
-    </section>
 
     <section class="appendix">
       <h2>Acknowledgements</h2>
@@ -1170,10 +1124,12 @@ $_FILES['audio']</pre></p>
         <ul>
           <li>Clarified use of arrays vs single values in requests</li>
           <li>Drop form-encoded syntax for update requests</li>
-          <li>Removed warning about lack of interoperable implementations of updates based on new implementations</li>
+          <li>Removed warning about lack of interoperable implementations based on new implementations</li>
           <li>Updated list of implementations</li>
           <li>Added explicit note about not storing the <code>access_token</code> value</li>
-          <li>Added details on using a Media Endpoint for handling file uploads separately</li>
+          <li>Added details and diagram on using a Media Endpoint for handling file uploads separately</li>
+          <li>Expanded introduction and background</li>
+          <li>Moved list of implementations out of this document onto <a href="http://micropub.net/implementations">http://micropub.net/implementations</a></li>
         </ul>
       </section>
 
