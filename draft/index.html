@@ -17,98 +17,74 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       padding: 0.5em;
       color: #333;
       background: #f8f8f8;
-      -webkit-text-size-adjust: none;
     }
     
     .hljs-comment,
-    .diff .hljs-header {
+    .hljs-quote {
       color: #998;
       font-style: italic;
     }
     
     .hljs-keyword,
-    .css .rule .hljs-keyword,
-    .hljs-winutils,
-    .nginx .hljs-title,
-    .hljs-subst,
-    .hljs-request,
-    .hljs-status {
+    .hljs-selector-tag,
+    .hljs-subst {
       color: #333;
       font-weight: bold;
     }
     
     .hljs-number,
-    .hljs-hexcolor,
-    .ruby .hljs-constant {
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
       color: #008080;
     }
     
     .hljs-string,
-    .hljs-tag .hljs-value,
-    .hljs-doctag,
-    .tex .hljs-formula {
+    .hljs-doctag {
       color: #d14;
     }
     
     .hljs-title,
-    .hljs-id,
-    .scss .hljs-preprocessor {
+    .hljs-section,
+    .hljs-selector-id {
       color: #900;
       font-weight: bold;
     }
     
-    .hljs-list .hljs-keyword,
     .hljs-subst {
       font-weight: normal;
     }
     
-    .hljs-class .hljs-title,
     .hljs-type,
-    .vhdl .hljs-literal,
-    .tex .hljs-command {
+    .hljs-class .hljs-title {
       color: #458;
       font-weight: bold;
     }
     
     .hljs-tag,
-    .hljs-tag .hljs-title,
-    .hljs-rule .hljs-property,
-    .django .hljs-tag .hljs-keyword {
+    .hljs-name,
+    .hljs-attribute {
       color: #000080;
       font-weight: normal;
     }
     
-    .hljs-attribute,
-    .hljs-variable,
-    .lisp .hljs-body,
-    .hljs-name {
-      color: #008080;
-    }
-    
-    .hljs-regexp {
+    .hljs-regexp,
+    .hljs-link {
       color: #009926;
     }
     
     .hljs-symbol,
-    .ruby .hljs-symbol .hljs-string,
-    .lisp .hljs-keyword,
-    .clojure .hljs-keyword,
-    .scheme .hljs-keyword,
-    .tex .hljs-special,
-    .hljs-prompt {
+    .hljs-bullet {
       color: #990073;
     }
     
-    .hljs-built_in {
+    .hljs-built_in,
+    .hljs-builtin-name {
       color: #0086b3;
     }
     
-    .hljs-preprocessor,
-    .hljs-pragma,
-    .hljs-pi,
-    .hljs-doctype,
-    .hljs-shebang,
-    .hljs-cdata {
+    .hljs-meta {
       color: #999;
       font-weight: bold;
     }
@@ -121,12 +97,60 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: #dfd;
     }
     
-    .diff .hljs-change {
-      background: #0086b3;
+    .hljs-emphasis {
+      font-style: italic;
     }
     
-    .hljs-chunk {
-      color: #aaa;
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- EXAMPLES --- */
+    
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+    
+    div.example-title span {
+      text-transform: uppercase;
+    }
+    
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    div.illegal-example {
+      color: red
+    }
+    
+    div.illegal-example p {
+      color: black
+    }
+    
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+    
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+    
+    aside.example div.example div.example-title {
+      color: #999;
     }
   </style>
   <style id="respec-mainstyle">
@@ -275,54 +299,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
 
-  <style>
-    /* --- EXAMPLES --- */
-    
-    div.example-title {
-      min-width: 7.5em;
-      color: #b9ab2d;
-    }
-    
-    div.example-title span {
-      text-transform: uppercase;
-    }
-    
-    aside.example,
-    div.example,
-    div.illegal-example {
-      padding: 0.5em;
-      margin: 1em 0;
-      position: relative;
-      clear: both;
-    }
-    
-    div.illegal-example {
-      color: red
-    }
-    
-    div.illegal-example p {
-      color: black
-    }
-    
-    aside.example,
-    div.example {
-      padding: .5em;
-      border-left-width: .5em;
-      border-left-style: solid;
-      border-color: #e0cb52;
-      background: #fcfaee;
-    }
-    
-    aside.example div.example {
-      border-left-width: .1em;
-      border-color: #999;
-      background: #fff;
-    }
-    
-    aside.example div.example div.example-title {
-      color: #999;
-    }
-  </style>
   <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
@@ -330,10 +306,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-06-21",
+      "publishDate": "2016-07-06",
       "specStatus": "ED",
       "previousMaturity": "WD",
-      "previousPublishDate": "2016-05-04",
+      "previousPublishDate": "2016-06-21",
       "shortName": "micropub",
       "edDraftURI": "http://micropub.net/draft/",
       "editors": [
@@ -429,12 +405,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "IndieAuth":
         {
           "title": "IndieAuth",
-          "href": "http://indiewebcamp.com/IndieAuth-spec",
+          "href": "https://indieweb.org/IndieAuth-spec",
           "authors": [
             "Aaron Parecki"
           ],
           "status": "Living Specification",
-          "publisher": "indiewebcamp.com"
+          "publisher": "indieweb.org"
         },
         "URL":
         {
@@ -456,7 +432,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-21-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-21">21 June 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-06-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-07-06">06 July 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -509,8 +485,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading">Author's Note</span></h3>
       <p><em>This section is non-normative.</em></p>
       <p>This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
-        <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More history and evolution of Micropub can be found on the
-        <a href="http://indiewebcamp.com/micropub">IndieWebCamp wiki</a>.</p>
+        <a href="https://indieweb.org/">IndieWeb</a> community. More history and evolution of Micropub can be found on the
+        <a href="https://indieweb.org/micropub">IndieWeb wiki</a>.</p>
     </section>
   </section>
 
@@ -628,9 +604,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
       <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">C. </span>Change Log</a>
         <ul class="toc">
-          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 04 May 2016 WD to this version</a></li>
-          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.2 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
-          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.3 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
+          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 21 June 2016 WD to this version</a></li>
+          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.2 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.3 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
+          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.4 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
         </ul>
       </li>
       <li class="tocline"><a href="#references" class="tocxref"><span class="secno">D. </span>References</a>
@@ -683,6 +660,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <ul>
         <li><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests</li>
         <li><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+        <li>If the client creates posts by uploading file attachments, it <em class="rfc2119" title="MUST">MUST</em> check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
         <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
         <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a> given an [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] identity URL</li>
       </ul>
@@ -700,9 +678,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p>A conforming Micropub server:</p>
       <ul>
         <li><em class="rfc2119" title="MUST">MUST</em> support both header and form parameter methods of <a href="#authentication">authentication</a></li>
-        <li><em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
         <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
         <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
+        <li>If the server does not specify a Media Endpoint, then it <em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
       </ul>
 
     </section>
@@ -738,10 +716,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <li><code>h</code> - used to specify the object type being created</li>
         <li><code>q</code> - used to query a Micropub endpoint</li>
         <li><code>url</code> - indicates the URL of the object being changed</li>
-        <li><code>mp-action</code> - indicates whether this is an <code>update</code>, <code>delete</code>, or <code>undelete</code></li>
-        <li><code>replace</code> - for updates, the top-level property containing properties to replace</li>
-        <li><code>add</code> - for updates, the top-level property containing properties to add</li>
-        <li><code>delete</code> - for updates, the top-level property containing properties to remove</li>
+        <li><code>action</code> - indicates whether this is a <code>delete</code>, or <code>undelete</code></li>
         <li><code>mp-*</code> - reserved for future use</li>
       </ul>
       <p></p>
@@ -755,7 +730,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
       <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded encoding, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
-      <p></p><pre class="hljs elm"><code><span class="hljs-title">h</span>={<span class="hljs-type">Microformats</span> object <span class="hljs-typedef"><span class="hljs-keyword">type</span>}</span></code></pre>
+      <p></p><pre class="hljs xquery"><code>h={Microformats object type}</code></pre>
       <p></p>
       <p>e.g., <code>h=entry</code></p>
       <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
@@ -765,7 +740,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value as a string. A complete example of a form-encoded request follows.</p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 1</span></div><pre class="hljs inform7">h=entry&amp;content=hello+world&amp;category<span class="hljs-comment">[]</span>=foo&amp;category<span class="hljs-comment">[]</span>=bar</pre></div>
+        <div class="example-title marker"><span>Example 1</span></div><pre class="hljs">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div>
       <p></p>
 
       <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
@@ -775,30 +750,30 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs fortran">multipart/<span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; boundary=53d9cee2030456a81931fb708ece92c
+          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
---53d9cee2030456a81931fb708ece92c
-Content-Disposition: <span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; <span class="hljs-keyword">name</span>=<span class="hljs-string">"h"</span>
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"h"</span>
 
-<span class="hljs-built_in">entry</span>
---53d9cee2030456a81931fb708ece92c
-Content-Disposition: <span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; <span class="hljs-keyword">name</span>=<span class="hljs-string">"content"</span>
+entry
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"content"</span>
 
-Hello World<span class="hljs-comment">!</span>
---53d9cee2030456a81931fb708ece92c
-Content-Disposition: <span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; <span class="hljs-keyword">name</span>=<span class="hljs-string">"photo"</span>; filename=<span class="hljs-string">"aaronpk.png"</span>
-Content-<span class="hljs-keyword">Type</span>: image/png
-Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
+Hello World!
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"photo"</span>; filename=<span class="hljs-string">"aaronpk.png"</span>
+Content-Type: image/png
+Content-Transfer-Encoding: binary
 
-... (binary <span class="hljs-type">data</span>) ...
---53d9cee2030456a81931fb708ece92c--</pre></div>
+... (binary data) ...
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
         <p></p>
 
         <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 3</span></div><pre class="hljs dns">h=entry&amp;content=hello+world&amp;photo=https://photos.example.com/<span class="hljs-number">59282948287</span><span class="hljs-number">6343254</span>.jpg</pre></div>
+          <div class="example-title marker"><span>Example 3</span></div><pre class="hljs javascript">h=entry&amp;content=hello+world&amp;photo=https:<span class="hljs-comment">//photos.example.com/592829482876343254.jpg</span></pre></div>
         <p></p>
 
         <p>See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
@@ -812,14 +787,14 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, identical to the Microformats 2 JSON format.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"h-entry"</span>]</span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">content</span>": <span class="hljs-value">[<span class="hljs-string">"hello world"</span>]</span>,
-    "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<span class="hljs-string">"foo"</span>,<span class="hljs-string">"bar"</span>]</span>,
-    "<span class="hljs-attribute">photo</span>": <span class="hljs-value">[<span class="hljs-string">"https://photos.example.com/592829482876343254.jpg"</span>]
-  </span>}
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
+  <span class="hljs-string">"properties"</span>: {
+    <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello world"</span>],
+    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"foo"</span>,<span class="hljs-string">"bar"</span>],
+    <span class="hljs-string">"photo"</span>: [<span class="hljs-string">"https://photos.example.com/592829482876343254.jpg"</span>]
+  }
+}</pre></div>
         <p></p>
       </section>
 
@@ -839,41 +814,41 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
           <div class="example-title marker"><span>Example 5</span></div><pre class="hljs markdown">h=entry
 &amp;summary=Weighed+155.73+pounds
 &amp;weight[type]=h-measure
-&amp;weight[<span class="hljs-link_label">properties</span>][<span class="hljs-link_reference">num</span>]=155.73
-&amp;weight[<span class="hljs-link_label">properties</span>][<span class="hljs-link_reference">unit</span>]=lb
+&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=155.73
+&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=lb
 &amp;bodyfat[type]=h-measure
-&amp;bodyfat[<span class="hljs-link_label">properties</span>][<span class="hljs-link_reference">num</span>]=19.83
-&amp;bodyfat[<span class="hljs-link_label">properties</span>][<span class="hljs-link_reference">unit</span>]=%</pre></div>
+&amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=19.83
+&amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=%</pre></div>
         <p></p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"h-entry"</span>]</span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">summary</span>": <span class="hljs-value">[
+          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
+  <span class="hljs-string">"properties"</span>: {
+    <span class="hljs-string">"summary"</span>: [
       <span class="hljs-string">"Weight 155.73 pounds"</span>
-    ]</span>,
-    "<span class="hljs-attribute">weight</span>": <span class="hljs-value">[
+    ],
+    <span class="hljs-string">"weight"</span>: [
       {
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"h-measure"</span>]</span>,
-        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">num</span>": <span class="hljs-value">[<span class="hljs-string">"155.73"</span>]</span>,
-          "<span class="hljs-attribute">unit</span>": <span class="hljs-value">[<span class="hljs-string">"lb"</span>]
-        </span>}
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">bodyfat</span>": <span class="hljs-value">[
+        <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-measure"</span>],
+        <span class="hljs-string">"properties"</span>: {
+          <span class="hljs-string">"num"</span>: [<span class="hljs-string">"155.73"</span>],
+          <span class="hljs-string">"unit"</span>: [<span class="hljs-string">"lb"</span>]
+        }
+      }
+    ],
+    <span class="hljs-string">"bodyfat"</span>: [
       {
-        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"h-measure"</span>]</span>,
-        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">num</span>": <span class="hljs-value">[<span class="hljs-string">"19.83"</span>]</span>,
-          "<span class="hljs-attribute">unit</span>": <span class="hljs-value">[<span class="hljs-string">"%"</span>]
-        </span>}
-      </span>}
+        <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-measure"</span>],
+        <span class="hljs-string">"properties"</span>: {
+          <span class="hljs-string">"num"</span>: [<span class="hljs-string">"19.83"</span>],
+          <span class="hljs-string">"unit"</span>: [<span class="hljs-string">"%"</span>]
+        }
+      }
     ]
-  </span>}
-</span>}</pre></div>
+  }
+}</pre></div>
         <p></p>
 
       </section>
@@ -893,8 +868,8 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>When the post is created, the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> return either an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code> code, and <em class="rfc2119" title="MUST">MUST</em> return a <code>Location</code> header indicating the URL of the created post. [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]</p>
 
         <p>If the target also provides a shortlink, or if it syndicated the post to another location, the Micropub endpoint <em class="rfc2119" title="MAY">MAY</em> return additional URLs using the HTTP Link header, along with an appropriate "rel" value. For example, it can return the short URL of a post by responding with:
-        </p><pre class="hljs groovy"><span class="hljs-string">Link:</span> &lt;<span class="hljs-string">http:</span><span class="hljs-comment">//aaron.pk/<span class="hljs-label">xxxxx&gt;; rel="shortlink"</span></span></pre> or can include the location of the syndicated post with:
-        <pre class="hljs livecodeserver">Link: &lt;<span class="hljs-keyword">https</span>://<span class="hljs-keyword">https</span>://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; <span class="hljs-built_in">rel</span>=<span class="hljs-string">"syndication"</span></pre>
+        </p><pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">http:</span>//<span class="hljs-attr">aaron.pk</span>/<span class="hljs-attr">xxxxx</span>&gt;</span></span>; rel=<span class="hljs-string">"shortlink"</span></pre> or can include the location of the syndicated post with:
+        <pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">https:</span>//<span class="hljs-attr">https:</span>//<span class="hljs-attr">myfavoritesocialnetwork.example</span>/<span class="hljs-attr">aaronpk</span>/<span class="hljs-attr">xxxxxx</span>&gt;</span></span>; rel=<span class="hljs-string">"syndication"</span></pre>
         <p></p>
 
         <p>If the endpoint chooses to process the request asynchronously rather than creating and storing the post immediately, it <em class="rfc2119" title="MUST">MUST</em> return an
@@ -917,7 +892,7 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
 
       <p>Updating entries is done with a JSON post describing the changes to make.</p>
 
-      <p>To update an entry, send <code>"mp-action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include either a <code>replace</code>,
+      <p>To update an entry, send <code>"action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include either a <code>replace</code>,
         <code>add</code> or <code>delete</code> property containing the updates to make.</p>
 
       <p>The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
@@ -928,13 +903,13 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>Replace all values of the property. If the property does not exist already, it is created.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"update"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/1"</span></span>,
-  "<span class="hljs-attribute">replace</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">content</span>": <span class="hljs-value">[<span class="hljs-string">"hello moon"</span>]
-  </span>}
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/1"</span>,
+  <span class="hljs-string">"replace"</span>: {
+    <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello moon"</span>]
+  }
+}</pre></div>
         <p></p>
         <p>This will replace the entire entry content with the new text.</p>
       </section>
@@ -949,13 +924,13 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>To add syndication URLs, include one or more URLs in the update request.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"update"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://aaronparecki.com/notes/2014/06/01/2/indieweb"</span></span>,
-  "<span class="hljs-attribute">add</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">syndication</span>": <span class="hljs-value">[<span class="hljs-string">"https://archive.org/"</span>]
-  </span>}
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://aaronparecki.com/notes/2014/06/01/2/indieweb"</span>,
+  <span class="hljs-string">"add"</span>: {
+    <span class="hljs-string">"syndication"</span>: [<span class="hljs-string">"https://archive.org/"</span>]
+  }
+}</pre></div>
         <p></p>
 
         <h4 id="adding-tags">Adding Tags</h4>
@@ -963,13 +938,13 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"update"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://aaronpk.example/notes/2014/06/01/2/indieweb"</span></span>,
-  "<span class="hljs-attribute">add</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<span class="hljs-string">"webmention"</span>,<span class="hljs-string">"indieweb"</span>]
-  </span>}
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://aaronpk.example/notes/2014/06/01/2/indieweb"</span>,
+  <span class="hljs-string">"add"</span>: {
+    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"webmention"</span>,<span class="hljs-string">"indieweb"</span>]
+  }
+}</pre></div>
         <p></p>
       </section>
 
@@ -979,24 +954,24 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
         <p>If the property exists, remove it. This completely removes the specified property.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"update"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/1"</span></span>,
-  "<span class="hljs-attribute">delete</span>": <span class="hljs-value">[<span class="hljs-string">"category"</span>]
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/1"</span>,
+  <span class="hljs-string">"delete"</span>: [<span class="hljs-string">"category"</span>]
+}</pre></div>
         <p></p>
 
         <p>For properties with multiple values, such as categories, you can remove individual entries by value. If no values remain, the property is removed.</p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"update"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/1"</span></span>,
-  "<span class="hljs-attribute">delete</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">category</span>": <span class="hljs-value">[<span class="hljs-string">"indieweb"</span>]
-  </span>}
-</span>}</pre></div>
+          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/1"</span>,
+  <span class="hljs-string">"delete"</span>: {
+    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"indieweb"</span>]
+  }
+}</pre></div>
         <p></p>
       </section>
 
@@ -1016,34 +991,34 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
       <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support deleting posts, and <em class="rfc2119" title="MAY">MAY</em> support undeleting posts.</p>
 
       <p>To delete an entire entry at a URL, send a POST request containing
-        <code>mp-action=delete</code> and the URL of the item in the
+        <code>action=delete</code> and the URL of the item in the
         <code>url</code> property.</p>
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 12</span></div><pre class="hljs livecodeserver">mp-action=<span class="hljs-built_in">delete</span>
-&amp;url=<span class="hljs-keyword">http</span>://example.com/<span class="hljs-built_in">post</span>/<span class="hljs-number">1</span></pre></div>
+        <div class="example-title marker"><span>Example 12</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
+&amp;url=http:<span class="hljs-comment">//example.com/post/1</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"delete"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/1"</span>
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"delete"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/1"</span>
+}</pre></div>
       <p></p>
 
       <p>To undelete a post, use "undelete" as the action.</p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 14</span></div><pre class="hljs groovy">mp-action=undelete
-&amp;url=<span class="hljs-string">http:</span><span class="hljs-comment">//example.com/post/1</span></pre></div>
+        <div class="example-title marker"><span>Example 14</span></div><pre class="hljs javascript">action=undelete
+&amp;url=http:<span class="hljs-comment">//example.com/post/1</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 15</span></div><pre class="hljs json">{
-  "<span class="hljs-attribute">mp-action</span>": <span class="hljs-value"><span class="hljs-string">"undelete"</span></span>,
-  "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://example.com/post/1"</span>
-</span>}</pre></div>
+        <div class="example-title marker"><span>Example 15</span></div><pre class="hljs xquery">{
+  <span class="hljs-string">"action"</span>: <span class="hljs-string">"undelete"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://example.com/post/1"</span>
+}</pre></div>
       <p></p>
 
     </section>
@@ -1067,8 +1042,8 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 16</span></div><pre class="hljs armasm"><span class="hljs-label">GET</span> /micropub?q<span class="hljs-label">=config</span>
-<span class="hljs-label">Authorization</span>: <span class="hljs-keyword">Bearer </span>xxxxxxxxx
+          <div class="example-title marker"><span>Example 16</span></div><pre class="hljs xquery">GET /micropub?q=config
+Authorization: Bearer xxxxxxxxx
 
 {
   <span class="hljs-string">"media-endpoint"</span>: <span class="hljs-string">"https://media.example.com/micropub"</span>
@@ -1089,15 +1064,15 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 17</span></div><pre class="hljs fortran">multipart/<span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; boundary=53d9cee2030456a81931fb708ece92c
+          <div class="example-title marker"><span>Example 17</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
---53d9cee2030456a81931fb708ece92c
-Content-Disposition: <span class="hljs-keyword">form</span>-<span class="hljs-type">data</span>; <span class="hljs-keyword">name</span>=<span class="hljs-string">"file"</span>; filename=<span class="hljs-string">"sunset.jpg"</span>
-Content-<span class="hljs-keyword">Type</span>: image/jpeg
-Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"file"</span>; filename=<span class="hljs-string">"sunset.jpg"</span>
+Content-Type: image/jpeg
+Content-Transfer-Encoding: binary
 
-... (binary <span class="hljs-type">data</span>) ...
---53d9cee2030456a81931fb708ece92c--</pre></div>
+... (binary data) ...
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
         <p></p>
 
       </section>
@@ -1109,8 +1084,8 @@ Content-<span class="hljs-built_in">Transfer</span>-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 18</span></div><pre class="hljs http"><span class="hljs-status">HTTP/1.1 <span class="hljs-number">201</span> Created</span>
-<span class="hljs-attribute">Location</span>: <span class="hljs-string">https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</span></pre></div>
+          <div class="example-title marker"><span>Example 18</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
         <p></p>
 
         <p>The Micropub client can then use this URL as the value of e.g. the "photo" property of a Micropub request.</p>
@@ -1155,7 +1130,7 @@ Authorization: Bearer xxxxxxxxx
   <span class="hljs-string">"syndicate-to"</span>: [
     {
       <span class="hljs-string">"uid"</span>: <span class="hljs-string">"https://myfavoritesocialnetwork.example/aaronpk"</span>,
-      <span class="hljs-string">"name"</span>: <span class="hljs-string">"aaronpk on myfavoritesocialnetwork"</span>
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"aaronpk on myfavoritesocialnetwork"</span>,
       <span class="hljs-string">"service"</span>: {
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Favorite Social Network"</span>,
         <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://myfavoritesocialnetwork.example/"</span>,
@@ -1183,8 +1158,8 @@ Authorization: Bearer xxxxxxxxx
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 20</span></div><pre class="hljs prolog"><span class="hljs-name">GET</span> /<span class="hljs-atom">micropub</span>?<span class="hljs-atom">q</span>=<span class="hljs-atom">source</span>&amp;<span class="hljs-atom">properties</span>[]=<span class="hljs-atom">published</span>&amp;<span class="hljs-atom">properties</span>[]=<span class="hljs-atom">category</span>&amp;<span class="hljs-atom">url</span>=<span class="hljs-atom">http</span>://<span class="hljs-atom">aaronpk</span>.<span class="hljs-atom">example</span>/<span class="hljs-atom">post</span>/<span class="hljs-number">1000</span>
-<span class="hljs-name">Authorization</span>: <span class="hljs-name">Bearer</span> <span class="hljs-atom">xxxxxxxxx</span>
+          <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/<span class="hljs-number">1000</span>
+Authorization: Bearer xxxxxxxxx
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1199,8 +1174,8 @@ Authorization: Bearer xxxxxxxxx
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs groovy">GET <span class="hljs-regexp">/micropub?q=source&amp;url=http:/</span><span class="hljs-regexp">/aaronpk.example/</span>post/<span class="hljs-number">1000</span>
-<span class="hljs-string">Authorization:</span> Bearer xxxxxxxxx
+          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=http://aaronpk.example/post/<span class="hljs-number">1000</span>
+Authorization: Bearer xxxxxxxxx
 
 {
   <span class="hljs-string">"type"</span>: <span class="hljs-string">"h-entry"</span>,
@@ -1223,8 +1198,8 @@ Authorization: Bearer xxxxxxxxx
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs groovy">GET <span class="hljs-regexp">/micropub?q=source&amp;properties=content&amp;url=http:/</span><span class="hljs-regexp">/aaronpk.example/</span>post/<span class="hljs-number">1000</span>
-<span class="hljs-string">Authorization:</span> Bearer xxxxxxxxx
+          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/<span class="hljs-number">1000</span>
+Authorization: Bearer xxxxxxxxx
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1245,7 +1220,7 @@ Authorization: Bearer xxxxxxxxx
 
         <p>To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
 
-        <p></p><pre class="hljs vbnet"><span class="hljs-keyword">GET</span> /micropub?q=syndicate-<span class="hljs-keyword">to</span></pre>
+        <p></p><pre class="hljs">GET /micropub?q=syndicate-to</pre>
         <p></p>
 
         <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
@@ -1271,7 +1246,7 @@ Content-type: application/json
     },
     {
       <span class="hljs-string">"uid"</span>: <span class="hljs-string">"https://myfavoritesocialnetwork.example/aaronpk"</span>,
-      <span class="hljs-string">"name"</span>: <span class="hljs-string">"aaronpk on myfavoritesocialnetwork"</span>
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"aaronpk on myfavoritesocialnetwork"</span>,
       <span class="hljs-string">"service"</span>: {
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"My Favorite Social Network"</span>,
         <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://myfavoritesocialnetwork.example/"</span>,
@@ -1317,11 +1292,11 @@ Content-type: application/json
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 24</span></div><pre class="hljs groovy">GET <span class="hljs-regexp">/micropub?q=source&amp;url=http:/</span><span class="hljs-regexp">/aaronpk.example/</span>post/<span class="hljs-number">404</span>
-<span class="hljs-string">Authorization:</span> Bearer xxxxxxxx
+        <div class="example-title marker"><span>Example 24</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=http:<span class="hljs-comment">//aaronpk.example/post/404</span>
+Authorization: Bearer xxxxxxxx
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">400</span> Bad Request
-Content-<span class="hljs-string">type:</span> application/json
+Content-type: application/json
 
 {
   <span class="hljs-string">"error"</span>: <span class="hljs-string">"not_found"</span>,
@@ -1399,33 +1374,33 @@ Content-<span class="hljs-string">type:</span> application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 25</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/micropub</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer XXXXXXXXXXX</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
+          <div class="example-title marker"><span>Example 25</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
 
-<span class="livecodeserver">h=entry
-&amp;content=My+favorite+<span class="hljs-operator">of</span>+<span class="hljs-operator">the</span>+%<span class="hljs-number">23</span>quantifiedself+trackers%<span class="hljs-number">2</span>C+<span class="hljs-keyword">finally</span>+released+their+official+API
+<span class="javascript">h=entry
+&amp;content=My+favorite+<span class="hljs-keyword">of</span>+the+%<span class="hljs-number">23</span>quantifiedself+trackers%<span class="hljs-number">2</span>C+<span class="hljs-keyword">finally</span>+released+their+official+API
 &amp;category[]=quantifiedself&amp;category[]=api
-&amp;mp-syndicate-<span class="hljs-built_in">to</span>=<span class="hljs-keyword">https</span>://myfavoritesocialnetwork.example/aaronpk</span></pre></div>
+&amp;mp-syndicate-to=https:<span class="hljs-comment">//myfavoritesocialnetwork.example/aaronpk</span></span></pre></div>
         <p></p>
 
         <h4 id="minimal-example">Minimal Example</h4>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/micropub</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">example.com</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
-<span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer XXXXXXX</span>
+          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: example.com
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
+<span class="hljs-attribute">Authorization</span>: Bearer XXXXXXX
 
-<span class="fix"><span class="hljs-attribute">h</span>=<span class="hljs-string">entry
-&amp;content=Hello+World</span></span></pre></div>
+<span class="undefined">h=entry
+&amp;content=Hello+World</span></pre></div>
         <p></p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs bash">curl https://example.com/micropub <span class="hljs-operator">-d</span> h=entry <span class="hljs-operator">-d</span> <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
+          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs xquery">curl https://example.com/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
         <p></p>
 
       </section>
@@ -1445,15 +1420,15 @@ Content-<span class="hljs-string">type:</span> application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 28</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/micropub</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer XXXXXXXXXXX</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
+          <div class="example-title marker"><span>Example 28</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
 
-<span class="oxygene">h=entry
-&amp;content=%<span class="hljs-number">40</span>BarnabyWalters+My+favorite+<span class="hljs-keyword">for</span>+that+use+<span class="hljs-keyword">case</span>+<span class="hljs-keyword">is</span>+Redis.
-&amp;<span class="hljs-keyword">in</span>-reply-<span class="hljs-keyword">to</span>=http:<span class="hljs-comment">//waterpigs.example/notes/4S0LMw/</span>
-&amp;mp-syndicate-<span class="hljs-keyword">to</span>=https:<span class="hljs-comment">//myfavoritesocialnetwork.example/aaronpk</span></span></pre></div>
+<span class="javascript">h=entry
+&amp;content=%<span class="hljs-number">40</span>BarnabyWalters+My+favorite+<span class="hljs-keyword">for</span>+that+use+<span class="hljs-keyword">case</span>+is+Redis.
+&amp;<span class="hljs-keyword">in</span>-reply-to=http:<span class="hljs-comment">//waterpigs.example/notes/4S0LMw/</span>
+&amp;mp-syndicate-to=https:<span class="hljs-comment">//myfavoritesocialnetwork.example/aaronpk</span></span></pre></div>
         <p></p>
 
       </section>
@@ -1471,12 +1446,12 @@ Content-<span class="hljs-string">type:</span> application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/micropub</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer XXXXXXXXXXX</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
+          <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
 
-<span class="ceylon">h=entry
+<span class="javascript">h=entry
 &amp;repost-<span class="hljs-keyword">of</span>=http:<span class="hljs-comment">//waterpigs.example/notes/4S0LMw/</span>
 &amp;category=realtime</span></pre></div>
         <p></p>
@@ -1498,13 +1473,13 @@ Content-<span class="hljs-string">type:</span> application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/micropub</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronparecki.com</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
+          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronparecki.com
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
 
 <span class="xquery">h=entry
-&amp;name=Itching<span class="hljs-decorator">%3A</span>+h-event+<span class="hljs-keyword">to</span>+iCal+converter
-&amp;content[html]=Now+that+I<span class="hljs-decorator">%27ve</span>+been+<span class="hljs-decorator">%3Ca</span>+href<span class="hljs-decorator">%3D</span><span class="hljs-decorator">%22http</span><span class="hljs-decorator">%3A</span><span class="hljs-decorator">%2F</span><span class="hljs-decorator">%2Faaronparecki</span>.com<span class="hljs-decorator">%22</span><span class="hljs-decorator">%3Ecreating</span>+a+list+<span class="hljs-keyword">of</span>+events<span class="hljs-decorator">%3C</span><span class="hljs-decorator">%2Fa</span><span class="hljs-decorator">%3E</span>
+&amp;name=Itching<span class="hljs-meta">%3A</span>+h-event+<span class="hljs-keyword">to</span>+iCal+converter
+&amp;content[html]=Now+that+I<span class="hljs-meta">%27ve</span>+been+<span class="hljs-meta">%3Ca</span>+href<span class="hljs-meta">%3D</span><span class="hljs-meta">%22http</span><span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Faaronparecki</span>.com<span class="hljs-meta">%22</span><span class="hljs-meta">%3Ecreating</span>+a+list+<span class="hljs-keyword">of</span>+events<span class="hljs-meta">%3C</span><span class="hljs-meta">%2Fa</span><span class="hljs-meta">%3E</span>
 +on+my+site+it+would+be+great+<span class="hljs-keyword">if</span>+I+could+get+a+more+calendar-like+view+<span class="hljs-keyword">of</span>+that+list...
 &amp;category[]=indieweb&amp;category[]=hevent&amp;category[]=events
 &amp;category[]=calendar&amp;category[]=p3k</span></pre></div>
@@ -1520,9 +1495,9 @@ Content-<span class="hljs-string">type:</span> application/json
         <p>For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
 
         <p>In PHP, these files are accessible using the $_FILES array:
-        </p><pre class="hljs autoit"><span class="hljs-variable">$_FILES[</span><span class="hljs-string">'video'</span>]
-<span class="hljs-variable">$_FILES[</span><span class="hljs-string">'photo'</span>]
-<span class="hljs-variable">$_FILES[</span><span class="hljs-string">'audio'</span>]</pre>
+        </p><pre class="hljs javascript">$_FILES[<span class="hljs-string">'video'</span>]
+$_FILES[<span class="hljs-string">'photo'</span>]
+$_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <p></p>
 
         <p>Note that there is no practical way to upload a file when the request body is JSON encoded.</p>
@@ -1549,12 +1524,12 @@ Content-<span class="hljs-string">type:</span> application/json
 
       <p></p>
       <h3 id="http-header">HTTP Header</h3>
-      <pre class="hljs http"><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer XXXXXXXXX</span></pre>
+      <pre class="hljs http"><span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXX</pre>
       <p></p>
 
       <p></p>
       <h3 id="form-encoded-body-parameter">Form-Encoded Body Parameter</h3>
-      <pre class="hljs fix"><span class="hljs-attribute">access_token</span>=<span class="hljs-string">XXXXXXXXX</span></pre>
+      <pre class="hljs">access_token=XXXXXXXXX</pre>
       <p></p>
     </section>
     <!-- Authentication -->
@@ -1562,7 +1537,7 @@ Content-<span class="hljs-string">type:</span> application/json
     <section id="authorization" typeof="bibo:Chapter" resource="#authorization" property="bibo:hasPart">
       <h3 id="h-authorization" resource="#h-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Authorization</span></h3>
 
-      <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol, including the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
+      <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol, including the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
     </section>
     <!-- Authorization -->
 
@@ -1577,12 +1552,12 @@ Content-<span class="hljs-string">type:</span> application/json
 
       <p></p>
       <h3 id="http-link-header">HTTP Link Header</h3>
-      <pre class="hljs groovy"><span class="hljs-string">Link:</span> &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//example.com/micropub&gt;; rel="micropub"</span></pre>
+      <pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">https:</span>//<span class="hljs-attr">example.com</span>/<span class="hljs-attr">micropub</span>&gt;</span></span>; rel=<span class="hljs-string">"micropub"</span></pre>
       <p></p>
 
       <p></p>
       <h3 id="html-link-tag">HTML Link Tag</h3>
-      <pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"micropub"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://example.com/micropub"</span>&gt;</span></pre>
+      <pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"micropub"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://example.com/micropub"</span>&gt;</span></pre>
       <p></p>
 
     </section>
@@ -1594,7 +1569,7 @@ Content-<span class="hljs-string">type:</span> application/json
       <p>The Micropub server <em class="rfc2119" title="MUST">MUST</em> require the bearer token to include at least one scope value, in order to ensure posts cannot be created by arbitrary tokens.</p>
       <p>The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 techniques, by passing a space-separated list of scope names in the authorization request. [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>]</p>
       <p>The authorization server <em class="rfc2119" title="MUST">MUST</em> indicate to the user any scopes that are part of the request, whether or not the authorization server recognizes the scopes. The authorization server <em class="rfc2119" title="MAY">MAY</em> also allow the user to add or remove scopes that the client requests.</p>
-      <p>Most Micropub servers require clients to obtain the "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em> require more granular scope, such as "delete", "update", or "create:video", in order to limit the abilities of various clients. See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
+      <p>Most Micropub servers require clients to obtain the "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em> require more granular scope, such as "delete", "update", or "create:video", in order to limit the abilities of various clients. See <a href="https://indieweb.org/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
     </section>
     <!-- Scope -->
 
@@ -1636,7 +1611,7 @@ Content-<span class="hljs-string">type:</span> application/json
       <p>The following Micropub Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
 
       <section>
-        <h3><a href="http://indiewebcamp.com/...">...</a></h3>
+        <h3><a href="http://indieweb.org/...">...</a></h3>
         <p>The [[...]] protocol is an ... extension to Micropub.</p>
       </section>
     </section>
@@ -1650,10 +1625,10 @@ Content-<span class="hljs-string">type:</span> application/json
     <p>
     </p>
     <ul>
-      <li><a href="http://indiewebcamp.com/Micropub">FAQ</a></li>
-      <li><a href="http://indiewebcamp.com/micropub-endpoint">Creating a Micropub Endpoint</a></li>
-      <li><a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a></li>
-      <li><a href="http://indiewebcamp.com/Micropub-brainstorming">Brainstorming</a></li>
+      <li><a href="https://indieweb.org/Micropub">FAQ</a></li>
+      <li><a href="https://indieweb.org/micropub-endpoint">Creating a Micropub Endpoint</a></li>
+      <li><a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a></li>
+      <li><a href="https://indieweb.org/Micropub-brainstorming">Brainstorming</a></li>
     </ul>
     <p></p>
 
@@ -1669,7 +1644,7 @@ Content-<span class="hljs-string">type:</span> application/json
     <section class="appendix informative">
       <h2>Articles</h2>
 
-      <p>You can find a list of <a href="http://indiewebcamp.com/micropub#Articles">articles about Micropub</a> on the IndieWebCamp wiki.</p>
+      <p>You can find a list of <a href="https://indieweb.org/micropub#Articles">articles about Micropub</a> on the IndieWeb wiki.</p>
     </section>
     -->
 
@@ -1677,7 +1652,7 @@ Content-<span class="hljs-string">type:</span> application/json
     <!--OddPage-->
     <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span></h2>
 
-    <p>The editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a> community and other implementers for their support, encouragement and enthusiasm.</p>
+    <p>The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
@@ -1685,8 +1660,18 @@ Content-<span class="hljs-string">type:</span> application/json
     <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span></h2>
     <p><em>This section is non-normative.</em></p>
 
-    <section id="changes-from-04-may-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-this-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-04-may-2016-wd-to-this-version" resource="#h-changes-from-04-may-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 04 May 2016 WD to this version</span></h3>
+    <section id="changes-from-21-june-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-21-june-2016-wd-to-this-version" resource="#h-changes-from-21-june-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 21 June 2016 WD to this version</span></h3>
+
+      <ul>
+        <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
+        <li>Updated indiewebcamp.com references to indieweb.org due to redirects</li>
+        <li>Rename <code>mp-action</code> to <code>action</code> since updates are only JSON requests</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-04-may-2016-wd-to-21-june-2016-wd" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-21-june-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
 
       <ul>
         <li>Clarified use of arrays vs single values in requests</li>
@@ -1701,7 +1686,7 @@ Content-<span class="hljs-string">type:</span> application/json
     </section>
 
     <section id="changes-from-01-march-2016-wd-to-04-may-2016-version" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
+      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
@@ -1714,7 +1699,7 @@ Content-<span class="hljs-string">type:</span> application/json
     </section>
 
     <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-version" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
+      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
@@ -1769,7 +1754,7 @@ Content-<span class="hljs-string">type:</span> application/json
     <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
       <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Informative references</span></h3>
       <dl class="bibliography" resource=""><dt id="bib-IndieAuth">[IndieAuth]</dt>
-        <dd>Aaron Parecki. indiewebcamp.com. <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references"><cite>IndieAuth</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/IndieAuth-spec" property="dc:references">http://indiewebcamp.com/IndieAuth-spec</a>
+        <dd>Aaron Parecki. indieweb.org. <a href="https://indieweb.org/IndieAuth-spec" property="dc:references"><cite>IndieAuth</cite></a>. Living Specification. URL: <a href="https://indieweb.org/IndieAuth-spec" property="dc:references">https://indieweb.org/IndieAuth-spec</a>
         </dd><dt id="bib-RFC5870">[RFC5870]</dt>
         <dd>A. Mayrhofer; C. Spanring. IETF. <a href="https://tools.ietf.org/html/rfc5870" property="dc:references"><cite>A Uniform Resource Identifier for Geographic Locations ('geo' URI)</cite></a>. June 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5870" property="dc:references">https://tools.ietf.org/html/rfc5870</a>
         </dd><dt id="bib-h-adr">[h-adr]</dt>
@@ -1783,6 +1768,6 @@ Content-<span class="hljs-string">type:</span> application/json
     </section>
   </section>
   <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
-  <script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 </body>
 </html>
