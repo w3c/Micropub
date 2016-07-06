@@ -12,6 +12,7 @@
 * [Drupal](https://github.com/sanduhrs/micropub) - a Drupal module to add a Micropub endpoint
 * [Known](https://withknown.com) - Known supports creating posts via Micropub
 * [Wordpress](https://wordpress.org/plugins/micropub/) - a Wordpress plugin which adds a Micropub endpoint
+* [Jekyll](https://github.com/voxpelli/webpage-micropub-to-github) - a self-hosteable service that exposes a Micropub endpoint and then performs the instructions sent to that endpoint by committing Jekyll formatted data to a GitHub repository
 
 ## Clients
 
