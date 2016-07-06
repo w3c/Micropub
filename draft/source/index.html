@@ -7,10 +7,10 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-06-21",
+          publishDate: "2016-07-06",
           specStatus: "ED",
           previousMaturity: "WD",
-          previousPublishDate: "2016-05-04",
+          previousPublishDate: "2016-06-21",
           shortName:  "micropub",
           edDraftURI: "http://micropub.net/draft/",
           editors: [
@@ -97,12 +97,12 @@
             },
             "IndieAuth": {
               title: "IndieAuth",
-              href: "http://indiewebcamp.com/IndieAuth-spec",
+              href: "https://indieweb.org/IndieAuth-spec",
               authors: [
                 "Aaron Parecki"
               ],
               status:   "Living Specification",
-              publisher:  "indiewebcamp.com"
+              publisher:  "indieweb.org"
             },
             "URL": {
               title: "URL",
@@ -128,9 +128,9 @@
       <section id="authorsnote" class="informative">
         <h2>Author's Note</h2>
         <p>This specification was contributed to the W3C from the
-          <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More
+          <a href="https://indieweb.org/">IndieWeb</a> community. More
           history and evolution of Micropub can be found on the
-          <a href="http://indiewebcamp.com/micropub">IndieWebCamp wiki</a>.</p>
+          <a href="https://indieweb.org/micropub">IndieWeb wiki</a>.</p>
       </section>
     </section>
 
@@ -178,6 +178,7 @@
         <ul>
           <li>MUST support sending x-www-form-urlencoded requests</li>
           <li>MUST support the [[!h-entry]] vocabulary</li>
+          <li>If the client creates posts by uploading file attachments, it MUST check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
           <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
           <li>SHOULD support <a href="#endpoint-discovery">endpoint discovery</a> given an [[IndieAuth]] identity URL</li>
         </ul>
@@ -195,9 +196,9 @@
         <p>A conforming Micropub server:</p>
         <ul>
           <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
-          <li>MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
           <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
           <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
+          <li>If the server does not specify a Media Endpoint, then it MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
         </ul>
 
       </section>
@@ -241,10 +242,7 @@
             <li><code>h</code> - used to specify the object type being created</li>
             <li><code>q</code> - used to query a Micropub endpoint</li>
             <li><code>url</code> - indicates the URL of the object being changed</li>
-            <li><code>mp-action</code> - indicates whether this is an <code>update</code>, <code>delete</code>, or <code>undelete</code></li>
-            <li><code>replace</code> - for updates, the top-level property containing properties to replace</li>
-            <li><code>add</code> - for updates, the top-level property containing properties to add</li>
-            <li><code>delete</code> - for updates, the top-level property containing properties to remove</li>
+            <li><code>action</code> - indicates whether this is a <code>delete</code>, or <code>undelete</code></li>
             <li><code>mp-*</code> - reserved for future use</li>
           </ul>
         </p>
@@ -429,7 +427,7 @@ Content-Transfer-Encoding: binary
 
         <p>Updating entries is done with a JSON post describing the changes to make.</p>
 
-        <p>To update an entry, send <code>"mp-action": "update"</code> and specify the
+        <p>To update an entry, send <code>"action": "update"</code> and specify the
           URL of the entry that is being updated using the "url" property.
           The request MUST also include either a <code>replace</code>,
           <code>add</code> or <code>delete</code> property containing the updates to make.</p>
@@ -442,7 +440,7 @@ Content-Transfer-Encoding: binary
 
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
           <p><pre class="example">{
-  "mp-action": "update",
+  "action": "update",
   "url": "http://example.com/post/1",
   "replace": {
     "content": ["hello moon"]
@@ -465,7 +463,7 @@ Content-Transfer-Encoding: binary
             the site needs a way to update the original post with the new syndication URL.</p>
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
           <p><pre class="example">{
-  "mp-action": "update",
+  "action": "update",
   "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
   "add": {
     "syndication": ["https://archive.org/"]
@@ -476,7 +474,7 @@ Content-Transfer-Encoding: binary
           <p>Use case: adding tags to a post after it's been created.</p>
           <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
           <p><pre class="example">{
-  "mp-action": "update",
+  "action": "update",
   "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
   "add": {
     "category": ["webmention","indieweb"]
@@ -489,7 +487,7 @@ Content-Transfer-Encoding: binary
 
           <p>If the property exists, remove it. This completely removes the specified property.</p>
           <p><pre class="example">{
-  "mp-action": "update",
+  "action": "update",
   "url": "http://example.com/post/1",
   "delete": ["category"]
 }</pre></p>
@@ -499,7 +497,7 @@ Content-Transfer-Encoding: binary
             property is removed.</p>
 
           <p><pre class="example">{
-  "mp-action": "update",
+  "action": "update",
   "url": "http://example.com/post/1",
   "delete": {
     "category": ["indieweb"]
@@ -522,21 +520,21 @@ Content-Transfer-Encoding: binary
         <p>Micropub servers SHOULD support deleting posts, and MAY support undeleting posts.</p>
 
         <p>To delete an entire entry at a URL, send a POST request containing
-          <code>mp-action=delete</code> and the URL of the item in the
+          <code>action=delete</code> and the URL of the item in the
           <code>url</code> property.</p>
 
-        <p><pre class="example">mp-action=delete
+        <p><pre class="example">action=delete
 &amp;url=http://example.com/post/1</pre></p>
         <p><pre class="example">{
-  "mp-action": "delete",
+  "action": "delete",
   "url": "http://example.com/post/1"
 }</pre></p>
 
         <p>To undelete a post, use "undelete" as the action.</p>
-        <p><pre class="example">mp-action=undelete
+        <p><pre class="example">action=undelete
 &amp;url=http://example.com/post/1</pre></p>
         <p><pre class="example">{
-  "mp-action": "undelete",
+  "action": "undelete",
   "url": "http://example.com/post/1"
 }</pre></p>
 
@@ -992,7 +990,7 @@ $_FILES['audio']</pre></p>
           to obtain authorization from the user in order to get an access token.
           Authorization SHOULD be handled via the OAuth 2.0 [[!RFC6749]] protocol,
           including the [[IndieAuth]] extension which supports endpoint discovery from a URL.
-          See <a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a>
+          See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a>
           for more details.</p>
       </section> <!-- Authorization -->
 
@@ -1034,7 +1032,7 @@ $_FILES['audio']</pre></p>
           "create" scope in order to create posts. However, some servers MAY
           require more granular scope, such as "delete", "update", or "create:video",
           in order to limit the abilities of various clients.
-          See <a href="http://indiewebcamp.com/scope">Scope</a> for more details and 
+          See <a href="https://indieweb.org/scope">Scope</a> for more details and 
           a list of all currently used values for scope.</p>
       </section> <!-- Scope -->
 
@@ -1075,7 +1073,7 @@ $_FILES['audio']</pre></p>
       <p>The following Micropub Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
 
       <section>
-        <h3><a href="http://indiewebcamp.com/...">...</a></h3>
+        <h3><a href="http://indieweb.org/...">...</a></h3>
         <p>The [[...]] protocol is an ... extension to Micropub.</p>
       </section>
     </section>
@@ -1086,10 +1084,10 @@ $_FILES['audio']</pre></p>
 
       <p>
         <ul>
-          <li><a href="http://indiewebcamp.com/Micropub">FAQ</a></li>
-          <li><a href="http://indiewebcamp.com/micropub-endpoint">Creating a Micropub Endpoint</a></li>
-          <li><a href="http://indiewebcamp.com/obtaining-an-access-token">Obtaining an Access Token</a></li>
-          <li><a href="http://indiewebcamp.com/Micropub-brainstorming">Brainstorming</a></li>
+          <li><a href="https://indieweb.org/Micropub">FAQ</a></li>
+          <li><a href="https://indieweb.org/micropub-endpoint">Creating a Micropub Endpoint</a></li>
+          <li><a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a></li>
+          <li><a href="https://indieweb.org/Micropub-brainstorming">Brainstorming</a></li>
         </ul>
       </p>
 
@@ -1104,14 +1102,14 @@ $_FILES['audio']</pre></p>
     <section class="appendix informative">
       <h2>Articles</h2>
 
-      <p>You can find a list of <a href="http://indiewebcamp.com/micropub#Articles">articles about Micropub</a> on the IndieWebCamp wiki.</p>
+      <p>You can find a list of <a href="https://indieweb.org/micropub#Articles">articles about Micropub</a> on the IndieWeb wiki.</p>
     </section>
     -->
 
     <section class="appendix">
       <h2>Acknowledgements</h2>
 
-      <p>The editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
+      <p>The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a>
         community and other implementers for their support, encouragement and enthusiasm.</p>
     </section>
 
@@ -1119,7 +1117,17 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 04 May 2016 WD to this version</h3>
+        <h3>Changes from 21 June 2016 WD to this version</h3>
+
+        <ul>
+          <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
+          <li>Updated indiewebcamp.com references to indieweb.org due to redirects</li>
+          <li>Rename <code>mp-action</code> to <code>action</code> since updates are only JSON requests</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 04 May 2016 WD to 21 June 2016 WD</h3>
 
         <ul>
           <li>Clarified use of arrays vs single values in requests</li>
