@@ -310,8 +310,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       "specStatus": "ED",
       "previousMaturity": "WD",
       "previousPublishDate": "2016-06-21",
+      "crEnd": "2016-08-19",
       "shortName": "micropub",
       "edDraftURI": "http://micropub.net/draft/",
+      "implementationReportURI": "http://micropub.net/implementation-reports/",
       "editors": [
       {
         "name": "Aaron Parecki",
@@ -440,6 +442,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <dd><a href="http://www.w3.org/TR/micropub/">http://www.w3.org/TR/micropub/</a></dd>
       <dt>Latest editor's draft:</dt>
       <dd><a href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
+      <dt>Implementation report:</dt>
+      <dd><a href="http://micropub.net/implementation-reports/">http://micropub.net/implementation-reports/</a></dd>
       <dt>Editor:</dt>
       <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
         <span property="rdf:rest" resource="rdf:nil"></span>
@@ -501,6 +505,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+    </p>
+    <p>
+      Please see the Working Group's <a href="http://micropub.net/implementation-reports/">implementation
+              report</a>.
     </p>
     <p>
       Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
@@ -746,7 +754,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
         <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span></h4>
 
-        <p>To upload files, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+        <p>To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
         <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
         <p></p>
         <div class="example">
@@ -776,7 +784,7 @@ Content-Transfer-Encoding: binary
           <div class="example-title marker"><span>Example 3</span></div><pre class="hljs javascript">h=entry&amp;content=hello+world&amp;photo=https:<span class="hljs-comment">//photos.example.com/592829482876343254.jpg</span></pre></div>
         <p></p>
 
-        <p>See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
+        <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">

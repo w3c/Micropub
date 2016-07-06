@@ -758,7 +758,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
         <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span></h4>
 
-        <p>To upload files, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+        <p>To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
         <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
         <p></p>
         <div class="example">
@@ -788,7 +788,7 @@ Content-Transfer-Encoding: binary
           <div class="example-title marker"><span>Example 3</span></div><pre class="hljs javascript">h=entry&amp;content=hello+world&amp;photo=https:<span class="hljs-comment">//photos.example.com/592829482876343254.jpg</span></pre></div>
         <p></p>
 
-        <p>See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
+        <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
