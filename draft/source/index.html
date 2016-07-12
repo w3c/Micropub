@@ -455,13 +455,8 @@ Content-Transfer-Encoding: binary
             code, and MUST return a <code>Location</code> header indicating the
             URL of the created post. [[!RFC2616]]</p>
 
-          <p>If the target also provides a shortlink, or if it syndicated the
-            post to another location, the Micropub endpoint MAY return additional
-            URLs using the HTTP Link header, along with an appropriate "rel" value.
-            For example, it can return the short URL of a post by responding with:
-            <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre> or
-            can include the location of the syndicated post with:
-            <pre>Link: &lt;https://https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre></p>
+          <p><pre class="example">HTTP/1.1 201 Created
+Location: https://aaronpk.example/post/1000</pre></p>
 
           <p>If the endpoint chooses to process the request asynchronously rather
             than creating and storing the post immediately, it MUST return an
@@ -472,6 +467,14 @@ Content-Transfer-Encoding: binary
             object at the indicated URL to exist at some point in the (near)
             future. In other words, the server must do any error checking
             and validation before returning 202.</p>
+
+          <p>If the target also provides a shortlink, or if it syndicated the
+            post to another location, the Micropub endpoint MAY return additional
+            URLs using the HTTP Link header, along with an appropriate "rel" value.
+            For example, it can return the short URL of a post by responding with:
+            <pre>Link: &lt;http://aaron.pk/xxxxx&gt;; rel="shortlink"</pre> or
+            can include the location of the syndicated post with:
+            <pre>Link: &lt;https://myfavoritesocialnetwork.example/aaronpk/xxxxxx&gt;; rel="syndication"</pre></p>
 
           <h5>Error Response</h5>
 
@@ -503,7 +506,7 @@ Content-Transfer-Encoding: binary
           <p>Replace all values of the property. If the property does not exist already, it is created.</p>
           <p><pre class="example">{
   "action": "update",
-  "url": "http://example.com/post/1",
+  "url": "https://aaronpk.example/post/100",
   "replace": {
     "content": ["hello moon"]
   }
@@ -526,9 +529,9 @@ Content-Transfer-Encoding: binary
           <p>To add syndication URLs, include one or more URLs in the update request.</p>
           <p><pre class="example">{
   "action": "update",
-  "url": "http://aaronparecki.com/notes/2014/06/01/2/indieweb",
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb",
   "add": {
-    "syndication": ["https://archive.org/"]
+    "syndication": ["http://web.archive.org/web/20040104110725/https://aaronpk.example/2014/06/01/9/indieweb"]
   }
 }</pre></p>
 
@@ -537,7 +540,7 @@ Content-Transfer-Encoding: binary
           <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
           <p><pre class="example">{
   "action": "update",
-  "url": "http://aaronpk.example/notes/2014/06/01/2/indieweb",
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb",
   "add": {
     "category": ["webmention","indieweb"]
   }
@@ -550,7 +553,7 @@ Content-Transfer-Encoding: binary
           <p>If the property exists, remove it. This completely removes the specified property.</p>
           <p><pre class="example">{
   "action": "update",
-  "url": "http://example.com/post/1",
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb",
   "delete": ["category"]
 }</pre></p>
 
@@ -560,7 +563,7 @@ Content-Transfer-Encoding: binary
 
           <p><pre class="example">{
   "action": "update",
-  "url": "http://example.com/post/1",
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb",
   "delete": {
     "category": ["indieweb"]
   }
@@ -586,18 +589,18 @@ Content-Transfer-Encoding: binary
           <code>url</code> property.</p>
 
         <p><pre class="example">action=delete
-&amp;url=http://example.com/post/1</pre></p>
+&amp;url=https://aaronpk.example/2014/06/01/9/indieweb</pre></p>
         <p><pre class="example">{
   "action": "delete",
-  "url": "http://example.com/post/1"
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb"
 }</pre></p>
 
         <p>To undelete a post, use "undelete" as the action.</p>
         <p><pre class="example">action=undelete
-&amp;url=http://example.com/post/1</pre></p>
+&amp;url=https://aaronpk.example/2014/06/01/9/indieweb</pre></p>
         <p><pre class="example">{
   "action": "undelete",
-  "url": "http://example.com/post/1"
+  "url": "https://aaronpk.example/2014/06/01/9/indieweb"
 }</pre></p>
 
       </section> <!-- Delete -->
@@ -725,7 +728,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>The endpoint MUST return the response in [[!microformats2-parsing]] [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response MUST include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
-          <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=http://aaronpk.example/post/1000
+          <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -738,7 +741,7 @@ Authorization: Bearer xxxxxxxxx
   }
 }</pre></p>
 
-          <p><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/1000
+          <p><pre class="example">GET /micropub?q=source&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -759,7 +762,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
 
-          <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=http://aaronpk.example/post/1000
+          <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -842,7 +845,7 @@ Content-type: application/json
 
         <p>See the OAuth 2 Bearer Token [[!RFC6750]] spec for more details on the how to return error responses.</p>
 
-        <p><pre class="example">GET /micropub?q=source&amp;url=http://aaronpk.example/post/404
+        <p><pre class="example">GET /micropub?q=source&amp;url=https://aaronpk.example/post/404
 Authorization: Bearer xxxxxxxx
 
 HTTP/1.1 400 Bad Request
@@ -928,14 +931,14 @@ h=entry
           <h5>Minimal Example</h5>
 
           <p><pre class="example">POST /micropub HTTP/1.1
-Host: example.com
+Host: aaronpk.example
 Content-type: application/x-www-form-urlencoded
 Authorization: Bearer XXXXXXX
 
 h=entry
 &amp;content=Hello+World</pre></p>
 
-          <p><pre class="example">curl https://example.com/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></p>
+          <p><pre class="example">curl https://aaronpk.example/micropub -d h=entry -d "content=Hello World" -H "Authorization: Bearer XXXXXXX"</pre></p>
 
         </section>
         <section>
@@ -956,27 +959,8 @@ Content-type: application/x-www-form-urlencoded
 
 h=entry
 &amp;content=%40BarnabyWalters+My+favorite+for+that+use+case+is+Redis.
-&amp;in-reply-to=http://waterpigs.example/notes/4S0LMw/
+&amp;in-reply-to=https://waterpigs.example/notes/4S0LMw/
 &amp;mp-syndicate-to=https://myfavoritesocialnetwork.example/aaronpk</pre></p>
-
-        </section>
-        <section>
-          <h4>New Repost</h4>
-
-          <p>Posting a new repost, and adding additional tags.</p>
-          <p><ul>
-            <li>repost-of</li>
-            <li>category</li>
-          </ul></p>
-
-          <p><pre class="example">POST /micropub HTTP/1.1
-Host: aaronpk.example
-Authorization: Bearer XXXXXXXXXXX
-Content-type: application/x-www-form-urlencoded
-
-h=entry
-&amp;repost-of=http://waterpigs.example/notes/4S0LMw/
-&amp;category=realtime</pre></p>
 
         </section>
         <section>
@@ -991,7 +975,7 @@ h=entry
           </ul></p>
 
           <p><pre class="example">POST /micropub HTTP/1.1
-Host: aaronparecki.com
+Host: aaronpk.example
 Content-type: application/x-www-form-urlencoded
 
 h=entry
@@ -1071,10 +1055,10 @@ $_FILES['audio']</pre></p>
         or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
         <p><h5>HTTP Link Header</h5>
-          <pre>Link: &lt;https://example.com/micropub&gt;; rel="micropub"</pre></p>
+          <pre>Link: &lt;https://aaronpk.example/micropub&gt;; rel="micropub"</pre></p>
 
         <p><h5>HTML Link Tag</h5>
-          <pre>&lt;link rel="micropub" href="https://example.com/micropub"&gt;</pre></p>
+          <pre>&lt;link rel="micropub" href="https://aaronpk.example/micropub"&gt;</pre></p>
 
       </section> <!-- Discovery -->
 
@@ -1122,8 +1106,8 @@ $_FILES['audio']</pre></p>
         posts according to the Micropub protocol.</dd>
         <dt>Reference:</dt>
         <dd>
-          <a href="http://www.w3.org/TR/micropub/">W3C Micropub Specification
-          (http://www.w3.org/TR/micropub/)</a>
+          <a href="https://www.w3.org/TR/micropub/">W3C Micropub Specification
+          (https://www.w3.org/TR/micropub/)</a>
         </dd>
       </dl>
     </section>
