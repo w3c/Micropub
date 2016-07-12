@@ -175,34 +175,40 @@
 
         <p>This section describes the conformance criteria for Micropub clients and servers.</p>
 
-        <h4>Publishing Clients</h4>
+        <section>
+          <h4>Publishing Clients</h4>
 
-        <p>A conforming Micropub client that creates posts:</p>
-        <ul>
-          <li>MUST support sending x-www-form-urlencoded requests</li>
-          <li>MUST support the [[!h-entry]] vocabulary</li>
-          <li>If the client creates posts by uploading file attachments, it MUST check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
-          <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
-          <li>SHOULD support <a href="#endpoint-discovery">endpoint discovery</a> given an [[IndieAuth]] identity URL</li>
-        </ul>
+          <p>A conforming Micropub client that creates posts:</p>
+          <ul>
+            <li>MUST support sending x-www-form-urlencoded requests</li>
+            <li>MUST support the [[!h-entry]] vocabulary</li>
+            <li>If the client creates posts by uploading file attachments, it MUST check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
+            <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
+            <li>SHOULD support <a href="#endpoint-discovery">endpoint discovery</a> given an [[IndieAuth]] identity URL</li>
+          </ul>
+        </section>
 
-        <h4>Editing Clients</h4>
+        <section>
+          <h4>Editing Clients</h4>
 
-        <p>A conforming Micropub client that edits posts:</p>
-        <ul>
-          <li>MUST support sending JSON-encoded requests</li>
-          <li>MUST support the [[!h-entry]] vocabulary</li>
-        </ul>
+          <p>A conforming Micropub client that edits posts:</p>
+          <ul>
+            <li>MUST support sending JSON-encoded requests</li>
+            <li>MUST support the [[!h-entry]] vocabulary</li>
+          </ul>
+        </section>
 
-        <h4>Servers</h4>
+        <section>
+          <h4>Servers</h4>
 
-        <p>A conforming Micropub server:</p>
-        <ul>
-          <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
-          <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
-          <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
-          <li>If the server does not specify a Media Endpoint, then it MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
-        </ul>
+          <p>A conforming Micropub server:</p>
+          <ul>
+            <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
+            <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
+            <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
+            <li>If the server does not specify a Media Endpoint, then it MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          </ul>
+        </section>
 
       </section>
 
@@ -214,13 +220,13 @@
         <section>
           <h4>Client</h4>
 
-          <p>A Micropub Client is an implementation that sends Micropub requests to create or manipulate posts. The conformance criteria are described in <a href="#">...</a>. ... </p>
+          <p>A Micropub Client is an implementation that sends Micropub requests to create or otherwise manipulate posts. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
         </section>
 
         <section>
           <h4>Server</h4>
 
-          <p>A Micropub Server is an implementation that ... </p>
+          <p>A Micropub Server is an implementation that can create and optionally edit and delete posts given a Micropub request. The Micropub server MAY also support a Media Endpoint for handling file uploads outside of the primary Micropub endpoint. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
         </section>        
 
         <section>
@@ -232,7 +238,7 @@
         <section>
           <h4>Interoperable</h4>
 
-          <p>A Client and Server implementation are considered interoperable for a specific feature when the Client ... </p>
+          <p>A Client and Server implementation are considered interoperable for a specific feature when a Client ... </p>
         </section>
 
         <section>
@@ -1204,6 +1210,7 @@ $_FILES['audio']</pre></p>
           <li>Added section describing how to submit implementation reports</li>
           <li>Added conformance criteria and classes section</li>
           <li>Updated example URLs</li>
+          <li>Added list of features for exit criteria</li>
         </ul>
       </section>
 
