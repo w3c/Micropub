@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-07-06",
+          publishDate: "2016-07-12",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-06-21",
@@ -18,13 +18,13 @@
           implementationReportURI: "http://micropub.net/implementation-reports/",
           editors: [
                 {   name:       "Aaron Parecki",
-                    url:        "http://aaronparecki.com/",
+                    url:        "https://aaronparecki.com/",
                     w3cid:      "59996" }
           ],
           wg:           "Social Web Working Group",
-          wgURI:        "http://www.w3.org/Social/WG",
+          wgURI:        "https://www.w3.org/Social/WG",
           wgPublicList: "public-socialweb",
-          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
+          wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/72531/status",
           license: "w3c-software-doc",
           otherLinks: [{
             key: 'Repository',
@@ -253,6 +253,37 @@
 
           <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
 
+          <ul>
+            <li>Discovering the Micropub endpoint given the profile URL of a user</li>
+            <li>Authenticating requests by including the access token in the HTTP <code>Authorization</code> header</li>
+            <li>Authenticating requests by including the access token in the post body for <code>x-www-form-urlencoded</code> requests</li>
+            <li>Limiting the ability to create posts given an access token by requiring that the access token contain at least one OAuth 2.0 scope value</li>
+            <li>Creating a post using <code>x-www-form-urlencoded</code> syntax with one or more properties</li>
+            <li>Creating a post using JSON syntax with one or more properties</li>
+            <li>Creating a post using <code>x-www-form-urlencoded</code> syntax with multiple values of the same property name</li>
+            <li>Creating a post using JSON syntax with multiple values of the same property name</li>
+            <li>Creating a post using <code>x-www-form-urlencoded</code> syntax including a nested Microformats2 object</li>
+            <li>Creating a post using JSON syntax including a nested Microformats2 object</li>
+            <li>Uploading a file to the specified Media Endpoint</li>
+            <li>Creating a post with a file by sending the request as <code>multipart/form-data</code> to the Micropub endpoint</li>
+            <li>Returning <code>HTTP 201 Created</code> and a <code>Location</code> header when creating a post</li>
+            <li>Returning <code>HTTP 202 Created</code> and a <code>Location</code> header when creating a post</li>
+            <li>Updating a post and replacing all values of a property</li>
+            <li>Updating a post and adding a value to a property</li>
+            <li>Updating a post and removing a value from a property</li>
+            <li>Returning <code>HTTP 200 OK</code> when updating a post</li>
+            <li>Returning <code>HTTP 201 Created</code> when updating a post if the update cause the post URL to change</li>
+            <li>Returning <code>HTTP 204 No Content</code> when updating a post</li>
+            <li>Deleting a post using <code>x-www-form-urlencoded</code> syntax</li>
+            <li>Deleting a post using JSON syntax</li>
+            <li>Undeleting a post using <code>x-www-form-urlencoded</code> syntax</li>
+            <li>Undeleting a post using JSON syntax</li>
+            <li>Uploading a photo to the Media Endpoint and using the resulting URL when creating a post</li>
+            <li>Querying the Micropub endpoint with <code>q=config</code> to retrieve the Media Endpoint and syndication targets if specified</li>
+            <li>Querying the Micropub endpoint with <code>q=syndicate-to</code> to retrieve the list of syndication targets</li>
+            <li>Querying the Micropub endpoint for a post's source content without specifying a list of properties</li>
+            <li>Querying the Micropub endpoint for a post's source content looking only for specific properties</li>
+          </ul>
 
         </section>
       </section>
@@ -1000,7 +1031,7 @@ h=entry
 $_FILES['photo']
 $_FILES['audio']</pre></p>
 
-          <p>Note that there is no practical way to upload a file when the request body is JSON encoded.</p>
+          <p>Note that there is no way to upload a file when the request body is JSON encoded. Instead, you can first send the photo to the Media Endpoint and then use the resulting URL in the JSON post.</p>
 
           <p>The Micropub endpoint may store the file directly, or make an external
             request to upload it to a different backend storage, such as Amazon S3.</p>
@@ -1169,6 +1200,10 @@ $_FILES['audio']</pre></p>
           <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
           <li>Updated indiewebcamp.com references to indieweb.org due to redirects</li>
           <li>Rename <code>mp-action</code> to <code>action</code> since updates are only JSON requests</li>
+          <li>Added link to test suite in document header</li>
+          <li>Added section describing how to submit implementation reports</li>
+          <li>Added conformance criteria and classes section</li>
+          <li>Updated example URLs</li>
         </ul>
       </section>
 
