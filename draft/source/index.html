@@ -347,7 +347,7 @@
         </p>
 
         <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
-        <p>Note: The server MUST NOT store the <code>access_token</code> property in the post.</p>
+        <p class="note">The server MUST NOT store the <code>access_token</code> property in the post.</p>
       </section>
 
       <section>
@@ -392,6 +392,8 @@ Content-Transfer-Encoding: binary
           <p><pre class="example">h=entry&amp;content=hello+world&amp;photo=https://photos.example.com/592829482876343254.jpg</pre></p>
 
           <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
+
+          <p class="note">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
         </section>
 
         <section>
@@ -687,6 +689,8 @@ Content-Transfer-Encoding: binary
 ... (binary data) ...
 --553d9cee2030456a81931fb708ece92c--</pre></p>
 
+          <p class="note">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+          
         </section>
 
         <section>
@@ -716,7 +720,7 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
         <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
           <code>q</code> parameter to specify what you are querying.</p>
 
-        <p>Note: The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
+        <p class="note">The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
           so in this case, Micropub clients MUST append the <code>q</code> parameter
           instead of replacing the query string.</p>
 
