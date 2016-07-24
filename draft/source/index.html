@@ -173,7 +173,7 @@
       <section>
         <h3>Conformance Classes</h3>
 
-        <p>This section describes the conformance criteria for Micropub clients and servers.</p>
+        <p>This section describes the conformance criteria for Micropub clients and servers. All implementations MUST support UTF-8 encoding.</p>
 
         <section>
           <h4>Publishing Clients</h4>
@@ -321,7 +321,7 @@
       <section>
         <h3>Overview</h3>
 
-        <p>All Micropub requests to create posts are sent as
+        <p>All Micropub requests to create posts are sent as UTF-8
           <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
           <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [[!HTML5]],
           or [[!JSON]]-encoded HTTP requests. Responses typically do not include
