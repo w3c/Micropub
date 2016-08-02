@@ -904,7 +904,7 @@ Content-type: application/json
     <section>
       <h2>Vocabulary</h2>
 
-      <p>The vocabularies used in Micropub requests SHOULD be the vocabularies defined by [[Microformats2]] version 2. If the Microformats2 vocabulary is used, clients and servers MUST support at least the [[!h-entry]] vocabulary. Other vocabularies with widespread usage include [[h-event]] and [[h-card]]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server SHOULD assume a default value of <code>entry</code>.</p>
+      <p>The vocabularies used in Micropub requests SHOULD be the vocabularies defined by [[Microformats2]]. If the Microformats2 vocabulary is used, clients and servers MUST support at least the [[!h-entry]] vocabulary. Other vocabularies with widespread usage include [[h-event]] and [[h-card]]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server SHOULD assume a default value of <code>entry</code>.</p>
 
       <section class="informative">
         <h3>Examples of Creating Objects</h3>
@@ -1005,9 +1005,10 @@ h=entry
 
         </section>
         <section>
-          <h4>New Article</h4>
+          <h4>New Article with HTML</h4>
 
-          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is actually sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
+          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
+
           <p><ul>
             <li>name</li>
             <li>content[html]</li>
@@ -1028,7 +1029,35 @@ h=entry
 
         </section>
         <section>
-          <h4>Adding Files</h4>
+          <h4>New Article with Embedded Images</h4>
+
+          <p>To create an article containing embedded images, the HTML of the article should include <code>&lt;img&gt;</code> tags with the URLs of the images returned after uploading them to the Media Endpoint.</p>
+
+          <h5>Upload images to the Media Endpoint</h5>
+
+          <p>First, upload one or more images to the Media Endpoint. Typically this will happen before the article is published, such as when the user is authoring the article in a visual editor. The editor can upload the images to the Media Endpoint as soon as the user drags them into the interface, and then embed the images into the editor via the resulting URL. See <a href="#request">Uploading to the Media Endpoint</a> for an example of this request.</p>
+
+          <p>The response after uploading the file to the Media Endpoint will be a URL that the client can use when posting the article.</p>
+
+          <p><pre class="example">HTTP/1.1 201 Created
+Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></p>
+
+          <p>The client can then use this URL to embed this image in an article.</p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Content-type: application/json
+
+{
+  "type": ["h-entry"],
+  "properties": {
+    "content": ["&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\"&gt;&lt;/p&gt;"]
+  }
+}</pre></p>
+
+        </section>        
+        <section>
+          <h4>Posting Files</h4>
 
           <p>When a Micropub request includes a file, the entire request is
             sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a>
@@ -1046,7 +1075,7 @@ $_FILES['audio']</pre></p>
           <p>The Micropub endpoint may store the file directly, or make an external
             request to upload it to a different backend storage, such as Amazon S3.</p>
 
-        </section> <!-- Adding Files -->
+        </section> <!-- Posting Files -->
 
       </section> <!-- Creating Objects -->
 
