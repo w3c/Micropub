@@ -771,6 +771,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-8
 
 {
   "properties": {
@@ -784,6 +785,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre class="example">GET /micropub?q=source&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-8
 
 {
   "type": "h-entry",
@@ -805,6 +807,7 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-8
 
 {
   "properties": {
@@ -832,7 +835,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json
+Content-type: application/json; charset=utf-8
 
 {
   "syndicate-to": [
@@ -890,7 +893,7 @@ Content-type: application/json
 Authorization: Bearer xxxxxxxx
 
 HTTP/1.1 400 Bad Request
-Content-type: application/json
+Content-type: application/json; charset=utf-8
 
 {
   "error": "not_found",
@@ -962,7 +965,7 @@ Content-type: application/json
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
-Content-type: application/x-www-form-urlencoded
+Content-type: application/x-www-form-urlencoded; charset=utf-8
 
 h=entry
 &amp;content=My+favorite+of+the+%23quantifiedself+trackers%2C+finally+released+their+official+API
@@ -973,7 +976,7 @@ h=entry
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/x-www-form-urlencoded
+Content-type: application/x-www-form-urlencoded; charset=utf-8
 Authorization: Bearer XXXXXXX
 
 h=entry
@@ -996,7 +999,7 @@ h=entry
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Authorization: Bearer XXXXXXXXXXX
-Content-type: application/x-www-form-urlencoded
+Content-type: application/x-www-form-urlencoded; charset=utf-8
 
 h=entry
 &amp;content=%40BarnabyWalters+My+favorite+for+that+use+case+is+Redis.
@@ -1018,7 +1021,7 @@ h=entry
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/x-www-form-urlencoded
+Content-type: application/x-www-form-urlencoded; charset=utf-8
 
 h=entry
 &amp;name=Itching%3A+h-event+to+iCal+converter
@@ -1046,7 +1049,7 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/json
+Content-type: application/json; charset=utf-8
 
 {
   "type": ["h-entry"],
@@ -1233,7 +1236,16 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 21 June 2016 WD to this version</h3>
+        <h3>Changes from 13 July 2016 WD to this version</h3>
+
+        <ul>
+          <li>Add example of including embedded images when posting an article</li>
+          <li>Add explicit utf-8 charset to all examples</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 21 June 2016 WD to 13 July 2016 WD</h3>
 
         <ul>
           <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
