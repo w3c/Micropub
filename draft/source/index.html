@@ -732,8 +732,8 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
           <p>The server SHOULD include the following information in the configuration response.</p>
 
           <p><ul>
-            <li>The list of syndication endpoints supported (see <a href="#syndication-targets">Syndication Targets</a> for details)</li>
-            <li>The Media Endpoint if supported</li>
+            <li>The list of syndication endpoints supported, in a property called <code>syndicate-to</code> (see <a href="#syndication-targets">Syndication Targets</a> for details on the structure of the response)</li>
+            <li>The Media Endpoint if supported, in a property called <code>media-endpoint</code></li>
           </ul></p>
 
           <p><pre class="example">GET /micropub?q=config
@@ -829,6 +829,10 @@ Content-type: application/json; charset=utf-8
           <p><pre>GET /micropub?q=syndicate-to</pre></p>
 
           <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
+
+          <p>At a minimum, a syndication target MUST have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
+
+          <p>A syndication target MAY optionally include additional details about the service or user account at the syndication destination, indicated with a property called <code>service</code> and <code>user</code> respectively. Both service and user objects MUST contain a <code>name</code> property, intended to be displayed to the user, and MAY contain a <code>url</code> and <code>photo</code> property. The client can use the name and photo to improve the display of the syndication options to the user.</p>
 
           <p><pre class="example">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
@@ -1241,6 +1245,7 @@ $_FILES['audio']</pre></p>
         <ul>
           <li>Add example of including embedded images when posting an article</li>
           <li>Add explicit utf-8 charset to all examples</li>
+          <li>Add normative text describing the configuration and syndicate-to response</li>
         </ul>
       </section>
 
