@@ -1,7 +1,7 @@
 # Micropub
 This repo contains the Micropub spec as well as issues and discussion related to the spec.
 
-Please make edits to the file `source/index.html`, and the root `index.html` file will be updated when a new draft is ready to publish.
+Please make edits to the file `draft/source/index.html`, and the public file `draft/index.html` will be updated when a new draft is ready to publish.
 
 ## User Stories
 
