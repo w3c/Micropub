@@ -1,2 +1,2 @@
-Overview.html
+index.html
 micropub-photo-app-flow.png
