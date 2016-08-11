@@ -153,6 +153,117 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       color: #999;
     }
   </style>
+  <style>
+    /* --- ISSUES/NOTES --- */
+    
+    div.issue-title,
+    div.note-title,
+    div.ednote-title,
+    div.warning-title {
+      padding-right: 1em;
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+    
+    div.issue-title {
+      color: #e05252;
+    }
+    
+    div.note-title,
+    div.ednote-title {
+      color: #2b2;
+    }
+    
+    div.warning-title {
+      color: #f22;
+    }
+    
+    div.issue-title span,
+    div.note-title span,
+    div.ednote-title span,
+    div.warning-title span {
+      text-transform: uppercase;
+    }
+    
+    div.note,
+    div.issue,
+    div.ednote,
+    div.warning {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    
+    .note> p:first-child,
+    .ednote> p:first-child,
+    .issue> p:first-child,
+    .warning> p:first-child {
+      margin-top: 0
+    }
+    
+    .issue,
+    .note,
+    .ednote,
+    .warning {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+    }
+    
+    div.issue,
+    div.note,
+    div.ednote,
+    div.warning {
+      padding: 1em 1.2em 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    span.note,
+    span.ednote,
+    span.issue,
+    span.warning {
+      padding: .1em .5em .15em;
+    }
+    
+    .issue {
+      border-color: #e05252;
+      background: #fbe9e9;
+    }
+    
+    .note,
+    .ednote {
+      border-color: #52e052;
+      background: #e9fbe9;
+    }
+    
+    .warning {
+      border-color: #f11;
+      border-width: .2em;
+      border-style: solid;
+      background: #fbe9e9;
+    }
+    
+    .warning-title:before {
+      content: "⚠";
+      /*U+26A0 WARNING SIGN*/
+      font-size: 3em;
+      float: left;
+      height: 100%;
+      padding-right: .3em;
+      vertical-align: top;
+      margin-top: -0.5em;
+    }
+    
+    li.task-list-item {
+      list-style: none;
+    }
+    
+    input.task-list-item-checkbox {
+      margin: 0 0.35em 0.25em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
   <style id="respec-mainstyle">
     /*****************************************************************
  * ReSpec 3 CSS
@@ -215,6 +326,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     code {
       color: #C83500;
+    }
+    
+    th code {
+      color: inherit;
     }
     /* --- TOC --- */
     
@@ -303,14 +418,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+  <meta name="generator" content="ReSpec 4.4.2">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-07-12",
+      "publishDate": "2016-08-11",
       "specStatus": "ED",
       "previousMaturity": "WD",
-      "previousPublishDate": "2016-06-21",
-      "crEnd": "2016-08-19",
+      "previousPublishDate": "2016-07-13",
+      "crEnd": "2016-09-10",
       "shortName": "micropub",
       "edDraftURI": "http://micropub.net/draft/",
       "testSuiteURI": "https://micropub.rocks/",
@@ -432,15 +548,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
-      <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-12-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-07-12">12 July 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-11-august-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-08-11">11 August 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
       <dt>Latest published version:</dt>
-      <dd><a href="http://www.w3.org/TR/micropub/">http://www.w3.org/TR/micropub/</a></dd>
+      <dd><a href="https://www.w3.org/TR/micropub/">https://www.w3.org/TR/micropub/</a></dd>
       <dt>Latest editor's draft:</dt>
       <dd><a href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
       <dt>Test suite:</dt>
@@ -470,14 +586,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </dd>
     </dl>
     <p class="copyright">
-      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
 
-      <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-      <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
-      <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
-      <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-      <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+      <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+      <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+      <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
     </p>
     <hr title="Separator for header">
   </div>
@@ -500,14 +616,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <section id="sotd" class="introductory">
     <h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
     <p>
-      <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
+      <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
     </p>
 
 
     <p>
       This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
-      <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
     </p>
     <p>
       Please see the Working Group's <a href="http://micropub.net/implementation-reports/">implementation
@@ -518,132 +634,134 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </p>
     <p>
       This document was produced by a group operating under the
-      <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+      <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
               Policy</a>.
       <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
                 disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains
-      <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
               Claim(s)</a> must disclose the information in accordance with
-      <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
     </p>
-    <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
     </p>
 
   </section>
   <nav id="toc">
     <h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
-    <ul class="toc" role="directory">
+    <ol class="toc" role="directory">
       <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#social-web-working-group" class="tocxref"><span class="secno">1.1 </span>Social Web Working Group</a></li>
           <li class="tocline"><a href="#background" class="tocxref"><span class="secno">1.2 </span>Background</a></li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#publishing-clients" class="tocxref"><span class="secno">2.1.1 </span>Publishing Clients</a></li>
               <li class="tocline"><a href="#editing-clients" class="tocxref"><span class="secno">2.1.2 </span>Editing Clients</a></li>
               <li class="tocline"><a href="#servers" class="tocxref"><span class="secno">2.1.3 </span>Servers</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#candidate-recommendation-exit-criteria" class="tocxref"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#client" class="tocxref"><span class="secno">2.2.1 </span>Client</a></li>
               <li class="tocline"><a href="#server" class="tocxref"><span class="secno">2.2.2 </span>Server</a></li>
               <li class="tocline"><a href="#independent" class="tocxref"><span class="secno">2.2.3 </span>Independent</a></li>
               <li class="tocline"><a href="#interoperable" class="tocxref"><span class="secno">2.2.4 </span>Interoperable</a></li>
               <li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2.2.5 </span>Implementation</a></li>
               <li class="tocline"><a href="#feature" class="tocxref"><span class="secno">2.2.6 </span>Feature</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#test-suite-and-reporting" class="tocxref"><span class="secno">2.3 </span>Test Suite and Reporting</a></li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li>
           <li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li>
           <li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li>
               <li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li>
               <li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li>
               <li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li>
               <li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#replace" class="tocxref"><span class="secno">3.4.1 </span>Replace</a></li>
               <li class="tocline"><a href="#add" class="tocxref"><span class="secno">3.4.2 </span>Add</a></li>
               <li class="tocline"><a href="#remove" class="tocxref"><span class="secno">3.4.3 </span>Remove</a></li>
               <li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li>
           <li class="tocline"><a href="#media-endpoint" class="tocxref"><span class="secno">3.6 </span>Media Endpoint</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#discovery" class="tocxref"><span class="secno">3.6.1 </span>Discovery</a></li>
               <li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">3.6.2 </span>Authentication</a></li>
               <li class="tocline"><a href="#request" class="tocxref"><span class="secno">3.6.3 </span>Request</a></li>
               <li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.6.4 </span>Response</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.7 </span>Querying</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#configuration" class="tocxref"><span class="secno">3.7.1 </span>Configuration</a></li>
               <li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.7.2 </span>Source Content</a></li>
               <li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.7.3 </span>Syndication Targets</a></li>
-            </ul>
+            </ol>
           </li>
           <li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.8 </span>Error Response</a></li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#vocabulary" class="tocxref"><span class="secno">4. </span>Vocabulary</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#examples-of-creating-objects" class="tocxref"><span class="secno">4.1 </span>Examples of Creating Objects</a>
-            <ul class="toc">
+            <ol class="toc">
               <li class="tocline"><a href="#new-note" class="tocxref"><span class="secno">4.1.1 </span>New Note</a></li>
               <li class="tocline"><a href="#new-reply" class="tocxref"><span class="secno">4.1.2 </span>New Reply</a></li>
-              <li class="tocline"><a href="#new-article" class="tocxref"><span class="secno">4.1.3 </span>New Article</a></li>
-              <li class="tocline"><a href="#adding-files" class="tocxref"><span class="secno">4.1.4 </span>Adding Files</a></li>
-            </ul>
+              <li class="tocline"><a href="#new-article-with-html" class="tocxref"><span class="secno">4.1.3 </span>New Article with HTML</a></li>
+              <li class="tocline"><a href="#new-article-with-embedded-images" class="tocxref"><span class="secno">4.1.4 </span>New Article with Embedded Images</a></li>
+              <li class="tocline"><a href="#posting-files" class="tocxref"><span class="secno">4.1.5 </span>Posting Files</a></li>
+            </ol>
           </li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#authentication-and-authorization" class="tocxref"><span class="secno">5. </span>Authentication and Authorization</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#authentication-1" class="tocxref"><span class="secno">5.1 </span>Authentication</a></li>
           <li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">5.2 </span>Authorization</a></li>
           <li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">5.3 </span>Endpoint Discovery</a></li>
           <li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">6. </span>IANA Considerations</a></li>
       <li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">A.1 </span>Implementations</a></li>
-        </ul>
+        </ol>
       </li>
       <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
       <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">C. </span>Change Log</a>
-        <ul class="toc">
-          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 21 June 2016 WD to this version</a></li>
-          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.2 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.3 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
-          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.4 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
-        </ul>
+        <ol class="toc">
+          <li class="tocline"><a href="#changes-from-13-july-2016-wd-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 13 July 2016 WD to this version</a></li>
+          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-13-july-2016-wd" class="tocxref"><span class="secno">C.2 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.3 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.4 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
+          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.5 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
+        </ol>
       </li>
       <li class="tocline"><a href="#references" class="tocxref"><span class="secno">D. </span>References</a>
-        <ul class="toc">
+        <ol class="toc">
           <li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">D.1 </span>Normative references</a></li>
           <li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">D.2 </span>Informative references</a></li>
-        </ul>
+        </ol>
       </li>
-    </ul>
+    </ol>
   </nav>
 
 
@@ -679,7 +797,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <section id="conformance-classes" typeof="bibo:Chapter" resource="#conformance-classes" property="bibo:hasPart">
       <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span></h3>
 
-      <p>This section describes the conformance criteria for Micropub clients and servers.</p>
+      <p>This section describes the conformance criteria for Micropub clients and servers. All implementations <em class="rfc2119" title="MUST">MUST</em> support UTF-8 encoding.</p>
 
       <section id="publishing-clients" typeof="bibo:Chapter" resource="#publishing-clients" property="bibo:hasPart">
         <h4 id="h-publishing-clients" resource="#h-publishing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Publishing Clients</span></h4>
@@ -690,7 +808,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
           <li>If the client creates posts by uploading file attachments, it <em class="rfc2119" title="MUST">MUST</em> check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
           <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
-          <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a> given an [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] identity URL</li>
+          <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a></li>
         </ul>
       </section>
 
@@ -744,7 +862,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <section id="interoperable" typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
         <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span></h4>
 
-        <p>A Client and Server implementation are considered interoperable for a specific feature when a Client ... </p>
+        <p>A Client and Server implementation are considered interoperable for a specific feature when the Server takes the defined action that the Client requests, the Client gets the expected response from a Server according to the feature, and the Server sends the expected response to the Client.</p>
       </section>
 
       <section id="implementation" typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
@@ -822,7 +940,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <section id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
       <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Overview</span></h3>
 
-      <p>All Micropub requests to create posts are sent as
+      <p>All Micropub requests to create posts are sent as UTF-8
         <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
         <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], or [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>]-encoded HTTP requests. Responses typically do not include a response body, indicating the needed information (such as the URL of the created post) in HTTP headers. When a response body is necessary, it <em class="rfc2119" title="SHOULD">SHOULD</em> be returned as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] encoded object.</p>
     </section>
@@ -845,7 +963,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p></p>
 
       <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
-      <p>Note: The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
+      <div class="note">
+        <div class="note-title marker" aria-level="4" role="heading" id="h-note1"><span>Note</span></div>
+        <p class="">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
+      </div>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
@@ -892,7 +1013,7 @@ Content-Transfer-Encoding: binary
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
         <p></p>
 
-        <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
+        <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download [<cite><a class="bibref" href="#bib-Fetch">Fetch</a></cite>] a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
 
         <p></p>
         <div class="example">
@@ -900,6 +1021,11 @@ Content-Transfer-Encoding: binary
         <p></p>
 
         <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
+
+        <div class="note">
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note2"><span>Note</span></div>
+          <p class="">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+        </div>
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
@@ -935,10 +1061,10 @@ Content-Transfer-Encoding: binary
         <p></p>
         <div class="example">
           <div class="example-title marker"><span>Example 5</span></div><pre class="hljs markdown">h=entry
-&amp;summary=Weighed+155.73+pounds
+&amp;summary=Weighed+70.64+kg
 &amp;weight[type]=h-measure
-&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=155.73
-&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=lb
+&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=70.64
+&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=kg
 &amp;bodyfat[type]=h-measure
 &amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=19.83
 &amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=%</pre></div>
@@ -950,14 +1076,14 @@ Content-Transfer-Encoding: binary
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
     <span class="hljs-string">"summary"</span>: [
-      <span class="hljs-string">"Weight 155.73 pounds"</span>
+      <span class="hljs-string">"Weighed 70.64 kg"</span>
     ],
     <span class="hljs-string">"weight"</span>: [
       {
         <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-measure"</span>],
         <span class="hljs-string">"properties"</span>: {
-          <span class="hljs-string">"num"</span>: [<span class="hljs-string">"155.73"</span>],
-          <span class="hljs-string">"unit"</span>: [<span class="hljs-string">"lb"</span>]
+          <span class="hljs-string">"num"</span>: [<span class="hljs-string">"70.64"</span>],
+          <span class="hljs-string">"unit"</span>: [<span class="hljs-string">"kg"</span>]
         }
       }
     ],
@@ -1204,6 +1330,11 @@ Content-Transfer-Encoding: binary
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
         <p></p>
 
+        <div class="note">
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note3"><span>Note</span></div>
+          <p class="">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+        </div>
+
       </section>
 
       <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
@@ -1233,7 +1364,10 @@ Content-Transfer-Encoding: binary
       <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
         <code>q</code> parameter to specify what you are querying.</p>
 
-      <p>Note: The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
+      <div class="note">
+        <div class="note-title marker" aria-level="4" role="heading" id="h-note4"><span>Note</span></div>
+        <p class="">The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
+      </div>
 
       <section id="configuration" typeof="bibo:Chapter" resource="#configuration" property="bibo:hasPart">
         <h4 id="h-configuration" resource="#h-configuration"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.1 </span>Configuration</span></h4>
@@ -1244,8 +1378,8 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <ul>
-          <li>The list of syndication endpoints supported (see <a href="#syndication-targets">Syndication Targets</a> for details)</li>
-          <li>The Media Endpoint if supported</li>
+          <li>The list of syndication endpoints supported, in a property called <code>syndicate-to</code> (see <a href="#syndication-targets">Syndication Targets</a> for details on the structure of the response)</li>
+          <li>The Media Endpoint if supported, in a property called <code>media-endpoint</code></li>
         </ul>
         <p></p>
 
@@ -1289,6 +1423,7 @@ Authorization: Bearer xxxxxxxxx
         <div class="example">
           <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1305,6 +1440,7 @@ Authorization: Bearer xxxxxxxxx
         <div class="example">
           <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
   <span class="hljs-string">"type"</span>: <span class="hljs-string">"h-entry"</span>,
@@ -1329,6 +1465,7 @@ Authorization: Bearer xxxxxxxxx
         <div class="example">
           <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1354,6 +1491,10 @@ Authorization: Bearer xxxxxxxxx
 
         <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
 
+        <p>At a minimum, a syndication target <em class="rfc2119" title="MUST">MUST</em> have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
+
+        <p>A syndication target <em class="rfc2119" title="MAY">MAY</em> optionally include additional details about the service or user account at the syndication destination, indicated with a property called <code>service</code> and <code>user</code> respectively. Both service and user objects <em class="rfc2119" title="MUST">MUST</em> contain a <code>name</code> property, intended to be displayed to the user, and <em class="rfc2119" title="MAY">MAY</em> contain a <code>url</code> and <code>photo</code> property. The client can use the name and photo to improve the display of the syndication options to the user.</p>
+
         <p></p>
         <div class="example">
           <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
@@ -1361,7 +1502,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json
+Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
   <span class="hljs-string">"syndicate-to"</span>: [
@@ -1425,7 +1566,7 @@ Content-type: application/json
 Authorization: Bearer xxxxxxxx
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">400</span> Bad Request
-Content-type: application/json
+Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
 {
   <span class="hljs-string">"error"</span>: <span class="hljs-string">"not_found"</span>,
@@ -1443,7 +1584,7 @@ Content-type: application/json
     <!--OddPage-->
     <h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary</span></h2>
 
-    <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] version 2. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
+    <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>]. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
 
     <section class="informative" id="examples-of-creating-objects" typeof="bibo:Chapter" resource="#examples-of-creating-objects" property="bibo:hasPart">
       <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Examples of Creating Objects</span></h3>
@@ -1506,7 +1647,7 @@ Content-type: application/json
           <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
-<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 
 <span class="javascript">h=entry
 &amp;content=My+favorite+<span class="hljs-keyword">of</span>+the+%<span class="hljs-number">23</span>quantifiedself+trackers%<span class="hljs-number">2</span>C+<span class="hljs-keyword">finally</span>+released+their+official+API
@@ -1520,7 +1661,7 @@ Content-type: application/json
         <div class="example">
           <div class="example-title marker"><span>Example 27</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXX
 
 <span class="undefined">h=entry
@@ -1552,7 +1693,7 @@ Content-type: application/json
           <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
-<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 
 <span class="javascript">h=entry
 &amp;content=%<span class="hljs-number">40</span>BarnabyWalters+My+favorite+<span class="hljs-keyword">for</span>+that+use+<span class="hljs-keyword">case</span>+is+Redis.
@@ -1562,10 +1703,11 @@ Content-type: application/json
 
       </section>
 
-      <section id="new-article" typeof="bibo:Chapter" resource="#new-article" property="bibo:hasPart">
-        <h4 id="h-new-article" resource="#h-new-article"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article</span></h4>
+      <section id="new-article-with-html" typeof="bibo:Chapter" resource="#new-article-with-html" property="bibo:hasPart">
+        <h4 id="h-new-article-with-html" resource="#h-new-article-with-html"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article with HTML</span></h4>
 
-        <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is actually sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
+        <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
+
         <p></p>
         <ul>
           <li>name</li>
@@ -1579,7 +1721,7 @@ Content-type: application/json
         <div class="example">
           <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded
+<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 
 <span class="xquery">h=entry
 &amp;name=Itching<span class="hljs-meta">%3A</span>+h-event+<span class="hljs-keyword">to</span>+iCal+converter
@@ -1591,8 +1733,43 @@ Content-type: application/json
 
       </section>
 
-      <section id="adding-files" typeof="bibo:Chapter" resource="#adding-files" property="bibo:hasPart">
-        <h4 id="h-adding-files" resource="#h-adding-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>Adding Files</span></h4>
+      <section id="new-article-with-embedded-images" typeof="bibo:Chapter" resource="#new-article-with-embedded-images" property="bibo:hasPart">
+        <h4 id="h-new-article-with-embedded-images" resource="#h-new-article-with-embedded-images"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>New Article with Embedded Images</span></h4>
+
+        <p>To create an article containing embedded images, the HTML of the article should include <code>&lt;img&gt;</code> tags with the URLs of the images returned after uploading them to the Media Endpoint.</p>
+
+        <h4 id="upload-images-to-the-media-endpoint">Upload images to the Media Endpoint</h4>
+
+        <p>First, upload one or more images to the Media Endpoint. Typically this will happen before the article is published, such as when the user is authoring the article in a visual editor. The editor can upload the images to the Media Endpoint as soon as the user drags them into the interface, and then embed the images into the editor via the resulting URL. See <a href="#request">Uploading to the Media Endpoint</a> for an example of this request.</p>
+
+        <p>The response after uploading the file to the Media Endpoint will be a URL that the client can use when posting the article.</p>
+
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 31</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
+        <p></p>
+
+        <p>The client can then use this URL to embed this image in an article.</p>
+
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 32</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+
+<span class="xquery">{
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
+  <span class="hljs-string">"properties"</span>: {
+    <span class="hljs-string">"content"</span>: [<span class="hljs-string">"&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"</span>https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\<span class="hljs-string">"&gt;&lt;/p&gt;"</span>]
+  }
+}</span></pre></div>
+        <p></p>
+
+      </section>
+
+      <section id="posting-files" typeof="bibo:Chapter" resource="#posting-files" property="bibo:hasPart">
+        <h4 id="h-posting-files" resource="#h-posting-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.5 </span>Posting Files</span></h4>
 
         <p>When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
 
@@ -1609,7 +1786,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <p>The Micropub endpoint may store the file directly, or make an external request to upload it to a different backend storage, such as Amazon S3.</p>
 
       </section>
-      <!-- Adding Files -->
+      <!-- Posting Files -->
 
     </section>
     <!-- Creating Objects -->
@@ -1641,7 +1818,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <section id="authorization" typeof="bibo:Chapter" resource="#authorization" property="bibo:hasPart">
       <h3 id="h-authorization" resource="#h-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Authorization</span></h3>
 
-      <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol, including the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
+      <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol. Applications <em class="rfc2119" title="MAY">MAY</em> use the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
     </section>
     <!-- Authorization -->
 
@@ -1764,8 +1941,20 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span></h2>
     <p><em>This section is non-normative.</em></p>
 
-    <section id="changes-from-21-june-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-this-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-21-june-2016-wd-to-this-version" resource="#h-changes-from-21-june-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 21 June 2016 WD to this version</span></h3>
+    <section id="changes-from-13-july-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-13-july-2016-wd-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-13-july-2016-wd-to-this-version" resource="#h-changes-from-13-july-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 13 July 2016 WD to this version</span></h3>
+
+      <ul>
+        <li>Add example of including embedded images when posting an article</li>
+        <li>Add explicit utf-8 charset to all examples</li>
+        <li>Add normative text describing the configuration and syndicate-to response</li>
+        <li>Clarified text around IndieAuth references to ensure they are non-normative</li>
+        <li>Add reference to Fetch for downloading contents of a URL</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-21-june-2016-wd-to-13-july-2016-wd" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-13-july-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span></h3>
 
       <ul>
         <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
@@ -1776,11 +1965,12 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Added conformance criteria and classes section</li>
         <li>Updated example URLs</li>
         <li>Added list of features for exit criteria</li>
+        <li>Added note about the accessibility group review</li>
       </ul>
     </section>
 
     <section id="changes-from-04-may-2016-wd-to-21-june-2016-wd" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-21-june-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
+      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
 
       <ul>
         <li>Clarified use of arrays vs single values in requests</li>
@@ -1795,7 +1985,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-01-march-2016-wd-to-04-may-2016-version" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
+      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
@@ -1808,7 +1998,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-version" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
+      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
@@ -1838,7 +2028,9 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
     <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
       <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Normative references</span></h3>
-      <dl class="bibliography" resource=""><dt id="bib-HTML5">[HTML5]</dt>
+      <dl class="bibliography" resource=""><dt id="bib-Fetch">[Fetch]</dt>
+        <dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
+        </dd><dt id="bib-HTML5">[HTML5]</dt>
         <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
         </dd><dt id="bib-JSON">[JSON]</dt>
         <dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires">https://tools.ietf.org/html/rfc4627</a>
