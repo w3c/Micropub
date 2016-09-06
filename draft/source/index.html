@@ -401,8 +401,12 @@ Content-Transfer-Encoding: binary
 
           <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
           <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
-          <p>When creating posts in JSON format, all values MUST be specified as arrays, identical to the Microformats 2 JSON format.</p>
-          <p><pre class="example">{
+          <p>When creating posts in JSON format, all values MUST be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Content-type: application/json; charset=utf-8
+
+{
   "type": ["h-entry"],
   "properties": {
     "content": ["hello world"],
@@ -1238,12 +1242,20 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 13 July 2016 WD to this version</h3>
+        <h3>Changes from 16 August 2016 CR to this version</h3>
 
         <ul>
+          <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
           <li>Add explicit utf-8 charset to all examples</li>
           <li>Add normative text describing the configuration and syndicate-to response</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 13 July 2016 WD to 16 August 2016 CR</h3>
+
+        <ul>
           <li>Clarified text around IndieAuth references to ensure they are non-normative</li>
           <li>Add reference to Fetch for downloading contents of a URL</li>
         </ul>
