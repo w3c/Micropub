@@ -418,14 +418,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
-  <meta name="generator" content="ReSpec 4.4.2">
+  <meta name="generator" content="ReSpec 5.0.0">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-08-11",
+      "publishDate": "2016-09-06",
       "specStatus": "ED",
-      "previousMaturity": "WD",
-      "previousPublishDate": "2016-07-13",
+      "previousMaturity": "CR",
+      "previousPublishDate": "2016-08-16",
       "crEnd": "2016-09-10",
       "shortName": "micropub",
       "edDraftURI": "http://micropub.net/draft/",
@@ -545,13 +545,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry" role="document" id="respecDocument">
+<body class="h-entry toc-inline" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-11-august-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-08-11">11 August 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-06-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-06">06 September 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -748,11 +748,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
       <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">C. </span>Change Log</a>
         <ol class="toc">
-          <li class="tocline"><a href="#changes-from-13-july-2016-wd-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 13 July 2016 WD to this version</a></li>
-          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-13-july-2016-wd" class="tocxref"><span class="secno">C.2 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.3 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.4 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
-          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.5 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
+          <li class="tocline"><a href="#changes-from-16-august-2016-cr-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</a></li>
+          <li class="tocline"><a href="#changes-from-13-july-2016-wd-to-16-august-2016-cr" class="tocxref"><span class="secno">C.2 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</a></li>
+          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-13-july-2016-wd" class="tocxref"><span class="secno">C.3 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.4 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-version" class="tocxref"><span class="secno">C.5 </span>Changes from 01 March 2016 WD to 04 May 2016 version</a></li>
+          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" class="tocxref"><span class="secno">C.6 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#references" class="tocxref"><span class="secno">D. </span>References</a>
@@ -1033,17 +1034,21 @@ Content-Transfer-Encoding: binary
 
         <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
         <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
-        <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, identical to the Microformats 2 JSON format.</p>
+        <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+
+<span class="xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
     <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello world"</span>],
     <span class="hljs-string">"category"</span>: [<span class="hljs-string">"foo"</span>,<span class="hljs-string">"bar"</span>],
     <span class="hljs-string">"photo"</span>: [<span class="hljs-string">"https://photos.example.com/592829482876343254.jpg"</span>]
   }
-}</pre></div>
+}</span></pre></div>
         <p></p>
       </section>
 
@@ -1123,7 +1128,8 @@ Content-Transfer-Encoding: binary
         <p></p>
 
         <p>If the endpoint chooses to process the request asynchronously rather than creating and storing the post immediately, it <em class="rfc2119" title="MUST">MUST</em> return an
-          <code>HTTP 202 Accepted</code> status code, and <em class="rfc2119" title="MUST">MUST</em> also return the <code>Location</code> header in this case. If the server is going to return 202, it <em class="rfc2119" title="MUST">MUST</em> ensure the object will be created successfully prior to returning 202, as clients will expect the object at the indicated URL to exist at some point in the (near) future. In other words, the server must do any error checking and validation before returning 202.</p>
+          <code>HTTP 202 Accepted</code> status code, and <em class="rfc2119" title="MUST">MUST</em> also return the
+          <code>Location</code> header. The server <em class="rfc2119" title="MUST">MUST</em> do any error checking and validation of the request synchronously in order to ensure the object will be created successfully, prior to returning HTTP 202. Clients will expect the object at the indicated URL to exist at some point in the (near) future if they receive an HTTP 202 response.</p>
 
         <p>If the target also provides a shortlink, or if it syndicated the post to another location, the Micropub endpoint <em class="rfc2119" title="MAY">MAY</em> return additional URLs using the HTTP Link header, along with an appropriate "rel" value. For example, it can return the short URL of a post by responding with:
         </p><pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">http:</span>//<span class="hljs-attr">aaron.pk</span>/<span class="hljs-attr">xxxxx</span>&gt;</span></span>; rel=<span class="hljs-string">"shortlink"</span></pre> or can include the location of the syndicated post with:
@@ -1132,7 +1138,7 @@ Content-Transfer-Encoding: binary
 
         <h4 id="error-response-1">Error Response</h4>
 
-        <p>See the "Error Responses" section below for details on how to indicate an error occurred.</p>
+        <p>See the "<a href="#error-response">Error Response</a>" section below for details on how to indicate an error occurred.</p>
 
       </section>
       <!-- Response -->
@@ -1801,7 +1807,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <section id="authentication-1" typeof="bibo:Chapter" resource="#authentication-1" property="bibo:hasPart">
       <h3 id="h-authentication-1" resource="#h-authentication-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Authentication</span></h3>
 
-      <p>Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in either the HTTP header or a form-encoded body parameter as described in the OAuth Bearer Token RFC. [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept the token using both methods.</p>
+      <p>Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in either the HTTP header or a form-encoded body parameter as described in the OAuth Bearer Token RFC [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>]. Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept the token using both methods.</p>
 
       <p></p>
       <h3 id="http-header">HTTP Header</h3>
@@ -1827,7 +1833,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
       <p>Micropub defines a link relation value of <code>micropub</code> to link to a website's Micropub endpoint from the profile page identifying the user.</p>
 
-      <p>A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by authenticating with a domain name using [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>]. During this authentication (and authorization), the client discovers the Micropub endpoint which will be used to create posts, as well as obtains an access token it will use in the Micropub requests.</p>
+      <p>A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by discovering the Micropub endpoint for the user via this link relation.</p>
 
       <p>The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
@@ -1941,20 +1947,29 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span></h2>
     <p><em>This section is non-normative.</em></p>
 
-    <section id="changes-from-13-july-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-13-july-2016-wd-to-this-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-13-july-2016-wd-to-this-version" resource="#h-changes-from-13-july-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 13 July 2016 WD to this version</span></h3>
+    <section id="changes-from-16-august-2016-cr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-16-august-2016-cr-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span></h3>
 
       <ul>
+        <li>Rephrase paragraph on HTTP 202 response</li>
+        <li>Add explicit note that JSON posts require content-type header</li>
         <li>Add example of including embedded images when posting an article</li>
         <li>Add explicit utf-8 charset to all examples</li>
         <li>Add normative text describing the configuration and syndicate-to response</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-13-july-2016-wd-to-16-august-2016-cr" typeof="bibo:Chapter" resource="#changes-from-13-july-2016-wd-to-16-august-2016-cr" property="bibo:hasPart">
+      <h3 id="h-changes-from-13-july-2016-wd-to-16-august-2016-cr" resource="#h-changes-from-13-july-2016-wd-to-16-august-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</span></h3>
+
+      <ul>
         <li>Clarified text around IndieAuth references to ensure they are non-normative</li>
         <li>Add reference to Fetch for downloading contents of a URL</li>
       </ul>
     </section>
 
     <section id="changes-from-21-june-2016-wd-to-13-july-2016-wd" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-13-july-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span></h3>
+      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span></h3>
 
       <ul>
         <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
@@ -1970,7 +1985,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-04-may-2016-wd-to-21-june-2016-wd" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-21-june-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
+      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
 
       <ul>
         <li>Clarified use of arrays vs single values in requests</li>
@@ -1985,7 +2000,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-01-march-2016-wd-to-04-may-2016-version" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
+      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
@@ -1998,7 +2013,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-version" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
+      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
@@ -2031,7 +2046,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <dl class="bibliography" resource=""><dt id="bib-Fetch">[Fetch]</dt>
         <dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
         </dd><dt id="bib-HTML5">[HTML5]</dt>
-        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
+        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Theresa O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
         </dd><dt id="bib-JSON">[JSON]</dt>
         <dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:requires">https://tools.ietf.org/html/rfc4627</a>
         </dd><dt id="bib-RFC2119">[RFC2119]</dt>
