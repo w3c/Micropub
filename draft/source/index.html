@@ -479,6 +479,24 @@ Content-type: application/json; charset=utf-8
         </section>
 
         <section>
+          <h4>Bidirectional Text</h4>
+
+          <p>Natural language values in Micropub requests MAY contain bidirectional text.
+          The default base direction of Micropub text values is left-to-right. The base 
+          direction of individual natural language values MAY be modified as described below.</p>
+
+          <p>Consumers of bidirectional text typically use the first strong
+          directional character of the text to indicate the base direction of the text,
+          as specified by [[!BIDI]]. If a user enters bidirectional text for a natural 
+          language value, and the  base direction of the text cannot be correctly 
+          identified by the first strong directional character of that text, publishing
+          clients SHOULD explicitly identify the default direction of the text either 
+          by prefixing the value with an apropriate Unicode bidirectional control 
+          character, or for values that contain HTML markup, by using HTML directional attributes.</p>
+
+        </section>
+
+        <section>
           <h4>Unrecognized Properties</h4>
 
           <p>If the request includes properties that the server does not recognize, it SHOULD 
@@ -1244,6 +1262,7 @@ $_FILES['audio']</pre></p>
         <h3>Changes from 16 August 2016 CR to this version</h3>
 
         <ul>
+          <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Rephrase paragraph on HTTP 202 response</li>
           <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
