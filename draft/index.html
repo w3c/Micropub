@@ -545,7 +545,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry toc-inline" role="document" id="respecDocument">
+<body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
@@ -687,8 +687,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <li class="tocline"><a href="#uploading-files" class="tocxref"><span class="secno">3.3.1 </span>Uploading Files</a></li>
               <li class="tocline"><a href="#json-syntax" class="tocxref"><span class="secno">3.3.2 </span>JSON Syntax</a></li>
               <li class="tocline"><a href="#nested-microformats-objects" class="tocxref"><span class="secno">3.3.3 </span>Nested Microformats Objects</a></li>
-              <li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.4 </span>Unrecognized Properties</a></li>
-              <li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.5 </span>Response</a></li>
+              <li class="tocline"><a href="#bidirectional-text" class="tocxref"><span class="secno">3.3.4 </span>Bidirectional Text</a></li>
+              <li class="tocline"><a href="#unrecognized-properties" class="tocxref"><span class="secno">3.3.5 </span>Unrecognized Properties</a></li>
+              <li class="tocline"><a href="#response" class="tocxref"><span class="secno">3.3.6 </span>Response</a></li>
             </ol>
           </li>
           <li class="tocline"><a href="#update" class="tocxref"><span class="secno">3.4 </span>Update</a>
@@ -1107,8 +1108,17 @@ Content-Transfer-Encoding: binary
 
       </section>
 
+      <section id="bidirectional-text" typeof="bibo:Chapter" resource="#bidirectional-text" property="bibo:hasPart">
+        <h4 id="h-bidirectional-text" resource="#h-bidirectional-text"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.4 </span>Bidirectional Text</span></h4>
+
+        <p>Natural language values in Micropub requests <em class="rfc2119" title="MAY">MAY</em> contain bidirectional text. The default base direction of Micropub text values is left-to-right. The base direction of individual natural language values <em class="rfc2119" title="MAY">MAY</em> be modified as described below.</p>
+
+        <p>Consumers of bidirectional text typically use the first strong directional character of the text to indicate the base direction of the text, as specified by [<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>]. If a user enters bidirectional text for a natural language value, and the base direction of the text cannot be correctly identified by the first strong directional character of that text, publishing clients <em class="rfc2119" title="SHOULD">SHOULD</em> explicitly identify the default direction of the text either by prefixing the value with an apropriate Unicode bidirectional control character, or for values that contain HTML markup, by using HTML directional attributes.</p>
+
+      </section>
+
       <section id="unrecognized-properties" typeof="bibo:Chapter" resource="#unrecognized-properties" property="bibo:hasPart">
-        <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.4 </span>Unrecognized Properties</span></h4>
+        <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Unrecognized Properties</span></h4>
 
         <p>If the request includes properties that the server does not recognize, it <em class="rfc2119" title="SHOULD">SHOULD</em> create the post anyway with any values that are recognized, and <em class="rfc2119" title="SHOULD">SHOULD</em> store the unrecognized values internally, and return them when queried.</p>
 
@@ -1117,7 +1127,7 @@ Content-Transfer-Encoding: binary
       </section>
 
       <section id="response" typeof="bibo:Chapter" resource="#response" property="bibo:hasPart">
-        <h4 id="h-response" resource="#h-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Response</span></h4>
+        <h4 id="h-response" resource="#h-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.6 </span>Response</span></h4>
 
         <p>When the post is created, the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> return either an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code> code, and <em class="rfc2119" title="MUST">MUST</em> return a <code>Location</code> header indicating the URL of the created post. [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]</p>
 
@@ -1951,6 +1961,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span></h3>
 
       <ul>
+        <li>Add note about how to specify base direction of bidirectional text</li>
         <li>Rephrase paragraph on HTTP 202 response</li>
         <li>Add explicit note that JSON posts require content-type header</li>
         <li>Add example of including embedded images when posting an article</li>
@@ -2043,7 +2054,9 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
     <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
       <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Normative references</span></h3>
-      <dl class="bibliography" resource=""><dt id="bib-Fetch">[Fetch]</dt>
+      <dl class="bibliography" resource=""><dt id="bib-BIDI">[BIDI]</dt>
+        <dd>Mark Davis; Aharon Lanin; Andrew Glass. Unicode Consortium. <a href="http://www.unicode.org/reports/tr9/" property="dc:requires"><cite>Unicode Bidirectional Algorithm</cite></a>. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/" property="dc:requires">http://www.unicode.org/reports/tr9/</a>
+        </dd><dt id="bib-Fetch">[Fetch]</dt>
         <dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
         </dd><dt id="bib-HTML5">[HTML5]</dt>
         <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Theresa O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
