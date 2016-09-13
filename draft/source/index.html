@@ -738,7 +738,7 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
         <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
           <code>q</code> parameter to specify what you are querying.</p>
 
-        <p class="note">The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
+        <p class="note">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>,
           so in this case, Micropub clients MUST append the <code>q</code> parameter
           instead of replacing the query string.</p>
 
@@ -756,6 +756,10 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
           <p><pre class="example">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-type: application/json; charset=utf-8
 
 {
   "media-endpoint": "https://media.example.com/micropub",
@@ -791,6 +795,9 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -805,6 +812,9 @@ Content-type: application/json; charset=utf-8
 
           <p><pre class="example">GET /micropub?q=source&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -829,6 +839,9 @@ Content-type: application/json; charset=utf-8
 
           <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -850,7 +863,7 @@ Content-type: application/json; charset=utf-8
 
           <p><pre>GET /micropub?q=syndicate-to</pre></p>
 
-          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
+          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets. If no endpoints are defined, the value of the <code>syndicate-to</code> object SHOULD be an empty JSON array <code>[]</code>.</p>
 
           <p>At a minimum, a syndication target MUST have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
 
@@ -1239,7 +1252,7 @@ $_FILES['audio']</pre></p>
       <section class="appendix informative">
         <h3>Implementations</h3>
 
-        <p>You can find a list of <a href="http://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
+        <p>You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
       </section>
     </section>
 
@@ -1265,13 +1278,14 @@ $_FILES['audio']</pre></p>
         <h3>Changes from 16 August 2016 CR to this version</h3>
 
         <ul>
-          <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Rephrase paragraph on HTTP 202 response</li>
           <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
           <li>Add explicit utf-8 charset to all examples</li>
           <li>Add normative text describing the configuration and syndicate-to response</li>
+          <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Document conformance requirements of querying</li>
+          <li>Explicitly documented config response when empty</li>
         </ul>
       </section>
 
