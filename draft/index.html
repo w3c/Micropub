@@ -832,7 +832,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li><em class="rfc2119" title="MUST">MUST</em> support both header and form parameter methods of <a href="#authentication">authentication</a></li>
           <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
           <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
-          <li>If the server does not specify a Media Endpoint, then it <em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          <li>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the <a href="#source-content">source content query</a></li>
+          <li>Servers that do not specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          <li>Servers that specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support the <a href="#configuration">configuration query</a>, other servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query</li>
         </ul>
       </section>
 
@@ -1384,7 +1386,7 @@ Content-Transfer-Encoding: binary
 
       <div class="note">
         <div class="note-title marker" aria-level="4" role="heading" id="h-note4"><span>Note</span></div>
-        <p class="">The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
+        <p class="">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
       </div>
 
       <section id="configuration" typeof="bibo:Chapter" resource="#configuration" property="bibo:hasPart">
@@ -1405,6 +1407,10 @@ Content-Transfer-Encoding: binary
         <div class="example">
           <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
   <span class="hljs-string">"media-endpoint"</span>: <span class="hljs-string">"https://media.example.com/micropub"</span>,
@@ -1426,6 +1432,8 @@ Authorization: Bearer xxxxxxxxx
   ]
 }</pre></div>
         <p></p>
+
+        <p>Servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query, and returning all properties relevant to the server. If none of the properties apply to the server, the response <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON object, <code>{}</code>.</p>
       </section>
 
       <section id="source-content" typeof="bibo:Chapter" resource="#source-content" property="bibo:hasPart">
@@ -1441,6 +1449,9 @@ Authorization: Bearer xxxxxxxxx
         <div class="example">
           <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
 Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
@@ -1458,6 +1469,9 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
         <div class="example">
           <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
 Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
@@ -1473,6 +1487,8 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 }</pre></div>
         <p></p>
 
+        <p>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the source content query.</p>
+
         <h4 id="html-content">HTML Content</h4>
 
         <p>If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>].</p>
@@ -1483,6 +1499,9 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
         <div class="example">
           <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
 Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
 {
@@ -1507,7 +1526,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
         <p></p><pre class="hljs">GET /micropub?q=syndicate-to</pre>
         <p></p>
 
-        <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
+        <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets. If no endpoints are defined, the value of the <code>syndicate-to</code> object <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON array <code>[]</code>.</p>
 
         <p>At a minimum, a syndication target <em class="rfc2119" title="MUST">MUST</em> have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
 
@@ -1549,14 +1568,16 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
   ]
 }</pre></div>
         <p></p>
+
+        <p>At a minimum, a syndication destination <em class="rfc2119" title="MUST">MUST</em> have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
+
+        <p>The Micropub server <em class="rfc2119" title="MAY">MAY</em> also include additional information about the destination service and user account. This is accomplished with the additional properties <code>service</code> and <code>user</code>, both of which can have three properties, <code>name</code> (a human-readable name), <code>url</code> and <code>photo</code> (both URLs).</p>
+
+        <p>The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
+
+        <p>Servers that support syndicating posts <em class="rfc2119" title="SHOULD">SHOULD</em> support the <code>syndicate-to</code> query.</p>
+
       </section>
-
-      <p>At a minimum, a syndication destination <em class="rfc2119" title="MUST">MUST</em> have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
-
-      <p>The Micropub server <em class="rfc2119" title="MAY">MAY</em> also include additional information about the destination service and user account. This is accomplished with the additional properties <code>service</code> and <code>user</code>, both of which can have three properties, <code>name</code> (a human-readable name), <code>url</code> and <code>photo</code> (both URLs).</p>
-
-      <p>The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
-
     </section>
     <!-- Querying -->
 
@@ -1935,7 +1956,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementations</span></h3>
       <p><em>This section is non-normative.</em></p>
 
-      <p>You can find a list of <a href="http://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
+      <p>You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
     </section>
   </section>
 
@@ -1963,12 +1984,14 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span></h3>
 
       <ul>
-        <li>Add note about how to specify base direction of bidirectional text</li>
         <li>Rephrase paragraph on HTTP 202 response</li>
         <li>Add explicit note that JSON posts require content-type header</li>
         <li>Add example of including embedded images when posting an article</li>
         <li>Add explicit utf-8 charset to all examples</li>
         <li>Add normative text describing the configuration and syndicate-to response</li>
+        <li>Add note about how to specify base direction of bidirectional text</li>
+        <li>Document conformance requirements of querying</li>
+        <li>Explicitly documented config response when empty</li>
       </ul>
     </section>
 

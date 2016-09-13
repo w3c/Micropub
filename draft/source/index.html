@@ -206,7 +206,9 @@
             <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
             <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
             <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
-            <li>If the server does not specify a Media Endpoint, then it MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+            <li>Servers that support updating posts MUST support the <a href="#source-content">source content query</a></li>
+            <li>Servers that do not specify a Media Endpoint MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+            <li>Servers that specify a Media Endpoint MUST support the <a href="#configuration">configuration query</a>, other servers SHOULD support the configuration query</li>
           </ul>
         </section>
 
@@ -736,7 +738,7 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
         <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
           <code>q</code> parameter to specify what you are querying.</p>
 
-        <p class="note">The Micropub endpoint may include a query string such as <code>?micropub=endpoint</code>,
+        <p class="note">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>,
           so in this case, Micropub clients MUST append the <code>q</code> parameter
           instead of replacing the query string.</p>
 
@@ -754,6 +756,10 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
           <p><pre class="example">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-type: application/json; charset=utf-8
 
 {
   "media-endpoint": "https://media.example.com/micropub",
@@ -774,6 +780,8 @@ Authorization: Bearer xxxxxxxxx
     }
   ]
 }</pre></p>
+
+          <p>Servers SHOULD support the configuration query, and returning all properties relevant to the server. If none of the properties apply to the server, the response SHOULD be an empty JSON object, <code>{}</code>.</p>
         </section>
 
         <section>
@@ -787,6 +795,9 @@ Authorization: Bearer xxxxxxxxx
 
           <p><pre class="example">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -801,6 +812,9 @@ Content-type: application/json; charset=utf-8
 
           <p><pre class="example">GET /micropub?q=source&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -815,6 +829,8 @@ Content-type: application/json; charset=utf-8
   }
 }</pre></p>
 
+          <p>Servers that support updating posts MUST support the source content query.</p>
+
           <h5>HTML Content</h5>
 
           <p>If the source of the post was written as HTML content, then the endpoint MUST return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint MUST return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [[microformats2-parsing]].</p>
@@ -823,6 +839,9 @@ Content-type: application/json; charset=utf-8
 
           <p><pre class="example">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/1000
 Authorization: Bearer xxxxxxxxx
+Accept: application/json
+
+HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 
 {
@@ -844,7 +863,7 @@ Content-type: application/json; charset=utf-8
 
           <p><pre>GET /micropub?q=syndicate-to</pre></p>
 
-          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets.</p>
+          <p>The endpoint MUST return the response in [[!JSON]] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets. If no endpoints are defined, the value of the <code>syndicate-to</code> object SHOULD be an empty JSON array <code>[]</code>.</p>
 
           <p>At a minimum, a syndication target MUST have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
 
@@ -883,7 +902,6 @@ Content-type: application/json; charset=utf-8
     }
   ]
 }</pre></p>
-        </section>
 
         <p>At a minimum, a syndication destination MUST have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
 
@@ -891,6 +909,9 @@ Content-type: application/json; charset=utf-8
 
         <p>The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
 
+        <p>Servers that support syndicating posts SHOULD support the <code>syndicate-to</code> query.</p>
+
+        </section>
       </section> <!-- Querying -->
 
       <section>
@@ -1231,7 +1252,7 @@ $_FILES['audio']</pre></p>
       <section class="appendix informative">
         <h3>Implementations</h3>
 
-        <p>You can find a list of <a href="http://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
+        <p>You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
       </section>
     </section>
 
@@ -1257,12 +1278,14 @@ $_FILES['audio']</pre></p>
         <h3>Changes from 16 August 2016 CR to this version</h3>
 
         <ul>
-          <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Rephrase paragraph on HTTP 202 response</li>
           <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
           <li>Add explicit utf-8 charset to all examples</li>
           <li>Add normative text describing the configuration and syndicate-to response</li>
+          <li>Add note about how to specify base direction of bidirectional text</li>
+          <li>Document conformance requirements of querying</li>
+          <li>Explicitly documented config response when empty</li>
         </ul>
       </section>
 
