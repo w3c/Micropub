@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-09-06",
+          publishDate: "2016-09-13",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
@@ -485,14 +485,9 @@ Content-type: application/json; charset=utf-8
           The default base direction of Micropub text values is left-to-right. The base 
           direction of individual natural language values MAY be modified as described below.</p>
 
-          <p>Consumers of bidirectional text typically use the first strong
-          directional character of the text to indicate the base direction of the text,
-          as specified by [[!BIDI]]. If a user enters bidirectional text for a natural 
-          language value, and the  base direction of the text cannot be correctly 
-          identified by the first strong directional character of that text, publishing
-          clients SHOULD explicitly identify the default direction of the text either 
-          by prefixing the value with an apropriate Unicode bidirectional control 
-          character, or for values that contain HTML markup, by using HTML directional attributes.</p>
+          <p>When specifying bidirectional text for a natural language value, and the base direction of the text cannot be correctly identified by the first strong directional character of that text ([[!BIDI]]), publishing clients SHOULD explicitly identify the default direction either by prefixing the value with an appropriate Unicode bidirectional control character, or by using HTML directional markup for HTML values.</p>
+
+          <p>Micropub servers that accept natural language values that contain bidirectional text SHOULD identify the base direction of any given natural language value by either: for plaintext values, scanning the text for the first strong directional character; or for HTML values, by utilizing directional markup. When displaying these natural language values, the server MUST determine the appropriate rendering of the content according to the [[!BIDI]] algorithm, which may necessitate wrapping additional control characters or markup around the string prior to display, in order to apply the base direction.</p>
 
         </section>
 
