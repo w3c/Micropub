@@ -782,6 +782,8 @@ Content-type: application/json; charset=utf-8
 }</pre></p>
 
           <p>Servers SHOULD support the configuration query, and returning all properties relevant to the server. If none of the properties apply to the server, the response SHOULD be an empty JSON object, <code>{}</code>.</p>
+
+          <p>Clients SHOULD treat unexpected responses the same as an empty response, in order to handle unexpected responses from servers that don't support this query. For example, a server that does not implement the configuration query at all may return an HTTP 400 response rather than the expected 200 response with an empty JSON object.</p>
         </section>
 
         <section>
@@ -1286,6 +1288,7 @@ $_FILES['audio']</pre></p>
           <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Document conformance requirements of querying</li>
           <li>Explicitly documented config response when empty</li>
+          <li>Note that clients should treat unknown config responses as an empty response</li>
         </ul>
       </section>
 
