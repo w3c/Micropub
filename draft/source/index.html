@@ -551,8 +551,9 @@ Location: https://aaronpk.example/post/1000</pre></p>
 
         <p>To update an entry, send <code>"action": "update"</code> and specify the
           URL of the entry that is being updated using the "url" property.
-          The request MUST also include either a <code>replace</code>,
-          <code>add</code> or <code>delete</code> property containing the updates to make.</p>
+          The request MUST also include a <code>replace</code>,
+          <code>add</code> or <code>delete</code> property (or any combination of these)
+          containing the updates to make.</p>
         
         <p>The values of each property inside the <code>replace</code>, <code>add</code>
           or <code>delete</code> keys MUST be an array, even if there is only a single value.</p>
