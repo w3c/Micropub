@@ -391,11 +391,38 @@ Content-Transfer-Encoding: binary
 
           <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint MUST also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint MAY download [[!Fetch]] a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
 
-          <p><pre class="example">h=entry&amp;content=hello+world&amp;photo=https://photos.example.com/592829482876343254.jpg</pre></p>
+          <p><pre class="example">h=entry&amp;content=hello+world&amp;photo=https%3A%2F%2Fphotos.example.com%2F592829482876343254.jpg</pre></p>
 
           <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
 
-          <p class="note">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+          <h4>Uploading a photo with alt text</h4>
+
+          <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. The examples below illustrate this in multipart as well as form-encoded format.</p>
+
+          <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
+
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="h"
+
+entry
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="content"
+
+Hello World!
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="photo[alt]"
+
+Spinning globe animation
+--553d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name="photo[value]"; filename="globe.gif"
+Content-Type: image/gif
+Content-Transfer-Encoding: binary
+
+... (binary data) ...
+--553d9cee2030456a81931fb708ece92c--</pre></p>
+
+          <p><pre class="example">h=entry&amp;content=hello+world&amp;photo[value]=https%3A%2F%2Fphotos.example.com%2Fglobe.gif&amp;photo[alt]=Spinning+globe+animation</pre></p>
+
         </section>
 
         <section>
@@ -414,6 +441,25 @@ Content-type: application/json; charset=utf-8
     "content": ["hello world"],
     "category": ["foo","bar"],
     "photo": ["https://photos.example.com/592829482876343254.jpg"]
+  }
+}</pre></p>
+
+          <h5>Creating a post with image alt text</h5>
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Content-type: application/json; charset=utf-8
+
+{
+  "type": ["h-entry"],
+  "properties": {
+    "content": ["hello world"],
+    "category": ["foo","bar"],
+    "photo": [
+      {
+        "value": "https://photos.example.com/globe.gif",
+        "alt": "Spinning globe animation"
+      }
+    ]
   }
 }</pre></p>
         </section>
@@ -708,7 +754,7 @@ Content-Transfer-Encoding: binary
 ... (binary data) ...
 --553d9cee2030456a81931fb708ece92c--</pre></p>
 
-          <p class="note">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+          <p class="note">To include accessibility-related information such as image alt text when creating posts that contain an image, the alt text is associated with the post itself rather than the media file. This is analogous to an HTML img tag where the img tag has a src attribute pointing to the media file and an alt attribute with the alt text. See <a href="#uploading-a-photo-with-alt-text">Uploading a photo with alt text</a> for more information.</p>
 
         </section>
 
