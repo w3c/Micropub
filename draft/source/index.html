@@ -205,6 +205,7 @@
           <ul>
             <li>MUST support both header and form parameter methods of <a href="#authentication">authentication</a></li>
             <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
+            <li>MUST support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
             <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
             <li>Servers that support updating posts MUST support the <a href="#source-content">source content query</a></li>
             <li>Servers that do not specify a Media Endpoint MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
@@ -274,6 +275,8 @@
             <li>Creating a post using JSON syntax including a nested Microformats2 object</li>
             <li>Uploading a file to the specified Media Endpoint</li>
             <li>Creating a post with a file by sending the request as <code>multipart/form-data</code> to the Micropub endpoint</li>
+            <li>Creating a post with a photo referenced by URL</li>
+            <li>Creating a post with a photo referenced by URL that includes image alt text</li>
             <li>Returning <code>HTTP 201 Created</code> and a <code>Location</code> header when creating a post</li>
             <li>Returning <code>HTTP 202 Created</code> and a <code>Location</code> header when creating a post</li>
             <li>Updating a post and replacing all values of a property</li>
@@ -358,7 +361,7 @@
       <section>
         <h3>Create</h3>
 
-        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used. Clients and servers MUST support creating posts using the x-www-form-urlencoded encoding, and MAY also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used. Clients and servers MUST support creating posts using the x-www-form-urlencoded syntax, and MAY also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
         <p><pre><code>h={Microformats object type}</code></pre></p>
         <p>e.g., <code>h=entry</code></p>
