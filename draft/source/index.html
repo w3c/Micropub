@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-09-13",
+          publishDate: "2016-09-15",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
@@ -349,6 +349,9 @@
         </p>
 
         <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+
+        <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+
         <p class="note">The server MUST NOT store the <code>access_token</code> property in the post.</p>
       </section>
 
@@ -422,6 +425,8 @@ Content-Transfer-Encoding: binary
 --553d9cee2030456a81931fb708ece92c--</pre></p>
 
           <p><pre class="example">h=entry&amp;content=hello+world&amp;photo[value]=https%3A%2F%2Fphotos.example.com%2Fglobe.gif&amp;photo[alt]=Spinning+globe+animation</pre></p>
+
+          <p class="warning">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
 
         </section>
 
