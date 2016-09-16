@@ -349,6 +349,9 @@
         </p>
 
         <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+
+        <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+
         <p class="note">The server MUST NOT store the <code>access_token</code> property in the post.</p>
       </section>
 
