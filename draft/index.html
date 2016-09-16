@@ -422,7 +422,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-09-13",
+      "publishDate": "2016-09-15",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -551,7 +551,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-13-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-13">13 September 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-15-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-15">15 September 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -967,6 +967,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p></p>
 
       <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+
+      <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+
       <div class="note">
         <div class="note-title marker" aria-level="4" role="heading" id="h-note1"><span>Note</span></div>
         <p class="">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
@@ -1021,15 +1024,50 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 3</span></div><pre class="hljs javascript">h=entry&amp;content=hello+world&amp;photo=https:<span class="hljs-comment">//photos.example.com/592829482876343254.jpg</span></pre></div>
+          <div class="example-title marker"><span>Example 3</span></div><pre class="hljs xquery">h=entry&amp;content=hello+world&amp;photo=https<span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Fphotos</span>.example.com<span class="hljs-meta">%2F592829482876343254</span>.jpg</pre></div>
         <p></p>
 
         <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
 
-        <div class="note">
-          <div class="note-title marker" aria-level="5" role="heading" id="h-note2"><span>Note</span></div>
-          <p class="">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+        <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
+
+        <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. The examples below illustrate this in multipart as well as form-encoded format.</p>
+
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
+
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"h"</span>
+
+entry
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"content"</span>
+
+Hello World!
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"photo[alt]"</span>
+
+Spinning globe animation
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
+Content-Disposition: form-data; name=<span class="hljs-string">"photo[value]"</span>; filename=<span class="hljs-string">"globe.gif"</span>
+Content-Type: image/gif
+Content-Transfer-Encoding: binary
+
+... (binary data) ...
+-<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
+        <p></p>
+
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs xquery">h=entry&amp;content=hello+world&amp;photo[<span class="hljs-keyword">value</span>]=https<span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Fphotos</span>.example.com<span class="hljs-meta">%2Fglobe</span>.gif&amp;photo[alt]=Spinning+globe+animation</pre></div>
+        <p></p>
+
+        <div class="warning">
+          <div class="warning-title marker"><span>Warning</span></div>
+          <p class="">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
         </div>
+
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
@@ -1040,7 +1078,7 @@ Content-Transfer-Encoding: binary
         <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
 
@@ -1050,6 +1088,28 @@ Content-Transfer-Encoding: binary
     <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello world"</span>],
     <span class="hljs-string">"category"</span>: [<span class="hljs-string">"foo"</span>,<span class="hljs-string">"bar"</span>],
     <span class="hljs-string">"photo"</span>: [<span class="hljs-string">"https://photos.example.com/592829482876343254.jpg"</span>]
+  }
+}</span></pre></div>
+        <p></p>
+
+        <h4 id="creating-a-post-with-image-alt-text">Creating a post with image alt text</h4>
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+
+<span class="xquery">{
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
+  <span class="hljs-string">"properties"</span>: {
+    <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello world"</span>],
+    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"foo"</span>,<span class="hljs-string">"bar"</span>],
+    <span class="hljs-string">"photo"</span>: [
+      {
+        <span class="hljs-string">"value"</span>: <span class="hljs-string">"https://photos.example.com/globe.gif"</span>,
+        <span class="hljs-string">"alt"</span>: <span class="hljs-string">"Spinning globe animation"</span>
+      }
+    ]
   }
 }</span></pre></div>
         <p></p>
@@ -1068,7 +1128,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs markdown">h=entry
+          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs markdown">h=entry
 &amp;summary=Weighed+70.64+kg
 &amp;weight[type]=h-measure
 &amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=70.64
@@ -1080,7 +1140,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
     <span class="hljs-string">"summary"</span>: [
@@ -1117,7 +1177,7 @@ Content-Transfer-Encoding: binary
 
         <p>When specifying bidirectional text for a natural language value, and the base direction of the text cannot be correctly identified by the first strong directional character of that text ([<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>]), publishing clients <em class="rfc2119" title="SHOULD">SHOULD</em> explicitly identify the default direction either by prefixing the value with an appropriate Unicode bidirectional control character, or by using HTML directional markup for HTML values.</p>
 
-        <p>Micropub servers that accept natural language values that contain bidirectional text <em class="rfc2119" title="SHOULD">SHOULD</em> identify the base direction of any given natural language value by either: for plaintext values, scanning the text for the first strong directional character; or for HTML values, by utilizing directional markup. When displaying these natural language values, the server <em class="rfc2119" title="MUST">MUST</em> determine the appropriate rendering of the content according to the [<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>] algorithm, which may necessitate wrapping additional control characters or markup around the string prior to display, in order to apply the base direction.</p>
+        <p>Micropub servers that accept natural language values that contain bidirectional text <em class="rfc2119" title="SHOULD">SHOULD</em> identify the base direction of any given natural language value by either: for plaintext values, scanning the text for the first strong directional character; or for HTML values, by utilizing directional markup, if available, or otherwise scanning for the first strong directional character not contained in a markup tag. When displaying these natural language values, the server <em class="rfc2119" title="MUST">MUST</em> determine the appropriate rendering of the content according to the [<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>] algorithm, which may necessitate wrapping additional control characters or markup around the string prior to display, in order to apply the base direction.</p>
 
       </section>
 
@@ -1137,7 +1197,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://aaronpk.example/post/1000</pre></div>
         <p></p>
 
@@ -1167,8 +1227,8 @@ Content-Transfer-Encoding: binary
 
       <p>Updating entries is done with a JSON post describing the changes to make.</p>
 
-      <p>To update an entry, send <code>"action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include either a <code>replace</code>,
-        <code>add</code> or <code>delete</code> property containing the updates to make.</p>
+      <p>To update an entry, send <code>"action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include a <code>replace</code>,
+        <code>add</code> or <code>delete</code> property (or any combination of these) containing the updates to make.</p>
 
       <p>The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
 
@@ -1178,7 +1238,7 @@ Content-Transfer-Encoding: binary
         <p>Replace all values of the property. If the property does not exist already, it is created.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/post/100"</span>,
   <span class="hljs-string">"replace"</span>: {
@@ -1199,7 +1259,7 @@ Content-Transfer-Encoding: binary
         <p>To add syndication URLs, include one or more URLs in the update request.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"add"</span>: {
@@ -1213,7 +1273,7 @@ Content-Transfer-Encoding: binary
         <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 13</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"add"</span>: {
@@ -1229,7 +1289,7 @@ Content-Transfer-Encoding: binary
         <p>If the property exists, remove it. This completely removes the specified property.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 14</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"delete"</span>: [<span class="hljs-string">"category"</span>]
@@ -1240,7 +1300,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 15</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"delete"</span>: {
@@ -1271,12 +1331,12 @@ Content-Transfer-Encoding: binary
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
+        <div class="example-title marker"><span>Example 16</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 14</span></div><pre class="hljs xquery">{
+        <div class="example-title marker"><span>Example 17</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"delete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
@@ -1285,12 +1345,12 @@ Content-Transfer-Encoding: binary
       <p>To undelete a post, use "undelete" as the action.</p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 15</span></div><pre class="hljs javascript">action=undelete
+        <div class="example-title marker"><span>Example 18</span></div><pre class="hljs javascript">action=undelete
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 16</span></div><pre class="hljs xquery">{
+        <div class="example-title marker"><span>Example 19</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"undelete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
@@ -1317,7 +1377,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 17</span></div><pre class="hljs xquery">GET /micropub?q=config
+          <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -1339,7 +1399,7 @@ Authorization: Bearer xxxxxxxxx
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 18</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
+          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
 Content-Disposition: form-data; name=<span class="hljs-string">"file"</span>; filename=<span class="hljs-string">"sunset.jpg"</span>
@@ -1351,8 +1411,8 @@ Content-Transfer-Encoding: binary
         <p></p>
 
         <div class="note">
-          <div class="note-title marker" aria-level="5" role="heading" id="h-note3"><span>Note</span></div>
-          <p class="">The <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> has raised an issue requesting examples of how to include accessibility-related information such as image alt text when creating posts that contain an image. Please see <a href="https://github.com/w3c/Micropub/issues/34">Issue 34</a> to track the progress of this issue.</p>
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note2"><span>Note</span></div>
+          <p class="">To include accessibility-related information such as image alt text when creating posts that contain an image, the alt text is associated with the post itself rather than the media file. This is analogous to an HTML img tag where the img tag has a src attribute pointing to the media file and an alt attribute with the alt text. See <a href="#uploading-a-photo-with-alt-text">Uploading a photo with alt text</a> for more information.</p>
         </div>
 
       </section>
@@ -1364,7 +1424,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 19</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
         <p></p>
 
@@ -1385,7 +1445,7 @@ Content-Transfer-Encoding: binary
         <code>q</code> parameter to specify what you are querying.</p>
 
       <div class="note">
-        <div class="note-title marker" aria-level="4" role="heading" id="h-note4"><span>Note</span></div>
+        <div class="note-title marker" aria-level="4" role="heading" id="h-note3"><span>Note</span></div>
         <p class="">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
       </div>
 
@@ -1405,7 +1465,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=config
+          <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1449,7 +1509,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1469,7 +1529,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 25</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1499,7 +1559,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1536,7 +1596,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
+          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1603,7 +1663,7 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 25</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=https:<span class="hljs-comment">//aaronpk.example/post/404</span>
+        <div class="example-title marker"><span>Example 28</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=https:<span class="hljs-comment">//aaronpk.example/post/404</span>
 Authorization: Bearer xxxxxxxx
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">400</span> Bad Request
@@ -1661,7 +1721,6 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
         <li>like-of</li>
         <li>repost-of</li>
         <li>syndication - Pass one or more URLs pointing to places where this entry already exists. Can be used for importing existing content to a site.</li>
-        <li>like-of</li>
         <li>mp-syndicate-to = https://myfavoritesocialnetwork.example/aaronpk, https://archive.org/, etc.
           <ul>
             <li>This property is giving a command to the Micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
@@ -1685,7 +1744,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
@@ -1700,7 +1759,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXX
@@ -1711,7 +1770,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 28</span></div><pre class="hljs xquery">curl https://aaronpk.example/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
+          <div class="example-title marker"><span>Example 31</span></div><pre class="hljs xquery">curl https://aaronpk.example/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
         <p></p>
 
       </section>
@@ -1731,7 +1790,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 32</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
@@ -1760,7 +1819,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 33</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 
@@ -1787,7 +1846,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 31</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 34</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
         <p></p>
 
@@ -1795,7 +1854,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 32</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 35</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
 
