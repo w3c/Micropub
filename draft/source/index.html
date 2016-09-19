@@ -792,6 +792,11 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
           <p>The Media Endpoint MAY periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
 
+          <section>
+            <h4>Media Endpoint Error Response</h4>
+
+            <p>The Media Endpoint SHOULD follow the same conventions for returning error responses as the Micropub endpoint, described in <a href="#error-response">Error Response</a>.</p>
+          </section>
         </section>
 
       </section>
@@ -1359,7 +1364,8 @@ $_FILES['audio']</pre></p>
           <li>Note that clients should treat unknown config responses as an empty response</li>
           <li>New method for specifying image alt text on properties that support images</li>
           <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
-          <li>add explicit note of using numeric offsets in form-encoded arrays</li>
+          <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
+          <li>Add reference to error response section under Media Endpoint</li>
         </ul>
       </section>
 

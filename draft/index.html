@@ -706,7 +706,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <li class="tocline"><a href="#discovery" class="tocxref"><span class="secno">3.6.1 </span>Discovery</a></li>
               <li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">3.6.2 </span>Authentication</a></li>
               <li class="tocline"><a href="#request" class="tocxref"><span class="secno">3.6.3 </span>Request</a></li>
-              <li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.6.4 </span>Response</a></li>
+              <li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.6.4 </span>Response</a>
+                <ol class="toc">
+                  <li class="tocline"><a href="#media-endpoint-error-response" class="tocxref"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</a></li>
+                </ol>
+              </li>
             </ol>
           </li>
           <li class="tocline"><a href="#querying" class="tocxref"><span class="secno">3.7 </span>Querying</a>
@@ -1451,6 +1455,11 @@ Content-Transfer-Encoding: binary
 
         <p>The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
 
+        <section id="media-endpoint-error-response" typeof="bibo:Chapter" resource="#media-endpoint-error-response" property="bibo:hasPart">
+          <h5 id="h-media-endpoint-error-response" resource="#h-media-endpoint-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</span></h5>
+
+          <p>The Media Endpoint <em class="rfc2119" title="SHOULD">SHOULD</em> follow the same conventions for returning error responses as the Micropub endpoint, described in <a href="#error-response">Error Response</a>.</p>
+        </section>
       </section>
 
     </section>
@@ -2075,7 +2084,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Note that clients should treat unknown config responses as an empty response</li>
         <li>New method for specifying image alt text on properties that support images</li>
         <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
-        <li>add explicit note of using numeric offsets in form-encoded arrays</li>
+        <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
+        <li>Add reference to error response section under Media Endpoint</li>
       </ul>
     </section>
 
