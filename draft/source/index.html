@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-09-15",
+          publishDate: "2016-09-19",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
@@ -367,8 +367,9 @@
         <p>e.g., <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
         <p>e.g., <code>content=hello+world</code></p>
-        <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name.</p>
+        <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name. The server MUST support both array bracket syntaxes (with and without numeric offsets).</p>
         <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
+        <p>or <code>category[0]=foo&amp;category[1]=bar</code></p>
         <p>Properties that accept multiple values MUST also accept a single value as a string. A complete example of a form-encoded request follows.</p>
         <p><pre class="example">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></p>
 
@@ -428,6 +429,19 @@ Content-Transfer-Encoding: binary
 --553d9cee2030456a81931fb708ece92c--</pre></p>
 
           <p><pre class="example">h=entry&amp;content=hello+world&amp;photo[value]=https%3A%2F%2Fphotos.example.com%2Fglobe.gif&amp;photo[alt]=Spinning+globe+animation</pre></p>
+
+          <h4>Uploading multiple photos with alt text</h4>
+
+          <p>To upload multiple photos with alt text, you can use numeric offsets in the form-encoded array, or send the equivalent request in JSON format (see below).</p>
+
+          <p><pre class="example">h=entry&amp;
+content=hello+worlds&amp;
+photo[0][value]=https%3A%2F%2Fphotos.example.com%2Fearth.gif&amp;
+photo[0][alt]=Spinning+animation+of+Earth&amp;
+photo[1][value]=https%3A%2F%2Fphotos.example.com%2Fmars.gif&amp;
+photo[1][alt]=Spinning+animation+of+Mars
+</pre></p>
+
 
           <p class="warning">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
 
@@ -1345,6 +1359,7 @@ $_FILES['audio']</pre></p>
           <li>Note that clients should treat unknown config responses as an empty response</li>
           <li>New method for specifying image alt text on properties that support images</li>
           <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
+          <li>add explicit note of using numeric offsets in form-encoded arrays</li>
         </ul>
       </section>
 
