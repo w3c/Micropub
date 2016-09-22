@@ -193,10 +193,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       margin-bottom: 1em;
     }
     
-    .note> p:first-child,
-    .ednote> p:first-child,
-    .issue> p:first-child,
-    .warning> p:first-child {
+    .note>p:first-child,
+    .ednote>p:first-child,
+    .issue>p:first-child,
+    .warning>p:first-child {
       margin-top: 0
     }
     
@@ -383,11 +383,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
     /* --- DL --- */
     
-    .section dd> p:first-child {
+    .section dd>p:first-child {
       margin-top: 0;
     }
     
-    .section dd> p:last-child {
+    .section dd>p:last-child {
       margin-bottom: 0;
     }
     
@@ -418,11 +418,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
-  <meta name="generator" content="ReSpec 5.0.0">
+  <meta name="generator" content="ReSpec 5.0.4">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-09-19",
+      "publishDate": "2016-09-22",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -551,7 +551,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-19-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-19">19 September 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-22-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-22">22 September 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -774,19 +774,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2>
+    <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span>
+    </h2>
     <p><em>This section is non-normative.</em></p>
 
     <p>Micropub is a spec to create content on a server using web or native app clients. Micropub is primarily focused around creating "posts" (individual pieces of content such as blog posts, photos, short notes, or responses) on a website, although it can be used for other kinds of content as well. The Micropub spec defines a simple mechanism to create content, as well as a more thorough mechanism to update and delete content.</p>
 
     <section id="social-web-working-group" typeof="bibo:Chapter" resource="#social-web-working-group" property="bibo:hasPart">
-      <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span></h3>
+      <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span>
+      </h3>
 
       <p>Micropub is one of two client APIs being produced by the Social Web Working Group with slightly different use cases and approaches. Interested implementers should check out and review the other approach, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, as well.</p>
     </section>
 
     <section id="background" typeof="bibo:Chapter" resource="#background" property="bibo:hasPart">
-      <h3 id="h-background" resource="#h-background"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Background</span></h3>
+      <h3 id="h-background" resource="#h-background"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Background</span>
+      </h3>
 
       <p>The Micropub vocabulary is derived directly from the [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] vocabulary. Micropub is meant to be a serialization of Microformats that can be submitted as an HTTP POST. The method for developing new Micropub vocabularies is to look at the Microformats representation and work backwards.</p>
     </section>
@@ -795,18 +798,21 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span></h2>
+    <h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span>
+    </h2>
 
     <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
       <em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
 
     <section id="conformance-classes" typeof="bibo:Chapter" resource="#conformance-classes" property="bibo:hasPart">
-      <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span></h3>
+      <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span>
+      </h3>
 
       <p>This section describes the conformance criteria for Micropub clients and servers. All implementations <em class="rfc2119" title="MUST">MUST</em> support UTF-8 encoding.</p>
 
       <section id="publishing-clients" typeof="bibo:Chapter" resource="#publishing-clients" property="bibo:hasPart">
-        <h4 id="h-publishing-clients" resource="#h-publishing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Publishing Clients</span></h4>
+        <h4 id="h-publishing-clients" resource="#h-publishing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Publishing Clients</span>
+        </h4>
 
         <p>A conforming Micropub client that creates posts:</p>
         <ul>
@@ -819,7 +825,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </section>
 
       <section id="editing-clients" typeof="bibo:Chapter" resource="#editing-clients" property="bibo:hasPart">
-        <h4 id="h-editing-clients" resource="#h-editing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2 </span>Editing Clients</span></h4>
+        <h4 id="h-editing-clients" resource="#h-editing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2 </span>Editing Clients</span>
+        </h4>
 
         <p>A conforming Micropub client that edits posts:</p>
         <ul>
@@ -829,7 +836,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </section>
 
       <section id="servers" typeof="bibo:Chapter" resource="#servers" property="bibo:hasPart">
-        <h4 id="h-servers" resource="#h-servers"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.3 </span>Servers</span></h4>
+        <h4 id="h-servers" resource="#h-servers"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.3 </span>Servers</span>
+        </h4>
 
         <p>A conforming Micropub server:</p>
         <ul>
@@ -846,36 +854,42 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section id="candidate-recommendation-exit-criteria" typeof="bibo:Chapter" resource="#candidate-recommendation-exit-criteria" property="bibo:hasPart">
-      <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span></h3>
+      <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span>
+      </h3>
 
       <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
 
       <section id="client" typeof="bibo:Chapter" resource="#client" property="bibo:hasPart">
-        <h4 id="h-client" resource="#h-client"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Client</span></h4>
+        <h4 id="h-client" resource="#h-client"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Client</span>
+        </h4>
 
         <p>A Micropub Client is an implementation that sends Micropub requests to create or otherwise manipulate posts. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
       </section>
 
       <section id="server" typeof="bibo:Chapter" resource="#server" property="bibo:hasPart">
-        <h4 id="h-server" resource="#h-server"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Server</span></h4>
+        <h4 id="h-server" resource="#h-server"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Server</span>
+        </h4>
 
         <p>A Micropub Server is an implementation that can create and optionally edit and delete posts given a Micropub request. The Micropub server <em class="rfc2119" title="MAY">MAY</em> also support a Media Endpoint for handling file uploads outside of the primary Micropub endpoint. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
       </section>
 
       <section id="independent" typeof="bibo:Chapter" resource="#independent" property="bibo:hasPart">
-        <h4 id="h-independent" resource="#h-independent"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Independent</span></h4>
+        <h4 id="h-independent" resource="#h-independent"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Independent</span>
+        </h4>
 
         <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
       </section>
 
       <section id="interoperable" typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
-        <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span></h4>
+        <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span>
+        </h4>
 
         <p>A Client and Server implementation are considered interoperable for a specific feature when the Server takes the defined action that the Client requests, the Client gets the expected response from a Server according to the feature, and the Server sends the expected response to the Client.</p>
       </section>
 
       <section id="implementation" typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
-        <h4 id="h-implementation" resource="#h-implementation"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.5 </span>Implementation</span></h4>
+        <h4 id="h-implementation" resource="#h-implementation"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.5 </span>Implementation</span>
+        </h4>
 
         <p>An Implementation is a Micropub Client or Server which meets all of the following criteria:</p>
 
@@ -888,7 +902,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </section>
 
       <section id="feature" typeof="bibo:Chapter" resource="#feature" property="bibo:hasPart">
-        <h4 id="h-feature" resource="#h-feature"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.6 </span>Feature</span></h4>
+        <h4 id="h-feature" resource="#h-feature"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.6 </span>Feature</span>
+        </h4>
 
         <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
 
@@ -930,7 +945,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section id="test-suite-and-reporting" typeof="bibo:Chapter" resource="#test-suite-and-reporting" property="bibo:hasPart">
-      <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span></h3>
+      <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span>
+      </h3>
 
       <p>Please submit your implementation reports at <a href="http://micropub.net/implementation-reports/">http://micropub.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://micropub.rocks/">micropub.rocks</a>.</p>
 
@@ -942,14 +958,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section id="syntax" typeof="bibo:Chapter" resource="#syntax" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-syntax" resource="#h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Syntax</span></h2>
+    <h2 id="h-syntax" resource="#h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Syntax</span>
+    </h2>
 
     <p>As [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] has a relatively small ruleset for parsing HTML documents into a data structure, Micropub similarly defines a small set of rules to interpret HTTP POST and GET requests as Micropub commands. Where [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] does not require changing the parsing rules to introduce new properties of an object such as an [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], Micropub similarly does not require changing parsing rules to interpret requests that may correspond to different post types, such as posting videos vs "likes".
     </p>
     <p>The Micropub syntax describes how to interpret HTTP POST and GET requests into useful server actions.</p>
 
     <section id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
-      <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Overview</span></h3>
+      <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Overview</span>
+      </h3>
 
       <p>All Micropub requests to create posts are sent as UTF-8
         <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
@@ -957,7 +975,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section id="reserved-properties" typeof="bibo:Chapter" resource="#reserved-properties" property="bibo:hasPart">
-      <h3 id="h-reserved-properties" resource="#h-reserved-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Reserved Properties</span></h3>
+      <h3 id="h-reserved-properties" resource="#h-reserved-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Reserved Properties</span>
+      </h3>
 
       <p>A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
 
@@ -984,7 +1003,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
-      <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Create</span></h3>
+      <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Create</span>
+      </h3>
 
       <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded syntax, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
@@ -1003,7 +1023,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p></p>
 
       <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
-        <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span></h4>
+        <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span>
+        </h4>
 
         <p>To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
         <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
@@ -1094,7 +1115,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
-        <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span></h4>
+        <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span>
+        </h4>
 
         <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
         <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
@@ -1139,7 +1161,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="nested-microformats-objects" typeof="bibo:Chapter" resource="#nested-microformats-objects" property="bibo:hasPart">
-        <h4 id="h-nested-microformats-objects" resource="#h-nested-microformats-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.3 </span>Nested Microformats Objects</span></h4>
+        <h4 id="h-nested-microformats-objects" resource="#h-nested-microformats-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.3 </span>Nested Microformats Objects</span>
+        </h4>
 
         <p>Whenever possible, nested Microformats objects should be avoided. A better alternative is to reference objects by their URLs. The most common example is including an h-card for a venue, such as checking in to a location or tagging a photo with a person or location. In these cases, it is better to reference the object by URL, creating it first if necessary.</p>
 
@@ -1194,7 +1217,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="bidirectional-text" typeof="bibo:Chapter" resource="#bidirectional-text" property="bibo:hasPart">
-        <h4 id="h-bidirectional-text" resource="#h-bidirectional-text"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.4 </span>Bidirectional Text</span></h4>
+        <h4 id="h-bidirectional-text" resource="#h-bidirectional-text"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.4 </span>Bidirectional Text</span>
+        </h4>
 
         <p>Natural language values in Micropub requests <em class="rfc2119" title="MAY">MAY</em> contain bidirectional text. The default base direction of Micropub text values is left-to-right. The base direction of individual natural language values <em class="rfc2119" title="MAY">MAY</em> be modified as described below.</p>
 
@@ -1205,7 +1229,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="unrecognized-properties" typeof="bibo:Chapter" resource="#unrecognized-properties" property="bibo:hasPart">
-        <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Unrecognized Properties</span></h4>
+        <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Unrecognized Properties</span>
+        </h4>
 
         <p>If the request includes properties that the server does not recognize, it <em class="rfc2119" title="SHOULD">SHOULD</em> create the post anyway with any values that are recognized, and <em class="rfc2119" title="SHOULD">SHOULD</em> store the unrecognized values internally, and return them when queried.</p>
 
@@ -1214,7 +1239,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="response" typeof="bibo:Chapter" resource="#response" property="bibo:hasPart">
-        <h4 id="h-response" resource="#h-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.6 </span>Response</span></h4>
+        <h4 id="h-response" resource="#h-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.6 </span>Response</span>
+        </h4>
 
         <p>When the post is created, the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> return either an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code> code, and <em class="rfc2119" title="MUST">MUST</em> return a <code>Location</code> header indicating the URL of the created post. [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]</p>
 
@@ -1244,7 +1270,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
     <!-- Create -->
 
     <section id="update" typeof="bibo:Chapter" resource="#update" property="bibo:hasPart">
-      <h3 id="h-update" resource="#h-update"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Update</span></h3>
+      <h3 id="h-update" resource="#h-update"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Update</span>
+      </h3>
 
       <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support updating posts, including adding and removing individual properties as described in this section.</p>
 
@@ -1256,7 +1283,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       <p>The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
 
       <section id="replace" typeof="bibo:Chapter" resource="#replace" property="bibo:hasPart">
-        <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span></h4>
+        <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span>
+        </h4>
 
         <p>Replace all values of the property. If the property does not exist already, it is created.</p>
         <p></p>
@@ -1273,7 +1301,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="add" typeof="bibo:Chapter" resource="#add" property="bibo:hasPart">
-        <h4 id="h-add" resource="#h-add"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.2 </span>Add</span></h4>
+        <h4 id="h-add" resource="#h-add"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.2 </span>Add</span>
+        </h4>
 
         <p>If there are any existing values for this property, they are not changed, the new values are added. If the property does not exist already, it is created.</p>
 
@@ -1307,7 +1336,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="remove" typeof="bibo:Chapter" resource="#remove" property="bibo:hasPart">
-        <h4 id="h-remove" resource="#h-remove"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.3 </span>Remove</span></h4>
+        <h4 id="h-remove" resource="#h-remove"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.3 </span>Remove</span>
+        </h4>
 
         <p>If the property exists, remove it. This completely removes the specified property.</p>
         <p></p>
@@ -1334,7 +1364,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       </section>
 
       <section id="response-1" typeof="bibo:Chapter" resource="#response-1" property="bibo:hasPart">
-        <h4 id="h-response-1" resource="#h-response-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.4 </span>Response</span></h4>
+        <h4 id="h-response-1" resource="#h-response-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.4 </span>Response</span>
+        </h4>
 
         <p>The server <em class="rfc2119" title="MUST">MUST</em> respond to successful update requests with HTTP 200, 201 or 204. If the update operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
 
@@ -1344,7 +1375,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
     <!-- Updating -->
 
     <section id="delete" typeof="bibo:Chapter" resource="#delete" property="bibo:hasPart">
-      <h3 id="h-delete" resource="#h-delete"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Delete</span></h3>
+      <h3 id="h-delete" resource="#h-delete"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Delete</span>
+      </h3>
 
       <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support deleting posts, and <em class="rfc2119" title="MAY">MAY</em> support undeleting posts.</p>
 
@@ -1383,7 +1415,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
     <!-- Delete -->
 
     <section id="media-endpoint" typeof="bibo:Chapter" resource="#media-endpoint" property="bibo:hasPart">
-      <h3 id="h-media-endpoint" resource="#h-media-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Media Endpoint</span></h3>
+      <h3 id="h-media-endpoint" resource="#h-media-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Media Endpoint</span>
+      </h3>
 
       <p>In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server <em class="rfc2119" title="MAY">MAY</em> support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
 
@@ -1394,7 +1427,8 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       <p>The above user flow applies just as well to mobile apps as it does to desktop apps. In general, the user experience of an application can be improved by having more of the work done asynchronously, giving the user a chance to continue working instead of waiting for the system to finish.</p>
 
       <section id="discovery" typeof="bibo:Chapter" resource="#discovery" property="bibo:hasPart">
-        <h4 id="h-discovery" resource="#h-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.1 </span>Discovery</span></h4>
+        <h4 id="h-discovery" resource="#h-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.1 </span>Discovery</span>
+        </h4>
 
         <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server <em class="rfc2119" title="MUST">MUST</em> include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients <em class="rfc2119" title="MUST NOT">MUST NOT</em> assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
 
@@ -1410,13 +1444,15 @@ Authorization: Bearer xxxxxxxxx
       </section>
 
       <section id="authentication" typeof="bibo:Chapter" resource="#authentication" property="bibo:hasPart">
-        <h4 id="h-authentication" resource="#h-authentication"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.2 </span>Authentication</span></h4>
+        <h4 id="h-authentication" resource="#h-authentication"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.2 </span>Authentication</span>
+        </h4>
 
         <p>The Media Endpoint <em class="rfc2119" title="MUST">MUST</em> accept the same access tokens that the Micropub endpoint accepts.</p>
       </section>
 
       <section id="request" typeof="bibo:Chapter" resource="#request" property="bibo:hasPart">
-        <h4 id="h-request" resource="#h-request"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.3 </span>Request</span></h4>
+        <h4 id="h-request" resource="#h-request"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.3 </span>Request</span>
+        </h4>
 
         <p>To upload a file to the Media Endpoint, the client sends a <code>multipart/form-data</code> request with one part named <code>file</code>. The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> ignore the suggested filename that the client sends.</p>
 
@@ -1441,7 +1477,8 @@ Content-Transfer-Encoding: binary
       </section>
 
       <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
-        <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4 </span>Response</span></h4>
+        <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4 </span>Response</span>
+        </h4>
 
         <p>The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL <em class="rfc2119" title="SHOULD">SHOULD</em> be unguessable, such as using a UUID in the path. If the request is successful, the endpoint <em class="rfc2119" title="MUST">MUST</em> return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
 
@@ -1456,7 +1493,8 @@ Content-Transfer-Encoding: binary
         <p>The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
 
         <section id="media-endpoint-error-response" typeof="bibo:Chapter" resource="#media-endpoint-error-response" property="bibo:hasPart">
-          <h5 id="h-media-endpoint-error-response" resource="#h-media-endpoint-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</span></h5>
+          <h5 id="h-media-endpoint-error-response" resource="#h-media-endpoint-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</span>
+          </h5>
 
           <p>The Media Endpoint <em class="rfc2119" title="SHOULD">SHOULD</em> follow the same conventions for returning error responses as the Micropub endpoint, described in <a href="#error-response">Error Response</a>.</p>
         </section>
@@ -1465,7 +1503,8 @@ Content-Transfer-Encoding: binary
     </section>
 
     <section id="querying" typeof="bibo:Chapter" resource="#querying" property="bibo:hasPart">
-      <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7 </span>Querying</span></h3>
+      <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7 </span>Querying</span>
+      </h3>
 
       <p>Micropub clients may need to query the Micropub endpoint to discover its capabilities, such as finding a list of syndication targets that it displays to the user, or retrieving the source of a post to display in the updating interface.</p>
 
@@ -1478,7 +1517,8 @@ Content-Transfer-Encoding: binary
       </div>
 
       <section id="configuration" typeof="bibo:Chapter" resource="#configuration" property="bibo:hasPart">
-        <h4 id="h-configuration" resource="#h-configuration"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.1 </span>Configuration</span></h4>
+        <h4 id="h-configuration" resource="#h-configuration"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.1 </span>Configuration</span>
+        </h4>
 
         <p>When a user initially logs in to a Micropub client, the client will want to query some initial information about the user's endpoint. The client <em class="rfc2119" title="SHOULD">SHOULD</em> make a query request <code>q=config</code> to obtain initial configuration information.</p>
 
@@ -1527,7 +1567,8 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
       </section>
 
       <section id="source-content" typeof="bibo:Chapter" resource="#source-content" property="bibo:hasPart">
-        <h4 id="h-source-content" resource="#h-source-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.2 </span>Source Content</span></h4>
+        <h4 id="h-source-content" resource="#h-source-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.2 </span>Source Content</span>
+        </h4>
 
         <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
@@ -1609,7 +1650,8 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
       <!-- Source Content -->
 
       <section id="syndication-targets" typeof="bibo:Chapter" resource="#syndication-targets" property="bibo:hasPart">
-        <h4 id="h-syndication-targets" resource="#h-syndication-targets"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.3 </span>Syndication Targets</span></h4>
+        <h4 id="h-syndication-targets" resource="#h-syndication-targets"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.3 </span>Syndication Targets</span>
+        </h4>
 
         <p>To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
 
@@ -1672,20 +1714,20 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
     <!-- Querying -->
 
     <section id="error-response" typeof="bibo:Chapter" resource="#error-response" property="bibo:hasPart">
-      <h3 id="h-error-response" resource="#h-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.8 </span>Error Response</span></h3>
+      <h3 id="h-error-response" resource="#h-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.8 </span>Error Response</span>
+      </h3>
 
-      <p>If there was an error with the request, the endpoint <em class="rfc2119" title="MUST">MUST</em> return an appropriate HTTP status code, typically 400, 401, or 403, and <em class="rfc2119" title="MAY">MAY</em> include a description of the error. If an error body is returned, the response body <em class="rfc2119" title="MUST">MUST</em> be encoded as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] object and include at least a single property named <code>error</code> with the value set to one of the below:</p>
+      <p>If there was an error with the request, the endpoint <em class="rfc2119" title="MUST">MUST</em> return an appropriate HTTP status code, typically 400, 401, or 403, and <em class="rfc2119" title="MAY">MAY</em> include a description of the error. If an error body is returned, the response body <em class="rfc2119" title="MUST">MUST</em> be encoded as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] object and include at least a single property named <code>error</code>. The following error codes are defined:</p>
 
       <p></p>
       <ul>
-        <li>HTTP 403: <code>forbidden</code> - The authenticated user does not have permission to perform this request</li>
-        <li>HTTP 401: <code>insufficient_scope</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response <em class="rfc2119" title="MAY">MAY</em> include the "scope" attribute with the scope necessary to successfully perform this request.</li>
-        <li>HTTP 400: <code>invalid_request</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
-        <li>HTTP 400: <code>not_found</code> - The post with the requested URL was not found</li>
+        <li>HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request</li>
+        <li>HTTP 401: <code>"error":"insufficient_scope"</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response <em class="rfc2119" title="MAY">MAY</em> include the <code>"scope"</code> attribute with the scope necessary to successfully perform this request.</li>
+        <li>HTTP 400: <code>"error":"invalid_request"</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
       </ul>
       <p></p>
 
-      <p>The response body <em class="rfc2119" title="MAY">MAY</em> also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
+      <p>Clients <em class="rfc2119" title="SHOULD">SHOULD</em> treat unexpected error strings as a generic error. The response body <em class="rfc2119" title="MAY">MAY</em> also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
 
       <p>See the OAuth 2 Bearer Token [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] spec for more details on the how to return error responses.</p>
 
@@ -1695,10 +1737,10 @@ Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
 Authorization: Bearer xxxxxxxx
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">400</span> Bad Request
-Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
+Content-type: application/json
 
 {
-  <span class="hljs-string">"error"</span>: <span class="hljs-string">"not_found"</span>,
+  <span class="hljs-string">"error"</span>: <span class="hljs-string">"invalid_request"</span>,
   <span class="hljs-string">"error_description"</span>: <span class="hljs-string">"The post with the requested URL was not found"</span>
 }</pre></div>
       <p></p>
@@ -1711,12 +1753,14 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
 
   <section id="vocabulary" typeof="bibo:Chapter" resource="#vocabulary" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary</span></h2>
+    <h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary</span>
+    </h2>
 
     <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>]. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
 
     <section class="informative" id="examples-of-creating-objects" typeof="bibo:Chapter" resource="#examples-of-creating-objects" property="bibo:hasPart">
-      <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Examples of Creating Objects</span></h3>
+      <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Examples of Creating Objects</span>
+      </h3>
       <p><em>This section is non-normative.</em></p>
 
       <p>To indicate the object being created, use a property called <code>h</code>, (which would never be the name of a property of a Microformats object), followed by the name of the Microformats object. Examples:
@@ -1758,7 +1802,8 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
       <p></p>
 
       <section id="new-note" typeof="bibo:Chapter" resource="#new-note" property="bibo:hasPart">
-        <h4 id="h-new-note" resource="#h-new-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.1 </span>New Note</span></h4>
+        <h4 id="h-new-note" resource="#h-new-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.1 </span>New Note</span>
+        </h4>
 
         <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
         <p></p>
@@ -1804,7 +1849,8 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
       </section>
 
       <section id="new-reply" typeof="bibo:Chapter" resource="#new-reply" property="bibo:hasPart">
-        <h4 id="h-new-reply" resource="#h-new-reply"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.2 </span>New Reply</span></h4>
+        <h4 id="h-new-reply" resource="#h-new-reply"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.2 </span>New Reply</span>
+        </h4>
 
         <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
         <p></p>
@@ -1832,7 +1878,8 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
       </section>
 
       <section id="new-article-with-html" typeof="bibo:Chapter" resource="#new-article-with-html" property="bibo:hasPart">
-        <h4 id="h-new-article-with-html" resource="#h-new-article-with-html"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article with HTML</span></h4>
+        <h4 id="h-new-article-with-html" resource="#h-new-article-with-html"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article with HTML</span>
+        </h4>
 
         <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
 
@@ -1862,7 +1909,8 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
       </section>
 
       <section id="new-article-with-embedded-images" typeof="bibo:Chapter" resource="#new-article-with-embedded-images" property="bibo:hasPart">
-        <h4 id="h-new-article-with-embedded-images" resource="#h-new-article-with-embedded-images"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>New Article with Embedded Images</span></h4>
+        <h4 id="h-new-article-with-embedded-images" resource="#h-new-article-with-embedded-images"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>New Article with Embedded Images</span>
+        </h4>
 
         <p>To create an article containing embedded images, the HTML of the article should include <code>&lt;img&gt;</code> tags with the URLs of the images returned after uploading them to the Media Endpoint.</p>
 
@@ -1884,7 +1932,7 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
         <div class="example">
           <div class="example-title marker"><span>Example 36</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+<span class="hljs-attribute">Content-type</span>: application/json
 
 <span class="xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
@@ -1897,7 +1945,8 @@ Content-type: application/json; charset=utf<span class="hljs-number">-8</span>
       </section>
 
       <section id="posting-files" typeof="bibo:Chapter" resource="#posting-files" property="bibo:hasPart">
-        <h4 id="h-posting-files" resource="#h-posting-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.5 </span>Posting Files</span></h4>
+        <h4 id="h-posting-files" resource="#h-posting-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.5 </span>Posting Files</span>
+        </h4>
 
         <p>When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
 
@@ -1924,10 +1973,12 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
   <section id="authentication-and-authorization" typeof="bibo:Chapter" resource="#authentication-and-authorization" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-authentication-and-authorization" resource="#h-authentication-and-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Authentication and Authorization</span></h2>
+    <h2 id="h-authentication-and-authorization" resource="#h-authentication-and-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Authentication and Authorization</span>
+    </h2>
 
     <section id="authentication-1" typeof="bibo:Chapter" resource="#authentication-1" property="bibo:hasPart">
-      <h3 id="h-authentication-1" resource="#h-authentication-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Authentication</span></h3>
+      <h3 id="h-authentication-1" resource="#h-authentication-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Authentication</span>
+      </h3>
 
       <p>Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in either the HTTP header or a form-encoded body parameter as described in the OAuth Bearer Token RFC [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>]. Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept the token using both methods.</p>
 
@@ -1944,14 +1995,16 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <!-- Authentication -->
 
     <section id="authorization" typeof="bibo:Chapter" resource="#authorization" property="bibo:hasPart">
-      <h3 id="h-authorization" resource="#h-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Authorization</span></h3>
+      <h3 id="h-authorization" resource="#h-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Authorization</span>
+      </h3>
 
       <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol. Applications <em class="rfc2119" title="MAY">MAY</em> use the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
     </section>
     <!-- Authorization -->
 
     <section id="endpoint-discovery" typeof="bibo:Chapter" resource="#endpoint-discovery" property="bibo:hasPart">
-      <h3 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>Endpoint Discovery</span></h3>
+      <h3 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>Endpoint Discovery</span>
+      </h3>
 
       <p>Micropub defines a link relation value of <code>micropub</code> to link to a website's Micropub endpoint from the profile page identifying the user.</p>
 
@@ -1973,7 +2026,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <!-- Discovery -->
 
     <section id="scope" typeof="bibo:Chapter" resource="#scope" property="bibo:hasPart">
-      <h3 id="h-scope" resource="#h-scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4 </span>Scope</span></h3>
+      <h3 id="h-scope" resource="#h-scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4 </span>Scope</span>
+      </h3>
 
       <p>The Micropub server <em class="rfc2119" title="MUST">MUST</em> require the bearer token to include at least one scope value, in order to ensure posts cannot be created by arbitrary tokens.</p>
       <p>The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 techniques, by passing a space-separated list of scope names in the authorization request. [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>]</p>
@@ -1998,7 +2052,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
   <section id="iana-considerations" typeof="bibo:Chapter" resource="#iana-considerations" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>IANA Considerations</span></h2>
+    <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>IANA Considerations</span>
+    </h2>
     <p>The link relation type below has been registered by IANA per Section 6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
     <dl>
       <dt>Relation Name:</dt>
@@ -2028,7 +2083,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
   <section class="appendix informative" id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Resources</span></h2>
+    <h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Resources</span>
+    </h2>
     <p><em>This section is non-normative.</em></p>
 
     <p>
@@ -2042,7 +2098,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <p></p>
 
     <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
-      <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementations</span></h3>
+      <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementations</span>
+      </h3>
       <p><em>This section is non-normative.</em></p>
 
       <p>You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
@@ -2059,24 +2116,27 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
   <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span></h2>
+    <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
+    </h2>
 
     <p>The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span></h2>
+    <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span>
+    </h2>
     <p><em>This section is non-normative.</em></p>
 
     <section id="changes-from-16-august-2016-cr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-16-august-2016-cr-to-this-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span></h3>
+      <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span>
+      </h3>
 
       <ul>
         <li>Rephrase paragraph on HTTP 202 response</li>
         <li>Add explicit note that JSON posts require content-type header</li>
         <li>Add example of including embedded images when posting an article</li>
-        <li>Add explicit utf-8 charset to all examples</li>
+        <li>Add explicit utf-8 charset to form-encoded examples</li>
         <li>Add normative text describing the configuration and syndicate-to response</li>
         <li>Add note about how to specify base direction of bidirectional text</li>
         <li>Document conformance requirements of querying</li>
@@ -2086,11 +2146,13 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
         <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
         <li>Add reference to error response section under Media Endpoint</li>
+        <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
       </ul>
     </section>
 
     <section id="changes-from-13-july-2016-wd-to-16-august-2016-cr" typeof="bibo:Chapter" resource="#changes-from-13-july-2016-wd-to-16-august-2016-cr" property="bibo:hasPart">
-      <h3 id="h-changes-from-13-july-2016-wd-to-16-august-2016-cr" resource="#h-changes-from-13-july-2016-wd-to-16-august-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</span></h3>
+      <h3 id="h-changes-from-13-july-2016-wd-to-16-august-2016-cr" resource="#h-changes-from-13-july-2016-wd-to-16-august-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</span>
+      </h3>
 
       <ul>
         <li>Clarified text around IndieAuth references to ensure they are non-normative</li>
@@ -2099,7 +2161,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-21-june-2016-wd-to-13-july-2016-wd" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-13-july-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span></h3>
+      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span>
+      </h3>
 
       <ul>
         <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
@@ -2115,7 +2178,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-04-may-2016-wd-to-21-june-2016-wd" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-21-june-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span></h3>
+      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span>
+      </h3>
 
       <ul>
         <li>Clarified use of arrays vs single values in requests</li>
@@ -2130,7 +2194,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-01-march-2016-wd-to-04-may-2016-version" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span></h3>
+      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span>
+      </h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
@@ -2143,7 +2208,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-version" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span></h3>
+      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span>
+      </h3>
 
       <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
@@ -2169,10 +2235,12 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
   <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>References</span></h2>
+    <h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>References</span>
+    </h2>
 
     <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
-      <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Normative references</span></h3>
+      <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Normative references</span>
+      </h3>
       <dl class="bibliography" resource=""><dt id="bib-BIDI">[BIDI]</dt>
         <dd>Mark Davis; Aharon Lanin; Andrew Glass. Unicode Consortium. <a href="http://www.unicode.org/reports/tr9/" property="dc:requires"><cite>Unicode Bidirectional Algorithm</cite></a>. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/" property="dc:requires">http://www.unicode.org/reports/tr9/</a>
         </dd><dt id="bib-Fetch">[Fetch]</dt>
@@ -2200,7 +2268,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
-      <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Informative references</span></h3>
+      <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Informative references</span>
+      </h3>
       <dl class="bibliography" resource=""><dt id="bib-IndieAuth">[IndieAuth]</dt>
         <dd>Aaron Parecki. indieweb.org. <a href="https://indieweb.org/IndieAuth-spec" property="dc:references"><cite>IndieAuth</cite></a>. Living Specification. URL: <a href="https://indieweb.org/IndieAuth-spec" property="dc:references">https://indieweb.org/IndieAuth-spec</a>
         </dd><dt id="bib-Microformats2">[Microformats2]</dt>
