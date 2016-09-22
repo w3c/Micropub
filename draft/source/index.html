@@ -455,7 +455,7 @@ photo[1][alt]=Spinning+animation+of+Mars
           <p>When creating posts in JSON format, all values MUST be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "type": ["h-entry"],
@@ -469,7 +469,7 @@ Content-type: application/json; charset=utf-8
           <h5>Creating a post with image alt text</h5>
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "type": ["h-entry"],
@@ -833,7 +833,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "media-endpoint": "https://media.example.com/micropub",
@@ -874,7 +874,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "properties": {
@@ -891,7 +891,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "type": "h-entry",
@@ -918,7 +918,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "properties": {
@@ -950,7 +950,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/1.1 200 OK
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "syndicate-to": [
