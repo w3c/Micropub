@@ -993,16 +993,15 @@ Content-type: application/json; charset=utf-8
       <section>
         <h3>Error Response</h3>
 
-        <p>If there was an error with the request, the endpoint MUST return an appropriate HTTP status code, typically 400, 401, or 403, and MAY include a description of the error. If an error body is returned, the response body MUST be encoded as a [[!JSON]] object and include at least a single property named <code>error</code> with the value set to one of the below:</p>
+        <p>If there was an error with the request, the endpoint MUST return an appropriate HTTP status code, typically 400, 401, or 403, and MAY include a description of the error. If an error body is returned, the response body MUST be encoded as a [[!JSON]] object and include at least a single property named <code>error</code>. The following error codes are defined:</p>
 
         <p><ul>
-          <li>HTTP 403: <code>forbidden</code> - The authenticated user does not have permission to perform this request</li>
-          <li>HTTP 401: <code>insufficient_scope</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response MAY include the "scope" attribute with the scope necessary to successfully perform this request.</li>
-          <li>HTTP 400: <code>invalid_request</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
-          <li>HTTP 400: <code>not_found</code> - The post with the requested URL was not found</li>
+          <li>HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request</li>
+          <li>HTTP 401: <code>"error":"insufficient_scope"</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response MAY include the <code>"scope"</code> attribute with the scope necessary to successfully perform this request.</li>
+          <li>HTTP 400: <code>"error":"invalid_request"</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
         </ul></p>
 
-        <p>The response body MAY also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
+        <p>Clients SHOULD treat unexpected error strings as a generic error. The response body MAY also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
 
         <p>See the OAuth 2 Bearer Token [[!RFC6750]] spec for more details on the how to return error responses.</p>
 
@@ -1013,7 +1012,7 @@ HTTP/1.1 400 Bad Request
 Content-type: application/json
 
 {
-  "error": "not_found",
+  "error": "invalid_request",
   "error_description": "The post with the requested URL was not found"
 }</pre></p>
 
