@@ -1010,7 +1010,7 @@ Content-type: application/json; charset=utf-8
 Authorization: Bearer xxxxxxxx
 
 HTTP/1.1 400 Bad Request
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "error": "not_found",
@@ -1165,7 +1165,7 @@ Location: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</p
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/json; charset=utf-8
+Content-type: application/json
 
 {
   "type": ["h-entry"],
@@ -1356,7 +1356,7 @@ $_FILES['audio']</pre></p>
           <li>Rephrase paragraph on HTTP 202 response</li>
           <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
-          <li>Add explicit utf-8 charset to all examples</li>
+          <li>Add explicit utf-8 charset to form-encoded examples</li>
           <li>Add normative text describing the configuration and syndicate-to response</li>
           <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Document conformance requirements of querying</li>
@@ -1366,6 +1366,7 @@ $_FILES['audio']</pre></p>
           <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
           <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
           <li>Add reference to error response section under Media Endpoint</li>
+          <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
         </ul>
       </section>
 
