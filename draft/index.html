@@ -422,7 +422,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-09-22",
+      "publishDate": "2016-09-28",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -545,13 +545,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry toc-inline" role="document" id="respecDocument">
+<body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-22-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-22">22 September 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-28-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-28">28 September 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://micropub.net/draft/">http://micropub.net/draft/</a></dd>
@@ -744,7 +744,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li class="tocline"><a href="#scope" class="tocxref"><span class="secno">5.4 </span>Scope</a></li>
         </ol>
       </li>
-      <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">6. </span>IANA Considerations</a></li>
+      <li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">6. </span>Security Considerations</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#security-and-privacy-review" class="tocxref"><span class="secno">6.1 </span>Security and Privacy Review</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">7. </span>IANA Considerations</a></li>
       <li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a>
         <ol class="toc">
           <li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">A.1 </span>Implementations</a></li>
@@ -784,7 +789,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span>
       </h3>
 
-      <p>Micropub is one of two client APIs being produced by the Social Web Working Group with slightly different use cases and approaches. Interested implementers should check out and review the other approach, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, as well.</p>
+      <p>Micropub is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complementary protocols should review <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> as well as the overview document [<cite><a class="bibref" href="#bib-social-web-protocols">social-web-protocols</a></cite>].</p>
     </section>
 
     <section id="background" typeof="bibo:Chapter" resource="#background" property="bibo:hasPart">
@@ -1125,7 +1130,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <div class="example">
           <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+<span class="hljs-attribute">Content-type</span>: application/json
 
 <span class="xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
@@ -1142,7 +1147,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <div class="example">
           <div class="example-title marker"><span>Example 8</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/json; charset=utf-8
+<span class="hljs-attribute">Content-type</span>: application/json
 
 <span class="xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
@@ -1538,7 +1543,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
+Content-type: application/json
 
 {
   <span class="hljs-string">"media-endpoint"</span>: <span class="hljs-string">"https://media.example.com/micropub"</span>,
@@ -1583,7 +1588,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
+Content-type: application/json
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1603,7 +1608,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
+Content-type: application/json
 
 {
   <span class="hljs-string">"type"</span>: <span class="hljs-string">"h-entry"</span>,
@@ -1633,7 +1638,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
+Content-type: application/json
 
 {
   <span class="hljs-string">"properties"</span>: {
@@ -1671,7 +1676,7 @@ Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
-Content-type: application/json; charset=utf-<span class="hljs-number">8</span>
+Content-type: application/json
 
 {
   <span class="hljs-string">"syndicate-to"</span>: [
@@ -2039,20 +2044,57 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
   </section>
   <!-- Authentication and Authorization -->
 
-  <!--
-    <section>
-      <h2>Security Considerations</h2>
+  <section id="security-considerations" typeof="bibo:Chapter" resource="#security-considerations" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-security-considerations" resource="#h-security-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Security Considerations</span>
+    </h2>
 
-      <section>
-        <h3>...</h3>
+    <section id="security-and-privacy-review" typeof="bibo:Chapter" resource="#security-and-privacy-review" property="bibo:hasPart">
+      <h3 id="h-security-and-privacy-review" resource="#h-security-and-privacy-review"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Security and Privacy Review</span>
+      </h3>
 
-      </section>
+      <p>These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([<cite><a class="bibref" href="#bib-security-privacy-questionnaire">security-privacy-questionnaire</a></cite>]).</p>
+
+      <dl>
+        <dt>Does this specification deal with personally-identifiable information?</dt>
+        <dd>Micropub enables users to create and edit posts, so users may enter personally identifiable information when creating content. Micropub clients are aware of the URL of the Micropub endpoint at which they are managing content, and this URL may be personally identifiable or may be a shared domain.</dd>
+        <dt>Does this specification deal with high-value data?</dt>
+        <dd>This specification uses OAuth 2.0 Bearer Tokens, which are considered "high-value" according to the Security and Privacy questionnaire. You can refer to the OAuth 2.0 Bearer Token (RFC6750) <a href="https://tools.ietf.org/html/rfc6750#section-5">Security Considerations</a> section for more information.</dd>
+        <dt>Does this specification introduce new state for an origin that persists across browsing sessions?</dt>
+        <dd>No, Micropub does not provide any mechanism to persist data across browsing sessions.</dd>
+        <dt>Does this specification expose persistent, cross-origin state to the web?</dt>
+        <dd>This spec allows clients to create posts, and the server may make the new URL publicly viewable.</dd>
+        <dt>Does this specification expose any other data to an origin that it doesn't currently have access to?</dt>
+        <dd>No</dd>
+        <dt>Does this specification enable new script execution/loading mechanisms?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to a user's location?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to sensors on a user's device?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to aspects of a user's local computing environment?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to other devices?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin some measure of control over a user agent's native UI?</dt>
+        <dd>No</dd>
+        <dt>Does this specification expose temporary identifiers to the web?</dt>
+        <dd>No</dd>
+        <dt>Does this specification distinguish between behavior in first-party and third-party contexts?</dt>
+        <dd>No</dd>
+        <dt>How should this specification work in the context of a user agent's "incognito" mode?</dt>
+        <dd>If the user agent is a Micropub client, the client should "forget" any access tokens and Micropub endpoints associated with the user's browsing session when in "incognito" mode.</dd>
+        <dt>Does this specification persist data to a user's local device?</dt>
+        <dd>Micropub clients will need to store the user's Micropub endpoint and access token. When the user clears their browsing data, the client should remove any stored credentials, as well as any cached URLs from the Media Endpoint.</dd>
+        <dt>Does this specification allow downgrading default security characteristics?</dt>
+        <dd>No</dd>
+      </dl>
     </section>
-    -->
+  </section>
 
   <section id="iana-considerations" typeof="bibo:Chapter" resource="#iana-considerations" property="bibo:hasPart">
     <!--OddPage-->
-    <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>IANA Considerations</span>
+    <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>IANA Considerations</span>
     </h2>
     <p>The link relation type below has been registered by IANA per Section 6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
     <dl>
@@ -2147,6 +2189,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
         <li>Add reference to error response section under Media Endpoint</li>
         <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
+        <li>Updated intro paragraph to link to Social Web Protocols</li>
       </ul>
     </section>
 
@@ -2282,6 +2325,10 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-card" property="dc:references"><cite>h-card</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-card" property="dc:references">http://microformats.org/wiki/h-card</a>
         </dd><dt id="bib-h-event">[h-event]</dt>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-event" property="dc:references"><cite>h-event</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-event" property="dc:references">http://microformats.org/wiki/h-event</a>
+        </dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt>
+        <dd>Mike West. W3C. <a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. 10 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references">https://www.w3.org/TR/security-privacy-questionnaire/</a>
+        </dd><dt id="bib-social-web-protocols">[social-web-protocols]</dt>
+        <dd>Amy Guy. W3C. <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. 23 August 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a>
         </dd>
       </dl>
     </section>
