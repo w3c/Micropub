@@ -1270,16 +1270,50 @@ $_FILES['audio']</pre></p>
 
     </section> <!-- Authentication and Authorization -->
 
-    <!--
     <section>
       <h2>Security Considerations</h2>
 
       <section>
-        <h3>...</h3>
+        <h3>Security and Privacy Review</h3>
 
+        <p>These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([[security-privacy-questionnaire]]).</p>
+
+        <dl>
+          <dt>Does this specification deal with personally-identifiable information?</dt>
+            <dd>Micropub enables users to create and edit posts, so users may enter personally identifiable information when creating content. Micropub clients are aware of the URL of the Micropub endpoint at which they are managing content, and this URL may be personally identifiable or may be a shared domain.</dd>
+          <dt>Does this specification deal with high-value data?</dt>
+            <dd>This specification uses OAuth 2.0 Bearer Tokens, which are considered "high-value" according to the Security and Privacy questionnaire. You can refer to the OAuth 2.0 Bearer Token (RFC6750) <a href="https://tools.ietf.org/html/rfc6750#section-5">Security Considerations</a> section for more information.</dd>
+          <dt>Does this specification introduce new state for an origin that persists across browsing sessions?</dt>
+            <dd>No, Micropub does not provide any mechanism to persist data across browsing sessions.</dd>
+          <dt>Does this specification expose persistent, cross-origin state to the web?</dt>
+            <dd>This spec allows clients to create posts, and the server may make the new URL publicly viewable.</dd>
+          <dt>Does this specification expose any other data to an origin that it doesn't currently have access to?</dt>
+            <dd>No</dd>
+          <dt>Does this specification enable new script execution/loading mechanisms?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to a user's location?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to sensors on a user's device?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to aspects of a user's local computing environment?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to other devices?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin some measure of control over a user agent's native UI?</dt>
+            <dd>No</dd>
+          <dt>Does this specification expose temporary identifiers to the web?</dt>
+            <dd>No</dd>
+          <dt>Does this specification distinguish between behavior in first-party and third-party contexts?</dt>
+            <dd>No</dd>
+          <dt>How should this specification work in the context of a user agent's "incognito" mode?</dt>
+            <dd>If the user agent is a Micropub client, the client should "forget" any access tokens and Micropub endpoints associated with the user's browsing session when in "incognito" mode.</dd>
+          <dt>Does this specification persist data to a user's local device?</dt>
+            <dd>Micropub clients will need to store the user's Micropub endpoint and access token. When the user clears their browsing data, the client should remove any stored credentials, as well as any cached URLs from the Media Endpoint.</dd>
+          <dt>Does this specification allow downgrading default security characteristics?</dt>
+            <dd>No</dd>
+        </dl>
       </section>
     </section>
-    -->
 
     <section>
       <h2>IANA Considerations</h2>
