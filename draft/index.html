@@ -422,7 +422,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-09-28",
+      "publishDate": "2016-10-05",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -545,13 +545,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry" role="document" id="respecDocument">
+<body class="h-entry toc-inline" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-28-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-28">28 September 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-05-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-05">05 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -680,7 +680,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </li>
       <li class="tocline"><a href="#syntax" class="tocxref"><span class="secno">3. </span>Syntax</a>
         <ol class="toc">
-          <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a></li>
+          <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">3.1 </span>Overview</a>
+            <ol class="toc">
+              <li class="tocline"><a href="#form-encoded-and-multipart-requests" class="tocxref"><span class="secno">3.1.1 </span>Form-Encoded and Multipart Requests</a></li>
+            </ol>
+          </li>
           <li class="tocline"><a href="#reserved-properties" class="tocxref"><span class="secno">3.2 </span>Reserved Properties</a></li>
           <li class="tocline"><a href="#create" class="tocxref"><span class="secno">3.3 </span>Create</a>
             <ol class="toc">
@@ -977,6 +981,30 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p>All Micropub requests to create posts are sent as UTF-8
         <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
         <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], or [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>]-encoded HTTP requests. Responses typically do not include a response body, indicating the needed information (such as the URL of the created post) in HTTP headers. When a response body is necessary, it <em class="rfc2119" title="SHOULD">SHOULD</em> be returned as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] encoded object.</p>
+
+      <section id="form-encoded-and-multipart-requests" typeof="bibo:Chapter" resource="#form-encoded-and-multipart-requests" property="bibo:hasPart">
+        <h4 id="h-form-encoded-and-multipart-requests" resource="#h-form-encoded-and-multipart-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Form-Encoded and Multipart Requests</span>
+        </h4>
+
+        <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you append square brackets <code>[]</code> to the property name.</p>
+
+        <p>For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
+
+        <p>On the server side, it is expected that the server will convert this to an internal representation of an array. For example, the equivalent JSON representation of this would be:
+        </p><pre class="hljs xquery">{
+  <span class="hljs-string">"category"</span>: [
+    <span class="hljs-string">"foo"</span>,
+    <span class="hljs-string">"bar"</span>
+  ]
+}</pre>
+        <p></p>
+
+        <p>This works equally well in multipart requests, where each value is given in a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
+
+        <p>Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
+
+        </p>
+      </section>
     </section>
 
     <section id="reserved-properties" typeof="bibo:Chapter" resource="#reserved-properties" property="bibo:hasPart">
@@ -991,8 +1019,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <li><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
         <li><code>h</code> - used to specify the object type being created</li>
         <li><code>q</code> - used to query a Micropub endpoint</li>
-        <li><code>url</code> - indicates the URL of the object being changed</li>
-        <li><code>action</code> - indicates whether this is a <code>delete</code>, or <code>undelete</code></li>
+        <li><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
+        <li><code>url</code> - indicates the URL of the object being acted on</li>
         <li><code>mp-*</code> - reserved for future use</li>
       </ul>
       <p></p>
@@ -1018,10 +1046,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <p>e.g., <code>h=entry</code></p>
       <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
       <p>e.g., <code>content=hello+world</code></p>
-      <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name. The server <em class="rfc2119" title="MUST">MUST</em> support both array bracket syntaxes (with and without numeric offsets).</p>
+      <p>To specify multiple values for a property, such as multiple categories of an h-entry, append square brackets to the property name, indicating it is an array.</p>
       <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
-      <p>or <code>category[0]=foo&amp;category[1]=bar</code></p>
-      <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value as a string. A complete example of a form-encoded request follows.</p>
+      <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value, with or without the square brackets. A complete example of a form-encoded request follows.</p>
       <p></p>
       <div class="example">
         <div class="example-title marker"><span>Example 1</span></div><pre class="hljs">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div>
@@ -1063,72 +1090,18 @@ Content-Transfer-Encoding: binary
 
         <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
 
-        <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
-
-        <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. The examples below illustrate this in multipart as well as form-encoded format.</p>
-
-        <p></p>
-        <div class="example">
-          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
-
--<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name=<span class="hljs-string">"h"</span>
-
-entry
--<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name=<span class="hljs-string">"content"</span>
-
-Hello World!
--<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name=<span class="hljs-string">"photo[alt]"</span>
-
-Spinning globe animation
--<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name=<span class="hljs-string">"photo[value]"</span>; filename=<span class="hljs-string">"globe.gif"</span>
-Content-Type: image/gif
-Content-Transfer-Encoding: binary
-
-... (binary data) ...
--<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
-        <p></p>
-
-        <p></p>
-        <div class="example">
-          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs xquery">h=entry&amp;content=hello+world&amp;photo[<span class="hljs-keyword">value</span>]=https<span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Fphotos</span>.example.com<span class="hljs-meta">%2Fglobe</span>.gif&amp;photo[alt]=Spinning+globe+animation</pre></div>
-        <p></p>
-
-        <h4 id="uploading-multiple-photos-with-alt-text">Uploading multiple photos with alt text</h4>
-
-        <p>To upload multiple photos with alt text, you can use numeric offsets in the form-encoded array, or send the equivalent request in JSON format (see below).</p>
-
-        <p></p>
-        <div class="example">
-          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs markdown">h=entry&amp;
-content=hello+worlds&amp;
-photo[<span class="hljs-string">0</span>][<span class="hljs-symbol">value</span>]=https%3A%2F%2Fphotos.example.com%2Fearth.gif&amp;
-photo[<span class="hljs-string">0</span>][<span class="hljs-symbol">alt</span>]=Spinning+animation+of+Earth&amp;
-photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">value</span>]=https%3A%2F%2Fphotos.example.com%2Fmars.gif&amp;
-photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=Spinning+animation+of+Mars</pre></div>
-        <p></p>
-
-
-        <div class="warning">
-          <div class="warning-title marker"><span>Warning</span></div>
-          <p class="">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
-        </div>
-
       </section>
 
       <section id="json-syntax" typeof="bibo:Chapter" resource="#json-syntax" property="bibo:hasPart">
         <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span>
         </h4>
 
-        <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
+        <p>In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
         <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
-        <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
+        <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/json
 
@@ -1142,10 +1115,13 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 }</span></pre></div>
         <p></p>
 
-        <h4 id="creating-a-post-with-image-alt-text">Creating a post with image alt text</h4>
+        <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
+
+        <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/json
 
@@ -1163,6 +1139,12 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
   }
 }</span></pre></div>
         <p></p>
+
+        <div class="warning">
+          <div class="warning-title marker"><span>Warning</span></div>
+          <p class="">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
+        </div>
+
       </section>
 
       <section id="nested-microformats-objects" typeof="bibo:Chapter" resource="#nested-microformats-objects" property="bibo:hasPart">
@@ -1175,23 +1157,13 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 
         <p>In some cases, it does not make sense for the nested object to have a URL. For example, when posting an h-measure value, there is no reason for the h-measure itself to have a URL, so this is an acceptable case to use the nested Microformats object syntax.</p>
 
+        <p>Nested objects require that the request be sent in JSON format, since the form-encoding syntax does not consistently support nested objects.</p>
+
         <p>The example below creates a new "weight" measurement post as an h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs markdown">h=entry
-&amp;summary=Weighed+70.64+kg
-&amp;weight[type]=h-measure
-&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=70.64
-&amp;weight[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=kg
-&amp;bodyfat[type]=h-measure
-&amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">num</span>]=19.83
-&amp;bodyfat[<span class="hljs-string">properties</span>][<span class="hljs-symbol">unit</span>]=%</pre></div>
-        <p></p>
-
-        <p></p>
-        <div class="example">
-          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 6</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
     <span class="hljs-string">"summary"</span>: [
@@ -1251,7 +1223,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://aaronpk.example/post/1000</pre></div>
         <p></p>
 
@@ -1294,7 +1266,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <p>Replace all values of the property. If the property does not exist already, it is created.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 8</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/post/100"</span>,
   <span class="hljs-string">"replace"</span>: {
@@ -1316,7 +1288,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <p>To add syndication URLs, include one or more URLs in the update request.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 13</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"add"</span>: {
@@ -1330,7 +1302,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 14</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"add"</span>: {
@@ -1347,7 +1319,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
         <p>If the property exists, remove it. This completely removes the specified property.</p>
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 15</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"delete"</span>: [<span class="hljs-string">"category"</span>]
@@ -1358,7 +1330,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 16</span></div><pre class="hljs xquery">{
+          <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"delete"</span>: {
@@ -1391,12 +1363,12 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 17</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
+        <div class="example-title marker"><span>Example 13</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 18</span></div><pre class="hljs xquery">{
+        <div class="example-title marker"><span>Example 14</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"delete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
@@ -1405,12 +1377,12 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
       <p>To undelete a post, use "undelete" as the action.</p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 19</span></div><pre class="hljs javascript">action=undelete
+        <div class="example-title marker"><span>Example 15</span></div><pre class="hljs javascript">action=undelete
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
       <p></p>
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">{
+        <div class="example-title marker"><span>Example 16</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"undelete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
@@ -1439,7 +1411,7 @@ photo[<span class="hljs-string">1</span>][<span class="hljs-symbol">alt</span>]=
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=config
+          <div class="example-title marker"><span>Example 17</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
 
 {
@@ -1463,7 +1435,7 @@ Authorization: Bearer xxxxxxxxx
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
+          <div class="example-title marker"><span>Example 18</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c
 Content-Disposition: form-data; name=<span class="hljs-string">"file"</span>; filename=<span class="hljs-string">"sunset.jpg"</span>
@@ -1489,7 +1461,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 23</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 19</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
         <p></p>
 
@@ -1538,7 +1510,7 @@ Content-Transfer-Encoding: binary
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=config
+          <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1583,7 +1555,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 25</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1603,7 +1575,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1633,7 +1605,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
+          <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1671,7 +1643,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 28</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
+          <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
 Accept: application/json
 
@@ -1738,7 +1710,7 @@ Content-type: application/json
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 29</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=https:<span class="hljs-comment">//aaronpk.example/post/404</span>
+        <div class="example-title marker"><span>Example 25</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=https:<span class="hljs-comment">//aaronpk.example/post/404</span>
 Authorization: Bearer xxxxxxxx
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">400</span> Bad Request
@@ -1822,7 +1794,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
@@ -1837,7 +1809,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 31</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 27</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXX
@@ -1848,7 +1820,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 32</span></div><pre class="hljs xquery">curl https://aaronpk.example/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
+          <div class="example-title marker"><span>Example 28</span></div><pre class="hljs xquery">curl https://aaronpk.example/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
         <p></p>
 
       </section>
@@ -1869,7 +1841,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 33</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXXXX
 <span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
@@ -1886,29 +1858,26 @@ Content-type: application/json
         <h4 id="h-new-article-with-html" resource="#h-new-article-with-html"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article with HTML</span>
         </h4>
 
-        <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
-
-        <p></p>
-        <ul>
-          <li>name</li>
-          <li>content[html]</li>
-          <li>category</li>
-          <li>published</li>
-        </ul>
-        <p></p>
+        <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML. Because <code>content</code> is an object, this request must be sent in JSON format.</p>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 34</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-type</span>: application/x-www-form-urlencoded; charset=utf-8
+<span class="hljs-attribute">Content-type</span>: application/json
 
-<span class="xquery">h=entry
-&amp;name=Itching<span class="hljs-meta">%3A</span>+h-event+<span class="hljs-keyword">to</span>+iCal+converter
-&amp;content[html]=Now+that+I<span class="hljs-meta">%27ve</span>+been+<span class="hljs-meta">%3Ca</span>+href<span class="hljs-meta">%3D</span><span class="hljs-meta">%22http</span><span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Faaronparecki</span>.com<span class="hljs-meta">%22</span><span class="hljs-meta">%3Ecreating</span>+a+list+<span class="hljs-keyword">of</span>+events<span class="hljs-meta">%3C</span><span class="hljs-meta">%2Fa</span><span class="hljs-meta">%3E</span>
-+on+my+site+it+would+be+great+<span class="hljs-keyword">if</span>+I+could+get+a+more+calendar-like+view+<span class="hljs-keyword">of</span>+that+list...
-&amp;category[]=indieweb&amp;category[]=hevent&amp;category[]=events
-&amp;category[]=calendar&amp;category[]=p3k</span></pre></div>
+<span class="xquery">{
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
+  <span class="hljs-string">"properties"</span>: {
+    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"Itching: h-event to iCal converter"</span>],
+    <span class="hljs-string">"content"</span>: [
+      {<span class="hljs-string">"html"</span>: <span class="hljs-string">"Now that I've been &lt;a href=\"</span>https://aaronparecki.com/events\<span class="hljs-string">"&gt;creating a list of events&lt;/a&gt; on my site using &lt;a href=\"</span>https://p3k.io\<span class="hljs-string">"&gt;p3k&lt;/a&gt;, it would be great if I could get a more calendar-like view of that list..."</span>}
+    ],
+    <span class="hljs-string">"category"</span>: [
+      <span class="hljs-string">"indieweb"</span>, <span class="hljs-string">"p3k"</span>
+    ]
+  }
+}</span></pre></div>
         <p></p>
 
       </section>
@@ -1927,7 +1896,7 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 35</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+          <div class="example-title marker"><span>Example 31</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
         <p></p>
 
@@ -1935,14 +1904,16 @@ Content-type: application/json
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 36</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 32</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-type</span>: application/json
 
 <span class="xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
-    <span class="hljs-string">"content"</span>: [<span class="hljs-string">"&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"</span>https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\<span class="hljs-string">"&gt;&lt;/p&gt;"</span>]
+    <span class="hljs-string">"content"</span>: [
+      {<span class="hljs-string">"html"</span>:<span class="hljs-string">"&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"</span>https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\<span class="hljs-string">"&gt;&lt;/p&gt;"</span>}
+    ]
   }
 }</span></pre></div>
         <p></p>
@@ -2191,6 +2162,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
         <li>Updated intro paragraph to link to Social Web Protocols</li>
         <li>Add Security and Privacy Questionnaire</li>
+        <li>Clarify form-encoded usage and limitations</li>
       </ul>
     </section>
 
