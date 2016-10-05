@@ -333,6 +333,33 @@
           a response body, indicating the needed information (such as the URL
           of the created post) in HTTP headers. When a response body is necessary,
           it SHOULD be returned as a [[!JSON]] encoded object.</p>
+
+        <section>
+          <h4>Form-Encoded and Multipart Requests</h4>
+
+          <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports
+            an extension of the standard URL encoding that includes explicit indicators
+            of multi-valued properties. Specifically, this means in order to send multiple 
+            values for a given property, you append square brackets <code>[]</code> to the property name.</p>
+
+          <p>For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
+
+          <p>On the server side, it is expected that the server will convert this to an 
+            internal representation of an array. For example, the equivalent JSON representation
+            of this would be:
+            <pre>{
+  "category": [
+    "foo",
+    "bar"
+  ]
+}</pre></p>
+          
+          <p>This works equally well in multipart requests, where each value is given in 
+            a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
+
+          <p>Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
+
+        </section>
       </section>
 
       <section>
@@ -345,8 +372,8 @@
             <li><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
             <li><code>h</code> - used to specify the object type being created</li>
             <li><code>q</code> - used to query a Micropub endpoint</li>
-            <li><code>url</code> - indicates the URL of the object being changed</li>
-            <li><code>action</code> - indicates whether this is a <code>delete</code>, or <code>undelete</code></li>
+            <li><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
+            <li><code>url</code> - indicates the URL of the object being acted on</li>
             <li><code>mp-*</code> - reserved for future use</li>
           </ul>
         </p>
@@ -367,10 +394,9 @@
         <p>e.g., <code>h=entry</code></p>
         <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
         <p>e.g., <code>content=hello+world</code></p>
-        <p>To specify multiple values for a property, such as multiple categories of an h-entry, use array bracket notation for the property name. The server MUST support both array bracket syntaxes (with and without numeric offsets).</p>
+        <p>To specify multiple values for a property, such as multiple categories of an h-entry, append square brackets to the property name, indicating it is an array.</p>
         <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
-        <p>or <code>category[0]=foo&amp;category[1]=bar</code></p>
-        <p>Properties that accept multiple values MUST also accept a single value as a string. A complete example of a form-encoded request follows.</p>
+        <p>Properties that accept multiple values MUST also accept a single value, with or without the square brackets. A complete example of a form-encoded request follows.</p>
         <p><pre class="example">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></p>
 
         <section>
@@ -402,57 +428,14 @@ Content-Transfer-Encoding: binary
 
           <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
 
-          <h4>Uploading a photo with alt text</h4>
-
-          <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. The examples below illustrate this in multipart as well as form-encoded format.</p>
-
-          <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
-
---553d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name="h"
-
-entry
---553d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name="content"
-
-Hello World!
---553d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name="photo[alt]"
-
-Spinning globe animation
---553d9cee2030456a81931fb708ece92c
-Content-Disposition: form-data; name="photo[value]"; filename="globe.gif"
-Content-Type: image/gif
-Content-Transfer-Encoding: binary
-
-... (binary data) ...
---553d9cee2030456a81931fb708ece92c--</pre></p>
-
-          <p><pre class="example">h=entry&amp;content=hello+world&amp;photo[value]=https%3A%2F%2Fphotos.example.com%2Fglobe.gif&amp;photo[alt]=Spinning+globe+animation</pre></p>
-
-          <h4>Uploading multiple photos with alt text</h4>
-
-          <p>To upload multiple photos with alt text, you can use numeric offsets in the form-encoded array, or send the equivalent request in JSON format (see below).</p>
-
-          <p><pre class="example">h=entry&amp;
-content=hello+worlds&amp;
-photo[0][value]=https%3A%2F%2Fphotos.example.com%2Fearth.gif&amp;
-photo[0][alt]=Spinning+animation+of+Earth&amp;
-photo[1][value]=https%3A%2F%2Fphotos.example.com%2Fmars.gif&amp;
-photo[1][alt]=Spinning+animation+of+Mars
-</pre></p>
-
-
-          <p class="warning">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
-
         </section>
 
         <section>
-          <h4>JSON Syntax</h4>
+          <h3>JSON Syntax</h3>
 
-          <p>Alternately, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
+          <p>In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
           <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
-          <p>When creating posts in JSON format, all values MUST be specified as arrays, identical to the Microformats 2 JSON format, with a content type of <code>application/json</code>.</p>
+          <p>When creating posts in JSON format, all values MUST be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Content-type: application/json
@@ -466,7 +449,10 @@ Content-type: application/json
   }
 }</pre></p>
 
-          <h5>Creating a post with image alt text</h5>
+          <h4>Uploading a photo with alt text</h4>
+
+          <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Content-type: application/json
@@ -484,6 +470,9 @@ Content-type: application/json
     ]
   }
 }</pre></p>
+
+          <p class="warning">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
+
         </section>
 
         <section>
@@ -507,17 +496,11 @@ Content-type: application/json
             reason for the h-measure itself to have a URL, so this is an acceptable
             case to use the nested Microformats object syntax.</p>
 
+          <p>Nested objects require that the request be sent in JSON format, since the
+            form-encoding syntax does not consistently support nested objects.</p>
+
           <p>The example below creates a new "weight" measurement post as an
             h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
-
-          <p><pre class="example">h=entry
-&amp;summary=Weighed+70.64+kg
-&amp;weight[type]=h-measure
-&amp;weight[properties][num]=70.64
-&amp;weight[properties][unit]=kg
-&amp;bodyfat[type]=h-measure
-&amp;bodyfat[properties][num]=19.83
-&amp;bodyfat[properties][unit]=%</pre></p>
 
 <p><pre class="example">{
   "type": ["h-entry"],
@@ -1125,25 +1108,24 @@ h=entry
         <section>
           <h4>New Article with HTML</h4>
 
-          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
-
-          <p><ul>
-            <li>name</li>
-            <li>content[html]</li>
-            <li>category</li>
-            <li>published</li>
-          </ul></p>
+          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML. Because <code>content</code> is an object, this request must be sent in JSON format.</p>
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
-Content-type: application/x-www-form-urlencoded; charset=utf-8
+Content-type: application/json
 
-h=entry
-&amp;name=Itching%3A+h-event+to+iCal+converter
-&amp;content[html]=Now+that+I%27ve+been+%3Ca+href%3D%22http%3A%2F%2Faaronparecki.com%22%3Ecreating+a+list+of+events%3C%2Fa%3E
-+on+my+site+it+would+be+great+if+I+could+get+a+more+calendar-like+view+of+that+list...
-&amp;category[]=indieweb&amp;category[]=hevent&amp;category[]=events
-&amp;category[]=calendar&amp;category[]=p3k</pre></p>
+{
+  "type": ["h-entry"],
+  "properties": {
+    "name": ["Itching: h-event to iCal converter"],
+    "content": [
+      {"html": "Now that I've been &lt;a href=\"https://aaronparecki.com/events\"&gt;creating a list of events&lt;/a&gt; on my site using &lt;a href=\"https://p3k.io\"&gt;p3k&lt;/a&gt;, it would be great if I could get a more calendar-like view of that list..."}
+    ],
+    "category": [
+      "indieweb", "p3k"
+    ]
+  }
+}</pre></p>
 
         </section>
         <section>
@@ -1169,7 +1151,9 @@ Content-type: application/json
 {
   "type": ["h-entry"],
   "properties": {
-    "content": ["&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\"&gt;&lt;/p&gt;"]
+    "content": [
+      {"html":"&lt;p&gt;Hello World&lt;/p&gt;&lt;p&gt;&lt;img src=\"https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg\"&gt;&lt;/p&gt;"}
+    ]
   }
 }</pre></p>
 
@@ -1402,6 +1386,7 @@ $_FILES['audio']</pre></p>
           <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
           <li>Updated intro paragraph to link to Social Web Protocols</li>
           <li>Add Security and Privacy Questionnaire</li>
+          <li>Clarify form-encoded usage and limitations</li>
         </ul>
       </section>
 
