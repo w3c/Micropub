@@ -986,7 +986,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-form-encoded-and-multipart-requests" resource="#h-form-encoded-and-multipart-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Form-Encoded and Multipart Requests</span>
         </h4>
 
-        <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you append square brackets <code>[]</code> to the property name.</p>
+        <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you <em class="rfc2119" title="MUST">MUST</em> append square brackets <code>[]</code> to the property name.</p>
 
         <p>For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
 
