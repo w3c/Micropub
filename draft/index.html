@@ -422,7 +422,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-10-05",
+      "publishDate": "2016-10-06",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -551,7 +551,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-05-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-05">05 October 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-06-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-06">06 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -704,13 +704,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <li class="tocline"><a href="#response-1" class="tocxref"><span class="secno">3.4.4 </span>Response</a></li>
             </ol>
           </li>
-          <li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a></li>
+          <li class="tocline"><a href="#delete" class="tocxref"><span class="secno">3.5 </span>Delete</a>
+            <ol class="toc">
+              <li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.5.1 </span>Response</a></li>
+            </ol>
+          </li>
           <li class="tocline"><a href="#media-endpoint" class="tocxref"><span class="secno">3.6 </span>Media Endpoint</a>
             <ol class="toc">
               <li class="tocline"><a href="#discovery" class="tocxref"><span class="secno">3.6.1 </span>Discovery</a></li>
               <li class="tocline"><a href="#authentication" class="tocxref"><span class="secno">3.6.2 </span>Authentication</a></li>
               <li class="tocline"><a href="#request" class="tocxref"><span class="secno">3.6.3 </span>Request</a></li>
-              <li class="tocline"><a href="#response-2" class="tocxref"><span class="secno">3.6.4 </span>Response</a>
+              <li class="tocline"><a href="#response-3" class="tocxref"><span class="secno">3.6.4 </span>Response</a>
                 <ol class="toc">
                   <li class="tocline"><a href="#media-endpoint-error-response" class="tocxref"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</a></li>
                 </ol>
@@ -1388,6 +1392,13 @@ Content-Transfer-Encoding: binary
 }</pre></div>
       <p></p>
 
+      <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
+        <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5.1 </span>Response</span>
+        </h4>
+
+        <p>The server <em class="rfc2119" title="MUST">MUST</em> respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
+      </section>
+
     </section>
     <!-- Delete -->
 
@@ -1453,8 +1464,8 @@ Content-Transfer-Encoding: binary
 
       </section>
 
-      <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
-        <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4 </span>Response</span>
+      <section id="response-3" typeof="bibo:Chapter" resource="#response-3" property="bibo:hasPart">
+        <h4 id="h-response-3" resource="#h-response-3"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4 </span>Response</span>
         </h4>
 
         <p>The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL <em class="rfc2119" title="SHOULD">SHOULD</em> be unguessable, such as using a UUID in the path. If the request is successful, the endpoint <em class="rfc2119" title="MUST">MUST</em> return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
@@ -1549,6 +1560,8 @@ Content-type: application/json
 
         <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
+        <p>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the source content query.</p>
+
         <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] URL encoding.</p>
 
         <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
@@ -1594,8 +1607,6 @@ Content-type: application/json
   }
 }</pre></div>
         <p></p>
-
-        <p>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the source content query.</p>
 
         <h4 id="html-content">HTML Content</h4>
 

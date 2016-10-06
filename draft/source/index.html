@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-10-05",
+          publishDate: "2016-10-06",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
@@ -712,6 +712,12 @@ Location: https://aaronpk.example/post/1000</pre></p>
   "url": "https://aaronpk.example/2014/06/01/9/indieweb"
 }</pre></p>
 
+        <section>
+          <h4>Response</h4>
+
+          <p>The server MUST respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server MUST respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server MUST respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
+        </section>
+
       </section> <!-- Delete -->
 
       <section>
@@ -848,6 +854,8 @@ Content-type: application/json
 
           <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
+          <p>Servers that support updating posts MUST support the source content query.</p>
+
           <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [[!HTML5]] URL encoding.</p>
 
           <p>The endpoint MUST return the response in [[!microformats2-parsing]] [[!JSON]] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response MUST include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
@@ -887,8 +895,6 @@ Content-type: application/json
     ]
   }
 }</pre></p>
-
-          <p>Servers that support updating posts MUST support the source content query.</p>
 
           <h5>HTML Content</h5>
 
