@@ -547,13 +547,17 @@ Content-type: application/json
         <section>
           <h4>Unrecognized Properties</h4>
 
-          <p>If the request includes properties that the server does not recognize, it SHOULD 
-          create the post anyway with any values that are recognized, and SHOULD
-          store the unrecognized values internally, and return them when queried.</p>
+          <p>If the request includes properties that the server does not recognize, it MUST
+          ignore unrecognized properties and create the post with the values that are recognized.</p>
 
-          <p>This allows clients to post rich types of content to servers that recognize it, 
+          <p>This allows clients to post rich types of content to servers that support it,
           while also posting fallback content to servers that don't.</p>
 
+          <p>For example, a client may create a post that contains a weight measurement,
+          with an <code>h-measure</code> value for the <code>weight</code> property, and
+          a plaintext summary of the post in the <code>summary</code> property. Servers
+          that don't recognize the <code>weight</code> property will simply ignore it,
+          and will create the post as a plaintext post with the summary instead.</p>
         </section>
 
         <section>
