@@ -940,6 +940,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li>Updating a post and replacing all values of a property</li>
           <li>Updating a post and adding a value to a property</li>
           <li>Updating a post and removing a value from a property</li>
+          <li>Updating a post and removing a property</li>
           <li>Returning <code>HTTP 200 OK</code> when updating a post</li>
           <li>Returning <code>HTTP 201 Created</code> when updating a post if the update cause the post URL to change</li>
           <li>Returning <code>HTTP 204 No Content</code> when updating a post</li>
@@ -1031,12 +1032,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
       <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
 
-      <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+      <p>The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
 
-      <div class="note">
-        <div class="note-title marker" aria-level="4" role="heading" id="h-note1"><span>Note</span></div>
-        <p class="">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
-      </div>
+      <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
@@ -1459,7 +1457,7 @@ Content-Transfer-Encoding: binary
         <p></p>
 
         <div class="note">
-          <div class="note-title marker" aria-level="5" role="heading" id="h-note2"><span>Note</span></div>
+          <div class="note-title marker" aria-level="5" role="heading" id="h-note1"><span>Note</span></div>
           <p class="">To include accessibility-related information such as image alt text when creating posts that contain an image, the alt text is associated with the post itself rather than the media file. This is analogous to an HTML img tag where the img tag has a src attribute pointing to the media file and an alt attribute with the alt text. See <a href="#uploading-a-photo-with-alt-text">Uploading a photo with alt text</a> for more information.</p>
         </div>
 
@@ -1501,7 +1499,7 @@ Content-Transfer-Encoding: binary
         <code>q</code> parameter to specify what you are querying.</p>
 
       <div class="note">
-        <div class="note-title marker" aria-level="4" role="heading" id="h-note3"><span>Note</span></div>
+        <div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Note</span></div>
         <p class="">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
       </div>
 
@@ -2175,6 +2173,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li>Updated intro paragraph to link to Social Web Protocols</li>
         <li>Add Security and Privacy Questionnaire</li>
         <li>Clarify form-encoded usage and limitations</li>
+        <li>Remove "note" designation from sentence about storing access token</li>
       </ul>
     </section>
 
