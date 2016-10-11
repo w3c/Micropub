@@ -422,7 +422,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-10-06",
+      "publishDate": "2016-10-11",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -551,7 +551,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-06-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-06">06 October 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-11-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-11">11 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -929,12 +929,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li>Creating a post using JSON syntax with one or more properties</li>
           <li>Creating a post using <code>x-www-form-urlencoded</code> syntax with multiple values of the same property name</li>
           <li>Creating a post using JSON syntax with multiple values of the same property name</li>
-          <li>Creating a post using <code>x-www-form-urlencoded</code> syntax including a nested Microformats2 object</li>
           <li>Creating a post using JSON syntax including a nested Microformats2 object</li>
           <li>Uploading a file to the specified Media Endpoint</li>
           <li>Creating a post with a file by sending the request as <code>multipart/form-data</code> to the Micropub endpoint</li>
           <li>Creating a post with a photo referenced by URL</li>
           <li>Creating a post with a photo referenced by URL that includes image alt text</li>
+          <li>Creating a post where the request contains properties the server does not recognize</li>
           <li>Returning <code>HTTP 201 Created</code> and a <code>Location</code> header when creating a post</li>
           <li>Returning <code>HTTP 202 Created</code> and a <code>Location</code> header when creating a post</li>
           <li>Updating a post and replacing all values of a property</li>
@@ -1213,10 +1213,11 @@ Content-Transfer-Encoding: binary
         <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Unrecognized Properties</span>
         </h4>
 
-        <p>If the request includes properties that the server does not recognize, it <em class="rfc2119" title="SHOULD">SHOULD</em> create the post anyway with any values that are recognized, and <em class="rfc2119" title="SHOULD">SHOULD</em> store the unrecognized values internally, and return them when queried.</p>
+        <p>If the request includes properties that the server does not recognize, it <em class="rfc2119" title="MUST">MUST</em> ignore unrecognized properties and create the post with the values that are recognized.</p>
 
-        <p>This allows clients to post rich types of content to servers that recognize it, while also posting fallback content to servers that don't.</p>
+        <p>This allows clients to post rich types of content to servers that support it, while also posting fallback content to servers that don't.</p>
 
+        <p>For example, a client may create a post that contains a weight measurement, with an <code>h-measure</code> value for the <code>weight</code> property, and a plaintext summary of the post in the <code>summary</code> property. Servers that don't recognize the <code>weight</code> property will simply ignore it, and will create the post as a plaintext post with the summary instead.</p>
       </section>
 
       <section id="response" typeof="bibo:Chapter" resource="#response" property="bibo:hasPart">
@@ -1596,7 +1597,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> O
 Content-type: application/json
 
 {
-  <span class="hljs-string">"type"</span>: <span class="hljs-string">"h-entry"</span>,
+  <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
   <span class="hljs-string">"properties"</span>: {
     <span class="hljs-string">"published"</span>: [<span class="hljs-string">"2016-02-21T12:50:53-08:00"</span>],
     <span class="hljs-string">"content"</span>: [<span class="hljs-string">"Hello World"</span>],
