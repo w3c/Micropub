@@ -404,6 +404,130 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       display: none;
     }
     
+    #respec-ui {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 202px;
+      text-align: right;
+    }
+    
+    #respec-pill,
+    .respec-info-button {
+      background: #fff;
+      height: 2.5em;
+      color: rgb(120, 120, 120);
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 8px 0 rgba(100, 100, 100, .5);
+    }
+    
+    .respec-info-button {
+      border: none;
+      border-radius: 2em;
+      margin-right: 1em;
+      min-width: 3.5em;
+    }
+    
+    #respec-pill:disabled {
+      margin: 10px auto;
+      font-size: 2.8px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(40, 40, 40, 0.2);
+      border-right: 1.1em solid rgba(40, 40, 40, 0.2);
+      border-bottom: 1.1em solid rgba(40, 40, 40, 0.2);
+      border-left: 1.1em solid #ffffff;
+      transform: translateZ(0);
+      animation: respec-spin 1.1s infinite linear;
+      box-shadow: none;
+    }
+    
+    #respec-pill:disabled,
+    #respec-pill:disabled:after {
+      border-radius: 50%;
+      width: 10em;
+      height: 10em;
+    }
+    
+    @keyframes respec-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    #respec-pill:hover,
+    #respec-pill:focus {
+      color: rgb(0, 0, 0);
+      transition: color .2s
+    }
+    
+    #respec-menu {
+      font-family: sans-serif;
+      background: #fff;
+      box-shadow: 1px 1px 8px 0 rgba(100, 100, 100, .5);
+      width: 200px;
+      display: none;
+      text-align: left;
+      margin-top: 5px;
+      font-size: .8em;
+    }
+    
+    .respec-save-button {
+      background: #fff;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 5px;
+      display: block;
+      width: 100%;
+      color: #000;
+      text-decoration: none;
+      text-align: center;
+      font-size: inherit;
+    }
+    
+    #respec-ui button:focus,
+    #respec-pill:focus,
+    .respec-option:focus {
+      outline: 0;
+      outline-style: none;
+    }
+    
+    #respec-ui button.respec-pill-error {
+      background-color: red;
+      color: white;
+    }
+    
+    #respec-ui button.respec-pill-warning {
+      background-color: orange;
+      color: white;
+    }
+    
+    #respec-menu button.respec-option {
+      background: white;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: inherit;
+      padding: 1.2em 1.2em;
+    }
+    
+    #respec-menu button.respec-option:hover {
+      background-color: #eeeeee;
+    }
+    
+    .respec-cmd-icon {
+      padding-right: .5em;
+    }
+    
+    #respec-ui button.respec-option:last-child {
+      border: none;
+      border-radius: inherit;
+    }
+    
     @media print {
       .removeOnSave {
         display: none;
@@ -414,15 +538,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
 
+
   <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
-  <meta name="generator" content="ReSpec 5.0.4">
+  <link rel="canonical" href="https://www.w3.org/TR/micropub/">
+  <meta name="generator" content="ReSpec 6.0.0">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-10-11",
+      "publishDate": "2016-10-12",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -442,6 +568,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       "wgPublicList": "public-socialweb",
       "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/72531/status",
       "license": "w3c-software-doc",
+      "postProcess": [
+        null
+      ],
       "otherLinks": [
       {
         "key": "Repository",
@@ -551,7 +680,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-11-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-11">11 October 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-12-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-12">12 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -600,14 +729,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section id="abstract" class="introductory" property="dc:abstract">
     <h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
-    <p class="p-summary">
+    <p class="p-summary" id="abstract-p-1">
       Micropub is an open API standard used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g., iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
     </p>
 
     <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
       <h3 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading">Author's Note</span></h3>
-      <p><em>This section is non-normative.</em></p>
-      <p>This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
+      <p id="authorsnote-p-1"><em>This section is non-normative.</em></p>
+      <p id="authorsnote-p-2">This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
         <a href="https://indieweb.org/">IndieWeb</a> community. More history and evolution of Micropub can be found on the
         <a href="https://indieweb.org/micropub">IndieWeb wiki</a>.</p>
     </section>
@@ -615,24 +744,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <section id="sotd" class="introductory">
     <h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
-    <p>
+    <p id="sotd-p-1">
       <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
     </p>
 
 
-    <p>
+    <p id="sotd-p-2">
       This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
     </p>
-    <p>
+    <p id="sotd-p-3">
       Please see the Working Group's <a href="https://micropub.net/implementation-reports/">implementation
               report</a>.
     </p>
-    <p>
+    <p id="sotd-p-4">
       Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
     </p>
-    <p>
+    <p id="sotd-p-5">
       This document was produced by a group operating under the
       <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
               Policy</a>.
@@ -643,7 +772,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
     </p>
-    <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    <p id="sotd-p-6">This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
     </p>
 
   </section>
@@ -789,22 +918,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <!--OddPage-->
     <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span>
     </h2>
-    <p><em>This section is non-normative.</em></p>
+    <p id="introduction-p-1"><em>This section is non-normative.</em></p>
 
-    <p>Micropub is a spec to create content on a server using web or native app clients. Micropub is primarily focused around creating "posts" (individual pieces of content such as blog posts, photos, short notes, or responses) on a website, although it can be used for other kinds of content as well. The Micropub spec defines a simple mechanism to create content, as well as a more thorough mechanism to update and delete content.</p>
+    <p id="introduction-p-2">Micropub is a spec to create content on a server using web or native app clients. Micropub is primarily focused around creating "posts" (individual pieces of content such as blog posts, photos, short notes, or responses) on a website, although it can be used for other kinds of content as well. The Micropub spec defines a simple mechanism to create content, as well as a more thorough mechanism to update and delete content.</p>
 
     <section id="social-web-working-group" typeof="bibo:Chapter" resource="#social-web-working-group" property="bibo:hasPart">
       <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span>
       </h3>
 
-      <p>Micropub is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complementary protocols should review <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> as well as the overview document [<cite><a class="bibref" href="#bib-social-web-protocols">social-web-protocols</a></cite>].</p>
+      <p id="social-web-working-group-p-1">Micropub is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complementary protocols should review <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> as well as the overview document [<cite><a class="bibref" href="#bib-social-web-protocols">social-web-protocols</a></cite>].</p>
     </section>
 
     <section id="background" typeof="bibo:Chapter" resource="#background" property="bibo:hasPart">
       <h3 id="h-background" resource="#h-background"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Background</span>
       </h3>
 
-      <p>The Micropub vocabulary is derived directly from the [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] vocabulary. Micropub is meant to be a serialization of Microformats that can be submitted as an HTTP POST. The method for developing new Micropub vocabularies is to look at the Microformats representation and work backwards.</p>
+      <p id="background-p-1">The Micropub vocabulary is derived directly from the [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>] vocabulary. Micropub is meant to be a serialization of Microformats that can be submitted as an HTTP POST. The method for developing new Micropub vocabularies is to look at the Microformats representation and work backwards.</p>
     </section>
 
   </section>
@@ -814,26 +943,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span>
     </h2>
 
-    <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
+    <p id="conformance-p-1">The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
       <em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
 
     <section id="conformance-classes" typeof="bibo:Chapter" resource="#conformance-classes" property="bibo:hasPart">
       <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span>
       </h3>
 
-      <p>This section describes the conformance criteria for Micropub clients and servers. All implementations <em class="rfc2119" title="MUST">MUST</em> support UTF-8 encoding.</p>
+      <p id="conformance-classes-p-1">This section describes the conformance criteria for Micropub clients and servers. All implementations <em class="rfc2119" title="MUST">MUST</em> support UTF-8 encoding.</p>
 
       <section id="publishing-clients" typeof="bibo:Chapter" resource="#publishing-clients" property="bibo:hasPart">
         <h4 id="h-publishing-clients" resource="#h-publishing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Publishing Clients</span>
         </h4>
 
-        <p>A conforming Micropub client that creates posts:</p>
+        <p id="publishing-clients-p-1">A conforming Micropub client that creates posts:</p>
         <ul>
-          <li><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
-          <li>If the client creates posts by uploading file attachments, it <em class="rfc2119" title="MUST">MUST</em> check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
-          <li><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
-          <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a></li>
+          <li id="publishing-clients-li-1"><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests</li>
+          <li id="publishing-clients-li-2"><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+          <li id="publishing-clients-li-3">If the client creates posts by uploading file attachments, it <em class="rfc2119" title="MUST">MUST</em> check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
+          <li id="publishing-clients-li-4"><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
+          <li id="publishing-clients-li-5"><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#endpoint-discovery">endpoint discovery</a></li>
         </ul>
       </section>
 
@@ -841,10 +970,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-editing-clients" resource="#h-editing-clients"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.2 </span>Editing Clients</span>
         </h4>
 
-        <p>A conforming Micropub client that edits posts:</p>
+        <p id="editing-clients-p-1">A conforming Micropub client that edits posts:</p>
         <ul>
-          <li><em class="rfc2119" title="MUST">MUST</em> support sending JSON-encoded requests</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+          <li id="editing-clients-li-1"><em class="rfc2119" title="MUST">MUST</em> support sending JSON-encoded requests</li>
+          <li id="editing-clients-li-2"><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
         </ul>
       </section>
 
@@ -852,15 +981,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-servers" resource="#h-servers"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.3 </span>Servers</span>
         </h4>
 
-        <p>A conforming Micropub server:</p>
+        <p id="servers-p-1">A conforming Micropub server:</p>
         <ul>
-          <li><em class="rfc2119" title="MUST">MUST</em> support both header and form parameter methods of <a href="#authentication">authentication</a></li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
-          <li><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
-          <li>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the <a href="#source-content">source content query</a></li>
-          <li>Servers that do not specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
-          <li>Servers that specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support the <a href="#configuration">configuration query</a>, other servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query</li>
+          <li id="servers-li-1"><em class="rfc2119" title="MUST">MUST</em> support both header and form parameter methods of <a href="#authentication">authentication</a></li>
+          <li id="servers-li-2"><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts with the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
+          <li id="servers-li-3"><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
+          <li id="servers-li-4"><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
+          <li id="servers-li-5">Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support <a href="#json-syntax">JSON syntax</a> and the <a href="#source-content">source content query</a></li>
+          <li id="servers-li-6">Servers that do not specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+          <li id="servers-li-7">Servers that specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support the <a href="#configuration">configuration query</a>, other servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query</li>
         </ul>
       </section>
 
@@ -870,47 +999,47 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span>
       </h3>
 
-      <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
+      <p id="candidate-recommendation-exit-criteria-p-1">For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
 
       <section id="client" typeof="bibo:Chapter" resource="#client" property="bibo:hasPart">
         <h4 id="h-client" resource="#h-client"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Client</span>
         </h4>
 
-        <p>A Micropub Client is an implementation that sends Micropub requests to create or otherwise manipulate posts. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
+        <p id="client-p-1">A Micropub Client is an implementation that sends Micropub requests to create or otherwise manipulate posts. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
       </section>
 
       <section id="server" typeof="bibo:Chapter" resource="#server" property="bibo:hasPart">
         <h4 id="h-server" resource="#h-server"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Server</span>
         </h4>
 
-        <p>A Micropub Server is an implementation that can create and optionally edit and delete posts given a Micropub request. The Micropub server <em class="rfc2119" title="MAY">MAY</em> also support a Media Endpoint for handling file uploads outside of the primary Micropub endpoint. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
+        <p id="server-p-1">A Micropub Server is an implementation that can create and optionally edit and delete posts given a Micropub request. The Micropub server <em class="rfc2119" title="MAY">MAY</em> also support a Media Endpoint for handling file uploads outside of the primary Micropub endpoint. The conformance criteria are described in <a href="#conformance-classes">Conformance Classes</a> above.</p>
       </section>
 
       <section id="independent" typeof="bibo:Chapter" resource="#independent" property="bibo:hasPart">
         <h4 id="h-independent" resource="#h-independent"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Independent</span>
         </h4>
 
-        <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
+        <p id="independent-p-1">Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
       </section>
 
       <section id="interoperable" typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
         <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span>
         </h4>
 
-        <p>A Client and Server implementation are considered interoperable for a specific feature when the Server takes the defined action that the Client requests, the Client gets the expected response from a Server according to the feature, and the Server sends the expected response to the Client.</p>
+        <p id="interoperable-p-1">A Client and Server implementation are considered interoperable for a specific feature when the Server takes the defined action that the Client requests, the Client gets the expected response from a Server according to the feature, and the Server sends the expected response to the Client.</p>
       </section>
 
       <section id="implementation" typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
         <h4 id="h-implementation" resource="#h-implementation"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.5 </span>Implementation</span>
         </h4>
 
-        <p>An Implementation is a Micropub Client or Server which meets all of the following criteria:</p>
+        <p id="implementation-p-1">An Implementation is a Micropub Client or Server which meets all of the following criteria:</p>
 
         <ul>
-          <li>implements the corresponding conformance class of the specification</li>
-          <li>is available to the general public, as downloadable software or as a hosted service</li>
-          <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
-          <li>is suitable for a person to use as his/her primary implementation on a website</li>
+          <li id="implementation-li-1">implements the corresponding conformance class of the specification</li>
+          <li id="implementation-li-2">is available to the general public, as downloadable software or as a hosted service</li>
+          <li id="implementation-li-3">is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
+          <li id="implementation-li-4">is suitable for a person to use as his/her primary implementation on a website</li>
         </ul>
       </section>
 
@@ -918,41 +1047,41 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-feature" resource="#h-feature"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.6 </span>Feature</span>
         </h4>
 
-        <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+        <p id="feature-p-1">For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
 
         <ul>
-          <li>Discovering the Micropub endpoint given the profile URL of a user</li>
-          <li>Authenticating requests by including the access token in the HTTP <code>Authorization</code> header</li>
-          <li>Authenticating requests by including the access token in the post body for <code>x-www-form-urlencoded</code> requests</li>
-          <li>Limiting the ability to create posts given an access token by requiring that the access token contain at least one OAuth 2.0 scope value</li>
-          <li>Creating a post using <code>x-www-form-urlencoded</code> syntax with one or more properties</li>
-          <li>Creating a post using JSON syntax with one or more properties</li>
-          <li>Creating a post using <code>x-www-form-urlencoded</code> syntax with multiple values of the same property name</li>
-          <li>Creating a post using JSON syntax with multiple values of the same property name</li>
-          <li>Creating a post using JSON syntax including a nested Microformats2 object</li>
-          <li>Uploading a file to the specified Media Endpoint</li>
-          <li>Creating a post with a file by sending the request as <code>multipart/form-data</code> to the Micropub endpoint</li>
-          <li>Creating a post with a photo referenced by URL</li>
-          <li>Creating a post with a photo referenced by URL that includes image alt text</li>
-          <li>Creating a post where the request contains properties the server does not recognize</li>
-          <li>Returning <code>HTTP 201 Created</code> and a <code>Location</code> header when creating a post</li>
-          <li>Returning <code>HTTP 202 Created</code> and a <code>Location</code> header when creating a post</li>
-          <li>Updating a post and replacing all values of a property</li>
-          <li>Updating a post and adding a value to a property</li>
-          <li>Updating a post and removing a value from a property</li>
-          <li>Updating a post and removing a property</li>
-          <li>Returning <code>HTTP 200 OK</code> when updating a post</li>
-          <li>Returning <code>HTTP 201 Created</code> when updating a post if the update cause the post URL to change</li>
-          <li>Returning <code>HTTP 204 No Content</code> when updating a post</li>
-          <li>Deleting a post using <code>x-www-form-urlencoded</code> syntax</li>
-          <li>Deleting a post using JSON syntax</li>
-          <li>Undeleting a post using <code>x-www-form-urlencoded</code> syntax</li>
-          <li>Undeleting a post using JSON syntax</li>
-          <li>Uploading a photo to the Media Endpoint and using the resulting URL when creating a post</li>
-          <li>Querying the Micropub endpoint with <code>q=config</code> to retrieve the Media Endpoint and syndication targets if specified</li>
-          <li>Querying the Micropub endpoint with <code>q=syndicate-to</code> to retrieve the list of syndication targets</li>
-          <li>Querying the Micropub endpoint for a post's source content without specifying a list of properties</li>
-          <li>Querying the Micropub endpoint for a post's source content looking only for specific properties</li>
+          <li id="feature-li-1">Discovering the Micropub endpoint given the profile URL of a user</li>
+          <li id="feature-li-2">Authenticating requests by including the access token in the HTTP <code>Authorization</code> header</li>
+          <li id="feature-li-3">Authenticating requests by including the access token in the post body for <code>x-www-form-urlencoded</code> requests</li>
+          <li id="feature-li-4">Limiting the ability to create posts given an access token by requiring that the access token contain at least one OAuth 2.0 scope value</li>
+          <li id="feature-li-5">Creating a post using <code>x-www-form-urlencoded</code> syntax with one or more properties</li>
+          <li id="feature-li-6">Creating a post using JSON syntax with one or more properties</li>
+          <li id="feature-li-7">Creating a post using <code>x-www-form-urlencoded</code> syntax with multiple values of the same property name</li>
+          <li id="feature-li-8">Creating a post using JSON syntax with multiple values of the same property name</li>
+          <li id="feature-li-9">Creating a post using JSON syntax including a nested Microformats2 object</li>
+          <li id="feature-li-10">Uploading a file to the specified Media Endpoint</li>
+          <li id="feature-li-11">Creating a post with a file by sending the request as <code>multipart/form-data</code> to the Micropub endpoint</li>
+          <li id="feature-li-12">Creating a post with a photo referenced by URL</li>
+          <li id="feature-li-13">Creating a post with a photo referenced by URL that includes image alt text</li>
+          <li id="feature-li-14">Creating a post where the request contains properties the server does not recognize</li>
+          <li id="feature-li-15">Returning <code>HTTP 201 Created</code> and a <code>Location</code> header when creating a post</li>
+          <li id="feature-li-16">Returning <code>HTTP 202 Created</code> and a <code>Location</code> header when creating a post</li>
+          <li id="feature-li-17">Updating a post and replacing all values of a property</li>
+          <li id="feature-li-18">Updating a post and adding a value to a property</li>
+          <li id="feature-li-19">Updating a post and removing a value from a property</li>
+          <li id="feature-li-20">Updating a post and removing a property</li>
+          <li id="feature-li-21">Returning <code>HTTP 200 OK</code> when updating a post</li>
+          <li id="feature-li-22">Returning <code>HTTP 201 Created</code> when updating a post if the update cause the post URL to change</li>
+          <li id="feature-li-23">Returning <code>HTTP 204 No Content</code> when updating a post</li>
+          <li id="feature-li-24">Deleting a post using <code>x-www-form-urlencoded</code> syntax</li>
+          <li id="feature-li-25">Deleting a post using JSON syntax</li>
+          <li id="feature-li-26">Undeleting a post using <code>x-www-form-urlencoded</code> syntax</li>
+          <li id="feature-li-27">Undeleting a post using JSON syntax</li>
+          <li id="feature-li-28">Uploading a photo to the Media Endpoint and using the resulting URL when creating a post</li>
+          <li id="feature-li-29">Querying the Micropub endpoint with <code>q=config</code> to retrieve the Media Endpoint and syndication targets if specified</li>
+          <li id="feature-li-30">Querying the Micropub endpoint with <code>q=syndicate-to</code> to retrieve the list of syndication targets</li>
+          <li id="feature-li-31">Querying the Micropub endpoint for a post's source content without specifying a list of properties</li>
+          <li id="feature-li-32">Querying the Micropub endpoint for a post's source content looking only for specific properties</li>
         </ul>
 
       </section>
@@ -962,9 +1091,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span>
       </h3>
 
-      <p>Please submit your implementation reports at <a href="https://micropub.net/implementation-reports/">https://micropub.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://micropub.rocks/">micropub.rocks</a>.</p>
+      <p id="test-suite-and-reporting-p-1">Please submit your implementation reports at <a href="https://micropub.net/implementation-reports/">https://micropub.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://micropub.rocks/">micropub.rocks</a>.</p>
 
-      <p><a href="https://micropub.rocks/">micropub.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Micropub implementation, as it provides detailed responses when errors are encountered.</p>
+      <p id="test-suite-and-reporting-p-2"><a href="https://micropub.rocks/">micropub.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Micropub implementation, as it provides detailed responses when errors are encountered.</p>
     </section>
 
   </section>
@@ -975,15 +1104,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 id="h-syntax" resource="#h-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Syntax</span>
     </h2>
 
-    <p>As [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] has a relatively small ruleset for parsing HTML documents into a data structure, Micropub similarly defines a small set of rules to interpret HTTP POST and GET requests as Micropub commands. Where [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] does not require changing the parsing rules to introduce new properties of an object such as an [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], Micropub similarly does not require changing parsing rules to interpret requests that may correspond to different post types, such as posting videos vs "likes".
+    <p id="syntax-p-1">As [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] has a relatively small ruleset for parsing HTML documents into a data structure, Micropub similarly defines a small set of rules to interpret HTTP POST and GET requests as Micropub commands. Where [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] does not require changing the parsing rules to introduce new properties of an object such as an [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>], Micropub similarly does not require changing parsing rules to interpret requests that may correspond to different post types, such as posting videos vs "likes".
     </p>
-    <p>The Micropub syntax describes how to interpret HTTP POST and GET requests into useful server actions.</p>
+    <p id="syntax-p-2">The Micropub syntax describes how to interpret HTTP POST and GET requests into useful server actions.</p>
 
     <section id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
       <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Overview</span>
       </h3>
 
-      <p>All Micropub requests to create posts are sent as UTF-8
+      <p id="overview-p-1">All Micropub requests to create posts are sent as UTF-8
         <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
         <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], or [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>]-encoded HTTP requests. Responses typically do not include a response body, indicating the needed information (such as the URL of the created post) in HTTP headers. When a response body is necessary, it <em class="rfc2119" title="SHOULD">SHOULD</em> be returned as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] encoded object.</p>
 
@@ -991,22 +1120,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-form-encoded-and-multipart-requests" resource="#h-form-encoded-and-multipart-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Form-Encoded and Multipart Requests</span>
         </h4>
 
-        <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you <em class="rfc2119" title="MUST">MUST</em> append square brackets <code>[]</code> to the property name.</p>
+        <p id="form-encoded-and-multipart-requests-p-1">For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you <em class="rfc2119" title="MUST">MUST</em> append square brackets <code>[]</code> to the property name.</p>
 
-        <p>For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
+        <p id="form-encoded-and-multipart-requests-p-2">For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
 
-        <p>On the server side, it is expected that the server will convert this to an internal representation of an array. For example, the equivalent JSON representation of this would be:
+        <p id="form-encoded-and-multipart-requests-p-3">On the server side, it is expected that the server will convert this to an internal representation of an array. For example, the equivalent JSON representation of this would be:
         </p><pre class="hljs xquery">{
   <span class="hljs-string">"category"</span>: [
     <span class="hljs-string">"foo"</span>,
     <span class="hljs-string">"bar"</span>
   ]
 }</pre>
-        <p></p>
+        <p id="form-encoded-and-multipart-requests-p-4"></p>
 
-        <p>This works equally well in multipart requests, where each value is given in a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
+        <p id="form-encoded-and-multipart-requests-p-5">This works equally well in multipart requests, where each value is given in a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
 
-        <p>Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
+        <p id="form-encoded-and-multipart-requests-p-6">Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
 
         </p>
       </section>
@@ -1016,53 +1145,53 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-reserved-properties" resource="#h-reserved-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Reserved Properties</span>
       </h3>
 
-      <p>A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
+      <p id="reserved-properties-p-1">A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
 
-      <p>
+      <p id="reserved-properties-p-2">
       </p>
       <ul>
-        <li><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
-        <li><code>h</code> - used to specify the object type being created</li>
-        <li><code>q</code> - used to query a Micropub endpoint</li>
-        <li><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
-        <li><code>url</code> - indicates the URL of the object being acted on</li>
-        <li><code>mp-*</code> - reserved for future use</li>
+        <li id="reserved-properties-li-1"><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
+        <li id="reserved-properties-li-2"><code>h</code> - used to specify the object type being created</li>
+        <li id="reserved-properties-li-3"><code>q</code> - used to query a Micropub endpoint</li>
+        <li id="reserved-properties-li-4"><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
+        <li id="reserved-properties-li-5"><code>url</code> - indicates the URL of the object being acted on</li>
+        <li id="reserved-properties-li-6"><code>mp-*</code> - reserved for future use</li>
       </ul>
-      <p></p>
+      <p id="reserved-properties-p-3"></p>
 
-      <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+      <p id="reserved-properties-p-4">When creating posts, all other properties in the request are considered properties of the object being created.</p>
 
-      <p>The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
+      <p id="reserved-properties-p-5">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
 
-      <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+      <p id="reserved-properties-p-6">Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
       <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Create</span>
       </h3>
 
-      <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded syntax, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
+      <p id="create-p-1">To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded syntax, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
-      <p></p><pre class="hljs xquery"><code>h={Microformats object type}</code></pre>
-      <p></p>
-      <p>e.g., <code>h=entry</code></p>
-      <p>All parameters not beginning with "mp-" are properties of the object being created.</p>
-      <p>e.g., <code>content=hello+world</code></p>
-      <p>To specify multiple values for a property, such as multiple categories of an h-entry, append square brackets to the property name, indicating it is an array.</p>
-      <p>e.g., <code>category[]=foo&amp;category[]=bar</code></p>
-      <p>Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value, with or without the square brackets. A complete example of a form-encoded request follows.</p>
-      <p></p>
+      <p id="create-p-2"></p><pre class="hljs xquery"><code>h={Microformats object type}</code></pre>
+      <p id="create-p-3"></p>
+      <p id="create-p-4">e.g., <code>h=entry</code></p>
+      <p id="create-p-5">All parameters not beginning with "mp-" are properties of the object being created.</p>
+      <p id="create-p-6">e.g., <code>content=hello+world</code></p>
+      <p id="create-p-7">To specify multiple values for a property, such as multiple categories of an h-entry, append square brackets to the property name, indicating it is an array.</p>
+      <p id="create-p-8">e.g., <code>category[]=foo&amp;category[]=bar</code></p>
+      <p id="create-p-9">Properties that accept multiple values <em class="rfc2119" title="MUST">MUST</em> also accept a single value, with or without the square brackets. A complete example of a form-encoded request follows.</p>
+      <p id="create-p-10"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 1</span></div><pre class="hljs">h=entry&amp;content=hello+world&amp;category[]=foo&amp;category[]=bar</pre></div>
-      <p></p>
+      <p id="create-p-11"></p>
 
       <section id="uploading-files" typeof="bibo:Chapter" resource="#uploading-files" property="bibo:hasPart">
         <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span>
         </h4>
 
-        <p>To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
-        <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
-        <p></p>
+        <p id="uploading-files-p-1">To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+        <p id="uploading-files-p-2">For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
+        <p id="uploading-files-p-3"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 2</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
@@ -1081,16 +1210,16 @@ Content-Transfer-Encoding: binary
 
 ... (binary data) ...
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
-        <p></p>
+        <p id="uploading-files-p-4"></p>
 
-        <p>For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download [<cite><a class="bibref" href="#bib-Fetch">Fetch</a></cite>] a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
+        <p id="uploading-files-p-5">For properties that can accept a file upload (such as <code>photo</code> or <code>video</code>), the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> also accept a URL value, treating that the same as if the file had been uploaded directly. The endpoint <em class="rfc2119" title="MAY">MAY</em> download [<cite><a class="bibref" href="#bib-Fetch">Fetch</a></cite>] a copy of the file at the URL and store it the same way it would store the file if it had been uploaded directly. For example:</p>
 
-        <p></p>
+        <p id="uploading-files-p-6"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 3</span></div><pre class="hljs xquery">h=entry&amp;content=hello+world&amp;photo=https<span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2Fphotos</span>.example.com<span class="hljs-meta">%2F592829482876343254</span>.jpg</pre></div>
-        <p></p>
+        <p id="uploading-files-p-7"></p>
 
-        <p>This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
+        <p id="uploading-files-p-8">This is to support uploading files via a Media Endpoint, or by reference to other external images. See the <a href="#media-endpoint">Media Endpoint</a> section for more information.</p>
 
       </section>
 
@@ -1098,10 +1227,10 @@ Content-Transfer-Encoding: binary
         <h4 id="h-json-syntax" resource="#h-json-syntax"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.2 </span>JSON Syntax</span>
         </h4>
 
-        <p>In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
-        <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
-        <p>When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
-        <p></p>
+        <p id="json-syntax-p-1">In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
+        <p id="json-syntax-p-2">Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
+        <p id="json-syntax-p-3">When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
+        <p id="json-syntax-p-4"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1115,13 +1244,13 @@ Content-Transfer-Encoding: binary
     <span class="hljs-string">"photo"</span>: [<span class="hljs-string">"https://photos.example.com/592829482876343254.jpg"</span>]
   }
 }</span></pre></div>
-        <p></p>
+        <p id="json-syntax-p-5"></p>
 
         <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
 
-        <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+        <p id="json-syntax-p-6">To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
 
-        <p></p>
+        <p id="json-syntax-p-7"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1140,11 +1269,11 @@ Content-Transfer-Encoding: binary
     ]
   }
 }</span></pre></div>
-        <p></p>
+        <p id="json-syntax-p-8"></p>
 
         <div class="warning">
           <div class="warning-title marker"><span>Warning</span></div>
-          <p class="">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
+          <p class="" id="json-syntax-p-9">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
         </div>
 
       </section>
@@ -1153,17 +1282,17 @@ Content-Transfer-Encoding: binary
         <h4 id="h-nested-microformats-objects" resource="#h-nested-microformats-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.3 </span>Nested Microformats Objects</span>
         </h4>
 
-        <p>Whenever possible, nested Microformats objects should be avoided. A better alternative is to reference objects by their URLs. The most common example is including an h-card for a venue, such as checking in to a location or tagging a photo with a person or location. In these cases, it is better to reference the object by URL, creating it first if necessary.</p>
+        <p id="nested-microformats-objects-p-1">Whenever possible, nested Microformats objects should be avoided. A better alternative is to reference objects by their URLs. The most common example is including an h-card for a venue, such as checking in to a location or tagging a photo with a person or location. In these cases, it is better to reference the object by URL, creating it first if necessary.</p>
 
-        <p>This technique has the advantage of ensuring that each object that is created has its own URL (each piece of data has its own link). This also gives the server an opportunity to handle each entity separately. E.g., rather than creating a duplicate of an existing venue, it may give back a link to one that was already created, possibly even merging newly received data first.</p>
+        <p id="nested-microformats-objects-p-2">This technique has the advantage of ensuring that each object that is created has its own URL (each piece of data has its own link). This also gives the server an opportunity to handle each entity separately. E.g., rather than creating a duplicate of an existing venue, it may give back a link to one that was already created, possibly even merging newly received data first.</p>
 
-        <p>In some cases, it does not make sense for the nested object to have a URL. For example, when posting an h-measure value, there is no reason for the h-measure itself to have a URL, so this is an acceptable case to use the nested Microformats object syntax.</p>
+        <p id="nested-microformats-objects-p-3">In some cases, it does not make sense for the nested object to have a URL. For example, when posting an h-measure value, there is no reason for the h-measure itself to have a URL, so this is an acceptable case to use the nested Microformats object syntax.</p>
 
-        <p>Nested objects require that the request be sent in JSON format, since the form-encoding syntax does not consistently support nested objects.</p>
+        <p id="nested-microformats-objects-p-4">Nested objects require that the request be sent in JSON format, since the form-encoding syntax does not consistently support nested objects.</p>
 
-        <p>The example below creates a new "weight" measurement post as an h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
+        <p id="nested-microformats-objects-p-5">The example below creates a new "weight" measurement post as an h-entry with a h-measure objects to describe the weight and bodyfat values.</p>
 
-        <p></p>
+        <p id="nested-microformats-objects-p-6"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 6</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"type"</span>: [<span class="hljs-string">"h-entry"</span>],
@@ -1191,7 +1320,7 @@ Content-Transfer-Encoding: binary
     ]
   }
 }</pre></div>
-        <p></p>
+        <p id="nested-microformats-objects-p-7"></p>
 
       </section>
 
@@ -1199,11 +1328,11 @@ Content-Transfer-Encoding: binary
         <h4 id="h-bidirectional-text" resource="#h-bidirectional-text"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.4 </span>Bidirectional Text</span>
         </h4>
 
-        <p>Natural language values in Micropub requests <em class="rfc2119" title="MAY">MAY</em> contain bidirectional text. The default base direction of Micropub text values is left-to-right. The base direction of individual natural language values <em class="rfc2119" title="MAY">MAY</em> be modified as described below.</p>
+        <p id="bidirectional-text-p-1">Natural language values in Micropub requests <em class="rfc2119" title="MAY">MAY</em> contain bidirectional text. The default base direction of Micropub text values is left-to-right. The base direction of individual natural language values <em class="rfc2119" title="MAY">MAY</em> be modified as described below.</p>
 
-        <p>When specifying bidirectional text for a natural language value, and the base direction of the text cannot be correctly identified by the first strong directional character of that text ([<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>]), publishing clients <em class="rfc2119" title="SHOULD">SHOULD</em> explicitly identify the default direction either by prefixing the value with an appropriate Unicode bidirectional control character, or by using HTML directional markup for HTML values.</p>
+        <p id="bidirectional-text-p-2">When specifying bidirectional text for a natural language value, and the base direction of the text cannot be correctly identified by the first strong directional character of that text ([<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>]), publishing clients <em class="rfc2119" title="SHOULD">SHOULD</em> explicitly identify the default direction either by prefixing the value with an appropriate Unicode bidirectional control character, or by using HTML directional markup for HTML values.</p>
 
-        <p>Micropub servers that accept natural language values that contain bidirectional text <em class="rfc2119" title="SHOULD">SHOULD</em> identify the base direction of any given natural language value by either: for plaintext values, scanning the text for the first strong directional character; or for HTML values, by utilizing directional markup, if available, or otherwise scanning for the first strong directional character not contained in a markup tag. When displaying these natural language values, the server <em class="rfc2119" title="MUST">MUST</em> determine the appropriate rendering of the content according to the [<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>] algorithm, which may necessitate wrapping additional control characters or markup around the string prior to display, in order to apply the base direction.</p>
+        <p id="bidirectional-text-p-3">Micropub servers that accept natural language values that contain bidirectional text <em class="rfc2119" title="SHOULD">SHOULD</em> identify the base direction of any given natural language value by either: for plaintext values, scanning the text for the first strong directional character; or for HTML values, by utilizing directional markup, if available, or otherwise scanning for the first strong directional character not contained in a markup tag. When displaying these natural language values, the server <em class="rfc2119" title="MUST">MUST</em> determine the appropriate rendering of the content according to the [<cite><a class="bibref" href="#bib-BIDI">BIDI</a></cite>] algorithm, which may necessitate wrapping additional control characters or markup around the string prior to display, in order to apply the base direction.</p>
 
       </section>
 
@@ -1211,37 +1340,37 @@ Content-Transfer-Encoding: binary
         <h4 id="h-unrecognized-properties" resource="#h-unrecognized-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.5 </span>Unrecognized Properties</span>
         </h4>
 
-        <p>If the request includes properties that the server does not recognize, it <em class="rfc2119" title="MUST">MUST</em> ignore unrecognized properties and create the post with the values that are recognized.</p>
+        <p id="unrecognized-properties-p-1">If the request includes properties that the server does not recognize, it <em class="rfc2119" title="MUST">MUST</em> ignore unrecognized properties and create the post with the values that are recognized.</p>
 
-        <p>This allows clients to post rich types of content to servers that support it, while also posting fallback content to servers that don't.</p>
+        <p id="unrecognized-properties-p-2">This allows clients to post rich types of content to servers that support it, while also posting fallback content to servers that don't.</p>
 
-        <p>For example, a client may create a post that contains a weight measurement, with an <code>h-measure</code> value for the <code>weight</code> property, and a plaintext summary of the post in the <code>summary</code> property. Servers that don't recognize the <code>weight</code> property will simply ignore it, and will create the post as a plaintext post with the summary instead.</p>
+        <p id="unrecognized-properties-p-3">For example, a client may create a post that contains a weight measurement, with an <code>h-measure</code> value for the <code>weight</code> property, and a plaintext summary of the post in the <code>summary</code> property. Servers that don't recognize the <code>weight</code> property will simply ignore it, and will create the post as a plaintext post with the summary instead.</p>
       </section>
 
       <section id="response" typeof="bibo:Chapter" resource="#response" property="bibo:hasPart">
         <h4 id="h-response" resource="#h-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.6 </span>Response</span>
         </h4>
 
-        <p>When the post is created, the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> return either an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code> code, and <em class="rfc2119" title="MUST">MUST</em> return a <code>Location</code> header indicating the URL of the created post. [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]</p>
+        <p id="response-p-1">When the post is created, the Micropub endpoint <em class="rfc2119" title="MUST">MUST</em> return either an <code>HTTP 201 Created</code> status code or <code>HTTP 202 Accepted</code> code, and <em class="rfc2119" title="MUST">MUST</em> return a <code>Location</code> header indicating the URL of the created post. [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]</p>
 
-        <p></p>
+        <p id="response-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 7</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://aaronpk.example/post/1000</pre></div>
-        <p></p>
+        <p id="response-p-3"></p>
 
-        <p>If the endpoint chooses to process the request asynchronously rather than creating and storing the post immediately, it <em class="rfc2119" title="MUST">MUST</em> return an
+        <p id="response-p-4">If the endpoint chooses to process the request asynchronously rather than creating and storing the post immediately, it <em class="rfc2119" title="MUST">MUST</em> return an
           <code>HTTP 202 Accepted</code> status code, and <em class="rfc2119" title="MUST">MUST</em> also return the
           <code>Location</code> header. The server <em class="rfc2119" title="MUST">MUST</em> do any error checking and validation of the request synchronously in order to ensure the object will be created successfully, prior to returning HTTP 202. Clients will expect the object at the indicated URL to exist at some point in the (near) future if they receive an HTTP 202 response.</p>
 
-        <p>If the target also provides a shortlink, or if it syndicated the post to another location, the Micropub endpoint <em class="rfc2119" title="MAY">MAY</em> return additional URLs using the HTTP Link header, along with an appropriate "rel" value. For example, it can return the short URL of a post by responding with:
+        <p id="response-p-5">If the target also provides a shortlink, or if it syndicated the post to another location, the Micropub endpoint <em class="rfc2119" title="MAY">MAY</em> return additional URLs using the HTTP Link header, along with an appropriate "rel" value. For example, it can return the short URL of a post by responding with:
         </p><pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">http:</span>//<span class="hljs-attr">aaron.pk</span>/<span class="hljs-attr">xxxxx</span>&gt;</span></span>; rel=<span class="hljs-string">"shortlink"</span></pre> or can include the location of the syndicated post with:
         <pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">https:</span>//<span class="hljs-attr">myfavoritesocialnetwork.example</span>/<span class="hljs-attr">aaronpk</span>/<span class="hljs-attr">xxxxxx</span>&gt;</span></span>; rel=<span class="hljs-string">"syndication"</span></pre>
-        <p></p>
+        <p id="response-p-6"></p>
 
         <h4 id="error-response-1">Error Response</h4>
 
-        <p>See the "<a href="#error-response">Error Response</a>" section below for details on how to indicate an error occurred.</p>
+        <p id="response-p-7">See the "<a href="#error-response">Error Response</a>" section below for details on how to indicate an error occurred.</p>
 
       </section>
       <!-- Response -->
@@ -1253,21 +1382,21 @@ Content-Transfer-Encoding: binary
       <h3 id="h-update" resource="#h-update"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Update</span>
       </h3>
 
-      <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support updating posts, including adding and removing individual properties as described in this section.</p>
+      <p id="update-p-1">Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support updating posts, including adding and removing individual properties as described in this section.</p>
 
-      <p>Updating entries is done with a JSON post describing the changes to make.</p>
+      <p id="update-p-2">Updating entries is done with a JSON post describing the changes to make.</p>
 
-      <p>To update an entry, send <code>"action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include a <code>replace</code>,
+      <p id="update-p-3">To update an entry, send <code>"action": "update"</code> and specify the URL of the entry that is being updated using the "url" property. The request <em class="rfc2119" title="MUST">MUST</em> also include a <code>replace</code>,
         <code>add</code> or <code>delete</code> property (or any combination of these) containing the updates to make.</p>
 
-      <p>The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
+      <p id="update-p-4">The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
 
       <section id="replace" typeof="bibo:Chapter" resource="#replace" property="bibo:hasPart">
         <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span>
         </h4>
 
-        <p>Replace all values of the property. If the property does not exist already, it is created.</p>
-        <p></p>
+        <p id="replace-p-1">Replace all values of the property. If the property does not exist already, it is created.</p>
+        <p id="replace-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 8</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
@@ -1276,20 +1405,20 @@ Content-Transfer-Encoding: binary
     <span class="hljs-string">"content"</span>: [<span class="hljs-string">"hello moon"</span>]
   }
 }</pre></div>
-        <p></p>
-        <p>This will replace the entire entry content with the new text.</p>
+        <p id="replace-p-3"></p>
+        <p id="replace-p-4">This will replace the entire entry content with the new text.</p>
       </section>
 
       <section id="add" typeof="bibo:Chapter" resource="#add" property="bibo:hasPart">
         <h4 id="h-add" resource="#h-add"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.2 </span>Add</span>
         </h4>
 
-        <p>If there are any existing values for this property, they are not changed, the new values are added. If the property does not exist already, it is created.</p>
+        <p id="add-p-1">If there are any existing values for this property, they are not changed, the new values are added. If the property does not exist already, it is created.</p>
 
         <h4 id="adding-a-syndication-url">Adding a syndication URL</h4>
-        <p>Use case: adding a syndication link to a post after it has been published. For example, when a client supports posting first then syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact, the site needs a way to update the original post with the new syndication URL.</p>
-        <p>To add syndication URLs, include one or more URLs in the update request.</p>
-        <p></p>
+        <p id="add-p-2">Use case: adding a syndication link to a post after it has been published. For example, when a client supports posting first then syndicating to MyFavoriteSocialNetwork or Wikimedia after the fact, the site needs a way to update the original post with the new syndication URL.</p>
+        <p id="add-p-3">To add syndication URLs, include one or more URLs in the update request.</p>
+        <p id="add-p-4"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 9</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
@@ -1298,40 +1427,40 @@ Content-Transfer-Encoding: binary
     <span class="hljs-string">"syndication"</span>: [<span class="hljs-string">"http://web.archive.org/web/20040104110725/https://aaronpk.example/2014/06/01/9/indieweb"</span>]
   }
 }</pre></div>
-        <p></p>
+        <p id="add-p-5"></p>
 
         <h4 id="adding-tags">Adding Tags</h4>
-        <p>Use case: adding tags to a post after it's been created.</p>
-        <p>To add multiple values to a property (such as category), provide the new values in an array.</p>
-        <p></p>
+        <p id="add-p-6">Use case: adding tags to a post after it's been created.</p>
+        <p id="add-p-7">To add multiple values to a property (such as category), provide the new values in an array.</p>
+        <p id="add-p-8"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 10</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"add"</span>: {
-    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"webmention"</span>,<span class="hljs-string">"indieweb"</span>]
+    <span class="hljs-string">"category"</span>: [<span class="hljs-string">"micropub"</span>,<span class="hljs-string">"indieweb"</span>]
   }
 }</pre></div>
-        <p></p>
+        <p id="add-p-9"></p>
       </section>
 
       <section id="remove" typeof="bibo:Chapter" resource="#remove" property="bibo:hasPart">
         <h4 id="h-remove" resource="#h-remove"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.3 </span>Remove</span>
         </h4>
 
-        <p>If the property exists, remove it. This completely removes the specified property.</p>
-        <p></p>
+        <p id="remove-p-1">If the property exists, remove it. This completely removes the specified property.</p>
+        <p id="remove-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 11</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>,
   <span class="hljs-string">"delete"</span>: [<span class="hljs-string">"category"</span>]
 }</pre></div>
-        <p></p>
+        <p id="remove-p-3"></p>
 
-        <p>For properties with multiple values, such as categories, you can remove individual entries by value. If no values remain, the property is removed.</p>
+        <p id="remove-p-4">For properties with multiple values, such as categories, you can remove individual entries by value. If no values remain, the property is removed.</p>
 
-        <p></p>
+        <p id="remove-p-5"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 12</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"update"</span>,
@@ -1340,14 +1469,14 @@ Content-Transfer-Encoding: binary
     <span class="hljs-string">"category"</span>: [<span class="hljs-string">"indieweb"</span>]
   }
 }</pre></div>
-        <p></p>
+        <p id="remove-p-6"></p>
       </section>
 
       <section id="response-1" typeof="bibo:Chapter" resource="#response-1" property="bibo:hasPart">
         <h4 id="h-response-1" resource="#h-response-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.4 </span>Response</span>
         </h4>
 
-        <p>The server <em class="rfc2119" title="MUST">MUST</em> respond to successful update requests with HTTP 200, 201 or 204. If the update operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
+        <p id="response-1-p-1">The server <em class="rfc2119" title="MUST">MUST</em> respond to successful update requests with HTTP 200, 201 or 204. If the update operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
 
       </section>
 
@@ -1358,44 +1487,44 @@ Content-Transfer-Encoding: binary
       <h3 id="h-delete" resource="#h-delete"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Delete</span>
       </h3>
 
-      <p>Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support deleting posts, and <em class="rfc2119" title="MAY">MAY</em> support undeleting posts.</p>
+      <p id="delete-p-1">Micropub servers <em class="rfc2119" title="SHOULD">SHOULD</em> support deleting posts, and <em class="rfc2119" title="MAY">MAY</em> support undeleting posts.</p>
 
-      <p>To delete an entire entry at a URL, send a POST request containing
+      <p id="delete-p-2">To delete an entire entry at a URL, send a POST request containing
         <code>action=delete</code> and the URL of the item in the
         <code>url</code> property.</p>
 
-      <p></p>
+      <p id="delete-p-3"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 13</span></div><pre class="hljs javascript">action=<span class="hljs-keyword">delete</span>
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
-      <p></p>
-      <p></p>
+      <p id="delete-p-4"></p>
+      <p id="delete-p-5"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 14</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"delete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
-      <p></p>
+      <p id="delete-p-6"></p>
 
-      <p>To undelete a post, use "undelete" as the action.</p>
-      <p></p>
+      <p id="delete-p-7">To undelete a post, use "undelete" as the action.</p>
+      <p id="delete-p-8"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 15</span></div><pre class="hljs javascript">action=undelete
 &amp;url=https:<span class="hljs-comment">//aaronpk.example/2014/06/01/9/indieweb</span></pre></div>
-      <p></p>
-      <p></p>
+      <p id="delete-p-9"></p>
+      <p id="delete-p-10"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 16</span></div><pre class="hljs xquery">{
   <span class="hljs-string">"action"</span>: <span class="hljs-string">"undelete"</span>,
   <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://aaronpk.example/2014/06/01/9/indieweb"</span>
 }</pre></div>
-      <p></p>
+      <p id="delete-p-11"></p>
 
       <section id="response-2" typeof="bibo:Chapter" resource="#response-2" property="bibo:hasPart">
         <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5.1 </span>Response</span>
         </h4>
 
-        <p>The server <em class="rfc2119" title="MUST">MUST</em> respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
+        <p id="response-2-p-1">The server <em class="rfc2119" title="MUST">MUST</em> respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
       </section>
 
     </section>
@@ -1405,21 +1534,21 @@ Content-Transfer-Encoding: binary
       <h3 id="h-media-endpoint" resource="#h-media-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Media Endpoint</span>
       </h3>
 
-      <p>In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server <em class="rfc2119" title="MAY">MAY</em> support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
+      <p id="media-endpoint-p-1">In order to provide a better user experience for Micropub applications, as well as to overcome the limitation of being unable to upload a file with the JSON syntax, a Micropub server <em class="rfc2119" title="MAY">MAY</em> support a "Media Endpoint". The role of the Media Endpoint is exclusively to handle file uploads and return a URL that can be used in a subsequent Micropub request.</p>
 
-      <p>When a Micropub server supports a Media Endpoint, clients can start uploading a photo or other media right away while the user is still creating other parts of the post. The diagram below illustrates a user interface that demonstrates creating a photo post while the photo is uploading asynchronously.</p>
+      <p id="media-endpoint-p-2">When a Micropub server supports a Media Endpoint, clients can start uploading a photo or other media right away while the user is still creating other parts of the post. The diagram below illustrates a user interface that demonstrates creating a photo post while the photo is uploading asynchronously.</p>
 
-      <p><img src="micropub-photo-app-flow.png" style="width:100%;" alt="A four-panel diagram of an application illustrating the main view of the application, choosing a photo to upload, uploading the photo to the Media Endpoint while the user enters text, then posting the post contents and photo URL to the Micropub endpoint."></p>
+      <p id="media-endpoint-p-3"><img src="micropub-photo-app-flow.png" style="width:100%;" alt="A four-panel diagram of an application illustrating the main view of the application, choosing a photo to upload, uploading the photo to the Media Endpoint while the user enters text, then posting the post contents and photo URL to the Micropub endpoint."></p>
 
-      <p>The above user flow applies just as well to mobile apps as it does to desktop apps. In general, the user experience of an application can be improved by having more of the work done asynchronously, giving the user a chance to continue working instead of waiting for the system to finish.</p>
+      <p id="media-endpoint-p-4">The above user flow applies just as well to mobile apps as it does to desktop apps. In general, the user experience of an application can be improved by having more of the work done asynchronously, giving the user a chance to continue working instead of waiting for the system to finish.</p>
 
       <section id="discovery" typeof="bibo:Chapter" resource="#discovery" property="bibo:hasPart">
         <h4 id="h-discovery" resource="#h-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.1 </span>Discovery</span>
         </h4>
 
-        <p>To advertise that the Micropub endpoint supports a Media Endpoint, the server <em class="rfc2119" title="MUST">MUST</em> include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients <em class="rfc2119" title="MUST NOT">MUST NOT</em> assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
+        <p id="discovery-p-1">To advertise that the Micropub endpoint supports a Media Endpoint, the server <em class="rfc2119" title="MUST">MUST</em> include a key called <code>media-endpoint</code> with a value of the full URL of the Media Endpoint in the Micropub <a href="#configuration">configuration request</a>. Clients <em class="rfc2119" title="MUST NOT">MUST NOT</em> assume the Media Endpoint is on the same domain as the Micropub endpoint.</p>
 
-        <p></p>
+        <p id="discovery-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 17</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
@@ -1427,23 +1556,23 @@ Authorization: Bearer xxxxxxxxx
 {
   <span class="hljs-string">"media-endpoint"</span>: <span class="hljs-string">"https://media.example.com/micropub"</span>
 }</pre></div>
-        <p></p>
+        <p id="discovery-p-3"></p>
       </section>
 
       <section id="authentication" typeof="bibo:Chapter" resource="#authentication" property="bibo:hasPart">
         <h4 id="h-authentication" resource="#h-authentication"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.2 </span>Authentication</span>
         </h4>
 
-        <p>The Media Endpoint <em class="rfc2119" title="MUST">MUST</em> accept the same access tokens that the Micropub endpoint accepts.</p>
+        <p id="authentication-p-1">The Media Endpoint <em class="rfc2119" title="MUST">MUST</em> accept the same access tokens that the Micropub endpoint accepts.</p>
       </section>
 
       <section id="request" typeof="bibo:Chapter" resource="#request" property="bibo:hasPart">
         <h4 id="h-request" resource="#h-request"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.3 </span>Request</span>
         </h4>
 
-        <p>To upload a file to the Media Endpoint, the client sends a <code>multipart/form-data</code> request with one part named <code>file</code>. The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> ignore the suggested filename that the client sends.</p>
+        <p id="request-p-1">To upload a file to the Media Endpoint, the client sends a <code>multipart/form-data</code> request with one part named <code>file</code>. The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> ignore the suggested filename that the client sends.</p>
 
-        <p></p>
+        <p id="request-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 18</span></div><pre class="hljs javascript">multipart/form-data; boundary=<span class="hljs-number">553</span>d9cee2030456a81931fb708ece92c
 
@@ -1454,11 +1583,11 @@ Content-Transfer-Encoding: binary
 
 ... (binary data) ...
 -<span class="hljs-number">-553</span>d9cee2030456a81931fb708ece92c--</pre></div>
-        <p></p>
+        <p id="request-p-3"></p>
 
         <div class="note">
           <div class="note-title marker" aria-level="5" role="heading" id="h-note1"><span>Note</span></div>
-          <p class="">To include accessibility-related information such as image alt text when creating posts that contain an image, the alt text is associated with the post itself rather than the media file. This is analogous to an HTML img tag where the img tag has a src attribute pointing to the media file and an alt attribute with the alt text. See <a href="#uploading-a-photo-with-alt-text">Uploading a photo with alt text</a> for more information.</p>
+          <p class="" id="request-p-4">To include accessibility-related information such as image alt text when creating posts that contain an image, the alt text is associated with the post itself rather than the media file. This is analogous to an HTML img tag where the img tag has a src attribute pointing to the media file and an alt attribute with the alt text. See <a href="#uploading-a-photo-with-alt-text">Uploading a photo with alt text</a> for more information.</p>
         </div>
 
       </section>
@@ -1467,23 +1596,23 @@ Content-Transfer-Encoding: binary
         <h4 id="h-response-3" resource="#h-response-3"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4 </span>Response</span>
         </h4>
 
-        <p>The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL <em class="rfc2119" title="SHOULD">SHOULD</em> be unguessable, such as using a UUID in the path. If the request is successful, the endpoint <em class="rfc2119" title="MUST">MUST</em> return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
+        <p id="response-3-p-1">The Media Endpoint processes the file upload, storing it in whatever backend it wishes, and generates a URL to the file. The URL <em class="rfc2119" title="SHOULD">SHOULD</em> be unguessable, such as using a UUID in the path. If the request is successful, the endpoint <em class="rfc2119" title="MUST">MUST</em> return the URL to the file that was created in the HTTP <code>Location</code> header, and respond with <code>HTTP 201 Created</code>. The response body is left undefined.</p>
 
-        <p></p>
+        <p id="response-3-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 19</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
-        <p></p>
+        <p id="response-3-p-3"></p>
 
-        <p>The Micropub client can then use this URL as the value of e.g. the "photo" property of a Micropub request.</p>
+        <p id="response-3-p-4">The Micropub client can then use this URL as the value of e.g. the "photo" property of a Micropub request.</p>
 
-        <p>The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
+        <p id="response-3-p-5">The Media Endpoint <em class="rfc2119" title="MAY">MAY</em> periodically delete files uploaded if they are not used in a Micropub request within a specific amount of time.</p>
 
         <section id="media-endpoint-error-response" typeof="bibo:Chapter" resource="#media-endpoint-error-response" property="bibo:hasPart">
           <h5 id="h-media-endpoint-error-response" resource="#h-media-endpoint-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6.4.1 </span>Media Endpoint Error Response</span>
           </h5>
 
-          <p>The Media Endpoint <em class="rfc2119" title="SHOULD">SHOULD</em> follow the same conventions for returning error responses as the Micropub endpoint, described in <a href="#error-response">Error Response</a>.</p>
+          <p id="media-endpoint-error-response-p-1">The Media Endpoint <em class="rfc2119" title="SHOULD">SHOULD</em> follow the same conventions for returning error responses as the Micropub endpoint, described in <a href="#error-response">Error Response</a>.</p>
         </section>
       </section>
 
@@ -1493,32 +1622,32 @@ Content-Transfer-Encoding: binary
       <h3 id="h-querying" resource="#h-querying"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7 </span>Querying</span>
       </h3>
 
-      <p>Micropub clients may need to query the Micropub endpoint to discover its capabilities, such as finding a list of syndication targets that it displays to the user, or retrieving the source of a post to display in the updating interface.</p>
+      <p id="querying-p-1">Micropub clients may need to query the Micropub endpoint to discover its capabilities, such as finding a list of syndication targets that it displays to the user, or retrieving the source of a post to display in the updating interface.</p>
 
-      <p>To query, make a <code>GET</code> request to the Micropub endpoint and use the
+      <p id="querying-p-2">To query, make a <code>GET</code> request to the Micropub endpoint and use the
         <code>q</code> parameter to specify what you are querying.</p>
 
       <div class="note">
         <div class="note-title marker" aria-level="4" role="heading" id="h-note2"><span>Note</span></div>
-        <p class="">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
+        <p class="" id="querying-p-3">The Micropub endpoint URL may include a query string such as <code>?micropub=endpoint</code>, so in this case, Micropub clients <em class="rfc2119" title="MUST">MUST</em> append the <code>q</code> parameter instead of replacing the query string.</p>
       </div>
 
       <section id="configuration" typeof="bibo:Chapter" resource="#configuration" property="bibo:hasPart">
         <h4 id="h-configuration" resource="#h-configuration"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.1 </span>Configuration</span>
         </h4>
 
-        <p>When a user initially logs in to a Micropub client, the client will want to query some initial information about the user's endpoint. The client <em class="rfc2119" title="SHOULD">SHOULD</em> make a query request <code>q=config</code> to obtain initial configuration information.</p>
+        <p id="configuration-p-1">When a user initially logs in to a Micropub client, the client will want to query some initial information about the user's endpoint. The client <em class="rfc2119" title="SHOULD">SHOULD</em> make a query request <code>q=config</code> to obtain initial configuration information.</p>
 
-        <p>The server <em class="rfc2119" title="SHOULD">SHOULD</em> include the following information in the configuration response.</p>
+        <p id="configuration-p-2">The server <em class="rfc2119" title="SHOULD">SHOULD</em> include the following information in the configuration response.</p>
 
-        <p></p>
+        <p id="configuration-p-3"></p>
         <ul>
-          <li>The list of syndication endpoints supported, in a property called <code>syndicate-to</code> (see <a href="#syndication-targets">Syndication Targets</a> for details on the structure of the response)</li>
-          <li>The Media Endpoint if supported, in a property called <code>media-endpoint</code></li>
+          <li id="configuration-li-1">The list of syndication endpoints supported, in a property called <code>syndicate-to</code> (see <a href="#syndication-targets">Syndication Targets</a> for details on the structure of the response)</li>
+          <li id="configuration-li-2">The Media Endpoint if supported, in a property called <code>media-endpoint</code></li>
         </ul>
-        <p></p>
+        <p id="configuration-p-4"></p>
 
-        <p></p>
+        <p id="configuration-p-5"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 20</span></div><pre class="hljs xquery">GET /micropub?q=config
 Authorization: Bearer xxxxxxxxx
@@ -1546,26 +1675,26 @@ Content-type: application/json
     }
   ]
 }</pre></div>
-        <p></p>
+        <p id="configuration-p-6"></p>
 
-        <p>Servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query, and returning all properties relevant to the server. If none of the properties apply to the server, the response <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON object, <code>{}</code>.</p>
+        <p id="configuration-p-7">Servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query, and returning all properties relevant to the server. If none of the properties apply to the server, the response <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON object, <code>{}</code>.</p>
 
-        <p>Clients <em class="rfc2119" title="SHOULD">SHOULD</em> treat unexpected responses the same as an empty response, in order to handle unexpected responses from servers that don't support this query. For example, a server that does not implement the configuration query at all may return an HTTP 400 response rather than the expected 200 response with an empty JSON object.</p>
+        <p id="configuration-p-8">Clients <em class="rfc2119" title="SHOULD">SHOULD</em> treat unexpected responses the same as an empty response, in order to handle unexpected responses from servers that don't support this query. For example, a server that does not implement the configuration query at all may return an HTTP 400 response rather than the expected 200 response with an empty JSON object.</p>
       </section>
 
       <section id="source-content" typeof="bibo:Chapter" resource="#source-content" property="bibo:hasPart">
         <h4 id="h-source-content" resource="#h-source-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.2 </span>Source Content</span>
         </h4>
 
-        <p>A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
+        <p id="source-content-p-1">A Micropub client can query the endpoint to return specific properties of a post. This allows a client to request only the properties it needs or knows about, supporting such uses as making an interface to add tags to a post.</p>
 
-        <p>Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the source content query.</p>
+        <p id="source-content-p-2">Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support the source content query.</p>
 
-        <p>To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] URL encoding.</p>
+        <p id="source-content-p-3">To query, make a <code>GET</code> request to the Micropub endpoint and set the <code>q</code> parameter to <code>source</code>, and include the URL of the post in the <code>url</code> parameter. The query can specify the list of properties being requested by setting one or more values for the <code>properties</code> key. If more than one is specified, use array bracket notation for each name, according to [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] URL encoding.</p>
 
-        <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
+        <p id="source-content-p-4">The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>] [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with an object named <code>properties</code>, where the keys are the names of the properties requested. If no properties are specified, then the response <em class="rfc2119" title="MUST">MUST</em> include all properties, as well as a <code>type</code> property indicating the vocabulary of the post.</p>
 
-        <p></p>
+        <p id="source-content-p-5"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 21</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties[]=published&amp;properties[]=category&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
@@ -1583,9 +1712,9 @@ Content-type: application/json
     ]
   }
 }</pre></div>
-        <p></p>
+        <p id="source-content-p-6"></p>
 
-        <p></p>
+        <p id="source-content-p-7"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 22</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
@@ -1605,15 +1734,15 @@ Content-type: application/json
     ]
   }
 }</pre></div>
-        <p></p>
+        <p id="source-content-p-8"></p>
 
         <h4 id="html-content">HTML Content</h4>
 
-        <p>If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>].</p>
+        <p id="source-content-p-9">If the source of the post was written as HTML content, then the endpoint <em class="rfc2119" title="MUST">MUST</em> return the <code>content</code> property as an object containing an <code>html</code> property. Otherwise, the endpoint <em class="rfc2119" title="MUST">MUST</em> return a string value for the <code>content</code> property, and the client will treat the value as plain text. This matches the behavior of the values of properties in [<cite><a class="bibref" href="#bib-microformats2-parsing">microformats2-parsing</a></cite>].</p>
 
-        <p>Below is an example of requesting the content of a post which was authored as HTML.</p>
+        <p id="source-content-p-10">Below is an example of requesting the content of a post which was authored as HTML.</p>
 
-        <p></p>
+        <p id="source-content-p-11"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 23</span></div><pre class="hljs xquery">GET /micropub?q=source&amp;properties=content&amp;url=https://aaronpk.example/post/<span class="hljs-number">1000</span>
 Authorization: Bearer xxxxxxxxx
@@ -1631,7 +1760,7 @@ Content-type: application/json
     ]
   }
 }</pre></div>
-        <p></p>
+        <p id="source-content-p-12"></p>
 
       </section>
       <!-- Source Content -->
@@ -1640,18 +1769,18 @@ Content-type: application/json
         <h4 id="h-syndication-targets" resource="#h-syndication-targets"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.3 </span>Syndication Targets</span>
         </h4>
 
-        <p>To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
+        <p id="syndication-targets-p-1">To return a list of supported syndication targets, set the <code>q</code> parameter to <code>syndicate-to</code>.</p>
 
-        <p></p><pre class="hljs">GET /micropub?q=syndicate-to</pre>
-        <p></p>
+        <p id="syndication-targets-p-2"></p><pre class="hljs">GET /micropub?q=syndicate-to</pre>
+        <p id="syndication-targets-p-3"></p>
 
-        <p>The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets. If no endpoints are defined, the value of the <code>syndicate-to</code> object <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON array <code>[]</code>.</p>
+        <p id="syndication-targets-p-4">The endpoint <em class="rfc2119" title="MUST">MUST</em> return the response in [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] format, with a key of <code>syndicate-to</code> and the values being objects descriptive of the supported syndication targets. If no endpoints are defined, the value of the <code>syndicate-to</code> object <em class="rfc2119" title="SHOULD">SHOULD</em> be an empty JSON array <code>[]</code>.</p>
 
-        <p>At a minimum, a syndication target <em class="rfc2119" title="MUST">MUST</em> have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
+        <p id="syndication-targets-p-5">At a minimum, a syndication target <em class="rfc2119" title="MUST">MUST</em> have a <code>uid</code> and human-readable <code>name</code> property. The <code>uid</code> can be any identifier unique to the Micropub endpoint and is not intended to be visible to the end user. The <code>name</code> is intended to be visible to the user in the posting interface, and should be descriptive of the syndication destination.</p>
 
-        <p>A syndication target <em class="rfc2119" title="MAY">MAY</em> optionally include additional details about the service or user account at the syndication destination, indicated with a property called <code>service</code> and <code>user</code> respectively. Both service and user objects <em class="rfc2119" title="MUST">MUST</em> contain a <code>name</code> property, intended to be displayed to the user, and <em class="rfc2119" title="MAY">MAY</em> contain a <code>url</code> and <code>photo</code> property. The client can use the name and photo to improve the display of the syndication options to the user.</p>
+        <p id="syndication-targets-p-6">A syndication target <em class="rfc2119" title="MAY">MAY</em> optionally include additional details about the service or user account at the syndication destination, indicated with a property called <code>service</code> and <code>user</code> respectively. Both service and user objects <em class="rfc2119" title="MUST">MUST</em> contain a <code>name</code> property, intended to be displayed to the user, and <em class="rfc2119" title="MAY">MAY</em> contain a <code>url</code> and <code>photo</code> property. The client can use the name and photo to improve the display of the syndication options to the user.</p>
 
-        <p></p>
+        <p id="syndication-targets-p-7"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 24</span></div><pre class="hljs xquery">GET /micropub?q=syndicate-to
 Authorization: Bearer xxxxxxxxx
@@ -1686,15 +1815,15 @@ Content-type: application/json
     }
   ]
 }</pre></div>
-        <p></p>
+        <p id="syndication-targets-p-8"></p>
 
-        <p>At a minimum, a syndication destination <em class="rfc2119" title="MUST">MUST</em> have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
+        <p id="syndication-targets-p-9">At a minimum, a syndication destination <em class="rfc2119" title="MUST">MUST</em> have <code>uid</code> and <code>name</code> properties. The <code>uid</code> property is opaque to the client, and is the value the client sends in the Micropub request to indicate the targets to syndicate to. The <code>name</code> property is the value the client can display to the user. The name should be unambiguously descriptive of the destination, so that if for example there are two destinations on the same service, the name can disambiguate them.</p>
 
-        <p>The Micropub server <em class="rfc2119" title="MAY">MAY</em> also include additional information about the destination service and user account. This is accomplished with the additional properties <code>service</code> and <code>user</code>, both of which can have three properties, <code>name</code> (a human-readable name), <code>url</code> and <code>photo</code> (both URLs).</p>
+        <p id="syndication-targets-p-10">The Micropub server <em class="rfc2119" title="MAY">MAY</em> also include additional information about the destination service and user account. This is accomplished with the additional properties <code>service</code> and <code>user</code>, both of which can have three properties, <code>name</code> (a human-readable name), <code>url</code> and <code>photo</code> (both URLs).</p>
 
-        <p>The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
+        <p id="syndication-targets-p-11">The client may use the service and user properties to enhance the display of the syndication options, for example by including the user or service photos on the syndication buttons.</p>
 
-        <p>Servers that support syndicating posts <em class="rfc2119" title="SHOULD">SHOULD</em> support the <code>syndicate-to</code> query.</p>
+        <p id="syndication-targets-p-12">Servers that support syndicating posts <em class="rfc2119" title="SHOULD">SHOULD</em> support the <code>syndicate-to</code> query.</p>
 
       </section>
     </section>
@@ -1704,21 +1833,21 @@ Content-type: application/json
       <h3 id="h-error-response" resource="#h-error-response"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.8 </span>Error Response</span>
       </h3>
 
-      <p>If there was an error with the request, the endpoint <em class="rfc2119" title="MUST">MUST</em> return an appropriate HTTP status code, typically 400, 401, or 403, and <em class="rfc2119" title="MAY">MAY</em> include a description of the error. If an error body is returned, the response body <em class="rfc2119" title="MUST">MUST</em> be encoded as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] object and include at least a single property named <code>error</code>. The following error codes are defined:</p>
+      <p id="error-response-p-1">If there was an error with the request, the endpoint <em class="rfc2119" title="MUST">MUST</em> return an appropriate HTTP status code, typically 400, 401, or 403, and <em class="rfc2119" title="MAY">MAY</em> include a description of the error. If an error body is returned, the response body <em class="rfc2119" title="MUST">MUST</em> be encoded as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] object and include at least a single property named <code>error</code>. The following error codes are defined:</p>
 
-      <p></p>
+      <p id="error-response-p-2"></p>
       <ul>
-        <li>HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request</li>
-        <li>HTTP 401: <code>"error":"insufficient_scope"</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response <em class="rfc2119" title="MAY">MAY</em> include the <code>"scope"</code> attribute with the scope necessary to successfully perform this request.</li>
-        <li>HTTP 400: <code>"error":"invalid_request"</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
+        <li id="error-response-li-1">HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request</li>
+        <li id="error-response-li-2">HTTP 401: <code>"error":"insufficient_scope"</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response <em class="rfc2119" title="MAY">MAY</em> include the <code>"scope"</code> attribute with the scope necessary to successfully perform this request.</li>
+        <li id="error-response-li-3">HTTP 400: <code>"error":"invalid_request"</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
       </ul>
-      <p></p>
+      <p id="error-response-p-3"></p>
 
-      <p>Clients <em class="rfc2119" title="SHOULD">SHOULD</em> treat unexpected error strings as a generic error. The response body <em class="rfc2119" title="MAY">MAY</em> also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
+      <p id="error-response-p-4">Clients <em class="rfc2119" title="SHOULD">SHOULD</em> treat unexpected error strings as a generic error. The response body <em class="rfc2119" title="MAY">MAY</em> also contain an <code>error_description</code> property with a human-readable description of the error message, used to assist the client developer in understanding the error. This is not meant to be shown to the end user.</p>
 
-      <p>See the OAuth 2 Bearer Token [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] spec for more details on the how to return error responses.</p>
+      <p id="error-response-p-5">See the OAuth 2 Bearer Token [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>] spec for more details on the how to return error responses.</p>
 
-      <p></p>
+      <p id="error-response-p-6"></p>
       <div class="example">
         <div class="example-title marker"><span>Example 25</span></div><pre class="hljs javascript">GET /micropub?q=source&amp;url=https:<span class="hljs-comment">//aaronpk.example/post/404</span>
 Authorization: Bearer xxxxxxxx
@@ -1730,7 +1859,7 @@ Content-type: application/json
   <span class="hljs-string">"error"</span>: <span class="hljs-string">"invalid_request"</span>,
   <span class="hljs-string">"error_description"</span>: <span class="hljs-string">"The post with the requested URL was not found"</span>
 }</pre></div>
-      <p></p>
+      <p id="error-response-p-7"></p>
 
     </section>
     <!-- Error Response -->
@@ -1743,66 +1872,66 @@ Content-type: application/json
     <h2 id="h-vocabulary" resource="#h-vocabulary"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary</span>
     </h2>
 
-    <p>The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>]. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
+    <p id="vocabulary-p-1">The vocabularies used in Micropub requests <em class="rfc2119" title="SHOULD">SHOULD</em> be the vocabularies defined by [<cite><a class="bibref" href="#bib-Microformats2">Microformats2</a></cite>]. If the Microformats2 vocabulary is used, clients and servers <em class="rfc2119" title="MUST">MUST</em> support at least the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary. Other vocabularies with widespread usage include [<cite><a class="bibref" href="#bib-h-event">h-event</a></cite>] and [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]. When creating objects, the vocabulary of the object is indicated in the parameter <code>h</code>, or <code>type</code> in the JSON syntax. If no type is provided, the server <em class="rfc2119" title="SHOULD">SHOULD</em> assume a default value of <code>entry</code>.</p>
 
     <section class="informative" id="examples-of-creating-objects" typeof="bibo:Chapter" resource="#examples-of-creating-objects" property="bibo:hasPart">
       <h3 id="h-examples-of-creating-objects" resource="#h-examples-of-creating-objects"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Examples of Creating Objects</span>
       </h3>
-      <p><em>This section is non-normative.</em></p>
+      <p id="examples-of-creating-objects-p-1"><em>This section is non-normative.</em></p>
 
-      <p>To indicate the object being created, use a property called <code>h</code>, (which would never be the name of a property of a Microformats object), followed by the name of the Microformats object. Examples:
+      <p id="examples-of-creating-objects-p-2">To indicate the object being created, use a property called <code>h</code>, (which would never be the name of a property of a Microformats object), followed by the name of the Microformats object. Examples:
       </p>
       <ul>
-        <li><code>h=entry</code></li>
-        <li><code>h=card</code></li>
-        <li><code>h=event</code></li>
-        <li><code>h=cite</code></li>
+        <li id="examples-of-creating-objects-li-1"><code>h=entry</code></li>
+        <li id="examples-of-creating-objects-li-2"><code>h=card</code></li>
+        <li id="examples-of-creating-objects-li-3"><code>h=event</code></li>
+        <li id="examples-of-creating-objects-li-4"><code>h=cite</code></li>
       </ul>
-      <p></p>
+      <p id="examples-of-creating-objects-p-3"></p>
 
-      <p>The following properties may be included in a request to create a new [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>]:
+      <p id="examples-of-creating-objects-p-4">The following properties may be included in a request to create a new [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>]:
       </p>
       <ul>
-        <li>name</li>
-        <li>summary</li>
-        <li>content</li>
-        <li>published</li>
-        <li>updated</li>
-        <li>category</li>
-        <li>location
+        <li id="examples-of-creating-objects-li-5">name</li>
+        <li id="examples-of-creating-objects-li-6">summary</li>
+        <li id="examples-of-creating-objects-li-7">content</li>
+        <li id="examples-of-creating-objects-li-8">published</li>
+        <li id="examples-of-creating-objects-li-9">updated</li>
+        <li id="examples-of-creating-objects-li-10">category</li>
+        <li id="examples-of-creating-objects-li-11">location
           <ul>
-            <li>As a Geo URI [<cite><a class="bibref" href="#bib-RFC5870">RFC5870</a></cite>], for example: <code>geo:45.51533714,-122.646538633</code></li>
-            <li>As a URL that contains an [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]</li>
-            <li>As a nested [<cite><a class="bibref" href="#bib-h-adr">h-adr</a></cite>] object</li>
+            <li id="examples-of-creating-objects-li-12">As a Geo URI [<cite><a class="bibref" href="#bib-RFC5870">RFC5870</a></cite>], for example: <code>geo:45.51533714,-122.646538633</code></li>
+            <li id="examples-of-creating-objects-li-13">As a URL that contains an [<cite><a class="bibref" href="#bib-h-card">h-card</a></cite>]</li>
+            <li id="examples-of-creating-objects-li-14">As a nested [<cite><a class="bibref" href="#bib-h-adr">h-adr</a></cite>] object</li>
           </ul>
         </li>
-        <li>in-reply-to</li>
-        <li>like-of</li>
-        <li>repost-of</li>
-        <li>syndication - Pass one or more URLs pointing to places where this entry already exists. Can be used for importing existing content to a site.</li>
-        <li>mp-syndicate-to = https://myfavoritesocialnetwork.example/aaronpk, https://archive.org/, etc.
+        <li id="examples-of-creating-objects-li-15">in-reply-to</li>
+        <li id="examples-of-creating-objects-li-16">like-of</li>
+        <li id="examples-of-creating-objects-li-17">repost-of</li>
+        <li id="examples-of-creating-objects-li-18">syndication - Pass one or more URLs pointing to places where this entry already exists. Can be used for importing existing content to a site.</li>
+        <li id="examples-of-creating-objects-li-19">mp-syndicate-to = https://myfavoritesocialnetwork.example/aaronpk, https://archive.org/, etc.
           <ul>
-            <li>This property is giving a command to the Micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
+            <li id="examples-of-creating-objects-li-20">This property is giving a command to the Micropub endpoint, rather than just creating data, so it uses the mp- prefix.</li>
           </ul>
         </li>
       </ul>
-      <p></p>
+      <p id="examples-of-creating-objects-p-5"></p>
 
       <section id="new-note" typeof="bibo:Chapter" resource="#new-note" property="bibo:hasPart">
         <h4 id="h-new-note" resource="#h-new-note"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.1 </span>New Note</span>
         </h4>
 
-        <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
-        <p></p>
+        <p id="new-note-p-1">Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
+        <p id="new-note-p-2"></p>
         <ul>
-          <li>content</li>
-          <li>category</li>
-          <li>published (optional, defaults to "now" if not present. Useful for writing offline and syncing later.)</li>
-          <li>mp-syndicate-to</li>
+          <li id="new-note-li-1">content</li>
+          <li id="new-note-li-2">category</li>
+          <li id="new-note-li-3">published (optional, defaults to "now" if not present. Useful for writing offline and syncing later.)</li>
+          <li id="new-note-li-4">mp-syndicate-to</li>
         </ul>
-        <p></p>
+        <p id="new-note-p-3"></p>
 
-        <p></p>
+        <p id="new-note-p-4"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 26</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1813,11 +1942,11 @@ Content-type: application/json
 &amp;content=My+favorite+<span class="hljs-keyword">of</span>+the+%<span class="hljs-number">23</span>quantifiedself+trackers%<span class="hljs-number">2</span>C+<span class="hljs-keyword">finally</span>+released+their+official+API
 &amp;category[]=quantifiedself&amp;category[]=api
 &amp;mp-syndicate-to=https:<span class="hljs-comment">//myfavoritesocialnetwork.example/aaronpk</span></span></pre></div>
-        <p></p>
+        <p id="new-note-p-5"></p>
 
         <h4 id="minimal-example">Minimal Example</h4>
 
-        <p></p>
+        <p id="new-note-p-6"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 27</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1826,12 +1955,12 @@ Content-type: application/json
 
 <span class="undefined">h=entry
 &amp;content=Hello+World</span></pre></div>
-        <p></p>
+        <p id="new-note-p-7"></p>
 
-        <p></p>
+        <p id="new-note-p-8"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 28</span></div><pre class="hljs xquery">curl https://aaronpk.example/micropub -d h=entry -d <span class="hljs-string">"content=Hello World"</span> -H <span class="hljs-string">"Authorization: Bearer XXXXXXX"</span></pre></div>
-        <p></p>
+        <p id="new-note-p-9"></p>
 
       </section>
 
@@ -1839,17 +1968,17 @@ Content-type: application/json
         <h4 id="h-new-reply" resource="#h-new-reply"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.2 </span>New Reply</span>
         </h4>
 
-        <p>Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
-        <p></p>
+        <p id="new-reply-p-1">Posting a new note with tags, syndicating to myfavoritesocialnetwork:</p>
+        <p id="new-reply-p-2"></p>
         <ul>
-          <li>content</li>
-          <li>in-reply-to</li>
-          <li>published</li>
-          <li>mp-syndicate-to</li>
+          <li id="new-reply-li-1">content</li>
+          <li id="new-reply-li-2">in-reply-to</li>
+          <li id="new-reply-li-3">published</li>
+          <li id="new-reply-li-4">mp-syndicate-to</li>
         </ul>
-        <p></p>
+        <p id="new-reply-p-3"></p>
 
-        <p></p>
+        <p id="new-reply-p-4"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 29</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1860,7 +1989,7 @@ Content-type: application/json
 &amp;content=%<span class="hljs-number">40</span>BarnabyWalters+My+favorite+<span class="hljs-keyword">for</span>+that+use+<span class="hljs-keyword">case</span>+is+Redis.
 &amp;<span class="hljs-keyword">in</span>-reply-to=https:<span class="hljs-comment">//waterpigs.example/notes/4S0LMw/</span>
 &amp;mp-syndicate-to=https:<span class="hljs-comment">//myfavoritesocialnetwork.example/aaronpk</span></span></pre></div>
-        <p></p>
+        <p id="new-reply-p-5"></p>
 
       </section>
 
@@ -1868,9 +1997,9 @@ Content-type: application/json
         <h4 id="h-new-article-with-html" resource="#h-new-article-with-html"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.3 </span>New Article with HTML</span>
         </h4>
 
-        <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML. Because <code>content</code> is an object, this request must be sent in JSON format.</p>
+        <p id="new-article-with-html-p-1">Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML. Because <code>content</code> is an object, this request must be sent in JSON format.</p>
 
-        <p></p>
+        <p id="new-article-with-html-p-2"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 30</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1888,7 +2017,7 @@ Content-type: application/json
     ]
   }
 }</span></pre></div>
-        <p></p>
+        <p id="new-article-with-html-p-3"></p>
 
       </section>
 
@@ -1896,23 +2025,23 @@ Content-type: application/json
         <h4 id="h-new-article-with-embedded-images" resource="#h-new-article-with-embedded-images"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.4 </span>New Article with Embedded Images</span>
         </h4>
 
-        <p>To create an article containing embedded images, the HTML of the article should include <code>&lt;img&gt;</code> tags with the URLs of the images returned after uploading them to the Media Endpoint.</p>
+        <p id="new-article-with-embedded-images-p-1">To create an article containing embedded images, the HTML of the article should include <code>&lt;img&gt;</code> tags with the URLs of the images returned after uploading them to the Media Endpoint.</p>
 
         <h4 id="upload-images-to-the-media-endpoint">Upload images to the Media Endpoint</h4>
 
-        <p>First, upload one or more images to the Media Endpoint. Typically this will happen before the article is published, such as when the user is authoring the article in a visual editor. The editor can upload the images to the Media Endpoint as soon as the user drags them into the interface, and then embed the images into the editor via the resulting URL. See <a href="#request">Uploading to the Media Endpoint</a> for an example of this request.</p>
+        <p id="new-article-with-embedded-images-p-2">First, upload one or more images to the Media Endpoint. Typically this will happen before the article is published, such as when the user is authoring the article in a visual editor. The editor can upload the images to the Media Endpoint as soon as the user drags them into the interface, and then embed the images into the editor via the resulting URL. See <a href="#request">Uploading to the Media Endpoint</a> for an example of this request.</p>
 
-        <p>The response after uploading the file to the Media Endpoint will be a URL that the client can use when posting the article.</p>
+        <p id="new-article-with-embedded-images-p-3">The response after uploading the file to the Media Endpoint will be a URL that the client can use when posting the article.</p>
 
-        <p></p>
+        <p id="new-article-with-embedded-images-p-4"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 31</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
 <span class="hljs-attribute">Location</span>: https://media.example.com/file/ff176c461dd111e6b6ba3e1d05defe78.jpg</pre></div>
-        <p></p>
+        <p id="new-article-with-embedded-images-p-5"></p>
 
-        <p>The client can then use this URL to embed this image in an article.</p>
+        <p id="new-article-with-embedded-images-p-6">The client can then use this URL to embed this image in an article.</p>
 
-        <p></p>
+        <p id="new-article-with-embedded-images-p-7"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 32</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
@@ -1926,7 +2055,7 @@ Content-type: application/json
     ]
   }
 }</span></pre></div>
-        <p></p>
+        <p id="new-article-with-embedded-images-p-8"></p>
 
       </section>
 
@@ -1934,19 +2063,19 @@ Content-type: application/json
         <h4 id="h-posting-files" resource="#h-posting-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.5 </span>Posting Files</span>
         </h4>
 
-        <p>When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
+        <p id="posting-files-p-1">When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
 
-        <p>For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
+        <p id="posting-files-p-2">For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
 
-        <p>In PHP, these files are accessible using the $_FILES array:
+        <p id="posting-files-p-3">In PHP, these files are accessible using the $_FILES array:
         </p><pre class="hljs javascript">$_FILES[<span class="hljs-string">'video'</span>]
 $_FILES[<span class="hljs-string">'photo'</span>]
 $_FILES[<span class="hljs-string">'audio'</span>]</pre>
-        <p></p>
+        <p id="posting-files-p-4"></p>
 
-        <p>Note that there is no way to upload a file when the request body is JSON encoded. Instead, you can first send the photo to the Media Endpoint and then use the resulting URL in the JSON post.</p>
+        <p id="posting-files-p-5">Note that there is no way to upload a file when the request body is JSON encoded. Instead, you can first send the photo to the Media Endpoint and then use the resulting URL in the JSON post.</p>
 
-        <p>The Micropub endpoint may store the file directly, or make an external request to upload it to a different backend storage, such as Amazon S3.</p>
+        <p id="posting-files-p-6">The Micropub endpoint may store the file directly, or make an external request to upload it to a different backend storage, such as Amazon S3.</p>
 
       </section>
       <!-- Posting Files -->
@@ -1966,17 +2095,17 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-authentication-1" resource="#h-authentication-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Authentication</span>
       </h3>
 
-      <p>Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in either the HTTP header or a form-encoded body parameter as described in the OAuth Bearer Token RFC [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>]. Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept the token using both methods.</p>
+      <p id="authentication-1-p-1">Micropub requests <em class="rfc2119" title="MUST">MUST</em> be authenticated by including a Bearer Token in either the HTTP header or a form-encoded body parameter as described in the OAuth Bearer Token RFC [<cite><a class="bibref" href="#bib-RFC6750">RFC6750</a></cite>]. Micropub servers <em class="rfc2119" title="MUST">MUST</em> accept the token using both methods.</p>
 
-      <p></p>
+      <p id="authentication-1-p-2"></p>
       <h3 id="http-header">HTTP Header</h3>
       <pre class="hljs http"><span class="hljs-attribute">Authorization</span>: Bearer XXXXXXXXX</pre>
-      <p></p>
+      <p id="authentication-1-p-3"></p>
 
-      <p></p>
+      <p id="authentication-1-p-4"></p>
       <h3 id="form-encoded-body-parameter">Form-Encoded Body Parameter</h3>
       <pre class="hljs">access_token=XXXXXXXXX</pre>
-      <p></p>
+      <p id="authentication-1-p-5"></p>
     </section>
     <!-- Authentication -->
 
@@ -1984,7 +2113,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-authorization" resource="#h-authorization"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Authorization</span>
       </h3>
 
-      <p>An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol. Applications <em class="rfc2119" title="MAY">MAY</em> use the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
+      <p id="authorization-p-1">An app that wants to post to a user's Micropub endpoint will need to obtain authorization from the user in order to get an access token. Authorization <em class="rfc2119" title="SHOULD">SHOULD</em> be handled via the OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] protocol. Applications <em class="rfc2119" title="MAY">MAY</em> use the [<cite><a class="bibref" href="#bib-IndieAuth">IndieAuth</a></cite>] extension which supports endpoint discovery from a URL. See <a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a> for more details.</p>
     </section>
     <!-- Authorization -->
 
@@ -1992,21 +2121,21 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.3 </span>Endpoint Discovery</span>
       </h3>
 
-      <p>Micropub defines a link relation value of <code>micropub</code> to link to a website's Micropub endpoint from the profile page identifying the user.</p>
+      <p id="endpoint-discovery-p-1">Micropub defines a link relation value of <code>micropub</code> to link to a website's Micropub endpoint from the profile page identifying the user.</p>
 
-      <p>A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by discovering the Micropub endpoint for the user via this link relation.</p>
+      <p id="endpoint-discovery-p-2">A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by discovering the Micropub endpoint for the user via this link relation.</p>
 
-      <p>The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
+      <p id="endpoint-discovery-p-3">The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
-      <p></p>
+      <p id="endpoint-discovery-p-4"></p>
       <h3 id="http-link-header">HTTP Link Header</h3>
       <pre class="hljs javascript">Link: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">https:</span>//<span class="hljs-attr">aaronpk.example</span>/<span class="hljs-attr">micropub</span>&gt;</span></span>; rel=<span class="hljs-string">"micropub"</span></pre>
-      <p></p>
+      <p id="endpoint-discovery-p-5"></p>
 
-      <p></p>
+      <p id="endpoint-discovery-p-6"></p>
       <h3 id="html-link-tag">HTML Link Tag</h3>
       <pre class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"micropub"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://aaronpk.example/micropub"</span>&gt;</span></pre>
-      <p></p>
+      <p id="endpoint-discovery-p-7"></p>
 
     </section>
     <!-- Discovery -->
@@ -2015,10 +2144,10 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-scope" resource="#h-scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.4 </span>Scope</span>
       </h3>
 
-      <p>The Micropub server <em class="rfc2119" title="MUST">MUST</em> require the bearer token to include at least one scope value, in order to ensure posts cannot be created by arbitrary tokens.</p>
-      <p>The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 techniques, by passing a space-separated list of scope names in the authorization request. [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>]</p>
-      <p>The authorization server <em class="rfc2119" title="MUST">MUST</em> indicate to the user any scopes that are part of the request, whether or not the authorization server recognizes the scopes. The authorization server <em class="rfc2119" title="MAY">MAY</em> also allow the user to add or remove scopes that the client requests.</p>
-      <p>Most Micropub servers require clients to obtain the "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em> require more granular scope, such as "delete", "update", or "create:video", in order to limit the abilities of various clients. See <a href="https://indieweb.org/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
+      <p id="scope-p-1">The Micropub server <em class="rfc2119" title="MUST">MUST</em> require the bearer token to include at least one scope value, in order to ensure posts cannot be created by arbitrary tokens.</p>
+      <p id="scope-p-2">The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 techniques, by passing a space-separated list of scope names in the authorization request. [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>]</p>
+      <p id="scope-p-3">The authorization server <em class="rfc2119" title="MUST">MUST</em> indicate to the user any scopes that are part of the request, whether or not the authorization server recognizes the scopes. The authorization server <em class="rfc2119" title="MAY">MAY</em> also allow the user to add or remove scopes that the client requests.</p>
+      <p id="scope-p-4">Most Micropub servers require clients to obtain the "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em> require more granular scope, such as "delete", "update", or "create:video", in order to limit the abilities of various clients. See <a href="https://indieweb.org/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
     </section>
     <!-- Scope -->
 
@@ -2034,7 +2163,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-security-and-privacy-review" resource="#h-security-and-privacy-review"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Security and Privacy Review</span>
       </h3>
 
-      <p>These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([<cite><a class="bibref" href="#bib-security-privacy-questionnaire">security-privacy-questionnaire</a></cite>]).</p>
+      <p id="security-and-privacy-review-p-1">These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([<cite><a class="bibref" href="#bib-security-privacy-questionnaire">security-privacy-questionnaire</a></cite>]).</p>
 
       <dl>
         <dt>Does this specification deal with personally-identifiable information?</dt>
@@ -2077,7 +2206,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <!--OddPage-->
     <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>IANA Considerations</span>
     </h2>
-    <p>The link relation type below has been registered by IANA per Section 6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
+    <p id="iana-considerations-p-1">The link relation type below has been registered by IANA per Section 6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
     <dl>
       <dt>Relation Name:</dt>
       <dd>micropub</dd>
@@ -2108,24 +2237,24 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <!--OddPage-->
     <h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Resources</span>
     </h2>
-    <p><em>This section is non-normative.</em></p>
+    <p id="resources-p-1"><em>This section is non-normative.</em></p>
 
-    <p>
+    <p id="resources-p-2">
     </p>
     <ul>
-      <li><a href="https://indieweb.org/Micropub">FAQ</a></li>
-      <li><a href="https://indieweb.org/micropub-endpoint">Creating a Micropub Endpoint</a></li>
-      <li><a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a></li>
-      <li><a href="https://indieweb.org/Micropub-brainstorming">Brainstorming</a></li>
+      <li id="resources-li-1"><a href="https://indieweb.org/Micropub">FAQ</a></li>
+      <li id="resources-li-2"><a href="https://indieweb.org/micropub-endpoint">Creating a Micropub Endpoint</a></li>
+      <li id="resources-li-3"><a href="https://indieweb.org/obtaining-an-access-token">Obtaining an Access Token</a></li>
+      <li id="resources-li-4"><a href="https://indieweb.org/Micropub-brainstorming">Brainstorming</a></li>
     </ul>
-    <p></p>
+    <p id="resources-p-3"></p>
 
     <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
       <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementations</span>
       </h3>
-      <p><em>This section is non-normative.</em></p>
+      <p id="implementations-p-1"><em>This section is non-normative.</em></p>
 
-      <p>You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
+      <p id="implementations-p-2">You can find a list of <a href="https://micropub.net/implementations/">Micropub implementations</a> on micropub.net</p>
     </section>
   </section>
 
@@ -2142,38 +2271,43 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
     </h2>
 
-    <p>The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm.</p>
+    <p id="acknowledgements-p-1">The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
     <!--OddPage-->
     <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Change Log</span>
     </h2>
-    <p><em>This section is non-normative.</em></p>
+    <p id="change-log-p-1"><em>This section is non-normative.</em></p>
 
     <section id="changes-from-16-august-2016-cr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-16-august-2016-cr-to-this-version" property="bibo:hasPart">
       <h3 id="h-changes-from-16-august-2016-cr-to-this-version" resource="#h-changes-from-16-august-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 16 August 2016 CR to this version</span>
       </h3>
 
+      <h3 id="normative-changes">Normative Changes</h3>
       <ul>
-        <li>Rephrase paragraph on HTTP 202 response</li>
-        <li>Add explicit note that JSON posts require content-type header</li>
-        <li>Add example of including embedded images when posting an article</li>
-        <li>Add explicit utf-8 charset to form-encoded examples</li>
-        <li>Add normative text describing the configuration and syndicate-to response</li>
-        <li>Add note about how to specify base direction of bidirectional text</li>
-        <li>Document conformance requirements of querying</li>
-        <li>Explicitly documented config response when empty</li>
-        <li>Note that clients should treat unknown config responses as an empty response</li>
-        <li>New method for specifying image alt text on properties that support images</li>
-        <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
-        <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
-        <li>Add reference to error response section under Media Endpoint</li>
-        <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
-        <li>Updated intro paragraph to link to Social Web Protocols</li>
-        <li>Add Security and Privacy Questionnaire</li>
-        <li>Clarify form-encoded usage and limitations</li>
-        <li>Remove "note" designation from sentence about storing access token</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-1">New method for specifying image alt text on properties that support images</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-2">Add normative text describing the configuration and syndicate-to response</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-3">Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-4">Remove "note" designation from sentence about storing access token</li>
+      </ul>
+
+      <h3 id="non-normative-changes">Non-Normative Changes</h3>
+      <ul>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-5">Rephrase paragraph on HTTP 202 response</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-6">Add explicit note that JSON posts require content-type header</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-7">Add example of including embedded images when posting an article</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-8">Add explicit utf-8 charset to form-encoded examples</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-9">Add note about how to specify base direction of bidirectional text</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-10">Document conformance requirements of querying</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-11">Explicitly documented config response when empty</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-12">Note that clients should treat unknown config responses as an empty response</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-13">Editorial clarifications around update operations, mp-* commands, and bidi text</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-14">Add explicit note of using numeric offsets in form-encoded arrays</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-15">Add reference to error response section under Media Endpoint</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-16">Updated intro paragraph to link to Social Web Protocols</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-17">Add Security and Privacy Questionnaire</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-18">Clarify form-encoded usage and limitations</li>
       </ul>
     </section>
 
@@ -2182,8 +2316,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       </h3>
 
       <ul>
-        <li>Clarified text around IndieAuth references to ensure they are non-normative</li>
-        <li>Add reference to Fetch for downloading contents of a URL</li>
+        <li id="changes-from-13-july-2016-wd-to-16-august-2016-cr-li-1">Clarified text around IndieAuth references to ensure they are non-normative</li>
+        <li id="changes-from-13-july-2016-wd-to-16-august-2016-cr-li-2">Add reference to Fetch for downloading contents of a URL</li>
       </ul>
     </section>
 
@@ -2192,15 +2326,15 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       </h3>
 
       <ul>
-        <li>Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
-        <li>Updated indiewebcamp.com references to indieweb.org due to redirects</li>
-        <li>Rename <code>mp-action</code> to <code>action</code> since updates are only JSON requests</li>
-        <li>Added link to test suite in document header</li>
-        <li>Added section describing how to submit implementation reports</li>
-        <li>Added conformance criteria and classes section</li>
-        <li>Updated example URLs</li>
-        <li>Added list of features for exit criteria</li>
-        <li>Added note about the accessibility group review</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-1">Clarified requirement of supporting file uploads directly or supporting a Media Endpoint</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-2">Updated indiewebcamp.com references to indieweb.org due to redirects</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-3">Rename <code>mp-action</code> to <code>action</code> since updates are only JSON requests</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-4">Added link to test suite in document header</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-5">Added section describing how to submit implementation reports</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-6">Added conformance criteria and classes section</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-7">Updated example URLs</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-8">Added list of features for exit criteria</li>
+        <li id="changes-from-21-june-2016-wd-to-13-july-2016-wd-li-9">Added note about the accessibility group review</li>
       </ul>
     </section>
 
@@ -2209,14 +2343,14 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       </h3>
 
       <ul>
-        <li>Clarified use of arrays vs single values in requests</li>
-        <li>Drop form-encoded syntax for update requests</li>
-        <li>Removed warning about lack of interoperable implementations based on new implementations</li>
-        <li>Updated list of implementations</li>
-        <li>Added explicit note about not storing the <code>access_token</code> value</li>
-        <li>Added details and diagram on using a Media Endpoint for handling file uploads separately</li>
-        <li>Expanded introduction and background</li>
-        <li>Moved list of implementations out of this document onto <a href="https://micropub.net/implementations">https://micropub.net/implementations</a></li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-1">Clarified use of arrays vs single values in requests</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-2">Drop form-encoded syntax for update requests</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-3">Removed warning about lack of interoperable implementations based on new implementations</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-4">Updated list of implementations</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-5">Added explicit note about not storing the <code>access_token</code> value</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-6">Added details and diagram on using a Media Endpoint for handling file uploads separately</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-7">Expanded introduction and background</li>
+        <li id="changes-from-04-may-2016-wd-to-21-june-2016-wd-li-8">Moved list of implementations out of this document onto <a href="https://micropub.net/implementations">https://micropub.net/implementations</a></li>
       </ul>
     </section>
 
@@ -2224,13 +2358,13 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-version" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 01 March 2016 WD to 04 May 2016 version</span>
       </h3>
 
-      <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
+      <p id="changes-from-01-march-2016-wd-to-04-may-2016-version-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 FPWD</a> to this Working Draft</p>
 
       <ul>
-        <li>Removed extra nesting of <code>properties</code> key in updates</li>
-        <li>Non-normative typo fixes</li>
-        <li>Added HTTP 201 with Location header as a response for updates</li>
-        <li>Updated <code>syndicate-to</code> response to include more details of the destination</li>
+        <li id="changes-from-01-march-2016-wd-to-04-may-2016-version-li-1">Removed extra nesting of <code>properties</code> key in updates</li>
+        <li id="changes-from-01-march-2016-wd-to-04-may-2016-version-li-2">Non-normative typo fixes</li>
+        <li id="changes-from-01-march-2016-wd-to-04-may-2016-version-li-3">Added HTTP 201 with Location header as a response for updates</li>
+        <li id="changes-from-01-march-2016-wd-to-04-may-2016-version-li-4">Updated <code>syndicate-to</code> response to include more details of the destination</li>
       </ul>
     </section>
 
@@ -2238,26 +2372,25 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-version" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 28 January 2016 FPWD to 01 March 2016 version</span>
       </h3>
 
-      <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
+      <p id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to this Working Draft</p>
 
       <ul>
-        <li>Corrected references to be normative where appropriate</li>
-        <li>Added new Conformance section summarizing conformance requirements for Micropub Clients and Servers</li>
-        <li>Clarified that a server should create the post with any properties recognized when it receives a request with unrecognized properties</li>
-        <li>Added a section on querying the Micropub endpoint for the source of specific properties, to better support editing</li>
-        <li>Added new "Vocabulary" section which normatively references Microformats 2 vocabularies</li>
-        <li>Micropub servers <em class="rfc2119" title="MAY">MAY</em> include a JSON object describing the changes that were applied for Updates</li>
-        <li>Added a section listing specific error responses, also referencing the OAuth 2 Bearer Token spec for other error responses</li>
-        <li>If there is a response body, it <em class="rfc2119" title="SHOULD">SHOULD</em> be JSON</li>
-        <li>Default to create an h-entry if no type is specified</li>
-        <li>Clarified posting files and sending HTML content</li>
-        <li>Reorganized "How To" section into an "Authentication and Authorization" section</li>
-        <li>Fixed some examples of HTTP requests that were missing the response headers</li>
-        <li>Updated references from Microformats to Microformats 2</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-1">Corrected references to be normative where appropriate</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-2">Added new Conformance section summarizing conformance requirements for Micropub Clients and Servers</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-3">Clarified that a server should create the post with any properties recognized when it receives a request with unrecognized properties</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-4">Added a section on querying the Micropub endpoint for the source of specific properties, to better support editing</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-5">Added new "Vocabulary" section which normatively references Microformats 2 vocabularies</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-6">Micropub servers <em class="rfc2119" title="MAY">MAY</em> include a JSON object describing the changes that were applied for Updates</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-7">Added a section listing specific error responses, also referencing the OAuth 2 Bearer Token spec for other error responses</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-8">If there is a response body, it <em class="rfc2119" title="SHOULD">SHOULD</em> be JSON</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-9">Default to create an h-entry if no type is specified</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-10">Clarified posting files and sending HTML content</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-11">Reorganized "How To" section into an "Authentication and Authorization" section</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-12">Fixed some examples of HTTP requests that were missing the response headers</li>
+        <li id="changes-from-28-january-2016-fpwd-to-01-march-2016-version-li-13">Updated references from Microformats to Microformats 2</li>
       </ul>
     </section>
   </section>
-
 
 
   <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
