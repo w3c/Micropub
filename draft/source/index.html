@@ -1495,8 +1495,8 @@ $_FILES['audio']</pre></p>
         var el = range.startContainer;
         while((el=el.parentElement) && !el.attributes["id"]);
         var hash = el.attributes["id"].value;
-        if(history.pushState) {
-          history.pushState(null, null, "#"+hash);
+        if(history.replaceState) {
+          history.replaceState(null, null, "#"+hash);
         }
       }
     };

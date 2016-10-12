@@ -2404,9 +2404,9 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         var el = range.startContainer;
         while ((el = el.parentElement) && !el.attributes["id"]);
         var hash = el.attributes["id"].value;
-        if (history.pushState)
+        if (history.replaceState)
         {
-          history.pushState(null, null, "#" + hash);
+          history.replaceState(null, null, "#" + hash);
         }
       }
     };
