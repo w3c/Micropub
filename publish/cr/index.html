@@ -2396,6 +2396,22 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
   </section>
 
+  <script>
+    document.body.onmouseup = function()
+    {
+      var selection;
+      if (selection = window.getSelection())
+      {
+        var range = selection.getRangeAt(0);
+        var hash = $(range.startContainer).parents("[id]").attr("id");
+        if (history.pushState)
+        {
+          history.pushState(null, null, "#" + hash);
+        }
+      }
+    };
+  </script>
+
 
   <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
     <!--OddPage-->

@@ -12,7 +12,7 @@
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
-          crEnd: "2016-09-10",
+          crEnd: "2016-11-10",
           shortName:  "micropub",
           edDraftURI: "https://micropub.net/draft/",
           testSuiteURI: "https://micropub.rocks/",
@@ -1484,5 +1484,18 @@ $_FILES['audio']</pre></p>
         </ul>
       </section>
     </section>
+
+    <script>
+    document.body.onmouseup = function(){
+      var selection;
+      if(selection=window.getSelection()) {
+        var range = selection.getRangeAt(0);
+        var hash = $(range.startContainer).parents("[id]").attr("id");
+        if(history.pushState) {
+          history.pushState(null, null, "#"+hash);
+        }
+      }
+    };
+    </script>
   </body>
 </html>
