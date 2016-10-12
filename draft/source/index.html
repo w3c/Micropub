@@ -207,7 +207,7 @@
             <li>MUST support <a href="#create">creating</a> posts with the [[!h-entry]] vocabulary</li>
             <li>MUST support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
             <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
-            <li>Servers that support updating posts MUST support the <a href="#source-content">source content query</a></li>
+            <li>Servers that support updating posts MUST support <a href="#json-syntax">JSON syntax</a> and the <a href="#source-content">source content query</a></li>
             <li>Servers that do not specify a Media Endpoint MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
             <li>Servers that specify a Media Endpoint MUST support the <a href="#configuration">configuration query</a>, other servers SHOULD support the configuration query</li>
           </ul>
@@ -656,7 +656,7 @@ Location: https://aaronpk.example/post/1000</pre></p>
   "action": "update",
   "url": "https://aaronpk.example/2014/06/01/9/indieweb",
   "add": {
-    "category": ["webmention","indieweb"]
+    "category": ["micropub","indieweb"]
   }
 }</pre></p>
         </section>
@@ -1380,25 +1380,30 @@ $_FILES['audio']</pre></p>
       <section>
         <h3>Changes from 16 August 2016 CR to this version</h3>
 
+        <h4>Normative Changes</h4>
+        <ul>
+          <li>New method for specifying image alt text on properties that support images</li>
+          <li>Add normative text describing the configuration and syndicate-to response</li>
+          <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
+          <li>Remove "note" designation from sentence about storing access token</li>
+        </ul>
+
+        <h4>Non-Normative Changes</h4>
         <ul>
           <li>Rephrase paragraph on HTTP 202 response</li>
           <li>Add explicit note that JSON posts require content-type header</li>
           <li>Add example of including embedded images when posting an article</li>
           <li>Add explicit utf-8 charset to form-encoded examples</li>
-          <li>Add normative text describing the configuration and syndicate-to response</li>
           <li>Add note about how to specify base direction of bidirectional text</li>
           <li>Document conformance requirements of querying</li>
           <li>Explicitly documented config response when empty</li>
           <li>Note that clients should treat unknown config responses as an empty response</li>
-          <li>New method for specifying image alt text on properties that support images</li>
           <li>Editorial clarifications around update operations, mp-* commands, and bidi text</li>
           <li>Add explicit note of using numeric offsets in form-encoded arrays</li>
           <li>Add reference to error response section under Media Endpoint</li>
-          <li>Drop <code>not_found</code> from the list of error codes, changed from requiring a specific error code string to recommending these three and allowing the server to return others</li>
           <li>Updated intro paragraph to link to Social Web Protocols</li>
           <li>Add Security and Privacy Questionnaire</li>
           <li>Clarify form-encoded usage and limitations</li>
-          <li>Remove "note" designation from sentence about storing access token</li>
         </ul>
       </section>
 
@@ -1477,6 +1482,5 @@ $_FILES['audio']</pre></p>
         </ul>
       </section>
     </section>
-
   </body>
 </html>
