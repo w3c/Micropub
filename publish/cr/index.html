@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" typeof="bibo:Document w3p:CR" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -541,7 +541,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
-  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-CR">
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
   <meta name="generator" content="ReSpec 6.0.0">
@@ -549,7 +549,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "useExperimentalStyles": true,
       "publishDate": "2016-10-13",
-      "specStatus": "CR",
+      "specStatus": "WD",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
       "crEnd": "2016-11-10",
@@ -680,10 +680,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-candidate-recommendation-13-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Candidate Recommendation <time property="dcterms:issued" class="dt-published" datetime="2016-10-13">13 October 2016</time></h2>
+    <h2 id="w3c-working-draft-13-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-13">13 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2016/CR-micropub-20161013/">https://www.w3.org/TR/2016/CR-micropub-20161013/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2016/WD-micropub-20161013/">https://www.w3.org/TR/2016/WD-micropub-20161013/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/micropub/">https://www.w3.org/TR/micropub/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -752,18 +752,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
     <p id="sotd-p-2">
-      This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as a Candidate Recommendation. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to
+      This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
-      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
-
-      <abbr title="World Wide Web Consortium">W3C</abbr> publishes a Candidate Recommendation to indicate that the document is believed to be stable and to encourage implementation by the developer community. This Candidate Recommendation is expected to advance to Proposed Recommendation no earlier than 10 November 2016. All comments are welcome.
+      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
     </p>
     <p id="sotd-p-3">
       Please see the Working Group's <a href="https://micropub.net/implementation-reports/">implementation
               report</a>.
     </p>
     <p id="sotd-p-4">
-      Publication as a Candidate Recommendation does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+      Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
     </p>
     <p id="sotd-p-5">
       This document was produced by a group operating under the
@@ -2397,13 +2395,17 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
   </section>
 
   <script>
+    // After text is selected (mouseup), find the closest element that has an ID
+    // attribute, and update the browser location bar to include that as the fragment
     document.body.onmouseup = function()
     {
       var selection;
       if (selection = window.getSelection())
       {
         var range = selection.getRangeAt(0);
-        var hash = $(range.startContainer).parents("[id]").attr("id");
+        var el = range.startContainer;
+        while ((el = el.parentElement) && !el.attributes["id"]);
+        var hash = el.attributes["id"].value;
         if (history.pushState)
         {
           history.pushState(null, null, "#" + hash);

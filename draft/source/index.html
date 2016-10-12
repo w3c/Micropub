@@ -1486,11 +1486,15 @@ $_FILES['audio']</pre></p>
     </section>
 
     <script>
+    // After text is selected (mouseup), find the closest element that has an ID
+    // attribute, and update the browser location bar to include that as the fragment
     document.body.onmouseup = function(){
       var selection;
       if(selection=window.getSelection()) {
         var range = selection.getRangeAt(0);
-        var hash = $(range.startContainer).parents("[id]").attr("id");
+        var el = range.startContainer;
+        while((el=el.parentElement) && !el.attributes["id"]);
+        var hash = el.attributes["id"].value;
         if(history.pushState) {
           history.pushState(null, null, "#"+hash);
         }
