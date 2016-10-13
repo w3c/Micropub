@@ -548,7 +548,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-10-12",
+      "publishDate": "2016-10-13",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
@@ -674,13 +674,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry toc-inline" role="document" id="respecDocument">
+<body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-12-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-12">12 October 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-13-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-13">13 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -855,6 +855,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               <li class="tocline"><a href="#configuration" class="tocxref"><span class="secno">3.7.1 </span>Configuration</a></li>
               <li class="tocline"><a href="#source-content" class="tocxref"><span class="secno">3.7.2 </span>Source Content</a></li>
               <li class="tocline"><a href="#syndication-targets" class="tocxref"><span class="secno">3.7.3 </span>Syndication Targets</a></li>
+              <li class="tocline"><a href="#query-extensions" class="tocxref"><span class="secno">3.7.4 </span>Query Extensions</a></li>
             </ol>
           </li>
           <li class="tocline"><a href="#error-response" class="tocxref"><span class="secno">3.8 </span>Error Response</a></li>
@@ -1163,7 +1164,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
       <p id="reserved-properties-p-5">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
 
-      <p id="reserved-properties-p-6">Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+      <p id="reserved-properties-p-6">Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new <code>mp-</code> commands are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
@@ -1826,6 +1827,13 @@ Content-type: application/json
         <p id="syndication-targets-p-12">Servers that support syndicating posts <em class="rfc2119" title="SHOULD">SHOULD</em> support the <code>syndicate-to</code> query.</p>
 
       </section>
+
+      <section id="query-extensions" typeof="bibo:Chapter" resource="#query-extensions" property="bibo:hasPart">
+        <h4 id="h-query-extensions" resource="#h-query-extensions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.7.4 </span>Query Extensions</span>
+        </h4>
+
+        <p id="query-extensions-p-1">Clients and servers wishing to extend the functionality of the query action are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
+      </section>
     </section>
     <!-- Querying -->
 
@@ -2308,6 +2316,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li id="changes-from-16-august-2016-cr-to-this-version-li-16">Updated intro paragraph to link to Social Web Protocols</li>
         <li id="changes-from-16-august-2016-cr-to-this-version-li-17">Add Security and Privacy Questionnaire</li>
         <li id="changes-from-16-august-2016-cr-to-this-version-li-18">Clarify form-encoded usage and limitations</li>
+        <li id="changes-from-16-august-2016-cr-to-this-version-li-19">Added direction on extending Micropub with new <code>mp-</code> and <code>q=</code> functionality</li>
       </ul>
     </section>
 

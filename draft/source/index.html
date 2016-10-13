@@ -8,7 +8,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-10-12",
+          publishDate: "2016-10-13",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-08-16",
@@ -385,7 +385,7 @@
 
         <p>The server MUST NOT store the <code>access_token</code> property in the post.</p>
 
-        <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new commands can use the Microformats 2 "<a href="http://microformats.org/wiki/microformats-2-faq#how_do_you_use_experimental_microformats_and_property_names">experimental</a>" method of defining new properties.</p>
+        <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new <code>mp-</code> commands are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
       </section>
 
       <section>
@@ -984,6 +984,12 @@ Content-type: application/json
         <p>Servers that support syndicating posts SHOULD support the <code>syndicate-to</code> query.</p>
 
         </section>
+
+        <section>
+          <h4>Query Extensions</h4>
+
+          <p>Clients and servers wishing to extend the functionality of the query action are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
+        </section>
       </section> <!-- Querying -->
 
       <section>
@@ -1406,6 +1412,7 @@ $_FILES['audio']</pre></p>
           <li>Updated intro paragraph to link to Social Web Protocols</li>
           <li>Add Security and Privacy Questionnaire</li>
           <li>Clarify form-encoded usage and limitations</li>
+          <li>Added direction on extending Micropub with new <code>mp-</code> and <code>q=</code> functionality</li>
         </ul>
       </section>
 
