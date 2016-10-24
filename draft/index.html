@@ -548,11 +548,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-10-13",
+      "publishDate": "2016-10-18",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-08-16",
-      "crEnd": "2016-11-10",
+      "crEnd": "2016-11-15",
       "shortName": "micropub",
       "edDraftURI": "https://micropub.net/draft/",
       "testSuiteURI": "https://micropub.rocks/",
@@ -567,6 +567,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       "wgURI": "https://www.w3.org/Social/WG",
       "wgPublicList": "public-socialweb",
       "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/72531/status",
+      "errata": "https://micropub.net/errata/",
       "license": "w3c-software-doc",
       "postProcess": [
         null
@@ -680,7 +681,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-13-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-13">13 October 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-18-october-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-10-18">18 October 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -714,6 +715,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                     </a>
       </dd>
     </dl>
+    <p>
+      Please check the <a href="https://micropub.net/errata/"><strong>errata</strong></a> for any errors or issues reported since publication.
+    </p>
     <p class="copyright">
       <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
 
@@ -1525,7 +1529,7 @@ Content-Transfer-Encoding: binary
         <h4 id="h-response-2" resource="#h-response-2"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5.1 </span>Response</span>
         </h4>
 
-        <p id="response-2-p-1">The server <em class="rfc2119" title="MUST">MUST</em> respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
+        <p id="response-2-p-1">The server <em class="rfc2119" title="MUST">MUST</em> respond to successful delete and undelete requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server <em class="rfc2119" title="MUST">MUST</em> respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server <em class="rfc2119" title="MUST">MUST</em> respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response <em class="rfc2119" title="MAY">MAY</em> contain a JSON object describing the changes that were made.</p>
       </section>
 
     </section>
