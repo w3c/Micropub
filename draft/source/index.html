@@ -723,7 +723,7 @@ Location: https://aaronpk.example/post/1000</pre></p>
         <section>
           <h4>Response</h4>
 
-          <p>The server MUST respond to successful delete and undelted requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server MUST respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server MUST respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
+          <p>The server MUST respond to successful delete and undelete requests with HTTP 200, 201 or 204. If the undelete operation caused the URL of the post to change, the server MUST respond with HTTP 201 and include the new URL in the HTTP <code>Location</code> header. Otherwise, the server MUST respond with 200 or 204, depending on whether the response body has content. No body is required in the response, but the response MAY contain a JSON object describing the changes that were made.</p>
         </section>
 
       </section> <!-- Delete -->
