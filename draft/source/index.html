@@ -211,7 +211,7 @@
             <li>MUST support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
             <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
             <li>Servers that support updating posts MUST support <a href="#json-syntax">JSON syntax</a> and the <a href="#source-content">source content query</a></li>
-            <li>Servers that do not specify a Media Endpoint MUST support x-www-form-urlencoded requests for <a href="#create">creating</a> posts</li>
+            <li>Servers that support creating posts with media that do not specify a Media Endpoint MUST support <code>multipart/form-data</code> requests for <a href="#create">creating</a> posts</li>
             <li>Servers that specify a Media Endpoint MUST support the <a href="#configuration">configuration query</a>, other servers SHOULD support the configuration query</li>
           </ul>
         </section>
@@ -1387,7 +1387,16 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 16 August 2016 CR to this version</h3>
+        <h3>Changes from 18 October 2016 CR to this version</h3>
+
+        <h4>Non-Normative Changes</h4>
+        <ul>
+          <li>Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 16 August 2016 CR to 18 October CR</h3>
 
         <h4>Normative Changes</h4>
         <ul>
