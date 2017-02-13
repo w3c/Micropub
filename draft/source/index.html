@@ -999,7 +999,8 @@ Content-type: application/json
         <p>If there was an error with the request, the endpoint MUST return an appropriate HTTP status code, typically 400, 401, or 403, and MAY include a description of the error. If an error body is returned, the response body MUST be encoded as a [[!JSON]] object and include at least a single property named <code>error</code>. The following error codes are defined:</p>
 
         <p><ul>
-          <li>HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request</li>
+          <li>HTTP 403: <code>"error":"forbidden"</code> - The authenticated user does not have permission to perform this request.</li>
+          <li>HTTP 401: <code>"error":"unauthorized"</code> - No access token was provided in the request. Note that this is different from the HTTP 403 response, as the 403 response should only be used when an access token is provided and the user does not have permission to perform the request.</li>
           <li>HTTP 401: <code>"error":"insufficient_scope"</code> - The scope of this token does not meet the requirements for this request. The client may wish to re-authorize the user to obtain the necessary scope. The response MAY include the <code>"scope"</code> attribute with the scope necessary to successfully perform this request.</li>
           <li>HTTP 400: <code>"error":"invalid_request"</code> - The request is missing a required parameter, or there was a problem with a value of one of the parameters</li>
         </ul></p>
