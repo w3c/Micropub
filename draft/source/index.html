@@ -157,6 +157,10 @@
       <section>
         <h3>Background</h3>
 
+        <p>The Micropub specification began as a simplified version of the AtomPub and MetaWeblog APIs. Where AtomPub is an API to create items in an Atom feed, Micropub is an API to create items in a [[Microformats2]] feed.</p>
+
+        <p>In addition to being used with a different vocabulary from AtomPub and MetaWeblog, Micropub simplifies and improves upon both APIs in a number of ways. Micropub uses OAuth 2.0 Bearer Tokens for authentication, rather than the previous insecure username/password authentication method. Micropub also uses traditional form posts as well as JSON posts, which is both simpler and more secure than an XMLRPC approach.</p>
+
         <p>The Micropub vocabulary is derived directly from the [[Microformats2]]
           vocabulary. Micropub is meant to be a serialization of Microformats
           that can be submitted as an HTTP POST. The method for developing new
@@ -1394,6 +1398,7 @@ $_FILES['audio']</pre></p>
         <h4>Non-Normative Changes</h4>
         <ul>
           <li>Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
+          <li>Add background referring to MetaWeblog and AtomPub prior art</li>
         </ul>
       </section>
 
