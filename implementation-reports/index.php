@@ -1,2 +1,2 @@
 <?php
-header('Location: https://micropub.rocks/reports');
+header('Location: https://github.com/w3c/Micropub/tree/master/implementation-reports');
