@@ -65,7 +65,7 @@ Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) 
 
 Please list all vocabularies and properties the client supports, if applicable.
 
-* Photos and Videos (http://microformats.org/h-entry)
+* Photos and Videos (http://microformats.org/wiki/h-entry)
  * content
  * name
  * photo

@@ -68,7 +68,7 @@ Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) 
 
 Please list all vocabularies and properties the client supports, if applicable.
 
-* Notes, Articles, Bookmarks, Likes, Reposts (http://microformats.org/h-entry)
+* Notes, Articles, Bookmarks, Likes, Reposts (http://microformats.org/wiki/h-entry)
  * content
  * content[html]
  * name
@@ -82,7 +82,7 @@ Please list all vocabularies and properties the client supports, if applicable.
  * bookmark-of
  * like-of
  * repost-of
-* Events (http://microformats.org/h-event)
+* Events (http://microformats.org/wiki/h-event)
  * name
  * start
  * end
@@ -90,7 +90,7 @@ Please list all vocabularies and properties the client supports, if applicable.
  * category
 * Itinerary 
  * h-entry with an `itinerary` property containing one or more `h-leg` objects
-* Reviews (http://microformats.org/h-review)
+* Reviews (http://microformats.org/wiki/h-review)
  * h-product
  * rating
  * content
