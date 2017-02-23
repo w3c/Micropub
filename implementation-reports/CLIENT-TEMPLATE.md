@@ -36,6 +36,7 @@ Developer(s): [Name](https://you.example.com)
 * [ ] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
 * [ ] Allows creating posts with a photo including image alt text.
 * [ ] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
+* [ ] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
 * [ ] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
@@ -65,6 +66,10 @@ Developer(s): [Name](https://you.example.com)
 ## Extensions
 
 Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) that the client supports.
+
+## Vocabularies
+
+Please list all vocabularies and properties the client supports, if applicable.
 
 ## Other Notes
 
