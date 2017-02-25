@@ -28,7 +28,7 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 ## Creating Posts
 * [x] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
-* [ ] Allows creating posts with a photo including image alt text.
+* [x] Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
