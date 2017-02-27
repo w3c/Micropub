@@ -28,7 +28,7 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 ## Creating Posts
 * [x] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
-* [ ] Allows creating posts with a photo including image alt text.
+* [x] Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
@@ -68,7 +68,7 @@ Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) 
 
 Please list all vocabularies and properties the client supports, if applicable.
 
-* Notes, Articles, Bookmarks, Likes, Reposts (http://microformats.org/h-entry)
+* Notes, Articles, Bookmarks, Likes, Reposts (http://microformats.org/wiki/h-entry)
  * content
  * content[html]
  * name
@@ -82,7 +82,7 @@ Please list all vocabularies and properties the client supports, if applicable.
  * bookmark-of
  * like-of
  * repost-of
-* Events (http://microformats.org/h-event)
+* Events (http://microformats.org/wiki/h-event)
  * name
  * start
  * end
@@ -90,7 +90,7 @@ Please list all vocabularies and properties the client supports, if applicable.
  * category
 * Itinerary 
  * h-entry with an `itinerary` property containing one or more `h-leg` objects
-* Reviews (http://microformats.org/h-review)
+* Reviews (http://microformats.org/wiki/h-review)
  * h-product
  * rating
  * content

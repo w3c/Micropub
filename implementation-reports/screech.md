@@ -1,13 +1,13 @@
-# OwnYourGram
+# Screech
 
-Implementation Home Page URL: https://ownyourgram.com/
+Implementation Home Page URL: https://github.com/martymcguire/screech
 
-Source code repo URL(s) (optional): https://github.com/aaronpk/OwnYourGram
+Source code repo URL(s) (optional): https://github.com/martymcguire/screech
 * [x] 100% open source implementation
 
-Programming Language(s): PHP
+Programming Language(s): Python, JavaScript
 
-Developer(s): [Aaron Parecki](https://aaronparecki.com)
+Developer(s): [Name](https://martymcgui.re)
 
 ## Discovery
 * [x] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
@@ -16,7 +16,7 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 * [x] The client sends the access token in the HTTP `Authorization` header.
 * [ ] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
 * [x] The client requests one or more `scope` values when obtaining user authorization.
- * post (will be migrating to create)
+ * post
 
 ## Syntax
 * [x] Creates posts using `x-www-form-urlencoded` syntax.
@@ -29,8 +29,8 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 ## Creating Posts
 * [ ] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
 * [ ] Allows creating posts with a photo including image alt text.
-* [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
-* [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
+* [ ] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
+* [ ] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
 * [ ] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
@@ -50,10 +50,10 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 * [ ] Sends undeletion requests using JSON syntax.
 
 ## Querying
-* [ ] Queries the Micropub endpoint with `q=config`
- * [ ] Looks in the response for the Media Endpoint
+* [x] Queries the Micropub endpoint with `q=config`
+ * [x] Looks in the response for the Media Endpoint
  * [ ] Looks in the response for syndication targets
-* [x] Queries the Micropub endpoint with `q=syndicate-to`
+* [ ] Queries the Micropub endpoint with `q=syndicate-to`
 * [ ] Queries the Micropub endpoint for a post's source content without specifying a list of properties
 * [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
 
@@ -61,21 +61,26 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) that the client supports.
 
+None.
+
 ## Vocabularies
 
 Please list all vocabularies and properties the client supports, if applicable.
 
-* Photos and Videos (http://microformats.org/wiki/h-entry)
- * content
+* h-entry
+ * audio
  * name
- * photo
- * video
- * category
- * in-reply-to
- * location
- * mp-syndicate-to
+ * content (text)
+ * category[]
+ * slug
+ * additional properties computed from the id3 or other metadata in the uploaded audio file:
+  * id3-duration (seconds)
+  * id3-enclosure-length (file size in bytes)
+  * id3-artist (artist name)
+  * id3-album (album name)
+  * id3-title (track title)
+  * id3-track (track number)
 
 ## Other Notes
 
-Please use this space to document anything else significant about your implementation.
-
+Media endpoint query is supported but media endpoint uploads are not yet implemented.
