@@ -37,11 +37,11 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 * [x] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
-* [ ] Supports replacing all values of a property (e.g. replacing the post content).
+* [x] Supports replacing all values of a property (e.g. replacing the post content).
 * [ ] Supports adding a value to a property (e.g. adding a tag).
 * [ ] Supports removing a value from a property (e.g. removing a specific tag).
 * [ ] Supports removing a property.
-* [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
+* [x] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
 * [ ] Sends deletion requests using `x-www-form-urlencoded` syntax.
@@ -54,8 +54,8 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
  * [x] Looks in the response for the Media Endpoint
  * [x] Looks in the response for syndication targets
 * [x] Queries the Micropub endpoint with `q=syndicate-to`
-* [ ] Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [x] Queries the Micropub endpoint for a post's source content without specifying a list of properties
+* [x] Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
