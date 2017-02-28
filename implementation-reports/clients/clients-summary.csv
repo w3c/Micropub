@@ -1,0 +1,49 @@
+,,11,Editor(s),,,,Member(s),,Outside WG,,,,
+,,Impls,Quill,OwnYourGram,wunderpub,p3k,inkblot,inkstone,shpub,slater,screech,micropublish,dobrado
+Discovery,Discovers endpoint,9,1,1,,,1,1,1,1,1,1,1
+Authentication,,,,,,,,,,,,,
+,HTTP Header,10,1,1,1,,1,1,1,1,1,1,1
+,Post body,2,1,,,,,,,,,,1
+,Requests scope,7,1,1,,,1,,1,1,1,1,
+Syntax,,,,,,,,,,,,,
+,urlencoded,10,1,1,1,,1,1,1,1,1,1,1
+,JSON,5,1,,,,,1,1,,,1,1
+,urlencoded w/multiple values,10,1,1,1,,1,1,1,1,1,1,1
+,JSON w/multiple values,5,1,,,,,1,1,,,1,1
+,JSON w/nested mf2 object,2,1,,,,,,,,,1,
+,multipart,4,1,1,,,,,1,,1,,
+Creating,,,,,,,,,,,,,
+,photo referenced by URL,5,1,,1,,,,1,1,,,1
+,photo including alt text,2,1,,,,,,,,,,1
+,recognizes HTTP 201 and 202 as success,9,1,1,1,,1,1,1,1,,1,1
+,uses mp-syndicate-to,6,1,1,1,,1,1,,,,1,
+Media Endpoint,,,,,,,,,,,,,
+,checks for a media endpoint,3,1,,,,,1,1,,,,
+,uses multipart only as a fallback,2,1,,,,,,1,,,,
+Updates,,,,,,,,,,,,,
+,replacing all values,4,1,,,1,,,1,,,1,
+,adding a value,2,,,,,,,1,,,1,
+,removing a value,2,,,,,,,1,,,1,
+,removing a property,2,,,,,,,1,,,1,
+,"recognizes 200, 201, 204",4,1,,,1,,,1,,,1,
+Deletes,,,,,,,,,,,,,
+,deletes as urlencoded,3,,,,1,1,,1,,,,
+,deletes as JSON,2,,,,,,,1,,,1,
+,undeletes as urlencoded,2,,,,,1,,1,,,,
+,undeletes as JSON,2,,,,,,,1,,,1,
+Querying,,,,,,,,,,,,,
+,queries with q=config,6,1,,1,,,1,1,,1,1,
+,looks for media endpoint,4,1,,,,,1,1,,1,,
+,looks for syndication targets,3,1,,,,,1,,,,1,
+,queries with q=syndicate-to,5,1,1,,1,1,1,,,,,
+,queries for a post source without specifying properties,2,1,,,,,,,,,1,
+,queries for a post source looking for specific properties,2,1,,,1,,,,,,,
+Extensions,,,,,,,,,,,,,
+,mp-slug,4,1,,,1,,,1,,,1,
+,post-status,2,1,,,,,,1,,,,
+Vocabularies,,,,,,,,,,,,,
+,h-entry,10,1,1,1,1,1,1,1,,1,1,1
+,h-event,2,1,,,,,,,1,,,
+,h-review,1,1,,,,,,,,,,
+,,,,,,,,,,,,,
+Open Source?,,10,1,1,1,,1,1,1,1,1,1,1
