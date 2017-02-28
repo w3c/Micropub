@@ -8,7 +8,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2017-02-13",
+          publishDate: "2017-02-27",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-10-18",
@@ -410,7 +410,7 @@
         <section>
           <h4>Uploading Files</h4>
 
-          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly, To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If the server supports posts with files, and there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
           <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
           <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
 
@@ -1399,6 +1399,7 @@ $_FILES['audio']</pre></p>
         <ul>
           <li>Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
           <li>Add background referring to MetaWeblog and AtomPub prior art</li>
+          <li>Clarification of condition under which a client can try uploading a file</li>
         </ul>
       </section>
 
