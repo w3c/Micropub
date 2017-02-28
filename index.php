@@ -59,6 +59,7 @@
     <li>The Micropub specification is being developed under the <a href="https://www.w3.org/wiki/Socialwg">W3C Social Web Working Group</a>.</li>
     <li class="main"><a href="https://www.w3.org/TR/micropub/">Latest published version</a></li>
     <li class="main"><a href="http://micropub.net/draft/">Latest editor's draft</a></li>
+    <li class="main"><a href="/implementation-reports/">Implementation Reports</a></li>
     <li>The specification was contributed to the W3C by the IndieWeb community. More information and history of the spec can be found on the <a href="https://indieweb.org/micropub">IndieWeb wiki</a>.</li>
   </ul>
   
