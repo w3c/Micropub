@@ -56,7 +56,7 @@ Developer(s): [Barry Frost](https://barryfrost.com)
  * [x] Looks in the response for syndication targets
 * [ ] Queries the Micropub endpoint with `q=syndicate-to`
 * [x] Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [x] Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
