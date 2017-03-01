@@ -666,11 +666,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
-  <meta name="generator" content="ReSpec 10.5.3">
+  <meta name="generator" content="ReSpec 10.5.9">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-02-27",
+      "publishDate": "2017-03-01",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
@@ -797,13 +797,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body aria-busy="false" class="h-entry toc-inline" role="document" id="respecDocument">
+<body aria-busy="false" class="h-entry" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-27-february-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-02-27">27 February 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-01-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-01">01 March 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -856,7 +856,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <section id="abstract" class="introductory" property="dc:abstract">
     <h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
     <p class="p-summary" id="abstract-p-1">
-      Micropub is an open API standard used to create posts on one's own domain using third-party clients. Web apps and native apps (e.g., iPhone, Android) can use Micropub to post short notes, photos, events or other posts to your own site.
+      The Micropub protocol is used to create, update and delete posts on one's own domain using third-party clients. Web apps and native apps (e.g., iPhone, Android) can use Micropub to post and edit articles, short notes, comments, likes, photos, events or other kinds of posts on your own website.
     </p>
 
     <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
@@ -1048,7 +1048,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </h2>
     <p id="introduction-p-1"><em>This section is non-normative.</em></p>
 
-    <p id="introduction-p-2">Micropub is a spec to create content on a server using web or native app clients. Micropub is primarily focused around creating "posts" (individual pieces of content such as blog posts, photos, short notes, or responses) on a website, although it can be used for other kinds of content as well. The Micropub spec defines a simple mechanism to create content, as well as a more thorough mechanism to update and delete content.</p>
+    <p id="introduction-p-2">Micropub is a spec to create, update and delete posts on a server using web or native app clients. Micropub is primarily focused around creating "posts" (individual pieces of content such as blog posts, photos, short notes, comments, and more) on a website, although it can be used for other kinds of content as well. The Micropub spec defines a simple mechanism to create content, as well as a more thorough mechanism to update and delete content.</p>
 
     <section id="social-web-working-group" typeof="bibo:Chapter" resource="#social-web-working-group" property="bibo:hasPart">
       <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span>
@@ -2499,6 +2499,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-1">Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-2">Add background referring to MetaWeblog and AtomPub prior art</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-3">Clarification of condition under which a client can try uploading a file</li>
+        <li id="changes-from-18-october-2016-cr-to-this-version-li-4">Editorial changes to introduction and abstract</li>
       </ul>
     </section>
 
