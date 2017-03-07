@@ -2,6 +2,8 @@ This file is a template implementation report for Micropub clients. Copy this fi
 
 For items that have a number next to the checkbox, the number corresponds with the test number on [micropub.rocks](https://micropub.rocks/). You can use that tool to check whether you support the feature properly. To mark a statement as true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
 
+Any items in the list below with double square brackets, (e.g. `[[ ]]`) will need to be self-reported, as there is no automated test that will check those off. Any items with single square brackets will be checked off for you as you progress through the tests on https://micropub.rocks. When a specific test corresponds with a checkbox, the test number is noted in the list. Some items such as authentication will be checked off from multiple tests.
+
 Please remove this top section before submitting your report.
 
 # Implementation Name (Replace this header)
@@ -29,6 +31,7 @@ Developer(s): [Name](https://you.example.com)
 * [ ] 200: Creates posts using JSON syntax.
 * [ ] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
 * [ ] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+* [ ] 202: Creates posts with HTML content. (JSON)
 * [ ] 204: Creates posts using JSON syntax including a nested Microformats2 object.
 * [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
@@ -37,32 +40,32 @@ Developer(s): [Name](https://you.example.com)
 * [ ] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
 * [ ] 205: Allows creating posts with a photo including image alt text.
 * [ ] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
-* [ ] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
+* [ ] 105: Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
-* [ ] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
-* [ ] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
+* [ ] 700: Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
+* [[ ]] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
-* [ ] Supports replacing all values of a property (e.g. replacing the post content).
-* [ ] Supports adding a value to a property (e.g. adding a tag).
-* [ ] Supports removing a value from a property (e.g. removing a specific tag).
-* [ ] Supports removing a property.
-* [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
+* [[ ]] Supports replacing all values of a property (e.g. replacing the post content).
+* [[ ]] Supports adding a value to a property (e.g. adding a tag).
+* [[ ]] Supports removing a value from a property (e.g. removing a specific tag).
+* [[ ]] Supports removing a property.
+* [[ ]] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
-* [ ] Sends deletion requests using `x-www-form-urlencoded` syntax.
-* [ ] Sends deletion requests using JSON syntax.
-* [ ] Sends undeletion requests using `x-www-form-urlencoded` syntax.
-* [ ] Sends undeletion requests using JSON syntax.
+* [[ ]] Sends deletion requests using `x-www-form-urlencoded` syntax.
+* [[ ]] Sends deletion requests using JSON syntax.
+* [[ ]] Sends undeletion requests using `x-www-form-urlencoded` syntax.
+* [[ ]] Sends undeletion requests using JSON syntax.
 
 ## Querying
-* [ ] Queries the Micropub endpoint with `q=config`
- * [ ] Looks in the response for the Media Endpoint
- * [ ] Looks in the response for syndication targets
-* [ ] Queries the Micropub endpoint with `q=syndicate-to`
-* [ ] Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [ ] 600: Queries the Micropub endpoint with `q=config`
+ * [[ ]] Looks in the response for the Media Endpoint
+ * [[ ]] Looks in the response for syndication targets
+* [ ] 601: Queries the Micropub endpoint with `q=syndicate-to`
+* [[ ]] Queries the Micropub endpoint for a post's source content without specifying a list of properties
+* [[ ]] Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
