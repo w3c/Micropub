@@ -1,6 +1,6 @@
 This file is a template implementation report for Micropub clients. Copy this file to a new `.md` file and change the name to your project name (lowercase with hyphens between words). Fill out the information based on the details of your implementation. It's okay to not check all the boxes, we are more interested in knowing how much of the spec is implemented than getting everyone to tick every box. When you are finished, submit a pull request or link to your file in a [new issue](https://github.com/w3c/micropub/issues).
 
-To mark a statement as true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
+For items that have a number next to the checkbox, the number corresponds with the test number on [micropub.rocks](https://micropub.rocks/). You can use that tool to check whether you support the feature properly. To mark a statement as true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
 
 Please remove this top section before submitting your report.
 
@@ -25,16 +25,17 @@ Developer(s): [Name](https://you.example.com)
  * (list scopes requested here)
 
 ## Syntax
-* [ ] Creates posts using `x-www-form-urlencoded` syntax.
-* [ ] Creates posts using JSON syntax.
-* [ ] Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax including a nested Microformats2 object.
-* [ ] Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
+* [ ] 100: Creates posts using `x-www-form-urlencoded` syntax.
+* [ ] 200: Creates posts using JSON syntax.
+* [ ] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
+* [ ] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+* [ ] 204: Creates posts using JSON syntax including a nested Microformats2 object.
+* [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
-* [ ] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
-* [ ] Allows creating posts with a photo including image alt text.
+* [ ] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
+* [ ] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
+* [ ] 205: Allows creating posts with a photo including image alt text.
 * [ ] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [ ] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
