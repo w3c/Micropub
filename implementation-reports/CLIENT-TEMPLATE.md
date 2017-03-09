@@ -47,25 +47,25 @@ Developer(s): [Name](https://you.example.com)
 * [[ ]] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
-* [[ ]] Supports replacing all values of a property (e.g. replacing the post content).
-* [[ ]] Supports adding a value to a property (e.g. adding a tag).
-* [[ ]] Supports removing a value from a property (e.g. removing a specific tag).
-* [[ ]] Supports removing a property.
+* [ ] 400: Supports replacing all values of a property (e.g. replacing the post content).
+* [ ] 401: Supports adding a value to a property (e.g. adding a tag).
+* [ ] 402: Supports removing a value from a property (e.g. removing a specific tag).
+* [ ] 403: Supports removing a property.
 * [[ ]] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
-* [[ ]] Sends deletion requests using `x-www-form-urlencoded` syntax.
-* [[ ]] Sends deletion requests using JSON syntax.
-* [[ ]] Sends undeletion requests using `x-www-form-urlencoded` syntax.
-* [[ ]] Sends undeletion requests using JSON syntax.
+* [ ] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
+* [ ] 500: Sends deletion requests using JSON syntax.
+* [ ] 502: Sends undeletion requests using `x-www-form-urlencoded` syntax.
+* [ ] 502: Sends undeletion requests using JSON syntax.
 
 ## Querying
 * [ ] 600: Queries the Micropub endpoint with `q=config`
  * [[ ]] Looks in the response for the Media Endpoint
  * [[ ]] Looks in the response for syndication targets
 * [ ] 601: Queries the Micropub endpoint with `q=syndicate-to`
-* [[ ]] Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [[ ]] Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [ ] 602: Queries the Micropub endpoint for a post's source content without specifying a list of properties
+* [ ] 603: Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
