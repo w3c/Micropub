@@ -14,20 +14,20 @@ Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 ## Authentication
 * [x] The client sends the access token in the HTTP `Authorization` header.
-* [ ] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
+* [x] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
 * [x] The client requests one or more `scope` values when obtaining user authorization.
- * post (will be migrating to create)
+ * create
 
 ## Syntax
 * [x] Creates posts using `x-www-form-urlencoded` syntax.
-* [ ] Creates posts using JSON syntax.
+* [x] Creates posts using JSON syntax.
 * [x] Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax including a nested Microformats2 object.
+* [x] Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+* [x] Creates posts using JSON syntax including a nested Microformats2 object.
 * [x] Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
-* [ ] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
+* [x] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
 * [ ] Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
@@ -68,6 +68,7 @@ Please list all vocabularies and properties the client supports, if applicable.
 * Photos and Videos (http://microformats.org/wiki/h-entry)
  * content
  * name
+ * published
  * photo
  * video
  * category
