@@ -264,6 +264,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       vertical-align: middle;
     }
   </style>
+  <title>Micropub</title>
+
+
+
+
+  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
+  <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <style id="respec-mainstyle">
     /*****************************************************************
  * ReSpec 3 CSS
@@ -397,10 +404,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     .section dl.attrs dd,
     .section dl.eldef dd {
       margin-bottom: 0;
-    }
-    
-    .respec-hidden {
-      display: none;
     }
     
     #respec-ui {
@@ -640,6 +643,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x;
     }
     
+    @supports (text-decoration-style: wavy) {
+      .respec-offending-element {
+        background: none;
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: red;
+      }
+    }
+    
     #issue-summary>ul,
     .respec-dfn-list {
       column-count: 2;
@@ -656,25 +668,18 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       }
     }
   </style>
-  <title>Micropub</title>
-
-
-
-
-  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
-  <link rel="webmention" href="https://webmention.io/w3c/webmention">
-  <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
-  <meta name="generator" content="ReSpec 10.5.9">
+  <meta name="generator" content="ReSpec 11.2.1">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-03-01",
+      "publishDate": "2017-03-14",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
       "crEnd": "2016-11-15",
+      "prEnd": "2017-04-07",
       "shortName": "micropub",
       "edDraftURI": "https://micropub.net/draft/",
       "testSuiteURI": "https://micropub.rocks/",
@@ -797,13 +802,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body aria-busy="false" class="h-entry" id="respecDocument">
+<body aria-busy="false" class="h-entry toc-inline" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-01-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-01">01 March 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-14-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-14">14 March 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -898,7 +903,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
     </p>
-    <p id="sotd-p-6">This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    <p id="sotd-p-6">This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2017/Process-20170301/">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
     </p>
 
   </section>
@@ -1131,7 +1136,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span>
       </h3>
 
-      <p id="candidate-recommendation-exit-criteria-p-1">For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
+      <p id="candidate-recommendation-exit-criteria-p-1">This specification exited CR by there being least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
 
       <section id="client" typeof="bibo:Chapter" resource="#client" property="bibo:hasPart">
         <h4 id="h-client" resource="#h-client"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Client</span>
@@ -2481,7 +2486,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
     </h2>
 
-    <p id="acknowledgements-p-1">The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm.</p>
+    <p id="acknowledgements-p-1">The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm. In particular, the editor wishes to thank <a href="http://rhiaro.co.uk/">Amy Guy</a>, <a href="https://barryfrost.com/">Barry Frost</a>, <a href="https://ben.thatmustbe.me/">Benjamin Roberts</a>, <a href="http://cweiske.de/">Christian Weiske</a>, <a href="https://david.shanske.com/">David Shanske</a>, <a href="http://notenoughneon.com/">Emma Kuo</a>, <a href="https://kylewm.com/">Kyle Mahan</a>, <a href="https://jeena.net/">Jeena Paradies</a>, <a href="https://unicyclic.com/mal/">Malcolm Blaney</a>, <a href="https://martymcgui.re/">Marty McGuire</a>, <a href="https://voxpelli.com/">Pelle Wessman</a>, <a href="https://snarfed.org/">Ryan Barrett</a>, <a href="https://www.svenknebel.de/posts/">Sven Knebel</a>, and <a href="http://tantek.com/">Tantek Çelik</a>.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
@@ -2500,6 +2505,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-2">Add background referring to MetaWeblog and AtomPub prior art</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-3">Clarification of condition under which a client can try uploading a file</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-4">Editorial changes to introduction and abstract</li>
+        <li id="changes-from-18-october-2016-cr-to-this-version-li-5">Expand acknowledgements</li>
       </ul>
     </section>
 

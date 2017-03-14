@@ -264,6 +264,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       vertical-align: middle;
     }
   </style>
+  <title>Micropub</title>
+
+
+
+
+  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
+  <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <style id="respec-mainstyle">
     /*****************************************************************
  * ReSpec 3 CSS
@@ -636,6 +643,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x;
     }
     
+    @supports (text-decoration-style: wavy) {
+      .respec-offending-element {
+        background: none;
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: red;
+      }
+    }
+    
     #issue-summary>ul,
     .respec-dfn-list {
       column-count: 2;
@@ -652,21 +668,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       }
     }
   </style>
-  <title>Micropub</title>
-
-
-
-
-  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
-  <link rel="webmention" href="https://webmention.io/w3c/webmention">
-  <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-PR">
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
-  <meta name="generator" content="ReSpec 10.5.14">
+  <meta name="generator" content="ReSpec 11.2.1">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-03-14",
+      "publishDate": "2017-03-16",
       "specStatus": "PR",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
@@ -800,10 +808,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-proposed-recommendation-14-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Proposed Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-03-14">14 March 2017</time></h2>
+    <h2 id="w3c-proposed-recommendation-16-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Proposed Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-03-16">16 March 2017</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2017/PR-micropub-20170314/">https://www.w3.org/TR/2017/PR-micropub-20170314/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/PR-micropub-20170316/">https://www.w3.org/TR/2017/PR-micropub-20170316/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/micropub/">https://www.w3.org/TR/micropub/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -2481,7 +2489,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
     </h2>
 
-    <p id="acknowledgements-p-1">The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm. In particular, the editor wishes to thank Amy Guy, Barry Frost, Benjamin Roberts, Christian Weiske, David Shanske, Emma Kuo, Kyle Mahan, Jeena Paradies, Malcolm Blaney, Marty McGuire, Pelle Wessman, Ryan Barrett, Sven Knebel, and Tantek Çelik.</p>
+    <p id="acknowledgements-p-1">The editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm. In particular, the editor wishes to thank <a href="http://rhiaro.co.uk/">Amy Guy</a>, <a href="https://barryfrost.com/">Barry Frost</a>, <a href="https://ben.thatmustbe.me/">Benjamin Roberts</a>, <a href="http://cweiske.de/">Christian Weiske</a>, <a href="https://david.shanske.com/">David Shanske</a>, <a href="http://notenoughneon.com/">Emma Kuo</a>, <a href="https://kylewm.com/">Kyle Mahan</a>, <a href="https://jeena.net/">Jeena Paradies</a>, <a href="https://unicyclic.com/mal/">Malcolm Blaney</a>, <a href="https://martymcgui.re/">Marty McGuire</a>, <a href="https://voxpelli.com/">Pelle Wessman</a>, <a href="https://snarfed.org/">Ryan Barrett</a>, <a href="https://www.svenknebel.de/posts/">Sven Knebel</a>, and <a href="http://tantek.com/">Tantek Çelik</a>.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
