@@ -15,47 +15,49 @@ Developer(s): [Ben Roberts](https://ben.thatmustbe.mee)
 ## Authentication
 * [x] The client sends the access token in the HTTP `Authorization` header.
 * [ ] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
-* [s] The client requests one or more `scope` values when obtaining user authorization.
- * post (though customizable after first login / requires relogin)
+* [x] The client requests one or more `scope` values when obtaining user authorization.
+ * create (though customizable after first login / requires relogin)
 
 ## Syntax
-* [x] Creates posts using `x-www-form-urlencoded` syntax.
-* [x] Creates posts using JSON syntax.
-* [x] Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
-* [x] Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax including a nested Microformats2 object.
-* [ ] Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
+* [x] 100: Creates posts using `x-www-form-urlencoded` syntax.
+* [x] 200: Creates posts using JSON syntax.
+* [x] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
+* [x] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+* [ ] 202: Creates posts with HTML content. (JSON)
+* [ ] 204: Creates posts using JSON syntax including a nested Microformats2 object.
+* [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
-* [ ] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
-* [ ] Allows creating posts with a photo including image alt text.
+* [x] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
+* [x] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
+* [x] 205: Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
-* [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
+* [x] 105: Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
-* [x] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
+* [x] 700: Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
 * [ ] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
-* [ ] Supports replacing all values of a property (e.g. replacing the post content).
-* [ ] Supports adding a value to a property (e.g. adding a tag).
-* [ ] Supports removing a value from a property (e.g. removing a specific tag).
-* [ ] Supports removing a property.
+* [ ] 400: Supports replacing all values of a property (e.g. replacing the post content).
+* [ ] 401: Supports adding a value to a property (e.g. adding a tag).
+* [ ] 402: Supports removing a value from a property (e.g. removing a specific tag).
+* [ ] 403: Supports removing a property.
 * [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
-* [ ] Sends deletion requests using `x-www-form-urlencoded` syntax.
-* [ ] Sends deletion requests using JSON syntax.
-* [ ] Sends undeletion requests using `x-www-form-urlencoded` syntax.
-* [ ] Sends undeletion requests using JSON syntax.
+* [ ] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
+* [ ] 500: Sends deletion requests using JSON syntax.
+* [ ] 502: Sends undeletion requests using `x-www-form-urlencoded` syntax.
+* [ ] 502: Sends undeletion requests using JSON syntax.
 
 ## Querying
-* [x] Queries the Micropub endpoint with `q=config`
+* [x] 600: Queries the Micropub endpoint with `q=config`
  * [x] Looks in the response for the Media Endpoint
  * [x] Looks in the response for syndication targets
-* [x] Queries the Micropub endpoint with `q=syndicate-to`
-* [ ] Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [x] 601: Queries the Micropub endpoint with `q=syndicate-to`
+* [ ] 602: Queries the Micropub endpoint for a post's source content without specifying a list of properties
+* [ ] 603: Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
