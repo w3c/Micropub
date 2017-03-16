@@ -9,6 +9,10 @@ Programming Language(s): Python
 
 Developer(s): [Name](https://martymcgui.re)
 
+Answers are:
+* [ ] Confirmed via micropub.rocks
+* [x] Self-reported
+
 ## Discovery
 * [x] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
 

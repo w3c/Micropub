@@ -9,6 +9,10 @@ Programming Language(s): javascript, php
 
 Developer(s): [Ben Roberts](https://ben.thatmustbe.mee)
 
+Answers are:
+* [x] Confirmed via micropub.rocks
+* [ ] Self-reported
+
 ## Discovery
 * [x] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
 

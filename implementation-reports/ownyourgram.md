@@ -9,6 +9,10 @@ Programming Language(s): PHP
 
 Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
+Answers are:
+* [ ] Confirmed via micropub.rocks
+* [x] Self-reported
+
 ## Discovery
 * [x] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
 

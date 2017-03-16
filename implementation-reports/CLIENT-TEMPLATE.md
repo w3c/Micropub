@@ -17,6 +17,10 @@ Programming Language(s):
 
 Developer(s): [Name](https://you.example.com)
 
+Answers are:
+* [ ] Confirmed via micropub.rocks
+* [ ] Self-reported
+
 ## Discovery
 * [ ] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
 
