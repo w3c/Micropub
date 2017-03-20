@@ -27,8 +27,10 @@ Answers are:
 * [ ] 100: Creates posts using `x-www-form-urlencoded` syntax.
 * [x] 200: Creates posts using JSON syntax.
 * [ ] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
-* [ ] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] 202: Creates posts with HTML content. (JSON)
+* [x] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+** Sends person-tags as nested h-cards if any people were tagged in the checkin
+* [x] 202: Creates posts with HTML content. (JSON)
+** When the checkin includes a mention of another person, the content is sent as HTML with a hyperlink to the user mentioned
 * [x] 204: Creates posts using JSON syntax including a nested Microformats2 object.
 * [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
