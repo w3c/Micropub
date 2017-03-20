@@ -44,8 +44,8 @@ Answers are:
 
 ## Updates
 * [x] 400: Supports replacing all values of a property (e.g. replacing the post content).
-* [ ] 401: Supports adding a value to a property (e.g. adding a tag).
-* [ ] 402: Supports removing a value from a property (e.g. removing a specific tag).
+* [x] 401: Supports adding a value to a property (e.g. adding a tag).
+* [x] 402: Supports removing a value from a property (e.g. removing a specific tag).
 * [x] 403: Supports removing a property.
 * [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
