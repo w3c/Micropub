@@ -34,7 +34,7 @@ Answers are:
 ## Creating Posts
 * [x] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
 * [x] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
-* [x] 205: Allows creating posts with a photo including image alt text.
+* [ ] 205: Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [x] 105: Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
@@ -43,10 +43,10 @@ Answers are:
 * [ ] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
-* [ ] 400: Supports replacing all values of a property (e.g. replacing the post content).
+* [x] 400: Supports replacing all values of a property (e.g. replacing the post content).
 * [ ] 401: Supports adding a value to a property (e.g. adding a tag).
 * [ ] 402: Supports removing a value from a property (e.g. removing a specific tag).
-* [ ] 403: Supports removing a property.
+* [x] 403: Supports removing a property.
 * [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
@@ -60,8 +60,8 @@ Answers are:
  * [x] Looks in the response for the Media Endpoint
  * [x] Looks in the response for syndication targets
 * [x] 601: Queries the Micropub endpoint with `q=syndicate-to`
-* [ ] 602: Queries the Micropub endpoint for a post's source content without specifying a list of properties
-* [ ] 603: Queries the Micropub endpoint for a post's source content looking only for specific properties
+* [x] 602: Queries the Micropub endpoint for a post's source content without specifying a list of properties
+* [x] 603: Queries the Micropub endpoint for a post's source content looking only for specific properties
 
 ## Extensions
 
