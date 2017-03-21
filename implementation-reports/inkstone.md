@@ -50,10 +50,10 @@ Answers are:
 * [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
-* [ ] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
-* [ ] 500: Sends deletion requests using JSON syntax.
-* [ ] 502: Sends undeletion requests using `x-www-form-urlencoded` syntax.
-* [ ] 502: Sends undeletion requests using JSON syntax.
+* [x] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
+* [x] 500: Sends deletion requests using JSON syntax.
+* [x] 502: Sends undeletion requests using `x-www-form-urlencoded` syntax.
+* [x] 502: Sends undeletion requests using JSON syntax.
 
 ## Querying
 * [x] 600: Queries the Micropub endpoint with `q=config`
