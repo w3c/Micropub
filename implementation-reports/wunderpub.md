@@ -10,11 +10,12 @@ Programming Language(s): Ruby
 Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 Answers are:
-* [ ] Confirmed via micropub.rocks
-* [x] Self-reported
+* [x] Confirmed via micropub.rocks
+* [ ] Self-reported
 
 ## Discovery
 * [ ] The client discovers the Micropub endpoint given the profile URL of a user (e.g. the sign-in form asks the user to enter their URL, which is used to find the Micropub endpoint)
+** The endpoint and access token are hardcoded in a config file
 
 ## Authentication
 * [x] The client sends the access token in the HTTP `Authorization` header.
@@ -23,18 +24,20 @@ Answers are:
  * n/a, the client assumes the user generated the scope with the appropriate value already
 
 ## Syntax
-* [x] Creates posts using `x-www-form-urlencoded` syntax.
-* [ ] Creates posts using JSON syntax.
-* [x] Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] Creates posts using JSON syntax including a nested Microformats2 object.
-* [ ] Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
+* [x] 100: Creates posts using `x-www-form-urlencoded` syntax.
+* [x] 200: Creates posts using JSON syntax.
+* [x] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
+* [x] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
+* [ ] 202: Creates posts with HTML content. (JSON)
+* [x] 204: Creates posts using JSON syntax including a nested Microformats2 object.
+* [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
-* [x] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
-* [ ] Allows creating posts with a photo including image alt text.
+* [x] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
+* [x] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
+* [ ] 205: Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
-* [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
+* [x] 105: Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
 * [ ] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
@@ -69,7 +72,7 @@ Please list any [Micropub extensions](https://indieweb.org/Micropub-extensions) 
 
 Please list all vocabularies and properties the client supports, if applicable.
 
-* Photos and Videos (http://microformats.org/wiki/h-entry)
+* [h-entry](http://microformats.org/wiki/h-entry)
  * content
  * name
  * photo
