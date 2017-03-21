@@ -29,7 +29,7 @@ Answers are:
 * [ ] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
 * [ ] 202: Creates posts with HTML content. (JSON)
 * [ ] 204: Creates posts using JSON syntax including a nested Microformats2 object.
-* [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
+* [x] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
 * [ ] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
@@ -88,7 +88,5 @@ Please list all vocabularies and properties the client supports, if applicable.
       * id3-track (track number)
 
 ## Other Notes
-
-micropub.rocks test for file uploads expect `photo`, but screech supports `audio`. Therefore, I would say that Screech passes "300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.", but cannot verify this with the micropub.rocks tests
 
 Media endpoint query is supported but media endpoint uploads are not yet implemented.
