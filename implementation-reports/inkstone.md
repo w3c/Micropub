@@ -27,14 +27,14 @@ Answers are:
 * [x] 200: Creates posts using JSON syntax.
 * [x] 101: Creates posts using `x-www-form-urlencoded` syntax with multiple values of the same property name (e.g. tags).
 * [x] 201: Creates posts using JSON syntax with multiple values of the same property name (e.g. tags).
-* [ ] 202: Creates posts with HTML content. (JSON)
+* [x] 202: Creates posts with HTML content. (JSON)
 * [ ] 204: Creates posts using JSON syntax including a nested Microformats2 object.
 * [ ] 300: Creates posts including a file by sending the request as `multipart/form-data` to the Micropub endpoint.
 
 ## Creating Posts
 * [x] 104: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (form-encoded)
 * [x] 203: Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request. (JSON)
-* [ ] 205: Allows creating posts with a photo including image alt text.
+* [x] 205: Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
 * [x] 105: Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
