@@ -18,7 +18,7 @@ Answers are:
 
 ## Authentication
 * [x] The client sends the access token in the HTTP `Authorization` header.
-* [ ] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
+* [x] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
 * [x] The client requests one or more `scope` values when obtaining user authorization.
  * create (though customizable after first login / requires relogin)
 
