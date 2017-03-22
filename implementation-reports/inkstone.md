@@ -47,7 +47,7 @@ Answers are:
 * [x] 401: Supports adding a value to a property (e.g. adding a tag).
 * [x] 402: Supports removing a value from a property (e.g. removing a specific tag).
 * [x] 403: Supports removing a property.
-* [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
+* [x] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
 * [x] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
@@ -75,5 +75,6 @@ h-entry by default , configurable to any other vocabulary
 
 ## Other Notes
 
-Please use this space to document anything else significant about your implementation.
+For handling of results, this implementation uses Request.ok which is true for all HTTP 2XX
+
 
