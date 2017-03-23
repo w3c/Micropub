@@ -19,7 +19,7 @@ Answers are:
 * [x] The client sends the access token in the HTTP `Authorization` header.
 * [ ] The client sends the access token in the post body for `x-www-form-urlencoded` requests.
 * [x] The client requests one or more `scope` values when obtaining user authorization.
- * (list scopes requested here)
+ * create
 
 ## Syntax
 * [ ] 100: Creates posts using `x-www-form-urlencoded` syntax.
@@ -39,14 +39,14 @@ Answers are:
 
 ## Media Endpoint
 * [ ] 700: Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
-* [[ ]] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
+* [ ] Uses multipart requests only as a fallback when there is no Media Endpoint specified.
 
 ## Updates
 * [ ] 400: Supports replacing all values of a property (e.g. replacing the post content).
 * [ ] 401: Supports adding a value to a property (e.g. adding a tag).
 * [ ] 402: Supports removing a value from a property (e.g. removing a specific tag).
 * [ ] 403: Supports removing a property.
-* [[ ]] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
+* [ ] Recognizes HTTP 200, 201 and 204 as a successful response from the Micropub endpoint.
 
 ## Deletes
 * [ ] 500: Sends deletion requests using `x-www-form-urlencoded` syntax.
@@ -56,8 +56,8 @@ Answers are:
 
 ## Querying
 * [ ] 600: Queries the Micropub endpoint with `q=config`
- * [[ ]] Looks in the response for the Media Endpoint
- * [[ ]] Looks in the response for syndication targets
+ * [ ] Looks in the response for the Media Endpoint
+ * [ ] Looks in the response for syndication targets
 * [ ] 601: Queries the Micropub endpoint with `q=syndicate-to`
 * [ ] 602: Queries the Micropub endpoint for a post's source content without specifying a list of properties
 * [ ] 603: Queries the Micropub endpoint for a post's source content looking only for specific properties
