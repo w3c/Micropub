@@ -674,7 +674,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-03-14",
+      "publishDate": "2017-03-26",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
@@ -808,7 +808,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-14-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-14">14 March 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-26-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-26">26 March 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -1125,7 +1125,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li id="servers-li-3"><em class="rfc2119" title="MUST">MUST</em> support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
           <li id="servers-li-4"><em class="rfc2119" title="SHOULD">SHOULD</em> support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
           <li id="servers-li-5">Servers that support updating posts <em class="rfc2119" title="MUST">MUST</em> support <a href="#json-syntax">JSON syntax</a> and the <a href="#source-content">source content query</a></li>
-          <li id="servers-li-6">Servers that support creating posts with media that do not specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support <code>multipart/form-data</code> requests for <a href="#create">creating</a> posts</li>
+          <li id="servers-li-6">Servers that do not specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support <code>multipart/form-data</code> requests for <a href="#create">creating</a> posts</li>
           <li id="servers-li-7">Servers that specify a Media Endpoint <em class="rfc2119" title="MUST">MUST</em> support the <a href="#configuration">configuration query</a>, other servers <em class="rfc2119" title="SHOULD">SHOULD</em> support the configuration query</li>
         </ul>
       </section>
@@ -1330,7 +1330,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span>
         </h4>
 
-        <p id="uploading-files-p-1">To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If the server supports posts with files, and there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+        <p id="uploading-files-p-1">To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
         <p id="uploading-files-p-2">For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
         <p id="uploading-files-p-3"></p>
         <div class="example">

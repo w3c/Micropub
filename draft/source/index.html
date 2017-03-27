@@ -8,8 +8,8 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2017-03-14",
-          specStatus: "ED",
+          publishDate: "2017-03-28",
+          specStatus: "PR",
           previousMaturity: "CR",
           previousPublishDate: "2016-10-18",
           crEnd: "2016-11-15",
@@ -216,7 +216,7 @@
             <li>MUST support <a href="#create">creating</a> posts using the <code>x-www-form-urlencoded</code> syntax</li>
             <li>SHOULD support <a href="#update">updating</a> and <a href="#delete">deleting</a> posts</li>
             <li>Servers that support updating posts MUST support <a href="#json-syntax">JSON syntax</a> and the <a href="#source-content">source content query</a></li>
-            <li>Servers that support creating posts with media that do not specify a Media Endpoint MUST support <code>multipart/form-data</code> requests for <a href="#create">creating</a> posts</li>
+            <li>Servers that do not specify a Media Endpoint MUST support <code>multipart/form-data</code> requests for <a href="#create">creating</a> posts</li>
             <li>Servers that specify a Media Endpoint MUST support the <a href="#configuration">configuration query</a>, other servers SHOULD support the configuration query</li>
           </ul>
         </section>
@@ -411,7 +411,7 @@
         <section>
           <h4>Uploading Files</h4>
 
-          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If the server supports posts with files, and there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
           <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
           <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
 
