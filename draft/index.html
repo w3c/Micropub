@@ -674,12 +674,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-03-26",
+      "publishDate": "2017-03-28",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
       "crEnd": "2016-11-15",
-      "prEnd": "2017-04-07",
+      "prEnd": "2017-04-30",
       "shortName": "micropub",
       "edDraftURI": "https://micropub.net/draft/",
       "testSuiteURI": "https://micropub.rocks/",
@@ -802,13 +802,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body aria-busy="false" class="h-entry toc-inline" id="respecDocument">
+<body aria-busy="false" class="h-entry" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-26-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-26">26 March 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-28-march-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-03-28">28 March 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -1095,7 +1095,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p id="publishing-clients-p-1">A conforming Micropub client that creates posts:</p>
         <ul>
-          <li id="publishing-clients-li-1"><em class="rfc2119" title="MUST">MUST</em> support sending x-www-form-urlencoded requests</li>
+          <li id="publishing-clients-li-1"><em class="rfc2119" title="MUST">MUST</em> support sending <code>x-www-form-urlencoded</code> requests</li>
           <li id="publishing-clients-li-2"><em class="rfc2119" title="MUST">MUST</em> support the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] vocabulary</li>
           <li id="publishing-clients-li-3">If the client creates posts by uploading file attachments, it <em class="rfc2119" title="MUST">MUST</em> check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
           <li id="publishing-clients-li-4"><em class="rfc2119" title="SHOULD">SHOULD</em> handle server error messages gracefully, presenting helpful messages to the user</li>
@@ -1250,14 +1250,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </h3>
 
       <p id="overview-p-1">All Micropub requests to create posts are sent as UTF-8
-        <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
-        <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], or [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>]-encoded HTTP requests. Responses typically do not include a response body, indicating the needed information (such as the URL of the created post) in HTTP headers. When a response body is necessary, it <em class="rfc2119" title="SHOULD">SHOULD</em> be returned as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] encoded object.</p>
+        <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data"><code>x-www-form-urlencoded</code></a>,
+        <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data"><code>multipart/form-data</code></a> [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>], or [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>]-encoded HTTP requests. Responses typically do not include a response body, indicating the needed information (such as the URL of the created post) in HTTP headers. When a response body is necessary, it <em class="rfc2119" title="SHOULD">SHOULD</em> be returned as a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] encoded object.</p>
 
       <section id="form-encoded-and-multipart-requests" typeof="bibo:Chapter" resource="#form-encoded-and-multipart-requests" property="bibo:hasPart">
         <h4 id="h-form-encoded-and-multipart-requests" resource="#h-form-encoded-and-multipart-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Form-Encoded and Multipart Requests</span>
         </h4>
 
-        <p id="form-encoded-and-multipart-requests-p-1">For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you <em class="rfc2119" title="MUST">MUST</em> append square brackets <code>[]</code> to the property name.</p>
+        <p id="form-encoded-and-multipart-requests-p-1">For <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code> requests, Micropub supports an extension of the standard URL encoding that includes explicit indicators of multi-valued properties. Specifically, this means in order to send multiple values for a given property, you <em class="rfc2119" title="MUST">MUST</em> append square brackets <code>[]</code> to the property name.</p>
 
         <p id="form-encoded-and-multipart-requests-p-2">For example, to specify multiple values for the property "category", the request would include <code>category[]=foo&amp;category[]=bar</code>.</p>
 
@@ -1273,7 +1273,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p id="form-encoded-and-multipart-requests-p-5">This works equally well in multipart requests, where each value is given in a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
 
-        <p id="form-encoded-and-multipart-requests-p-6">Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
+        <p id="form-encoded-and-multipart-requests-p-6">Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data"><code>x-www-form-urlencoded</code></a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
 
         </p>
       </section>
@@ -1283,7 +1283,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-reserved-properties" resource="#h-reserved-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Reserved Properties</span>
       </h3>
 
-      <p id="reserved-properties-p-1">A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
+      <p id="reserved-properties-p-1">A few POST body property names are reserved when requests are sent as <code>x-www-form-urlencoded</code> or <code>multipart/form-data</code>.</p>
 
       <p id="reserved-properties-p-2">
       </p>
@@ -1308,7 +1308,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-create" resource="#h-create"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Create</span>
       </h3>
 
-      <p id="create-p-1">To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the x-www-form-urlencoded syntax, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
+      <p id="create-p-1">To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] <em class="rfc2119" title="SHOULD">SHOULD</em> be used. Clients and servers <em class="rfc2119" title="MUST">MUST</em> support creating posts using the <code>x-www-form-urlencoded</code> syntax, and <em class="rfc2119" title="MAY">MAY</em> also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
       <p id="create-p-2"></p>
       <pre aria-busy="false" aria-live="polite" class="hljs undefined">h={Microformats object type}</pre>
@@ -1330,7 +1330,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <h4 id="h-uploading-files" resource="#h-uploading-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3.1 </span>Uploading Files</span>
         </h4>
 
-        <p id="uploading-files-p-1">To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+        <p id="uploading-files-p-1">To upload files, the client <em class="rfc2119" title="MUST">MUST</em> check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as <code>multipart/form-data</code> and send the file(s) as a standard property.</p>
         <p id="uploading-files-p-2">For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
         <p id="uploading-files-p-3"></p>
         <div class="example">
@@ -1395,7 +1395,7 @@ Content-Transfer-Encoding: binary
 
         <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
 
-        <p id="json-syntax-p-6">To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+        <p id="json-syntax-p-6">To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoded or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
 
         <p id="json-syntax-p-7"></p>
         <div class="example">
@@ -2277,7 +2277,7 @@ Content-type: application/json
         <h4 id="h-posting-files" resource="#h-posting-files"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1.5 </span>Posting Files</span>
         </h4>
 
-        <p id="posting-files-p-1">When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
+        <p id="posting-files-p-1">When a Micropub request includes a file, the entire request is sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data"><code>multipart/form-data</code></a> encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request <em class="rfc2119" title="MAY">MAY</em> include one or more of these files.</p>
 
         <p id="posting-files-p-2">For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
 
@@ -2501,11 +2501,12 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
       <h3 id="non-normative-changes">Non-Normative Changes</h3>
       <ul>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-1">Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
+        <li id="changes-from-18-october-2016-cr-to-this-version-li-1">Corrected conformance class description of servers handling <code>multipart/form-data</code> requests for accepting media</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-2">Add background referring to MetaWeblog and AtomPub prior art</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-3">Clarification of condition under which a client can try uploading a file</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-4">Editorial changes to introduction and abstract</li>
         <li id="changes-from-18-october-2016-cr-to-this-version-li-5">Expand acknowledgements</li>
+        <li id="changes-from-18-october-2016-cr-to-this-version-li-6">Use consistent spelling and <code>&lt;code&gt;</code> tag for <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code></li>
       </ul>
     </section>
 

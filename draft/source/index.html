@@ -9,11 +9,11 @@
       var respecConfig = {
           useExperimentalStyles: true,
           publishDate: "2017-03-28",
-          specStatus: "PR",
+          specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-10-18",
           crEnd: "2016-11-15",
-          prEnd: "2017-04-07",
+          prEnd: "2017-04-30",
           shortName:  "micropub",
           edDraftURI: "https://micropub.net/draft/",
           testSuiteURI: "https://micropub.rocks/",
@@ -188,7 +188,7 @@
 
           <p>A conforming Micropub client that creates posts:</p>
           <ul>
-            <li>MUST support sending x-www-form-urlencoded requests</li>
+            <li>MUST support sending <code>x-www-form-urlencoded</code> requests</li>
             <li>MUST support the [[!h-entry]] vocabulary</li>
             <li>If the client creates posts by uploading file attachments, it MUST check for the presence of a Media Endpoint and if present, send the file there instead of to the Micropub endpoint</li>
             <li>SHOULD handle server error messages gracefully, presenting helpful messages to the user</li>
@@ -336,8 +336,8 @@
         <h3>Overview</h3>
 
         <p>All Micropub requests to create posts are sent as UTF-8
-          <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a>,
-          <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a> [[!HTML5]],
+          <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data"><code>x-www-form-urlencoded</code></a>,
+          <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data"><code>multipart/form-data</code></a> [[!HTML5]],
           or [[!JSON]]-encoded HTTP requests. Responses typically do not include
           a response body, indicating the needed information (such as the URL
           of the created post) in HTTP headers. When a response body is necessary,
@@ -346,7 +346,7 @@
         <section>
           <h4>Form-Encoded and Multipart Requests</h4>
 
-          <p>For <code>x-www-form-urlencoded</code> and multipart requests, Micropub supports
+          <p>For <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code> requests, Micropub supports
             an extension of the standard URL encoding that includes explicit indicators
             of multi-valued properties. Specifically, this means in order to send multiple 
             values for a given property, you MUST append square brackets <code>[]</code> to the property name.</p>
@@ -366,7 +366,7 @@
           <p>This works equally well in multipart requests, where each value is given in 
             a separate "part" of the request, and the name is given in a line such as <code>Content-Disposition: form-data; name="category[]"</code>.</p>
 
-          <p>Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data">x-www-form-urlencoded</a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
+          <p>Note that the extent of the extensions to the <a href="https://www.w3.org/TR/html5/forms.html#url-encoded-form-data"><code>x-www-form-urlencoded</code></a> syntax is the addition of the square brackets to indicate an array. Syntax such as <code>foo[0]</code> and <code>foo[bar]</code> is not supported, and so clients are expected to use the <a href="#json-syntax">JSON syntax</a> when posting more complex objects.
 
         </section>
       </section>
@@ -374,7 +374,7 @@
       <section>
         <h3>Reserved Properties</h3>
 
-        <p>A few POST body property names are reserved when requests are sent as x-www-form-urlencoded or multipart form data.</p>
+        <p>A few POST body property names are reserved when requests are sent as <code>x-www-form-urlencoded</code> or <code>multipart/form-data</code>.</p>
 
         <p>
           <ul>
@@ -397,7 +397,7 @@
       <section>
         <h3>Create</h3>
 
-        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used. Clients and servers MUST support creating posts using the x-www-form-urlencoded syntax, and MAY also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
+        <p>To create a post, send an HTTP POST request to the Micropub endpoint indicating the type of post you are creating, as well as specifying the properties of the post. If no type is specified, the default type [[!h-entry]] SHOULD be used. Clients and servers MUST support creating posts using the <code>x-www-form-urlencoded</code> syntax, and MAY also support creating posts using the <a href="#json-syntax">JSON syntax</a>.</p>
 
         <p><pre><code>h={Microformats object type}</code></pre></p>
         <p>e.g., <code>h=entry</code></p>
@@ -411,7 +411,7 @@
         <section>
           <h4>Uploading Files</h4>
 
-          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as multipart/form-data and send the file(s) as a standard property.</p>
+          <p>To upload files, the client MUST check for the presence of a <a href="#media-endpoint">Media Endpoint</a>. If there is no Media Endpoint, the client can assume that the Micropub endpoint accepts files directly, and can send the request to it directly. To upload a file to the Micropub endpoint, format the whole request as <code>multipart/form-data</code> and send the file(s) as a standard property.</p>
           <p>For example, to upload a photo with a caption, send a request that contains three parts, named <code>h</code>, <code>content</code> and <code>photo</code>.</p>
           <p><pre class="example">multipart/form-data; boundary=553d9cee2030456a81931fb708ece92c
 
@@ -460,7 +460,7 @@ Content-type: application/json
 
           <h4>Uploading a photo with alt text</h4>
 
-          <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoding or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+          <p>To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoded or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
@@ -1189,7 +1189,7 @@ Content-type: application/json
           <h4>Posting Files</h4>
 
           <p>When a Micropub request includes a file, the entire request is
-            sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data">multipart form-data</a>
+            sent in <a href="https://www.w3.org/TR/html5/forms.html#multipart-form-data"><code>multipart/form-data</code></a>
             encoding, and the file is named according to the property it corresponds with in the vocabulary, either <code>audio</code>, <code>video</code> or <code>photo</code>. A request MAY include one or more of these files.</p>
 
           <p>For example, a service may post a video in the <code>video</code> property as well as a single frame preview of the video in the <code>photo</code> property.</p>
@@ -1398,11 +1398,12 @@ $_FILES['audio']</pre></p>
 
         <h4>Non-Normative Changes</h4>
         <ul>
-          <li>Corrected conformance class description of servers handling multipart/form-data requests for accepting media</li>
+          <li>Corrected conformance class description of servers handling <code>multipart/form-data</code> requests for accepting media</li>
           <li>Add background referring to MetaWeblog and AtomPub prior art</li>
           <li>Clarification of condition under which a client can try uploading a file</li>
           <li>Editorial changes to introduction and abstract</li>
           <li>Expand acknowledgements</li>
+          <li>Use consistent spelling and <code>&lt;code&gt;</code> tag for <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code></li>
         </ul>
       </section>
 
