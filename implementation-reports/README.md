@@ -15,6 +15,8 @@ A summary is available at https://micropub.rocks/implementation-reports/servers/
 
 ## Clients
 
-To submit a report for your Micropub client, use the `CLIENT-TEMPLATE.md` file as a template and fill out the information based on your implementation. Submit a pull request to this repository, or link to your completed file in a [new issue](https://github.com/w3c/micropub/issues).
+You can use the test suite at https://micropub.rocks/ to test your client. In doing so, the tool will build the implementation report for you, which you can then copy and paste as a new file in this repository.
+
+To submit a report for your Micropub client, use the `CLIENT-TEMPLATE.md` file as a template and fill out the information based on your implementation. You can copy and paste the results from https://micropub.rocks after running the tests. Submit a pull request to this repository, or link to your completed file in a [new issue](https://github.com/w3c/micropub/issues).
 
 View the summary of submitted reports here: https://micropub.rocks/implementation-reports/clients/
