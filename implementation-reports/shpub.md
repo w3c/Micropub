@@ -1,6 +1,6 @@
 # shpub
 
-Implementation Home Page URL: 
+Implementation Home Page URL: http://cweiske.de/shpub.htm
 
 Source code repo URL(s) (optional):
 * [x] 100% open source implementation
@@ -10,7 +10,7 @@ Programming Language(s): php
 Developer(s): [Christian Weiske](https://cweiske.de/)
 
 Answers are:
-* [ ] Confirmed via micropub.rocks
+* [x] Confirmed via micropub.rocks
 * [x] Self-reported
 
 ## Discovery
@@ -34,7 +34,7 @@ Answers are:
 * [x] Allows creating posts with a photo referenced by URL rather than uploading the photo as a Multipart request.
 * [ ] Allows creating posts with a photo including image alt text.
 * [x] Recognizes HTTP 201 and 202 with a `Location` header as a successful response from the Micropub endpoint.
-* [ ] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
+* [x] Allows the user to specify one or more syndication endpoints from their list of endpoints discovered in the `q=config` or `q=syndicate-to` query.
 
 ## Media Endpoint
 * [x] Checks to see if the Micropub endpoint specifies a Media Endpoint, and uploads photos there instead.
@@ -56,8 +56,8 @@ Answers are:
 ## Querying
 * [x] Queries the Micropub endpoint with `q=config`
  * [x] Looks in the response for the Media Endpoint
- * [ ] Looks in the response for syndication targets
-* [ ] Queries the Micropub endpoint with `q=syndicate-to`
+ * [] Looks in the response for syndication targets
+* [x] Queries the Micropub endpoint with `q=syndicate-to`
 * [ ] Queries the Micropub endpoint for a post's source content without specifying a list of properties
 * [ ] Queries the Micropub endpoint for a post's source content looking only for specific properties
 
