@@ -8,7 +8,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2017-03-28",
+          publishDate: "2017-04-06",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-10-18",
@@ -1283,6 +1283,12 @@ $_FILES['audio']</pre></p>
 
     <section>
       <h2>Security Considerations</h2>
+
+      <section>
+        <h3>External Content</h3>
+
+        <p>Micropub endpoints that accept photos or other media may encounter a request from a client that contains a URL to a file on a domain other than the Micropub endpoint or Media Endpoint, such as if the client provides its own mechanism for uploading files. One defensive way Micropub servers can implement accepting URL values is to only download and store media from a list of trusted domains, such as the Micropub server's domain and its Media Endpoint, and store just the URL to the file otherwise.</p>
+      </section>
 
       <section>
         <h3>Security and Privacy Review</h3>
