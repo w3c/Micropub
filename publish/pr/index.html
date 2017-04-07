@@ -720,7 +720,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-04-06",
+      "publishDate": "2017-04-13",
       "specStatus": "PR",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-10-18",
@@ -854,10 +854,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-proposed-recommendation-06-april-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Proposed Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-04-06">06 April 2017</time></h2>
+    <h2 id="w3c-proposed-recommendation-13-april-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Proposed Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-04-13">13 April 2017</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2017/PR-micropub-20170406/">https://www.w3.org/TR/2017/PR-micropub-20170406/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/PR-micropub-20170413/">https://www.w3.org/TR/2017/PR-micropub-20170413/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/micropub/">https://www.w3.org/TR/micropub/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -1064,7 +1064,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       </li>
       <li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">6. </span>Security Considerations</a>
         <ol class="toc">
-          <li class="tocline"><a href="#security-and-privacy-review" class="tocxref"><span class="secno">6.1 </span>Security and Privacy Review</a></li>
+          <li class="tocline"><a href="#external-content" class="tocxref"><span class="secno">6.1 </span>External Content</a></li>
+          <li class="tocline"><a href="#security-and-privacy-review" class="tocxref"><span class="secno">6.2 </span>Security and Privacy Review</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">7. </span>IANA Considerations</a></li>
@@ -2423,8 +2424,15 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     <h2 id="h-security-considerations" resource="#h-security-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Security Considerations</span>
     </h2>
 
+    <section id="external-content" typeof="bibo:Chapter" resource="#external-content" property="bibo:hasPart">
+      <h3 id="h-external-content" resource="#h-external-content"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>External Content</span>
+      </h3>
+
+      <p id="external-content-p-1">Micropub endpoints that accept photos or other media may encounter a request from a client that contains a URL to a file on a domain other than the Micropub endpoint or Media Endpoint, such as if the client provides its own mechanism for uploading files. One defensive way Micropub servers can implement accepting URL values is to only download and store media from a list of trusted domains, such as the Micropub server's domain and its Media Endpoint, and store just the URL to the file otherwise.</p>
+    </section>
+
     <section id="security-and-privacy-review" typeof="bibo:Chapter" resource="#security-and-privacy-review" property="bibo:hasPart">
-      <h3 id="h-security-and-privacy-review" resource="#h-security-and-privacy-review"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Security and Privacy Review</span>
+      <h3 id="h-security-and-privacy-review" resource="#h-security-and-privacy-review"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>Security and Privacy Review</span>
       </h3>
 
       <p id="security-and-privacy-review-p-1">These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([<cite><a class="bibref" href="#bib-security-privacy-questionnaire">security-privacy-questionnaire</a></cite>]).</p>
@@ -2720,7 +2728,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Normative references</span>
       </h3>
       <dl class="bibliography" resource=""><dt id="bib-BIDI">[BIDI]</dt>
-        <dd><a href="http://www.unicode.org/reports/tr9/" property="dc:requires"><cite>Unicode Bidirectional Algorithm</cite></a>. Mark Davis; Aharon Lanin; Andrew Glass. Unicode Consortium. 5 June 2014. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/" property="dc:requires">http://www.unicode.org/reports/tr9/</a>
+        <dd><a href="http://www.unicode.org/reports/tr9/tr9-35.html" property="dc:requires"><cite>Unicode Bidirectional Algorithm</cite></a>. Mark Davis; Aharon Lanin; Andrew Glass. Unicode Consortium. 18 May 2016. Unicode Standard Annex #9. URL: <a href="http://www.unicode.org/reports/tr9/tr9-35.html" property="dc:requires">http://www.unicode.org/reports/tr9/tr9-35.html</a>
         </dd><dt id="bib-Fetch">[Fetch]</dt>
         <dd><a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Anne van Kesteren. WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
         </dd><dt id="bib-HTML5">[HTML5]</dt>
