@@ -289,13 +289,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       color: #900;
     }
 
-    h1 acronym,
-    h2 acronym,
-    h3 acronym,
-    h4 acronym,
-    h5 acronym,
-    h6 acronym,
-    a acronym,
     h1 abbr,
     h2 abbr,
     h3 abbr,
@@ -406,270 +399,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       margin-bottom: 0;
     }
 
-    #respec-ui {
-      position: fixed;
-      display: flex;
-      flex-direction: row-reverse;
-      top: 20px;
-      right: 20px;
-      width: 202px;
-      text-align: right;
-      z-index: 9000;
-    }
-
-    #respec-pill,
-    .respec-info-button {
-      background: #fff;
-      height: 2.5em;
-      color: rgb(120, 120, 120);
-      border: 1px solid #ccc;
-      box-shadow: 1px 1px 8px 0 rgba(100, 100, 100, .5);
-    }
-
-    .respec-info-button {
-      border: none;
-      opacity: .75;
-      border-radius: 2em;
-      margin-right: 1em;
-      min-width: 3.5em;
-    }
-
-    .respec-info-button:focus,
-    .respec-info-button:hover {
-      opacity: 1;
-      transition: opacity .2s;
-    }
-
-    #respec-pill:disabled {
-      font-size: 2.8px;
-      text-indent: -9999em;
-      border-top: 1.1em solid rgba(40, 40, 40, 0.2);
-      border-right: 1.1em solid rgba(40, 40, 40, 0.2);
-      border-bottom: 1.1em solid rgba(40, 40, 40, 0.2);
-      border-left: 1.1em solid #ffffff;
-      transform: translateZ(0);
-      animation: respec-spin .5s infinite linear;
-      box-shadow: none;
-    }
-
-    #respec-pill:disabled,
-    #respec-pill:disabled:after {
-      border-radius: 50%;
-      width: 10em;
-      height: 10em;
-    }
-
-    @keyframes respec-spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    #respec-pill:hover,
-    #respec-pill:focus {
-      color: rgb(0, 0, 0);
-      background-color: rgb(245, 245, 245);
-      transition: color .2s;
-    }
-
-    #respec-menu {
-      position: absolute;
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: #fff;
-      box-shadow: 1px 1px 8px 0 rgba(100, 100, 100, .5);
-      width: 200px;
-      display: none;
-      text-align: left;
-      margin-top: 32px;
-      font-size: .8em;
-    }
-
-    #respec-menu li {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .respec-save-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(47%, 2fr));
-      grid-gap: .5cm;
-      padding: .5cm;
-    }
-
-    .respec-save-button:link {
-      padding-top: 16px;
-      color: rgb(240, 240, 240);
-      background: rgb(42, 90, 168);
-      justify-self: stretch;
-      height: 1cm;
-      text-decoration: none;
-      text-align: center;
-      font-size: inherit;
-      border: none;
-      border-radius: 0.2cm;
-    }
-
-    .respec-save-button:link:hover {
-      color: white;
-      background: rgb(42, 90, 168);
-      padding: 0;
-      margin: 0;
-      border: 0;
-      padding-top: 16px;
-    }
-
-
-    #respec-ui button:focus,
-    #respec-pill:focus,
-    .respec-option:focus {
-      outline: 0;
-      outline-style: none;
-    }
-
-    #respec-pill-error {
-      background-color: red;
-      color: white;
-    }
-
-    #respec-pill-warning {
-      background-color: orange;
-      color: white;
-    }
-
-    .respec-warning-list,
-    .respec-error-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-family: sans-serif;
-      background-color: rgb(255, 251, 230);
-      font-size: .9em;
-    }
-
-    .respec-warning-list li,
-    .respec-error-list li {
-      padding: 0.4em 0.7em;
-    }
-
-    .respec-warning-list li::before {
-      content: "⚠️";
-      padding-right: .5em;
-    }
-
-    .respec-warning-list li {
-      color: rgb(92, 59, 0);
-      border-bottom: thin solid rgb(255, 245, 194);
-    }
-
-    .respec-error-list,
-    .respec-error-list li {
-      background-color: rgb(255, 240, 240);
-    }
-
-    .respec-error-list li::before {
-      content: "💥";
-      padding-right: .5em;
-    }
-
-    .respec-error-list li {
-      padding: 0.4em 0.7em;
-      color: rgb(92, 59, 0);
-      border-bottom: thin solid rgb(255, 215, 215);
-    }
-
-    #respec-overlay {
-      display: block;
-      opacity: 0;
-      position: fixed;
-      z-index: 10000;
-      top: 0px;
-      left: 0px;
-      height: 100%;
-      width: 100%;
-      background: #000;
-    }
-
-    .respec-modal {
-      display: block;
-      position: fixed;
-      opacity: 0;
-      z-index: 11000;
-      margin: auto;
-      top: 10%;
-      background: #fff;
-      border: 5px solid #666;
-      min-width: 20%;
-      width: 79%;
-      padding: 0;
-      max-height: 80%;
-      overflow-y: auto;
-      margin: 0 -.5cm
-    }
-
-    @media screen and (min-width: 78em) {
-      .respec-modal {
-        width: 62%;
-      }
-    }
-
-    .respec-modal h3 {
-      margin: 0;
-      padding: .2em;
-      text-align: center;
-      color: black;
-      background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 50%, rgba(204, 204, 204, 1) 100%);
-      font-size: 1em;
-    }
-
-    .respec-modal .inside p {
-      padding-left: 1cm;
-    }
-
-    #respec-menu button.respec-option {
-      background: white;
-      padding: 0 .2cm;
-      border: none;
-      width: 100%;
-      text-align: left;
-      font-size: inherit;
-      padding: 1.2em 1.2em;
-    }
-
-    #respec-menu button.respec-option:hover,
-    #respec-menu button:focus {
-      background-color: #eeeeee;
-    }
-
-    .respec-cmd-icon {
-      padding-right: .5em;
-    }
-
-    #respec-ui button.respec-option:last-child {
-      border: none;
-      border-radius: inherit;
-    }
-
-    .respec-offending-element {
-      display: inline-block;
-      position: relative;
-      background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x;
-    }
-
-    @supports (text-decoration-style: wavy) {
-      .respec-offending-element {
-        background: none;
-        text-decoration-line: underline;
-        text-decoration-style: wavy;
-        text-decoration-color: red;
-      }
-    }
-
     #issue-summary>ul,
     .respec-dfn-list {
       column-count: 2;
@@ -680,34 +409,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       list-style: none;
     }
 
-
-    .respec-button-copy-paste {
-      position: absolute;
-      display: block;
-      padding: 0px 8px;
-      height: 28px;
-      width: 40px;
-      color: #333;
-      white-space: nowrap;
-      vertical-align: middle;
-      cursor: pointer;
-      background-color: #eee;
-      background-image: linear-gradient(#fcfcfc, #eee);
-      border: 1px solid rgb(144, 184, 222);
-      border-radius: 0px 0px 3px 0;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-appearance: none;
-      margin: 0px 127px;
-      border-left: 0;
-    }
-
-    p+.respec-button-copy-paste {
-      margin: 1px 127px;
-    }
-
     @media print {
       .removeOnSave {
         display: none;
@@ -716,16 +417,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </style>
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
-  <meta name="generator" content="ReSpec 11.4.1">
+  <meta name="generator" content="ReSpec 11.5.0">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-04-06",
+      "publishDate": "2017-05-10",
       "specStatus": "ED",
-      "previousMaturity": "CR",
-      "previousPublishDate": "2016-10-18",
+      "previousMaturity": "PR",
+      "previousPublishDate": "2017-04-13",
       "crEnd": "2016-11-15",
-      "prEnd": "2017-04-30",
+      "prEnd": "2017-05-11",
       "shortName": "micropub",
       "edDraftURI": "https://micropub.net/draft/",
       "testSuiteURI": "https://micropub.rocks/",
@@ -854,7 +555,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-06-april-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-04-06">06 April 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-10-may-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-05-10">10 May 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -927,9 +628,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
     <p id="sotd-p-2">
-      This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
+      This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. Comments regarding this document are welcome. Please send them to
       <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
-      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+      <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
     </p>
     <p id="sotd-p-3">
       Please see the Working Group's <a href="https://micropub.net/implementation-reports/">implementation
@@ -1074,13 +775,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
       <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">C. </span>Change Log</a>
         <ol class="toc">
-          <li class="tocline"><a href="#changes-from-18-october-2016-cr-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 18 October 2016 CR to this version</a></li>
-          <li class="tocline"><a href="#changes-from-16-august-2016-cr-to-18-october-2016-cr" class="tocxref"><span class="secno">C.2 </span>Changes from 16 August 2016 CR to 18 October 2016 CR</a></li>
-          <li class="tocline"><a href="#changes-from-13-july-2016-wd-to-16-august-2016-cr" class="tocxref"><span class="secno">C.3 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</a></li>
-          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-13-july-2016-wd" class="tocxref"><span class="secno">C.4 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.5 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-wd" class="tocxref"><span class="secno">C.6 </span>Changes from 01 March 2016 WD to 04 May 2016 WD</a></li>
-          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-wd" class="tocxref"><span class="secno">C.7 </span>Changes from 28 January 2016 FPWD to 01 March 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-13-april-2017-pr-to-this-version" class="tocxref"><span class="secno">C.1 </span>Changes from 13 April 2017 PR to this version</a></li>
+          <li class="tocline"><a href="#changes-from-18-october-2016-cr-to-13-april-2017-pr" class="tocxref"><span class="secno">C.2 </span>Changes from 18 October 2016 CR to 13 April 2017 PR</a></li>
+          <li class="tocline"><a href="#changes-from-16-august-2016-cr-to-18-october-2016-cr" class="tocxref"><span class="secno">C.3 </span>Changes from 16 August 2016 CR to 18 October 2016 CR</a></li>
+          <li class="tocline"><a href="#changes-from-13-july-2016-wd-to-16-august-2016-cr" class="tocxref"><span class="secno">C.4 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</a></li>
+          <li class="tocline"><a href="#changes-from-21-june-2016-wd-to-13-july-2016-wd" class="tocxref"><span class="secno">C.5 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-04-may-2016-wd-to-21-june-2016-wd" class="tocxref"><span class="secno">C.6 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-01-march-2016-wd-to-04-may-2016-wd" class="tocxref"><span class="secno">C.7 </span>Changes from 01 March 2016 WD to 04 May 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-28-january-2016-fpwd-to-01-march-2016-wd" class="tocxref"><span class="secno">C.8 </span>Changes from 28 January 2016 FPWD to 01 March 2016 WD</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#references" class="tocxref"><span class="secno">D. </span>References</a>
@@ -1337,18 +1039,19 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <ul>
         <li id="reserved-properties-li-1"><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
         <li id="reserved-properties-li-2"><code>h</code> - used to specify the object type being created</li>
-        <li id="reserved-properties-li-3"><code>q</code> - used to query a Micropub endpoint</li>
-        <li id="reserved-properties-li-4"><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
-        <li id="reserved-properties-li-5"><code>url</code> - indicates the URL of the object being acted on</li>
-        <li id="reserved-properties-li-6"><code>mp-*</code> - reserved for future use</li>
+        <li id="reserved-properties-li-3"><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
+        <li id="reserved-properties-li-4"><code>url</code> - indicates the URL of the object being acted on</li>
+        <li id="reserved-properties-li-5"><code>mp-*</code> - reserved for future use</li>
       </ul>
       <p id="reserved-properties-p-3"></p>
 
-      <p id="reserved-properties-p-4">When creating posts, all other properties in the request are considered properties of the object being created.</p>
+      <p id="reserved-properties-p-4">When creating posts using <code>x-www-form-urlencoded</code> or <code>multipart/form-data</code> requests, all other properties in the request are considered properties of the object being created.</p>
 
       <p id="reserved-properties-p-5">The server <em class="rfc2119" title="MUST NOT">MUST NOT</em> store the <code>access_token</code> property in the post.</p>
 
       <p id="reserved-properties-p-6">Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new <code>mp-</code> commands are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
+
+      <p id="reserved-properties-p-7">When creating posts using <a href="#json-syntax">JSON syntax</a>, properties beginning with <code>mp-</code> are reserved as described above.</p>
     </section>
 
     <section id="create" typeof="bibo:Chapter" resource="#create" property="bibo:hasPart">
@@ -1422,7 +1125,8 @@ Content-Transfer-Encoding: binary
         <p id="json-syntax-p-1">In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
         <p id="json-syntax-p-2">Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
         <p id="json-syntax-p-3">When creating posts in JSON format, all values <em class="rfc2119" title="MUST">MUST</em> be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
-        <p id="json-syntax-p-4"></p>
+        <p id="json-syntax-p-4">Note that properties beginning with <code>mp-</code> are reserved as described in <a href="#reserved-properties">Reserved Properties</a>.</p>
+        <p id="json-syntax-p-5"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 4</span></div>
           <pre class="hljs http" aria-busy="false" aria-live="polite"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
@@ -1438,13 +1142,13 @@ Content-Transfer-Encoding: binary
   }
 }</span></pre>
         </div>
-        <p id="json-syntax-p-5"></p>
+        <p id="json-syntax-p-6"></p>
 
         <h4 id="uploading-a-photo-with-alt-text">Uploading a photo with alt text</h4>
 
-        <p id="json-syntax-p-6">To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoded or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
+        <p id="json-syntax-p-7">To include alt text along with the image being uploaded, you can use the Microformats 2 syntax to specify both the image URL and alt text for the <code>photo</code> property. Instead of the value being simply a URL, the value is instead an object with two properties: <code>value</code> being the URL and <code>alt</code> being the text. Note that because the value of <code>photo</code> needs to be an object, we can't use form-encoded or multipart requests for this. Instead, we have to first upload the photo to the media endpoint, then reference the URL in a JSON request, as illustrated below.</p>
 
-        <p id="json-syntax-p-7"></p>
+        <p id="json-syntax-p-8"></p>
         <div class="example">
           <div class="example-title marker"><span>Example 5</span></div>
           <pre class="hljs http" aria-busy="false" aria-live="polite"><span class="hljs-keyword">POST</span> <span class="hljs-string">/micropub</span> HTTP/1.1
@@ -1465,11 +1169,11 @@ Content-Transfer-Encoding: binary
   }
 }</span></pre>
         </div>
-        <p id="json-syntax-p-8"></p>
+        <p id="json-syntax-p-9"></p>
 
         <div class="warning">
           <div class="warning-title marker"><span>Warning</span></div>
-          <p class="" id="json-syntax-p-9">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
+          <p class="" id="json-syntax-p-10">The specific method described here of specifying alt text was added with the assumption that the Microformats 2 proposal for how to represent image alt text (<a href="https://github.com/microformats/microformats2-parsing/issues/2#issuecomment-236712535">issue 2</a>) will be incorporated. If the referenced issue is resolved a different way, the Micropub spec should be adjusted accordingly.</p>
         </div>
 
       </section>
@@ -1592,6 +1296,8 @@ Content-Transfer-Encoding: binary
 
       <p id="update-p-4">The values of each property inside the <code>replace</code>, <code>add</code> or <code>delete</code> keys <em class="rfc2119" title="MUST">MUST</em> be an array, even if there is only a single value.</p>
 
+      <p id="update-p-5">While it is okay to combine add/delete operations in the same request, it only makes sense to do so when they are operating on different property-value combinations. Servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request.</p>
+
       <section id="replace" typeof="bibo:Chapter" resource="#replace" property="bibo:hasPart">
         <h4 id="h-replace" resource="#h-replace"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4.1 </span>Replace</span>
         </h4>
@@ -1609,7 +1315,7 @@ Content-Transfer-Encoding: binary
 }</pre>
         </div>
         <p id="replace-p-3"></p>
-        <p id="replace-p-4">This will replace the entire entry content with the new text.</p>
+        <p id="replace-p-4">This will replace the entire entry content with the new text, leaving any other existing property of the post as is.</p>
       </section>
 
       <section id="add" typeof="bibo:Chapter" resource="#add" property="bibo:hasPart">
@@ -2567,26 +2273,41 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </h2>
     <p id="change-log-p-1"><em>This section is non-normative.</em></p>
 
-    <section id="changes-from-18-october-2016-cr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-18-october-2016-cr-to-this-version" property="bibo:hasPart">
-      <h3 id="h-changes-from-18-october-2016-cr-to-this-version" resource="#h-changes-from-18-october-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 18 October 2016 CR to this version</span>
+    <section id="changes-from-13-april-2017-pr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-13-april-2017-pr-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-13-april-2017-pr-to-this-version" resource="#h-changes-from-13-april-2017-pr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Changes from 13 April 2017 PR to this version</span>
       </h3>
 
-      <p id="changes-from-18-october-2016-cr-to-this-version-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/CR-micropub-20161018/">18 October 2016 CR</a> to this version.</p>
+      <p id="changes-from-13-april-2017-pr-to-this-version-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2017/PR-micropub-20170413/">13 April 2017 PR</a> to this version.</p>
 
       <h3 id="non-normative-changes">Non-Normative Changes</h3>
       <ul>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-1">Corrected conformance class description of servers handling <code>multipart/form-data</code> requests for accepting media</li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-2">Add background referring to MetaWeblog and AtomPub prior art</li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-3">Clarification of condition under which a client can try uploading a file</li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-4">Editorial changes to introduction and abstract</li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-5">Expand acknowledgements</li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-6">Use consistent spelling and <code>&lt;code&gt;</code> tag for <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code></li>
-        <li id="changes-from-18-october-2016-cr-to-this-version-li-7">Added note under security considerations about handling files referenced by URL</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-1">Added text to clarify that update requests to replace a property do not modify other properties of the post.</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-2">Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-3">Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-4">Clarified that servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-18-october-2016-cr-to-13-april-2017-pr" typeof="bibo:Chapter" resource="#changes-from-18-october-2016-cr-to-13-april-2017-pr" property="bibo:hasPart">
+      <h3 id="h-changes-from-18-october-2016-cr-to-13-april-2017-pr" resource="#h-changes-from-18-october-2016-cr-to-13-april-2017-pr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 18 October 2016 CR to 13 April 2017 PR</span>
+      </h3>
+
+      <p id="changes-from-18-october-2016-cr-to-13-april-2017-pr-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/CR-micropub-20161018/">18 October 2016 CR</a> to the <a href="https://www.w3.org/TR/2017/PR-micropub-20170413/">13 April 2017 PR</a>.</p>
+
+      <h3 id="non-normative-changes-1">Non-Normative Changes</h3>
+      <ul>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-1">Corrected conformance class description of servers handling <code>multipart/form-data</code> requests for accepting media</li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-2">Add background referring to MetaWeblog and AtomPub prior art</li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-3">Clarification of condition under which a client can try uploading a file</li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-4">Editorial changes to introduction and abstract</li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-5">Expand acknowledgements</li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-6">Use consistent spelling and <code>&lt;code&gt;</code> tag for <code>x-www-form-urlencoded</code> and <code>multipart/form-data</code></li>
+        <li id="changes-from-18-october-2016-cr-to-13-april-2017-pr-li-7">Added note under security considerations about handling files referenced by URL</li>
       </ul>
     </section>
 
     <section id="changes-from-16-august-2016-cr-to-18-october-2016-cr" typeof="bibo:Chapter" resource="#changes-from-16-august-2016-cr-to-18-october-2016-cr" property="bibo:hasPart">
-      <h3 id="h-changes-from-16-august-2016-cr-to-18-october-2016-cr" resource="#h-changes-from-16-august-2016-cr-to-18-october-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Changes from 16 August 2016 CR to 18 October 2016 CR</span>
+      <h3 id="h-changes-from-16-august-2016-cr-to-18-october-2016-cr" resource="#h-changes-from-16-august-2016-cr-to-18-october-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 16 August 2016 CR to 18 October 2016 CR</span>
       </h3>
 
       <p id="changes-from-16-august-2016-cr-to-18-october-2016-cr-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/CR-micropub-20160816/">16 August 2016 CR</a> to the <a href="https://www.w3.org/TR/2016/CR-micropub-20161018/">18 October 2016 CR</a>.</p>
@@ -2599,7 +2320,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li id="changes-from-16-august-2016-cr-to-18-october-2016-cr-li-4">Remove "note" designation from sentence about storing access token</li>
       </ul>
 
-      <h3 id="non-normative-changes-1">Non-Normative Changes</h3>
+      <h3 id="non-normative-changes-2">Non-Normative Changes</h3>
       <ul>
         <li id="changes-from-16-august-2016-cr-to-18-october-2016-cr-li-5">Rephrase paragraph on HTTP 202 response</li>
         <li id="changes-from-16-august-2016-cr-to-18-october-2016-cr-li-6">Add explicit note that JSON posts require content-type header</li>
@@ -2620,7 +2341,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-13-july-2016-wd-to-16-august-2016-cr" typeof="bibo:Chapter" resource="#changes-from-13-july-2016-wd-to-16-august-2016-cr" property="bibo:hasPart">
-      <h3 id="h-changes-from-13-july-2016-wd-to-16-august-2016-cr" resource="#h-changes-from-13-july-2016-wd-to-16-august-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</span>
+      <h3 id="h-changes-from-13-july-2016-wd-to-16-august-2016-cr" resource="#h-changes-from-13-july-2016-wd-to-16-august-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 13 July 2016 WD to 16 August 2016 CR</span>
       </h3>
 
       <p id="changes-from-13-july-2016-wd-to-16-august-2016-cr-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160713/">13 July 2016 WD</a> to the <a href="https://www.w3.org/TR/2016/CR-micropub-20160816/">16 August 2016 CR</a>.</p>
@@ -2632,7 +2353,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-21-june-2016-wd-to-13-july-2016-wd" typeof="bibo:Chapter" resource="#changes-from-21-june-2016-wd-to-13-july-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span>
+      <h3 id="h-changes-from-21-june-2016-wd-to-13-july-2016-wd" resource="#h-changes-from-21-june-2016-wd-to-13-july-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 21 June 2016 WD to 13 July 2016 WD</span>
       </h3>
 
       <p id="changes-from-21-june-2016-wd-to-13-july-2016-wd-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160621/">21 June 2016 WD</a> to the <a href="https://www.w3.org/TR/2016/WD-micropub-20160713/">13 July 2016 WD</a>.</p>
@@ -2651,7 +2372,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-04-may-2016-wd-to-21-june-2016-wd" typeof="bibo:Chapter" resource="#changes-from-04-may-2016-wd-to-21-june-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.5 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span>
+      <h3 id="h-changes-from-04-may-2016-wd-to-21-june-2016-wd" resource="#h-changes-from-04-may-2016-wd-to-21-june-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 04 May 2016 WD to 21 June 2016 WD</span>
       </h3>
 
       <p id="changes-from-04-may-2016-wd-to-21-june-2016-wd-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160504/">04 May 2016 WD</a> to the <a href="https://www.w3.org/TR/2016/WD-micropub-20160621/">21 June 2016 WD</a>.</p>
@@ -2669,7 +2390,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-01-march-2016-wd-to-04-may-2016-wd" typeof="bibo:Chapter" resource="#changes-from-01-march-2016-wd-to-04-may-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-wd" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.6 </span>Changes from 01 March 2016 WD to 04 May 2016 WD</span>
+      <h3 id="h-changes-from-01-march-2016-wd-to-04-may-2016-wd" resource="#h-changes-from-01-march-2016-wd-to-04-may-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.7 </span>Changes from 01 March 2016 WD to 04 May 2016 WD</span>
       </h3>
 
       <p id="changes-from-01-march-2016-wd-to-04-may-2016-wd-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 WD</a> to the <a href="https://www.w3.org/TR/2016/WD-micropub-20160504/">04 May 2016 WD</a>.</p>
@@ -2683,7 +2404,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
     </section>
 
     <section id="changes-from-28-january-2016-fpwd-to-01-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-28-january-2016-fpwd-to-01-march-2016-wd" property="bibo:hasPart">
-      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-wd" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.7 </span>Changes from 28 January 2016 FPWD to 01 March 2016 WD</span>
+      <h3 id="h-changes-from-28-january-2016-fpwd-to-01-march-2016-wd" resource="#h-changes-from-28-january-2016-fpwd-to-01-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.8 </span>Changes from 28 January 2016 FPWD to 01 March 2016 WD</span>
       </h3>
 
       <p id="changes-from-28-january-2016-fpwd-to-01-march-2016-wd-p-1">This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-micropub-20160128/">28 January 2016 FPWD</a> to the <a href="https://www.w3.org/TR/2016/WD-micropub-20160301/">01 March 2016 WD</a>.</p>
@@ -2779,7 +2500,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         </dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt>
         <dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Mike West. W3C. 10 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references">https://www.w3.org/TR/security-privacy-questionnaire/</a>
         </dd><dt id="bib-social-web-protocols">[social-web-protocols]</dt>
-        <dd><a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. Amy Guy. W3C. 2 November 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a>
+        <dd><a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. Amy Guy. W3C. 4 May 2017. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a>
         </dd>
       </dl>
     </section>
