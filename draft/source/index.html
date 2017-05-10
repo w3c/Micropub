@@ -380,14 +380,13 @@
           <ul>
             <li><code>access_token</code> - the OAuth Bearer token authenticating the request (the access token may be sent in an HTTP Authorization header or this form parameter)</li>
             <li><code>h</code> - used to specify the object type being created</li>
-            <li><code>q</code> - used to query a Micropub endpoint</li>
             <li><code>action</code> - indicates whether this is an <code>delete</code>, or <code>undelete</code> (updates are not supported in the form-encoded syntax)</li>
             <li><code>url</code> - indicates the URL of the object being acted on</li>
             <li><code>mp-*</code> - reserved for future use</li>
           </ul>
         </p>
 
-        <p>When creating posts, all other properties in the request are considered properties of the object being created.</p>
+        <p>When creating posts using <code>x-www-form-urlencoded</code> or <code>multipart/form-data</code> requests, all other properties in the request are considered properties of the object being created.</p>
 
         <p>The server MUST NOT store the <code>access_token</code> property in the post.</p>
 
