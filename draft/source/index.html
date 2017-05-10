@@ -391,6 +391,8 @@
         <p>The server MUST NOT store the <code>access_token</code> property in the post.</p>
 
         <p>Properties beginning with <code>mp-</code> are reserved as a mechanism for clients to give commands to servers. Where typically properties of a post are visible to users, commands to the server are not visible to users, so it does not make sense to set a property on the post for a command. Clients and servers wishing to experiment with creating new <code>mp-</code> commands are encouraged to brainstorm and document implementations at <a href="https://indieweb.org/Micropub-extensions">indieweb.org/Micropub-extensions</a>.</p>
+
+        <p>When creating posts using <a href="#json-syntax">JSON syntax</a>, properties beginning with <code>mp-</code> are reserved as described above.</p>
       </section>
 
       <section>
@@ -444,6 +446,7 @@ Content-Transfer-Encoding: binary
           <p>In order to support more complex values of properties, you can create a post with JSON syntax by sending the entry in the parsed Microformats 2 JSON format.</p>
           <p>Note that in this case, you cannot also upload a file, you can only reference files by URL as described above.</p>
           <p>When creating posts in JSON format, all values MUST be specified as arrays, even if there is only one value, identical to the Microformats 2 JSON format. This request is sent with a content type of <code>application/json</code>.</p>
+          <p>Note that properties beginning with <code>mp-</code> are reserved as described in <a href="#reserved-properties">Reserved Properties</a>.</p>
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
 Content-type: application/json
@@ -1425,6 +1428,7 @@ $_FILES['audio']</pre></p>
         <ul>
           <li>Added text to clarify that update requests to replace a property do not modify other properties of the post.</li>
           <li>Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
+          <li>Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
         </ul>
       </section>
 
