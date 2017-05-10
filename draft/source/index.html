@@ -632,7 +632,7 @@ Location: https://aaronpk.example/post/1000</pre></p>
     "content": ["hello moon"]
   }
 }</pre></p>
-          <p>This will replace the entire entry content with the new text.</p>
+          <p>This will replace the entire entry content with the new text, leaving any other existing property of the post as is.</p>
         </section>
 
         <section>
@@ -1417,9 +1417,21 @@ $_FILES['audio']</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 18 October 2016 CR to this version</h3>
+        <h3>Changes from 13 April 2017 PR to this version</h3>
 
-        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/CR-micropub-20161018/">18 October 2016 CR</a> to this version.</p>
+        <p>This section lists changes from the <a href="https://www.w3.org/TR/2017/PR-micropub-20170413/">13 April 2017 PR</a> to this version.</p>
+
+        <h4>Non-Normative Changes</h4>
+        <ul>
+          <li>Added text to clarify that update requests to replace a property do not modify other properties of the post.</li>
+          <li>Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 18 October 2016 CR to 13 April 2017 PR</h3>
+
+        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/CR-micropub-20161018/">18 October 2016 CR</a> to the <a href="https://www.w3.org/TR/2017/PR-micropub-20170413/">13 April 2017 PR</a>.</p>
 
         <h4>Non-Normative Changes</h4>
         <ul>
