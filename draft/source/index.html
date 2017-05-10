@@ -624,6 +624,8 @@ Location: https://aaronpk.example/post/1000</pre></p>
         <p>The values of each property inside the <code>replace</code>, <code>add</code>
           or <code>delete</code> keys MUST be an array, even if there is only a single value.</p>
 
+        <p>While it is okay to combine add/delete operations in the same request, it only makes sense to do so when they are operating on different property-value combinations. Servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request.</p>
+
         <section>
           <h4>Replace</h4>
 
@@ -1429,6 +1431,7 @@ $_FILES['audio']</pre></p>
           <li>Added text to clarify that update requests to replace a property do not modify other properties of the post.</li>
           <li>Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
           <li>Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
+          <li>Clarified that servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request</li>
         </ul>
       </section>
 
