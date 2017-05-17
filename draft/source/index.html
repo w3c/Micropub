@@ -1253,7 +1253,7 @@ $_FILES['audio']</pre></p>
           for the user via this link relation.</p>
 
         <p>The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, 
-        or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
+        or an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
         <p><h5>HTTP Link Header</h5>
           <pre>Link: &lt;https://aaronpk.example/micropub&gt;; rel="micropub"</pre></p>
@@ -1432,6 +1432,7 @@ $_FILES['audio']</pre></p>
           <li>Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
           <li>Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
           <li>Clarified that servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request</li>
+          <li>Fixed typo in discovery section</li>
         </ul>
       </section>
 
