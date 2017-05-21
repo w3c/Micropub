@@ -1269,8 +1269,9 @@ $_FILES['audio']</pre></p>
         <p>The Micropub server MUST require the bearer token to include at least one scope
           value, in order to ensure posts cannot be created by arbitrary tokens.</p>
         <p>The client may request one or more scopes during the authorization
-          request. It does this according to standard OAuth 2.0 techniques,
-          by passing a space-separated list of scope names in the authorization request. [[RFC6749]]</p>
+          request. It does this according to standard OAuth 2.0 [[RFC6749]] techniques,
+          by passing a space-separated list of scope names in the authorization request.
+          See <a href="https://tools.ietf.org/html/rfc6749#section-3.3">RFC6749 Section 3.3</a>.</p>
         <p>The authorization server MUST indicate to the user any scopes that
           are part of the request, whether or not the authorization server
           recognizes the scopes. The authorization server MAY also allow the
@@ -1433,6 +1434,7 @@ $_FILES['audio']</pre></p>
           <li>Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
           <li>Clarified that servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request</li>
           <li>Fixed typo in discovery section</li>
+          <li>Added link to the specific section of OAuth 2.0 RFC6749 about the scope value</li>
         </ul>
       </section>
 
