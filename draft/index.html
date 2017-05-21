@@ -417,11 +417,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </style>
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <link rel="canonical" href="https://www.w3.org/TR/micropub/">
-  <meta name="generator" content="ReSpec 11.5.0">
+  <meta name="generator" content="ReSpec 12.0.6">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-05-10",
+      "publishDate": "2017-05-21",
       "specStatus": "ED",
       "previousMaturity": "PR",
       "previousPublishDate": "2017-04-13",
@@ -549,13 +549,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body aria-busy="false" class="h-entry toc-inline" id="respecDocument">
+<body aria-busy="false" class="h-entry" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Micropub</h1>
-    <h2 id="w3c-editor-s-draft-10-may-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-05-10">10 May 2017</time></h2>
+    <h2 id="w3c-editor-s-draft-21-may-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2017-05-21">21 May 2017</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="https://micropub.net/draft/">https://micropub.net/draft/</a></dd>
@@ -2093,7 +2093,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
 
       <p id="endpoint-discovery-p-2">A Micropub client <em class="rfc2119" title="SHOULD">SHOULD</em> be able to be configured by discovering the Micropub endpoint for the user via this link relation.</p>
 
-      <p id="endpoint-discovery-p-3">The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, or sends an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
+      <p id="endpoint-discovery-p-3">The client looks for a <code>&lt;link rel="micropub"&gt;</code> tag in the HTML head of the URL used to authenticate, or an <code>HTTP Link</code> header with a rel value of <code>micropub</code>.</p>
 
       <p id="endpoint-discovery-p-4"></p>
       <h3 id="http-link-header">HTTP Link Header</h3>
@@ -2113,7 +2113,7 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
       </h3>
 
       <p id="scope-p-1">The Micropub server <em class="rfc2119" title="MUST">MUST</em> require the bearer token to include at least one scope value, in order to ensure posts cannot be created by arbitrary tokens.</p>
-      <p id="scope-p-2">The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 techniques, by passing a space-separated list of scope names in the authorization request. [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>]</p>
+      <p id="scope-p-2">The client may request one or more scopes during the authorization request. It does this according to standard OAuth 2.0 [<cite><a class="bibref" href="#bib-RFC6749">RFC6749</a></cite>] techniques, by passing a space-separated list of scope names in the authorization request. See <a href="https://tools.ietf.org/html/rfc6749#section-3.3">RFC6749 Section 3.3</a>.</p>
       <p id="scope-p-3">The authorization server <em class="rfc2119" title="MUST">MUST</em> indicate to the user any scopes that are part of the request, whether or not the authorization server recognizes the scopes. The authorization server <em class="rfc2119" title="MAY">MAY</em> also allow the user to add or remove scopes that the client requests.</p>
       <p id="scope-p-4">Most Micropub servers require clients to obtain the "create" scope in order to create posts. However, some servers <em class="rfc2119" title="MAY">MAY</em> require more granular scope, such as "delete", "update", or "create:video", in order to limit the abilities of various clients. See <a href="https://indieweb.org/scope">Scope</a> for more details and a list of all currently used values for scope.</p>
     </section>
@@ -2285,6 +2285,8 @@ $_FILES[<span class="hljs-string">'audio'</span>]</pre>
         <li id="changes-from-13-april-2017-pr-to-this-version-li-2">Removed <code>q</code> from the list of reserved POST body parameters since it is not used in POST requests.</li>
         <li id="changes-from-13-april-2017-pr-to-this-version-li-3">Clarified that <code>mp-</code> properties are also reserved in JSON syntax.</li>
         <li id="changes-from-13-april-2017-pr-to-this-version-li-4">Clarified that servers may have undefined behavior if multiple operations of the same property-value combination are sent in an update request</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-5">Fixed typo in discovery section</li>
+        <li id="changes-from-13-april-2017-pr-to-this-version-li-6">Added link to the specific section of OAuth 2.0 RFC6749 about the scope value</li>
       </ul>
     </section>
 
