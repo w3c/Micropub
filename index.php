@@ -5,7 +5,9 @@
   <style type="text/css">
     body {
       background-color: #fefefe;
-      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;      
       font-size: 14pt;
     }
     .page {
@@ -13,10 +15,10 @@
       margin: 0 auto;
     }
     a {
-      color: #b3885b;
+      color: #3340A6;
     }
     a:hover {
-      color: #d79e61;
+      color: #5764C7;
     }
     h1 {
       text-align: center;
@@ -24,8 +26,8 @@
     .subtitle {
       padding: 20px 30px;
       font-size: 16pt;
-      background-color: #e2c09c;
-      border: 1px #a36e36 solid;
+      background-color: #94D61C;
+      border: 1px #0DBD40 solid;
       border-radius: 4px;
     }
     ul.links {
@@ -56,10 +58,17 @@
   <div class="subtitle">Micropub is an open API standard that is used to create posts on one's own domain using third-party clients.</div>
   
   <ul class="links">
-    <li>The Micropub specification is being developed under the <a href="https://www.w3.org/wiki/Socialwg">W3C Social Web Working Group</a>.</li>
-    <li class="main"><a href="https://www.w3.org/TR/micropub/">Latest published version</a></li>
-    <li class="main"><a href="http://micropub.net/draft/">Latest editor's draft</a></li>
+    <li class="main">
+      <a href="https://www.w3.org/TR/micropub/">w3.org/TR/micropub</a>
+      <br>W3C Recommendation
+    </li>
+    <li class="main">
+      <a href="https://micropub.rocks/">micropub.rocks</a>
+      <br>
+      Test suite and debugging utility
+    </li>
     <li class="main"><a href="/implementation-reports/">Implementation Reports</a></li>
+    <li>The Micropub specification is developed under the <a href="https://www.w3.org/wiki/Socialwg">W3C Social Web Working Group</a>.</li>
     <li>The specification was contributed to the W3C by the IndieWeb community. More information and history of the spec can be found on the <a href="https://indieweb.org/micropub">IndieWeb wiki</a>.</li>
   </ul>
   
