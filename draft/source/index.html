@@ -613,7 +613,7 @@ Location: https://aaronpk.example/post/1000</pre></p>
         <p>Micropub servers SHOULD support updating posts, including adding and 
           removing individual properties as described in this section.</p>
 
-        <p>Updating entries is done with a JSON post describing the changes to make.</p>
+        <p>Updating entries is done by sending an HTTP POST with a JSON payload describing the changes to make.</p>
 
         <p>To update an entry, send <code>"action": "update"</code> and specify the
           URL of the entry that is being updated using the "url" property.
