@@ -1137,7 +1137,22 @@ h=entry
         <section>
           <h4>New Article with HTML</h4>
 
-          <p>Posting a new article with HTML content. Note that in this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML. Because <code>content</code> is an object, this request must be sent in JSON format.</p>
+          <p>Posting a new article with HTML content.</p>
+
+          <p>This can be done in a form request:</p>
+
+          <p><pre class="example">POST /micropub HTTP/1.1
+Host: aaronpk.example
+Content-type: application/x-www-form-urlencoded
+
+h=entry
+&amp;category[]=indieweb
+&amp;category[]=p3k
+&amp;name=Itching: h-event to iCal converter
+&amp;content[html]=Now+that+I%27ve+been+%26lt%3Ba+href%3D%22https%3A%2F%2Faaronparecki.com%2Fevents%22%26gt%3Bcreating+a+list+of+events%26lt%3B%2Fa%26gt%3B+on+my+site+using+%26lt%3Ba+href%3D%22https%3A%2F%2Fp3k.io%22%26gt%3Bp3k%26lt%3B%2Fa%26gt%3B%2C+it+would+be+great+if+I+could+get+a+more+calendar-like+view+of+that+list..
+</pre></p>
+
+          <p>Or alternatively using a JSON format. In this case, the <code>content</code> property is sent as an object containing the key <code>html</code>. This corresponds with the Microformats 2 syntax for indicating the parsed value contains HTML.</p>
 
           <p><pre class="example">POST /micropub HTTP/1.1
 Host: aaronpk.example
